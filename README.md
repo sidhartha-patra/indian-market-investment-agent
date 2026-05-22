@@ -11,7 +11,7 @@ An AI-powered agent that analyzes Indian stock market news (NSE/BSE) and mutual 
 - 📰 **News ingestion** from Moneycontrol, Economic Times, LiveMint, Business Standard RSS
 - 📈 **Equity screeners**: Momentum (52-week breakouts) + Quality (ROCE/ROE based)
 - 💰 **Mutual fund analyzer** using AMFI NAV data (rolling returns, Sharpe ratio)
-- 🤖 **LLM-powered sentiment analysis** (OpenAI / Anthropic / local Ollama)
+- 🤖 **LLM-powered sentiment analysis** — uses **GitHub Models (free!)** or OpenAI / fallback
 - 📊 **Streamlit dashboard** with charts and recommendations
 - 📱 **Telegram bot** for daily alerts
 - 🔁 **Backtesting** via `vectorbt`
@@ -54,10 +54,18 @@ cp .env.example .env
 ```
 
 ```env
-OPENAI_API_KEY=sk-...
+# GitHub Models — FREE, just use your GitHub token
+GITHUB_TOKEN=ghp_...
+LLM_MODEL=gpt-4o-mini
+
+# Optional fallback
+# OPENAI_API_KEY=sk-...
+
 TELEGRAM_BOT_TOKEN=...
 TELEGRAM_CHAT_ID=...
 ```
+
+> 💡 **Free LLM tip:** Generate a GitHub token at https://github.com/settings/tokens (no special scopes needed) and use [GitHub Models](https://github.com/marketplace?type=models) for free access to GPT-4o-mini, Llama 3, Mistral, and more.
 
 ### 3. Run
 

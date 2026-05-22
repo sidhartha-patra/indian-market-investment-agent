@@ -11,11 +11,8 @@ logger = logging.getLogger(__name__)
 
 
 def generate_sector_allocation(market_context: dict | None = None) -> dict:
-    """Call LLM to produce 5-sector allocation JSON.
-
-    market_context: optional dict with keys like nifty_spot, fii_5d, etc.,
-    plus 'headlines' list. If absent, recent news will be pulled.
-    """
+    """Call LLM (GitHub Models or OpenAI) to produce 5-sector allocation JSON."""
+    import os
     if market_context is None:
         market_context = {}
 
@@ -33,15 +30,20 @@ def generate_sector_allocation(market_context: dict | None = None) -> dict:
         + "\n\nGenerate the 5-sector allocation JSON now."
     )
 
-    if not OPENAI_API_KEY:
-        logger.warning("No OPENAI_API_KEY — returning skeleton")
+    gh_token = os.getenv("GITHUB_TOKEN") or os.getenv("GH_TOKEN", "")
+    base_url = "https://models.inference.ai.azure.com" if gh_token else None
+    api_key = gh_token or OPENAI_API_KEY
+
+    if not api_key:
+        logger.warning("No GITHUB_TOKEN or OPENAI_API_KEY — returning skeleton")
         return _skeleton(headlines)
 
     try:
         from openai import OpenAI
-        client = OpenAI(api_key=OPENAI_API_KEY)
+        client = OpenAI(api_key=api_key, base_url=base_url) if base_url \
+            else OpenAI(api_key=api_key)
         resp = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=os.getenv("LLM_MODEL", "gpt-4o-mini"),
             messages=[
                 {"role": "system", "content": SECTOR_ALLOCATION_PROMPT},
                 {"role": "user", "content": user_msg},
