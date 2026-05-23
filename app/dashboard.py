@@ -54,6 +54,12 @@ with c2:
     st.subheader("💎 Quality Leaders")
     st.dataframe(pd.DataFrame(recs.get("quality_leaders", [])), use_container_width=True)
 
+if recs.get("volatile_movers"):
+    st.subheader("⚡ Volatile Movers (Aggressive / Swing Trades)")
+    st.caption("Higher risk \u2014 midcap/smallcap with elevated volatility, ATR, and volume surge. "
+               "Use strict stop-loss.")
+    st.dataframe(pd.DataFrame(recs["volatile_movers"]), use_container_width=True)
+
 st.subheader("📰 Market Sentiment")
 sc1, sc2 = st.columns(2)
 with sc1:

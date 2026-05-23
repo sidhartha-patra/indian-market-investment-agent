@@ -19,6 +19,11 @@ def daily_pipeline() -> None:
     logger.info("== Daily pipeline complete ==")
 
 
+def intraday_pipeline() -> None:
+    logger.info("== Intraday refresh ==")
+    generate_recommendations()
+
+
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     sched = BlockingScheduler(timezone="Asia/Kolkata")
@@ -26,6 +31,8 @@ def main() -> None:
     sched.add_job(daily_pipeline, CronTrigger(hour=8, minute=45, day_of_week="mon-fri"))
     # Post-market 4:00 PM IST
     sched.add_job(daily_pipeline, CronTrigger(hour=16, minute=0, day_of_week="mon-fri"))
+    # Intraday hourly refreshes during market hours (10 AM-3 PM IST)
+    sched.add_job(intraday_pipeline, CronTrigger(hour="10-15", minute=0, day_of_week="mon-fri"))
     logger.info("Scheduler started. Press Ctrl+C to stop.")
     try:
         sched.start()

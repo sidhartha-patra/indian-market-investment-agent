@@ -34,6 +34,31 @@ ETF_UNIVERSE = [
     "AUTOBEES.NS", "CONSUMBEES.NS", "DIVOPPBEES.NS", "BANKBEES.NS",
 ]
 
+# High-beta / high-volatility universe (Nifty Midcap 150 + Smallcap names + popular F&O)
+# Great for swing trades; carries higher risk than large-caps.
+HIGH_VOL_UNIVERSE = [
+    # Midcap movers
+    "TATAELXSI.NS", "DIXON.NS", "POLYCAB.NS", "HAL.NS", "BEL.NS",
+    "IRCTC.NS", "NAUKRI.NS", "PERSISTENT.NS", "COFORGE.NS", "KPITTECH.NS",
+    "LTTS.NS", "MPHASIS.NS", "OFSS.NS", "TATAPOWER.NS", "ADANIPOWER.NS",
+    "JSWENERGY.NS", "SUZLON.NS", "IDEA.NS", "YESBANK.NS", "PNB.NS",
+    "BANKBARODA.NS", "CANBK.NS", "RECLTD.NS", "PFC.NS", "IRFC.NS",
+    "IREDA.NS", "MAZDOCK.NS", "COCHINSHIP.NS", "GRSE.NS", "BDL.NS",
+    "PAYTM.NS", "ZOMATO.NS", "POLICYBZR.NS", "NYKAA.NS", "DELHIVERY.NS",
+    "SONACOMS.NS", "TIINDIA.NS", "TRENT.NS", "DMART.NS", "ABFRL.NS",
+    "INDIGO.NS", "INDIGOPNTS.NS", "ASTRAL.NS", "POLYMED.NS", "LAURUSLABS.NS",
+    "GRANULES.NS", "BIOCON.NS", "GLAND.NS", "SYNGENE.NS", "MAXHEALTH.NS",
+    "FORTIS.NS", "METROPOLIS.NS", "MEDPLUS.NS", "JUBLFOOD.NS", "DEVYANI.NS",
+    "VBL.NS", "RADICO.NS", "UBL.NS", "JYOTHYLAB.NS", "BAJAJHLDNG.NS",
+    "CHOLAFIN.NS", "MANAPPURAM.NS", "MUTHOOTFIN.NS", "IIFL.NS", "BSE.NS",
+    "MCX.NS", "CDSL.NS", "ANGELONE.NS", "MOTILALOFS.NS", "360ONE.NS",
+    # PSU & defence themes (often volatile on policy news)
+    "RVNL.NS", "IRCON.NS", "NBCC.NS", "HUDCO.NS", "SJVN.NS", "NHPC.NS",
+    "GAIL.NS", "OIL.NS", "MGL.NS", "IGL.NS", "PETRONET.NS",
+    # New-age / momentum
+    "TATAINVEST.NS", "JIOFIN.NS", "BHARTIHEXA.NS", "HONASA.NS",
+]
+
 SECTOR_STOCKS = {
     "banking": ["HDFCBANK.NS", "ICICIBANK.NS", "SBIN.NS", "AXISBANK.NS",
                 "KOTAKBANK.NS", "INDUSINDBK.NS", "BANKBARODA.NS", "PNB.NS",
@@ -65,6 +90,8 @@ def get_universe(name: str) -> list[str]:
         "nifty50": NIFTY_50,
         "nifty100": NIFTY_100,
         "etf": ETF_UNIVERSE,
+        "high_vol": HIGH_VOL_UNIVERSE,
+        "aggressive": HIGH_VOL_UNIVERSE,
     }.get(name, NIFTY_50).copy()
 
 
