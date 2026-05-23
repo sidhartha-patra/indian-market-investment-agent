@@ -2,9 +2,9 @@
 __pycache__/
 *.pyc
 .env
-data/*.db
-data/*.csv
-data/*.json
+data/
+logs/
+indian-market-investment-agent/
 .DS_Store
 .idea/
 .vscode/
