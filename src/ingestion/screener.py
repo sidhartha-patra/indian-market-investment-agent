@@ -154,6 +154,28 @@ def _parse_growth_tables(soup: BeautifulSoup) -> dict:
     return ratios
 
 
+def _parse_pledged_pct(shareholding: Tag | None) -> float | None:
+    if not shareholding:
+        return None
+
+    for label in ("Pledged Promoter %", "Pledged %", "Pledge"):
+        pledged = _last_number(_row_values(shareholding, label))
+        if pledged is not None:
+            return pledged
+
+    text = shareholding.get_text(" ", strip=True)
+    patterns = (
+        r"Pledged\s+Promoter\s*%\s*:?\s*([\d,.]+)\s*%?",
+        r"Pledged\s*:?\s*([\d,.]+)\s*%",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            return _parse_number(match.group(1))
+    return None
+
+
+
 def _parse_company_ratios(soup: BeautifulSoup) -> dict:
     ratios = _parse_growth_tables(soup)
 
@@ -162,6 +184,7 @@ def _parse_company_ratios(soup: BeautifulSoup) -> dict:
     shareholding = soup.select_one("section#shareholding")
 
     ratios["OPM"] = _last_number(_row_values(profit_loss, "OPM %"))
+    ratios["Pledged %"] = _parse_pledged_pct(shareholding)
 
     borrowings = _last_number(_row_values(balance_sheet, "Borrowings"))
     equity_capital = _last_number(_row_values(balance_sheet, "Equity Capital"))
@@ -185,30 +208,36 @@ def _parse_company_ratios(soup: BeautifulSoup) -> dict:
 def _parse_quarters(soup: BeautifulSoup) -> dict:
     section = soup.select_one("section#quarters")
     if not section:
-        return {"Quarterly Results": []}
+        return {"Quarterly Results": [], "OPM Quarterly": []}
 
     table = section.select_one("table.data-table")
     if not table:
-        return {"Quarterly Results": []}
+        return {"Quarterly Results": [], "OPM Quarterly": []}
 
     header_row = table.find("tr")
     headers = [cell.get_text(" ", strip=True) for cell in header_row.find_all(["th", "td"])] if header_row else []
     quarters = headers[1:]
     sales = _row_values(section, "Sales")
     net_profit = _row_values(section, "Net Profit")
+    opm = _row_values(section, "OPM %")
 
     results = []
     count = min(len(quarters), len(sales), len(net_profit))
     start = max(0, count - 4)
     for idx in range(start, count):
-        results.append(
-            {
-                "Quarter": quarters[idx],
-                "Revenue": _parse_number(sales[idx]),
-                "Net Profit": _parse_number(net_profit[idx]),
-            }
-        )
-    return {"Quarterly Results": results}
+        row = {
+            "Quarter": quarters[idx],
+            "Revenue": _parse_number(sales[idx]),
+            "Net Profit": _parse_number(net_profit[idx]),
+        }
+        if idx < len(opm):
+            row["OPM"] = _parse_number(opm[idx])
+        results.append(row)
+
+    opm_count = min(len(quarters), len(opm))
+    opm_start = max(0, opm_count - 4)
+    opm_quarterly = [_parse_number(value) for value in opm[opm_start:opm_count]]
+    return {"Quarterly Results": results, "OPM Quarterly": list(reversed(opm_quarterly))}
 
 
 def _fetch_screener_page(symbol: str) -> BeautifulSoup | None:

@@ -46,6 +46,28 @@ if recs.get("top_picks"):
 else:
     st.info("No tickers passed both screens today.")
 
+if recs.get("enriched_picks"):
+    st.subheader("🎯 Enriched Top Picks")
+    enriched_df = pd.DataFrame(recs["enriched_picks"])
+    enriched_cols = [
+        "ticker", "blended_score", "momentum_score", "quality_score",
+        "tradingview_recommendation", "tradingview_score", "moneycontrol_buy_pct",
+        "forecast_expected_return_pct", "forecast_direction", "pe", "roce", "roe",
+        "debt_to_equity", "promoter_holding", "broker_live_price",
+    ]
+    st.dataframe(enriched_df[[c for c in enriched_cols if c in enriched_df.columns]], use_container_width=True)
+
+    st.subheader("🔮 5-Day Price Forecasts")
+    forecast_cols = [
+        "ticker", "broker_live_price", "moneycontrol_live_price", "forecasted_price_5d",
+        "forecast_expected_return_pct", "forecast_direction", "forecast_engine", "forecast_error",
+    ]
+    st.dataframe(enriched_df[[c for c in forecast_cols if c in enriched_df.columns]], use_container_width=True)
+
+if recs.get("multibagger_candidates"):
+    st.subheader("💎 Multibagger Candidates")
+    st.dataframe(pd.DataFrame(recs["multibagger_candidates"]), use_container_width=True)
+
 c1, c2 = st.columns(2)
 with c1:
     st.subheader("🚀 Momentum Leaders")
