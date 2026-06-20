@@ -120,12 +120,16 @@ def build_dataset(
         rows = []
         for sym in symbols:
             row = {"symbol": sym, "exchange": exchange}
-            try:
-                info = yf.Ticker(_ticker(sym, exchange)).info or {}
-                if info:
-                    row.update({k: v for k, v in map_info(info).items() if v is not None})
-            except Exception as exc:  # noqa: BLE001
-                logger.warning("yfinance %s failed: %s", sym, exc)
+            info: dict = {}
+            for attempt in range(2):  # one retry — yfinance can transiently rate-limit
+                try:
+                    info = yf.Ticker(_ticker(sym, exchange)).info or {}
+                    break
+                except Exception as exc:  # noqa: BLE001
+                    logger.warning("yfinance %s attempt %d failed: %s", sym, attempt + 1, exc)
+                    time.sleep(1.5)
+            if info:
+                row.update({k: v for k, v in map_info(info).items() if v is not None})
             rows.append(row)
             time.sleep(throttle)
         try:

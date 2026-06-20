@@ -27,6 +27,12 @@ logger = logging.getLogger(__name__)
 
 NSE_EQUITY_L = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
 KITE_INSTRUMENTS = "https://api.kite.trade/instruments/{exchange}"
+INDEX_CSV = {
+    "nifty50": "ind_nifty50list.csv",
+    "nifty100": "ind_nifty100list.csv",
+    "nifty200": "ind_nifty200list.csv",
+    "nifty500": "ind_nifty500list.csv",
+}
 _HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 _CACHE = DATA_DIR / "universe_all.csv"
 _TIMEOUT = 30
@@ -65,6 +71,24 @@ def fetch_kite_instruments(exchange: str = "NSE") -> pd.DataFrame:
         "exchange_token": eq.get("exchange_token"),
         "yf_ticker": eq["tradingsymbol"].astype(str).str.strip() + suffix,
     })
+
+
+def nifty_index_symbols(index: str = "nifty200", fallback: list[str] | None = None) -> list[str]:
+    """Fetch the constituent symbols of an NSE index (e.g. 'nifty200') from the public CSV.
+
+    Falls back to ``fallback`` (or []) on any network/parse failure so callers never crash.
+    """
+    try:
+        url = f"https://archives.nseindia.com/content/indices/{INDEX_CSV[index]}"
+        df = pd.read_csv(StringIO(_get(url)))
+        df.columns = [c.strip() for c in df.columns]
+        syms = df["Symbol"].astype(str).str.strip().tolist()
+        if syms:
+            logger.info("Fetched %d symbols for %s", len(syms), index)
+            return syms
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Index %s fetch failed: %s", index, exc)
+    return fallback or []
 
 
 def get_all_indian_stocks(

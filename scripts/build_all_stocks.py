@@ -112,8 +112,12 @@ def run(
         return build_site(frame_to_records(scored, "Twelve Data (licensed)"), out_dir=out_dir)
 
     if source == "yfinance":
+        from src.ingestion.twelvedata_provider import NIFTY_50_SYMBOLS
         from src.ingestion.yfinance_provider import build_dataset
-        logger.info("Fetching Yahoo Finance (mode=%s)...", mode)
+        if symbols is None:
+            from src.ingestion.universe_fetch import nifty_index_symbols
+            symbols = nifty_index_symbols("nifty200", fallback=NIFTY_50_SYMBOLS)
+        logger.info("Fetching Yahoo Finance for %d symbols (mode=%s)...", len(symbols), mode)
         frame = build_dataset(symbols=symbols, mode=mode)
         scored = fa.fundamental_scores(frame, sector_col="sector")
         records = frame_to_records(scored, "Yahoo Finance (educational; not for commercial use)")
