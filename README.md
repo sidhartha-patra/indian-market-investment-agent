@@ -72,6 +72,48 @@ python -m scripts.build_all_stocks --demo          # offline demo -> ./site/
 
 ---
 
+## 🎯 Buy/Sell Signals, Multi-Horizon Outlook & Predictions
+
+Every stock gets a transparent, rules-based **fundamental signal** plus a **short/mid/long-term outlook**:
+
+- **Model signal** (`src/strategies/recommendation.py`): `STRONG_BUY / BUY / HOLD / SELL / AVOID`
+  with **conviction /100** and *extreme detail* — pillar-by-pillar assessment, the frameworks
+  (Piotroski F · Altman Z″ · Beneish M · Graham · quality), positives/negatives, 🚩 red flags,
+  and "what would change the verdict".
+- **Short / Mid / Long-term outlook**: short = technicals (50-DMA, 52-week position); mid = trend
+  (50/200-DMA, golden/death cross); long = the fundamental verdict + an *illustrative* return
+  scenario (≈ earnings growth + dividend yield). Gains are **scenarios, never promises**.
+- **ML price prediction** (single stock, personal): conformal 5/21-day forecast with calibrated
+  intervals + `P(up)` — `python -m src.strategies.recommendation RELIANCE`.
+
+```bash
+python -m src.strategies.recommendation TCS    # full detailed report + ML forecast (yfinance)
+# in code: recommendation.recommend_from_screener("TCS")   # Screener.in fundamentals (personal)
+```
+
+### Data sources — "top picks from ALL stocks"
+
+| `--source` | What it does | Use |
+|---|---|---|
+| `demo` | offline 2-stock sample | always works, public |
+| `yfinance` | free, no key, full fundamentals for a list (default Nifty 200) | **public, free** |
+| `hybrid` | **rank the WHOLE TradingView market → display the top N via yfinance** | **public "top 50 from all stocks"** |
+| `tradingview --top 50` | rank the whole market, TradingView data | personal research |
+| `twelvedata` | licensed vendor (API key) | public, licensed |
+
+```bash
+python -m scripts.build_all_stocks --source hybrid --top 50          # top 50 screened from the full market
+python -m scripts.build_all_stocks --source tradingview --top 50     # same, personal (TV data)
+```
+
+A **quality gate** (profitable, sanely-valued, not over-levered) + a market-cap floor (`--min-mcap`,
+default ~₹1,000 Cr) keep penny/SME data-glitch outliers out of the rankings. Note: ranking the whole
+market on fundamentals naturally surfaces strong **small/mid-caps** — higher reward *and* higher risk.
+
+> ⚖️ Signals are **educational model signals**, never SEBI-registered advice or price-target calls.
+
+---
+
 ## 🏗️ Architecture
 
 ```

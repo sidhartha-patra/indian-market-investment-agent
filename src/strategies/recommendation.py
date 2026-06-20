@@ -370,7 +370,41 @@ def recommend_from_screener(symbol: str, framework_inputs: dict | None = None) -
     return rec
 
 
-def detailed_markdown(rec: dict, symbol: str = "") -> str:
+def _yf_ticker(symbol: str) -> str:
+    s = str(symbol).upper()
+    return s if s.endswith((".NS", ".BO")) else f"{s}.NS"
+
+
+def ml_forecast(symbol: str, horizons: tuple[int, ...] = (5, 21),
+                model: str = "xgboost", period: str = "3y") -> list[dict]:
+    """Conformal ML price forecast (calibrated intervals) for one stock — personal use.
+
+    Trains a per-stock model on yfinance OHLCV. Returns one dict per horizon, or a
+    single {'error': ...}. Short-horizon forecasts are near random-walk — lean on the
+    interval, not the point.
+    """
+    try:
+        import yfinance as yf
+
+        from src.ml.models import predict_with_intervals
+    except Exception as exc:  # noqa: BLE001
+        return [{"error": f"deps_unavailable: {exc}"}]
+    try:
+        df = yf.Ticker(_yf_ticker(symbol)).history(period=period, auto_adjust=True)
+    except Exception as exc:  # noqa: BLE001
+        return [{"error": f"history_fetch_failed: {exc}"}]
+    if df is None or df.empty or len(df) < 150:
+        return [{"error": "insufficient_price_history"}]
+    out = []
+    for h in horizons:
+        try:
+            out.append(predict_with_intervals(df, model_name=model, horizon=h))
+        except Exception as exc:  # noqa: BLE001
+            out.append({"error": str(exc), "horizon_days": h})
+    return out
+
+
+def detailed_markdown(rec: dict, symbol: str = "", forecast: list[dict] | None = None) -> str:
     """Render an extreme-detail recommendation report as markdown (CLI / docs)."""
     lines = [f"# {symbol or rec.get('verdict')} — {rec['verdict_label']}",
              f"\n**Conviction:** {rec['conviction']}/100  ·  **Confidence:** {rec['confidence']}",
@@ -411,6 +445,18 @@ def detailed_markdown(rec: dict, symbol: str = "") -> str:
             lines.append(f"- **{label}** ({hz.get('horizon')}): {hz.get('stance')}{extra} — "
                          + "; ".join(hz.get("drivers", [])))
         lines.append(f"\n> {h.get('note')}")
+    if forecast:
+        lines.append("\n## Price forecast (ML — conformal intervals)")
+        for f in forecast:
+            if "error" in f:
+                lines.append(f"- ({f.get('horizon_days', '?')}d) unavailable: {f['error']}")
+                continue
+            lines.append(
+                f"- **{f['horizon_days']}-day**: {f['direction']} ~{f['predicted_return_pct']:+}% "
+                f"to ₹{f['predicted_price']} (80% band ₹{f['price_lower']}–₹{f['price_upper']}); "
+                f"P(up)={f['prob_up']:.0%}, confidence {f['confidence']}")
+        lines.append("> ML forecasts are probabilistic and often no better than a naive random "
+                     "walk at short horizons — use the interval, not the point.")
     lines.append(f"\n---\n*{rec['disclaimer']}*")
     return "\n".join(lines)
 
@@ -425,4 +471,5 @@ if __name__ == "__main__":
         metrics = df.iloc[0].to_dict()
     except Exception:  # noqa: BLE001
         metrics = {"symbol": sym}
-    print(detailed_markdown(recommend(metrics, sector_score=metrics.get("fundamental_score")), sym))
+    rec = recommend(metrics, sector_score=metrics.get("fundamental_score"))
+    print(detailed_markdown(rec, sym, forecast=ml_forecast(sym)))

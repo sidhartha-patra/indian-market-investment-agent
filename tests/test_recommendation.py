@@ -69,3 +69,16 @@ def test_detailed_markdown_renders():
     assert "GOODCO" in md
     assert "Short / Mid / Long-term outlook" in md
     assert "Frameworks" in md
+
+
+def test_detailed_markdown_with_forecast():
+    rec = recommend(_STRONG, sector_score=85)
+    forecast = [
+        {"horizon_days": 5, "direction": "UP", "predicted_return_pct": 0.8,
+         "predicted_price": 1008, "price_lower": 970, "price_upper": 1046,
+         "prob_up": 0.55, "confidence": 0.2},
+        {"error": "insufficient_price_history", "horizon_days": 21},
+    ]
+    md = detailed_markdown(rec, "GOODCO", forecast=forecast)
+    assert "Price forecast (ML" in md
+    assert "5-day" in md and "unavailable" in md

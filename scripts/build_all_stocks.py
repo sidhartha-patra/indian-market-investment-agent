@@ -92,16 +92,21 @@ def run(
     out_dir: str = "site",
     mode: str = "full",
     symbols: list[str] | None = None,
+    top: int | None = None,
+    min_mcap: float = 1e10,
 ) -> dict:
     """Build the site from the chosen data source.
 
     source='demo'        -> offline sample (no network, always legal/public).
-    source='yfinance'    -> FREE, no key, full fundamentals for all NSE/BSE stocks
-                            (Yahoo Finance; educational/personal use — see docs/DESIGN.md).
-    source='tradingview' -> full universe, PERSONAL research only (not for public).
+    source='yfinance'    -> FREE, no key, full fundamentals (Yahoo Finance; educational).
+    source='tradingview' -> full universe via the TV scanner, PERSONAL research only.
+                            With ``top``, ranks the WHOLE market and keeps the best N.
+    source='hybrid'      -> rank the FULL market via TradingView, then fetch the top N
+                            from Yahoo Finance for compliant public display ("top picks
+                            from all stocks"). Recommended for the public site.
     source='twelvedata'  -> licensed, COMPLIANT for a public site (needs API key).
-                            mode='quotes' refreshes only prices (cheap, hourly);
-                            mode='full' refreshes fundamentals too (daily).
+
+    ``min_mcap`` (INR) floors the ranked universe to exclude penny/micro-cap noise.
     """
     if source == "demo":
         from scripts.build_site import _demo_records
@@ -129,27 +134,89 @@ def run(
             records = _demo_records()
         return build_site(records, out_dir=out_dir)
 
-    # default: tradingview (personal research)
+    if source == "hybrid":
+        top_syms = _rank_full_market_via_tradingview(top or 50, min_mcap)
+        if not top_syms:
+            from src.ingestion.twelvedata_provider import NIFTY_50_SYMBOLS
+            top_syms = NIFTY_50_SYMBOLS
+            logger.warning("TradingView ranking unavailable; falling back to Nifty 50")
+        from src.ingestion.yfinance_provider import build_dataset
+        logger.info("Fetching %d top picks from Yahoo Finance...", len(top_syms))
+        frame = build_dataset(symbols=top_syms, mode="full")
+        if "price" in frame.columns:  # drop names Yahoo couldn't resolve (SME 404s)
+            frame = frame[frame["price"].notna()]
+        scored = fa.fundamental_scores(frame, sector_col="sector")
+        records = frame_to_records(
+            scored, "Yahoo Finance — top picks screened from the full Indian market")
+        if not records:
+            from scripts.build_site import _demo_records
+            records = _demo_records()
+        return build_site(records, out_dir=out_dir)
+
+    # tradingview (personal research)
     from src.ingestion.tradingview_scanner import fetch_india_scanner
-    logger.info("Fetching India scanner (limit=%d)...", limit)
-    scanner_df = fetch_india_scanner(limit=limit)
-    frame = scanner_to_frame(scanner_df)
-    logger.info("Scoring %d stocks sector-relative...", len(frame))
-    scored = fa.fundamental_scores(frame, sector_col="sector")
+    if top:
+        logger.info("Ranking the full market (mcap>=%.0f) -> top %d...", min_mcap, top)
+        scanner_df = fetch_india_scanner(limit=10000, market_cap_min=min_mcap)
+        frame = _apply_quality_gate(scanner_to_frame(scanner_df))
+        scored = fa.fundamental_scores(frame, sector_col="sector")
+        scored = scored.sort_values("fundamental_score", ascending=False).head(top)
+    else:
+        logger.info("Fetching India scanner (limit=%d)...", limit)
+        scanner_df = fetch_india_scanner(limit=limit)
+        frame = scanner_to_frame(scanner_df)
+        scored = fa.fundamental_scores(frame, sector_col="sector")
     return build_site(frame_to_records(scored), out_dir=out_dir)
+
+
+def _apply_quality_gate(frame: pd.DataFrame) -> pd.DataFrame:
+    """Keep only profitable, sanely-valued, not-over-levered, data-complete names before
+    ranking — so 'top picks' surface quality companies, not penny/SME data-glitch outliers."""
+    if frame.empty:
+        return frame
+    f = frame.copy()
+
+    def num(c):
+        return pd.to_numeric(f[c], errors="coerce") if c in f.columns else pd.Series(float("nan"), index=f.index)
+
+    pe, roe, de = num("pe"), num("roe"), num("debt_to_equity")
+    keep = pe.between(3, 90) & (roe > 8) & ((de < 3) | de.isna())
+    gated = f[keep]
+    return gated if len(gated) >= 20 else f  # don't over-filter a tiny universe
+
+
+def _rank_full_market_via_tradingview(top: int, min_mcap: float) -> list[str]:
+    """Rank the entire TradingView India universe by sector-relative fundamental score."""
+    try:
+        from src.ingestion.tradingview_scanner import fetch_india_scanner
+        scanner_df = fetch_india_scanner(limit=10000, market_cap_min=min_mcap)
+        frame = _apply_quality_gate(scanner_to_frame(scanner_df))
+        ranked = (fa.fundamental_scores(frame, sector_col="sector")
+                  .sort_values("fundamental_score", ascending=False))
+        syms = ranked["symbol"].dropna().astype(str).head(top).tolist()
+        logger.info("TradingView ranked %d quality stocks -> top %d", len(frame), len(syms))
+        return syms
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Full-market ranking failed: %s", exc)
+        return []
 
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     ap = argparse.ArgumentParser()
-    ap.add_argument("--source", choices=["demo", "yfinance", "tradingview", "twelvedata"],
+    ap.add_argument("--source", choices=["demo", "yfinance", "tradingview", "twelvedata", "hybrid"],
                     default="tradingview")
     ap.add_argument("--mode", choices=["full", "quotes"], default="full",
                     help="twelvedata only: 'full' refreshes fundamentals, 'quotes' only prices")
     ap.add_argument("--limit", type=int, default=2000, help="tradingview only: max symbols")
+    ap.add_argument("--top", type=int, default=None,
+                    help="rank the WHOLE market and keep only the best N (tradingview/hybrid)")
+    ap.add_argument("--min-mcap", type=float, default=1e10,
+                    help="min market cap (INR) for the ranked universe (default ~Rs 1,000 Cr)")
     ap.add_argument("--out", default="site")
     ap.add_argument("--demo", action="store_true", help="alias for --source demo")
     args = ap.parse_args()
     src = "demo" if args.demo else args.source
-    res = run(source=src, limit=args.limit, out_dir=args.out, mode=args.mode)
+    res = run(source=src, limit=args.limit, out_dir=args.out, mode=args.mode,
+              top=args.top, min_mcap=args.min_mcap)
     print(f"Built {res['pages']} pages -> {res['index']}")
