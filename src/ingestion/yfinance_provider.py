@@ -71,6 +71,12 @@ def map_info(info: dict) -> dict:
         "market_cap": mcap,
         "market_cap_cr": round(mcap / 1e7, 1) if mcap else None,  # INR -> Crore
         "bvps": _num(g("bookValue")),
+        "sma50": _num(g("fiftyDayAverage")),
+        "sma200": _num(g("twoHundredDayAverage")),
+        "high_52w": _num(g("fiftyTwoWeekHigh")),
+        "low_52w": _num(g("fiftyTwoWeekLow")),
+        "analyst_target": _num(g("targetMeanPrice")),
+        "analyst_n": _num(g("numberOfAnalystOpinions")),
         "revenue_growth_5y": _pct(g("revenueGrowth")),
         "profit_growth_5y": _pct(g("earningsGrowth")),
         "promoter_holding": _pct(g("heldPercentInsiders")),  # proxy for promoter holding

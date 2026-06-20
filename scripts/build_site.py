@@ -105,6 +105,7 @@ def _index_html(records: list[dict], generated_at: str) -> str:
             f"<td>{_esc(r.get('sector'))}</td>"
             f"<td data-v='{_esc(r.get('price'))}'>{_fmt(r.get('price'))}</td>"
             f"<td data-v='{_esc(score)}'><span class='score {_score_class(score)}'>{sc}</span></td>"
+            f"<td>{_esc((r.get('recommendation') or {}).get('verdict', ''))}</td>"
             f"<td>{_esc(r.get('tier'))}</td>"
             f"</tr>"
         )
@@ -121,7 +122,7 @@ def _index_html(records: list[dict], generated_at: str) -> str:
 <table id='tbl'><thead><tr>
 <th onclick='sortTable(0,false)'>Symbol</th><th onclick='sortTable(1,false)'>Name</th>
 <th onclick='sortTable(2,false)'>Sector</th><th onclick='sortTable(3,true)'>Price</th>
-<th onclick='sortTable(4,true)'>Score /100</th><th onclick='sortTable(5,false)'>Band</th>
+<th onclick='sortTable(4,true)'>Score /100</th><th onclick='sortTable(5,false)'>Signal</th><th onclick='sortTable(6,false)'>Band</th>
 </tr></thead><tbody>{''.join(rows)}</tbody></table>
 <div class='foot'>{DISCLAIMER_FULL}</div></div><script>{_SORT_JS}</script></body></html>"""
 
@@ -167,6 +168,79 @@ def _pillar_bars(pillars: dict | None) -> str:
                     f"(z={zf:+.2f})</div><div class='pill'><span style='width:{pct:.0f}%;"
                     f"background:{color}'></span></div></div>")
     return "".join(bars)
+
+
+def _horizons_block(h: dict | None) -> str:
+    """Render the short/mid/long-term outlook table (educational scenarios)."""
+    if not h:
+        return ""
+
+    def row(key: str, label: str) -> str:
+        hz = h.get(key, {}) or {}
+        gain = "—"
+        if hz.get("illustrative_move_pct") is not None:
+            gain = f"±{hz['illustrative_move_pct']}% typical move"
+        elif hz.get("illustrative_annual_return_pct") is not None:
+            gain = f"~{hz['illustrative_annual_return_pct']}%/yr (scenario)"
+        if hz.get("analyst_consensus_upside_pct") is not None:
+            gain += f" · analysts {hz['analyst_consensus_upside_pct']:+g}%"
+        return (f"<tr><td><b>{label}</b> <span class='band'>{_esc(hz.get('horizon'))}</span></td>"
+                f"<td>{_esc(hz.get('stance'))}</td>"
+                f"<td class='band'>{_esc('; '.join(hz.get('drivers', [])))}</td>"
+                f"<td>{_esc(gain)}</td></tr>")
+
+    return ("<h4 style='margin:14px 0 4px'>⏱️ Short / Mid / Long-term outlook</h4>"
+            "<table><thead><tr><th>Horizon</th><th>Stance</th><th>Drivers</th>"
+            "<th>Illustrative gain*</th></tr></thead><tbody>"
+            f"{row('short_term', 'Short')}{row('mid_term', 'Mid')}{row('long_term', 'Long')}"
+            f"</tbody></table><p class='band'>*{_esc(h.get('note'))}</p>")
+
+
+_VERDICT_CLASS = {"STRONG_BUY": "s-hi", "BUY": "s-hi", "HOLD": "s-mid", "SELL": "s-lo", "AVOID": "s-lo"}
+
+
+def _recommendation_html(rec: dict | None) -> str:
+    """Render the detailed fundamental buy/sell model signal (educational)."""
+    if not rec:
+        return ""
+    cls = _VERDICT_CLASS.get(rec.get("verdict", ""), "s-mid")
+    rows = "".join(
+        f"<tr><td>{_esc(a['pillar'])}</td><td>{_esc(a['verdict'])}</td>"
+        f"<td>{_esc(a['detail'])}</td><td>{a['points']:+g}</td></tr>"
+        for a in rec.get("assessments", [])
+    )
+    fw = rec.get("frameworks", {})
+    bits = []
+    if fw.get("quality_score"):
+        bits.append(f"Quality {fw['quality_score'].get('quality_score')}/100")
+    if fw.get("altman"):
+        bits.append(f"Altman Z&#39;&#39; {fw['altman'].get('z_score')} ({_esc(fw['altman'].get('zone'))})")
+    if fw.get("graham"):
+        bits.append(f"Graham {fw['graham'].get('graham_score')}/7")
+    if "piotroski" in fw:
+        bits.append(f"Piotroski {fw['piotroski']['f_score']}/9")
+    if "beneish" in fw:
+        bits.append(f"Beneish {fw['beneish']['m_score']} ({_esc(fw['beneish']['signal'])})")
+    flags = "".join(f"<li class='neg'>🚩 {_esc(x)}</li>" for x in rec.get("red_flags", []))
+    wwc = "".join(f"<li class='band'>{_esc(x)}</li>" for x in rec.get("what_would_change", []))
+    pos = "".join(f"<li class='pos'>{_esc(x)}</li>" for x in rec.get("positives", []))
+    neg = "".join(f"<li class='neg'>{_esc(x)}</li>" for x in rec.get("negatives", []))
+    return (
+        "<div class='card'><h3>📋 Model signal &amp; detailed analysis</h3>"
+        f"<p><span class='score {cls}'>{_esc(rec.get('verdict_label'))}</span> &nbsp;·&nbsp; "
+        f"conviction <b>{rec.get('conviction')}</b>/100 &nbsp;·&nbsp; confidence {_esc(rec.get('confidence'))}</p>"
+        f"<p class='band'>{_esc(rec.get('summary'))}</p>"
+        "<table><thead><tr><th>Pillar</th><th>Assessment</th><th>Detail</th><th>±</th></tr></thead>"
+        f"<tbody>{rows}</tbody></table>"
+        f"<p class='band'><b>Frameworks:</b> {' &nbsp;·&nbsp; '.join(bits)}</p>"
+        + (f"<b class='neg'>🚩 Red flags</b><ul class='why'>{flags}</ul>" if flags else "")
+        + f"<div class='grid' style='grid-template-columns:1fr 1fr'>"
+        f"<div><b class='pos'>Positives</b><ul class='why'>{pos}</ul></div>"
+        f"<div><b class='neg'>Negatives</b><ul class='why'>{neg}</ul></div></div>"
+        f"<b>What would change the verdict</b><ul class='why'>{wwc}</ul>"
+        + _horizons_block(rec.get("horizons"))
+        + f"<p class='band'>⚠️ {_esc(rec.get('disclaimer'))}</p></div>"
+    )
 
 
 def _tv_chart(symbol, exchange="NSE") -> str:
@@ -215,6 +289,7 @@ def _stock_html(rec: dict, generated_at: str) -> str:
 <span class='band'>(sector-relative percentile · band: {_esc(rec.get('tier'))})</span></h2>
 <p class='band'>This score summarises publicly available fundamentals relative to sector peers.
 It is descriptive, not a recommendation.</p>{_pillar_bars(rec.get('pillars'))}</div>
+{_recommendation_html(rec.get('recommendation'))}
 <div class='card'><h3>Why — what the data shows</h3>
 <b class='pos'>Supportive signals</b><ul class='why'>{_why_list(positives, 'pos')}</ul>
 <b class='neg'>Cautionary signals</b><ul class='why'>{_why_list(negatives, 'neg')}</ul>
@@ -247,7 +322,8 @@ def build_site(
         (out / "stock" / f"{sym}.html").write_text(_stock_html(rec, gen), encoding="utf-8")
 
     index_json = [{"symbol": r.get("symbol"), "name": r.get("name"), "sector": r.get("sector"),
-                   "price": r.get("price"), "score": r.get("fundamental_score"), "tier": r.get("tier")}
+                   "price": r.get("price"), "score": r.get("fundamental_score"), "tier": r.get("tier"),
+                   "signal": (r.get("recommendation") or {}).get("verdict")}
                   for r in records]
     (out / "data" / "index.json").write_text(
         json.dumps({"generated_at": gen, "count": len(records), "stocks": index_json}, indent=2,
@@ -259,7 +335,8 @@ def build_site(
 
 
 def _demo_records() -> list[dict]:
-    return [
+    from src.strategies.recommendation import recommend
+    recs = [
         {"symbol": "RELIANCE", "name": "Reliance Industries Ltd", "sector": "Energy",
          "exchange": "NSE", "price": 1310.0, "fundamental_score": 78.0, "tier": "STRONG",
          "reasons": ["strong ROCE vs sector", "low leverage vs sector"],
@@ -267,7 +344,9 @@ def _demo_records() -> list[dict]:
                  "negatives": ["valuation (P/E) richer than peers"], "risks": ["capex-heavy cycle"]},
          "pillars": {"valuation": -0.3, "profitability": 1.1, "growth": 0.4, "leverage": 0.8},
          "metrics": {"pe": 41.4, "pb": 3.1, "roe": 7.7, "roce": 7.8, "debt_to_equity": 0.4,
-                     "promoter_holding": 50.3, "market_cap_cr": 1772085},
+                     "promoter_holding": 50.3, "market_cap_cr": 1772085, "profit_growth_5y": 9.0,
+                     "dividend_yield": 0.5, "sma50": 1290.0, "sma200": 1240.0,
+                     "high_52w": 1600.0, "low_52w": 1100.0},
          "source": "demo"},
         {"symbol": "TCS", "name": "Tata Consultancy Services", "sector": "IT",
          "exchange": "NSE", "price": 3450.0, "fundamental_score": 91.0, "tier": "TOP_DECILE",
@@ -276,9 +355,16 @@ def _demo_records() -> list[dict]:
                  "negatives": [], "risks": ["IT demand cyclicality"]},
          "pillars": {"valuation": 0.1, "profitability": 1.9, "growth": 0.6, "leverage": 1.5},
          "metrics": {"pe": 27.0, "pb": 12.0, "roe": 47.0, "roce": 58.0, "debt_to_equity": 0.05,
-                     "promoter_holding": 72.0, "pledged_pct": 0.0, "market_cap_cr": 1250000},
+                     "promoter_holding": 72.0, "pledged_pct": 0.0, "market_cap_cr": 1250000,
+                     "profit_growth_5y": 12.0, "dividend_yield": 1.6, "sma50": 3400.0,
+                     "sma200": 3550.0, "high_52w": 4200.0, "low_52w": 3000.0},
          "source": "demo"},
     ]
+    for r in recs:
+        m = {**r["metrics"], "sector": r["sector"], "name": r["name"],
+             "symbol": r["symbol"], "price": r["price"]}
+        r["recommendation"] = recommend(m, sector_score=r["fundamental_score"])
+    return recs
 
 
 if __name__ == "__main__":

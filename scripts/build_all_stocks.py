@@ -60,6 +60,8 @@ def scanner_to_frame(scanner_df: pd.DataFrame) -> pd.DataFrame:
 def frame_to_records(scored: pd.DataFrame,
                      source_label: str = "TradingView (personal research)") -> list[dict]:
     """Build per-stock website records from a scored DataFrame."""
+    from src.strategies.recommendation import recommend
+
     pillar_cols = [c for c in scored.columns if c.startswith("z_")]
     records = []
     for r in scored.to_dict("records"):
@@ -72,12 +74,13 @@ def frame_to_records(scored: pd.DataFrame,
                     "revenue_growth_5y", "profit_growth_5y", "debt_to_equity", "current_ratio",
                     "fcf_yield", "dividend_yield", "promoter_holding", "pledged_pct", "market_cap_cr")
                    if r.get(k) is not None}
+        recommendation = recommend(r, sector_score=r.get("fundamental_score"))
         records.append({
             "symbol": r.get("symbol"), "name": r.get("name"), "sector": r.get("sector"),
             "exchange": r.get("exchange"), "price": r.get("price"),
             "fundamental_score": r.get("fundamental_score"), "tier": r.get("tier"),
             "reasons": reasons, "why": {"positives": positives, "negatives": negatives, "risks": []},
-            "pillars": pillars, "metrics": metrics,
+            "pillars": pillars, "metrics": metrics, "recommendation": recommendation,
             "source": source_label,
         })
     return records
