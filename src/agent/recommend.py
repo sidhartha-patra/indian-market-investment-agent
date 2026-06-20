@@ -22,6 +22,14 @@ from src.ml.store import save_predictions_from_forecast
 from src.strategies.momentum import screen as momentum_screen
 from src.strategies.quality import screen as quality_screen
 from src.strategies.volatile_movers import screen as volatile_screen
+from src.strategies.factor_model import factor_composite
+from src.strategies.relative_strength import relative_strength
+from src.strategies import mean_reversion, trend_following
+from src.strategies import indicators as ind
+from src.risk.regime import detect_regime
+from src.risk.position_sizing import atr_stop_loss
+from src.portfolio.optimizer import build_portfolio
+from src.ml.explain import explain_many
 from src.agent.sentiment import classify_sentiment_openai
 
 logger = logging.getLogger(__name__)
@@ -216,10 +224,55 @@ def enrich_top_picks(
     return sorted(enriched, key=lambda row: row.get("blended_score") or 0, reverse=True)
 
 
+def _augment_with_risk(pick: dict[str, Any], df: pd.DataFrame | None) -> dict[str, Any]:
+    """Add volatility, drawdown, freshness and an ATR stop to an enriched pick."""
+    if df is None or df.empty or "Close" not in df.columns:
+        return pick
+    close = df["Close"]
+    pick.setdefault("ann_vol_pct", round(ind.annualized_volatility(close) * 100, 1))
+    pick.setdefault("max_drawdown_pct", round(ind.max_drawdown(close) * 100, 1))
+    pick.setdefault("price", round(float(close.iloc[-1]), 2))
+    last = df.index[-1]
+    pick.setdefault("last_date", str(last.date()) if hasattr(last, "date") else str(last))
+    try:
+        stop = atr_stop_loss(df)
+        if "stop" in stop:
+            pick.update(
+                {
+                    "entry": stop["entry"],
+                    "stop_loss": stop["stop"],
+                    "stop_pct": stop["stop_pct"],
+                    "target": stop["target"],
+                }
+            )
+    except Exception:  # noqa: BLE001
+        pass
+    return pick
+
+
+def _maybe_predict(pick: dict[str, Any], df: pd.DataFrame | None, horizon: int = 5) -> dict[str, Any]:
+    """Attach a calibrated price forecast (opt-in; heavier compute)."""
+    if df is None or df.empty:
+        return pick
+    try:
+        from src.ml.models import predict_with_intervals
+
+        pred = predict_with_intervals(df, model_name="xgboost", horizon=horizon)
+        if "error" not in pred:
+            pick["prediction"] = pred
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Prediction failed for %s: %s", pick.get("ticker"), exc)
+    return pick
+
+
 def generate_recommendations(
     universe: list[str] | None = None,
     include_volatile: bool = True,
     include_multibaggers: bool = True,
+    include_predictions: bool = False,
+    capital: float = 1_000_000,
+    benchmark_ticker: str = "^NSEI",
+    portfolio_method: str = "inverse_vol",
 ) -> dict:
     universe = universe or NIFTY_50
     logger.info("Fetching prices for %d tickers", len(universe))
@@ -238,6 +291,71 @@ def generate_recommendations(
     logger.info("Enriching top picks...")
     combined_prices = {**prices, **vol_prices}
     enriched_picks = enrich_top_picks(mom, qual, volatile, combined_prices)
+
+    # --- Market regime (risk gating) -------------------------------------
+    benchmark_df = None
+    try:
+        benchmark_df = fetch_prices([benchmark_ticker], period="1y").get(benchmark_ticker)
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Benchmark fetch failed: %s", exc)
+    regime = detect_regime(benchmark_df, prices)
+    logger.info("Market regime: %s (exposure %.0f%%)", regime["regime"], regime["equity_exposure"] * 100)
+
+    # --- Additional factor / relative-strength / trend / mean-rev leaders --
+    def _safe_screen(fn, label):
+        try:
+            return fn()
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("%s failed: %s", label, exc)
+            return pd.DataFrame()
+
+    factor_df = _safe_screen(lambda: factor_composite(prices, top_n=10), "Factor model")
+    rs_df = _safe_screen(lambda: relative_strength(prices, benchmark=benchmark_df, top_n=10),
+                         "Relative strength")
+    trend_df = _safe_screen(lambda: trend_following.screen(prices, top_n=10), "Trend screen")
+    meanrev_df = _safe_screen(lambda: mean_reversion.screen(prices, top_n=10), "Mean reversion")
+
+    factor_scores = (
+        dict(zip(factor_df["ticker"], factor_df["score"])) if "ticker" in factor_df.columns else {}
+    )
+    rs_scores = dict(zip(rs_df["ticker"], rs_df["score"])) if "ticker" in rs_df.columns else {}
+
+    # --- Portfolio construction (regime-scaled exposure + ATR stops) ------
+    portfolio: dict = {}
+    try:
+        top_syms = (
+            list(factor_df["ticker"].head(8)) if "ticker" in factor_df.columns
+            else _top_tickers(mom, qual, n=8)
+        )
+        sub_prices = {t: prices[t] for t in top_syms if t in prices}
+        if sub_prices:
+            portfolio = build_portfolio(
+                sub_prices, method=portfolio_method, scores=factor_scores,
+                exposure=regime["equity_exposure"], capital=capital, max_weight=0.25,
+            )
+            for alloc in portfolio.get("allocations", []):
+                df_p = prices.get(alloc["symbol"])
+                stop = atr_stop_loss(df_p) if df_p is not None else {}
+                if "stop" in stop:
+                    alloc.update(
+                        {"entry": stop["entry"], "stop_loss": stop["stop"],
+                         "stop_pct": stop["stop_pct"], "target": stop["target"]}
+                    )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Portfolio construction failed: %s", exc)
+
+    # --- Risk-augment + explain enriched picks ---------------------------
+    for pick in enriched_picks:
+        t = pick.get("ticker")
+        df_p = combined_prices.get(t)
+        _augment_with_risk(pick, df_p)
+        if t in factor_scores:
+            pick["factor_score"] = round(float(factor_scores[t]), 1)
+        if t in rs_scores:
+            pick["relative_strength_score"] = round(float(rs_scores[t]), 1)
+        if include_predictions:
+            _maybe_predict(pick, df_p, horizon=5)
+    explanations = explain_many(enriched_picks, regime=regime)
 
     multibagger_candidates: list[dict] = []
     if include_multibaggers:
@@ -261,11 +379,18 @@ def generate_recommendations(
 
     out = {
         "generated_at": datetime.utcnow().isoformat(),
+        "market_regime": regime,
         "top_picks": top_picks.to_dict("records"),
         "momentum_leaders": mom.head(5).to_dict("records"),
         "quality_leaders": qual.head(5).to_dict("records"),
+        "factor_leaders": factor_df.to_dict("records") if not factor_df.empty else [],
+        "relative_strength_leaders": rs_df.to_dict("records") if not rs_df.empty else [],
+        "trend_leaders": trend_df.to_dict("records") if not trend_df.empty else [],
+        "mean_reversion_leaders": meanrev_df.to_dict("records") if not meanrev_df.empty else [],
         "volatile_movers": volatile.to_dict("records") if volatile is not None else [],
         "enriched_picks": enriched_picks,
+        "suggested_portfolio": portfolio,
+        "explanations": explanations,
         "news_summary": {
             "total": len(sentiment),
             "bullish": len(bullish),

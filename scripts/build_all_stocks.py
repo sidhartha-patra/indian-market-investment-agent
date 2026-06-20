@@ -1,0 +1,109 @@
+"""End-to-end: pull all-India fundamentals -> sector-relative scores -> shareable site.
+
+Pipeline:
+1. Fetch the full India universe fundamentals+technicals from the TradingView scanner.
+2. Normalise to canonical metric keys.
+3. Compute an explainable, **sector-relative** 0-100 fundamental score per stock.
+4. Render per-stock explanation records and build the static website.
+
+Usage:
+    python -m scripts.build_all_stocks                 # live (personal research)
+    python -m scripts.build_all_stocks --limit 500     # top-500 by mcap
+    python -m scripts.build_all_stocks --demo          # offline demo (no network)
+
+> ⚠️ Live mode reads TradingView data, permissible for PERSONAL research only. Do NOT
+> publish TradingView-sourced values — swap in a licensed vendor before deploying the
+> generated site publicly. See docs/DESIGN.md §Legal.
+"""
+from __future__ import annotations
+
+import argparse
+import logging
+
+import pandas as pd
+
+from scripts.build_site import build_site
+from src.strategies import fundamental_analysis as fa
+
+logger = logging.getLogger(__name__)
+
+_METRIC_KEYS = [
+    "pe", "pb", "ps", "ev_ebitda", "roe", "roa", "roic", "opm", "net_margin",
+    "gross_margin", "debt_to_equity", "current_ratio", "quick_ratio", "fcf",
+    "fcf_yield", "earnings_yield", "eps", "dividend_yield", "eps_growth_3y",
+    "market_cap",
+]
+
+
+def scanner_to_frame(scanner_df: pd.DataFrame) -> pd.DataFrame:
+    """Convert a TradingView scanner DataFrame to a canonical-metric DataFrame."""
+    rows = []
+    for r in scanner_df.to_dict("records"):
+        canon = fa.normalize_tradingview(r)
+        canon.update({
+            "symbol": r.get("symbol"),
+            "name": r.get("name") or r.get("symbol"),
+            "sector": r.get("sector") or "OTHER",
+            "exchange": r.get("tv_exchange") or "NSE",
+            "price": r.get("close"),
+            "market_cap_cr": (fa._num(r.get("market_cap_basic")) or 0) / 1e7  # USD->~Cr rough
+            if r.get("market_cap_basic") else None,
+        })
+        rows.append(canon)
+    df = pd.DataFrame(rows)
+    for k in _METRIC_KEYS:
+        if k not in df.columns:
+            df[k] = None
+    return df
+
+
+def frame_to_records(scored: pd.DataFrame) -> list[dict]:
+    """Build per-stock website records from a scored DataFrame."""
+    pillar_cols = [c for c in scored.columns if c.startswith("z_")]
+    records = []
+    for r in scored.to_dict("records"):
+        pillars = {c[2:]: r[c] for c in pillar_cols if pd.notna(r.get(c))}
+        reasons = r.get("reasons") or []
+        positives = [x for x in reasons if x.startswith("strong")]
+        negatives = [x for x in reasons if x.startswith("weak")]
+        metrics = {k: r.get(k) for k in
+                   ("pe", "pb", "ev_ebitda", "roe", "roce", "roa", "opm", "net_margin",
+                    "revenue_growth_5y", "profit_growth_5y", "debt_to_equity", "current_ratio",
+                    "fcf_yield", "dividend_yield", "promoter_holding", "pledged_pct", "market_cap_cr")
+                   if r.get(k) is not None}
+        records.append({
+            "symbol": r.get("symbol"), "name": r.get("name"), "sector": r.get("sector"),
+            "exchange": r.get("exchange"), "price": r.get("price"),
+            "fundamental_score": r.get("fundamental_score"), "tier": r.get("tier"),
+            "reasons": reasons, "why": {"positives": positives, "negatives": negatives, "risks": []},
+            "pillars": pillars, "metrics": metrics,
+            "source": "TradingView (personal research) — replace with licensed vendor before publishing",
+        })
+    return records
+
+
+def run(limit: int = 2000, out_dir: str = "site", demo: bool = False) -> dict:
+    if demo:
+        from scripts.build_site import _demo_records
+        return build_site(_demo_records(), out_dir=out_dir)
+
+    from src.ingestion.tradingview_scanner import fetch_india_scanner
+
+    logger.info("Fetching India scanner (limit=%d)...", limit)
+    scanner_df = fetch_india_scanner(limit=limit)
+    frame = scanner_to_frame(scanner_df)
+    logger.info("Scoring %d stocks sector-relative...", len(frame))
+    scored = fa.fundamental_scores(frame, sector_col="sector")
+    records = frame_to_records(scored)
+    return build_site(records, out_dir=out_dir)
+
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--limit", type=int, default=2000)
+    ap.add_argument("--out", default="site")
+    ap.add_argument("--demo", action="store_true")
+    args = ap.parse_args()
+    res = run(limit=args.limit, out_dir=args.out, demo=args.demo)
+    print(f"Built {res['pages']} pages -> {res['index']}")

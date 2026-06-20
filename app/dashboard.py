@@ -23,7 +23,11 @@ with st.sidebar:
         st.success("Done!")
         st.rerun()
     st.markdown("---")
-    st.markdown("**Strategies:**\n- Momentum (52w breakouts)\n- Quality (Sharpe + DD)\n- News sentiment (LLM)")
+    st.markdown("**Strategies:**\n- Momentum (52w breakouts)\n- Quality (Sharpe + DD)\n"
+                "- Mean-reversion (RSI-2)\n- Trend-following (Supertrend/ADX)\n"
+                "- Relative strength\n- Multi-factor composite\n- News sentiment (LLM, weak)")
+    st.markdown("---")
+    st.caption("Educational decision-support only. Probabilistic, risk-aware — not investment advice.")
 
 rec_path = DATA_DIR / "recommendations.json"
 if not rec_path.exists():
@@ -32,6 +36,16 @@ if not rec_path.exists():
 
 recs = json.loads(rec_path.read_text())
 st.caption(f"Last updated: {recs.get('generated_at', 'unknown')}")
+
+regime = recs.get("market_regime") or {}
+if regime:
+    rmap = {"RISK_ON": "🟢", "NEUTRAL": "🟡", "RISK_OFF": "🔴"}
+    label = regime.get("regime", "?")
+    exp = regime.get("equity_exposure", 0) * 100
+    banner = f"{rmap.get(label, '⚪')} **Market regime: {label}** — suggested equity exposure ~{exp:.0f}%"
+    (st.success if label == "RISK_ON" else st.warning if label == "NEUTRAL" else st.error)(banner)
+    if regime.get("rationale"):
+        st.caption(" · ".join(regime["rationale"][:4]))
 
 col1, col2, col3, col4 = st.columns(4)
 ns = recs.get("news_summary", {})
@@ -63,6 +77,42 @@ if recs.get("enriched_picks"):
         "forecast_expected_return_pct", "forecast_direction", "forecast_engine", "forecast_error",
     ]
     st.dataframe(enriched_df[[c for c in forecast_cols if c in enriched_df.columns]], use_container_width=True)
+
+if recs.get("factor_leaders"):
+    st.subheader("🧮 Multi-Factor Composite Leaders")
+    st.caption("z-scored blend of momentum, low-volatility, trend and quality (plus value where available).")
+    st.dataframe(pd.DataFrame(recs["factor_leaders"]), use_container_width=True)
+
+port = recs.get("suggested_portfolio", {}) or {}
+if port.get("allocations"):
+    st.subheader("🧺 Suggested Portfolio (regime-scaled, with ATR stops)")
+    st.caption(
+        f"Method: {port.get('method')} · exposure {port.get('exposure_pct')}% · "
+        f"cash {port.get('cash_pct')}% · max weight {port.get('max_weight_pct')}%"
+    )
+    st.dataframe(pd.DataFrame(port["allocations"]), use_container_width=True)
+
+if recs.get("explanations"):
+    st.subheader("🧾 Why these picks? (explainability)")
+    for exp in recs["explanations"][:8]:
+        conf = exp.get("confidence", 0) or 0
+        header = (f"{exp.get('ticker')} — {exp.get('confidence_label', '?')} confidence "
+                  f"({conf:.0%}) · risk {exp.get('risk_level', '?')}")
+        with st.expander(header):
+            st.markdown(f"**Thesis:** {exp.get('thesis', '')}")
+            cols = st.columns(2)
+            with cols[0]:
+                st.markdown("**✅ Positives**")
+                for p in exp.get("positives", []):
+                    st.markdown(f"- {p}")
+            with cols[1]:
+                st.markdown("**⚠️ Negatives**")
+                for ng in exp.get("negatives", []):
+                    st.markdown(f"- {ng}")
+            fr = exp.get("data_freshness", {})
+            st.caption(f"Data freshness: {fr.get('last_data_date', '?')} ({fr.get('age_days', '?')}d old)")
+            for g in exp.get("guardrails", []):
+                st.warning(g)
 
 if recs.get("multibagger_candidates"):
     st.subheader("💎 Multibagger Candidates")
