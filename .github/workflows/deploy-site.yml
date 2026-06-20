@@ -1,0 +1,68 @@
+name: Build & Deploy Stock Site
+
+# Twice-daily refresh: pre-open 08:30 IST (03:00 UTC) and post-close 18:00 IST (12:30 UTC),
+# Mon–Fri. Also deploys on manual dispatch and on push to this workflow (first deploy).
+on:
+  schedule:
+    - cron: "0 3 * * 1-5"     # 08:30 IST  (pre-open)
+    - cron: "30 12 * * 1-5"   # 18:00 IST  (post-close)
+  workflow_dispatch: {}
+  push:
+    paths:
+      - ".github/workflows/deploy-site.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deploys at once.
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install build dependencies
+        run: pip install pandas numpy requests
+
+      - name: Choose data source (licensed vendor if key present, else public demo)
+        id: src
+        run: |
+          if [ -n "$TWELVEDATA_API_KEY" ]; then
+            echo "source=twelvedata" >> "$GITHUB_OUTPUT"
+            echo "Using Twelve Data (compliant licensed source)."
+          else
+            echo "source=demo" >> "$GITHUB_OUTPUT"
+            echo "::warning::TWELVEDATA_API_KEY not set — deploying the sample demo site. Add the secret to publish real data."
+          fi
+
+      - name: Build site
+        run: python -m scripts.build_all_stocks --source ${{ steps.src.outputs.source }} --mode full --out ./site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
