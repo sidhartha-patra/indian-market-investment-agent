@@ -4,6 +4,7 @@ __pycache__/
 .env
 data/
 logs/
+site/
 indian-market-investment-agent/
 .DS_Store
 .idea/

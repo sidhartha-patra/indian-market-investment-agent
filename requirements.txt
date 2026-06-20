@@ -22,4 +22,9 @@ scipy>=1.11.0
 scikit-learn>=1.4.0
 xgboost>=2.0.0
 
+# All-stocks fundamental analysis + shareable website
+# (universe_fetch, tradingview_scanner and build_site use requests/pandas above —
+#  no extra mandatory deps. tradingview-screener is an optional convenience wrapper.)
+# tradingview-screener>=0.5   # optional: SQL-like wrapper over the TradingView scanner
+
 # kiteconnect>=5.0.0  # uncomment for Zerodha Kite real-time quotes

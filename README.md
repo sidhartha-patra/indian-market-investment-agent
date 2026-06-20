@@ -17,6 +17,12 @@ An AI-powered agent that analyzes Indian stock market news (NSE/BSE) and mutual 
 - 🔮 **Probabilistic price prediction**: naive → ridge → RandomForest → XGBoost, each wrapped
   in **split-conformal intervals** with a calibrated `prob_up` — always benchmarked vs naive
 - 🧾 **Explainability** for every pick: positives, negatives, risk level, confidence, freshness, limits
+- 🌐 **All-stocks coverage**: dynamic NSE+BSE universe (~2,375 NSE live) via `EQUITY_L.csv` + Kite dump
+- 🔬 **Detailed fundamental analysis**: Piotroski F-Score, Altman Z″, Beneish M-Score, Magic Formula,
+  Graham, quality score, and a **sector-relative 0-100 composite** (bank P/E never vs IT P/E)
+- 📡 **Bulk fundamentals** from the TradingView India scanner (8,000+ symbols, personal-research use)
+- 🌍 **Shareable static website**: per-stock `/stock/SYMBOL.html` pages with the score + *why*,
+  deployable free to GitHub Pages / Vercel / Cloudflare Pages
 - 💰 **Mutual fund analyzer** using AMFI NAV data (rolling returns, Sharpe)
 - 🤖 **LLM-powered sentiment** — GitHub Models (free) / OpenAI, marked as a *weak* signal
 - 📊 **Streamlit dashboard** + 📱 **Telegram** alerts
@@ -26,6 +32,43 @@ An AI-powered agent that analyzes Indian stock market news (NSE/BSE) and mutual 
 > ⚖️ **Responsible by design:** no guaranteed predictions, no "buy" calls, no promised returns.
 > Outputs are probabilistic and always show uncertainty, risk, data-freshness and model limits.
 > See [`docs/DESIGN.md`](docs/DESIGN.md) for the full system design.
+
+---
+
+## 🔬 All-Stocks Fundamental Analysis & Shareable Website
+
+New in this branch — pull fundamentals for the **entire** NSE+BSE universe, score every
+stock with a transparent **sector-relative** model, and publish a shareable explainer site.
+
+```bash
+# 1. Fetch the full universe (~2,375 NSE + BSE), cached to data/
+python -m src.ingestion.universe_fetch
+
+# 2. End-to-end: TradingView fundamentals -> sector-relative scores -> static website
+python -m scripts.build_all_stocks --limit 500     # writes ./site_live/
+python -m scripts.build_all_stocks --demo          # offline demo -> ./site/
+
+# 3. Open ./site/index.html (or deploy the folder to GitHub Pages / Vercel / Cloudflare)
+```
+
+**New modules**
+| Module | Purpose |
+|---|---|
+| `src/ingestion/universe_fetch.py` | Full NSE+BSE list (`EQUITY_L.csv` + Kite dump), ISIN-deduped, cached, offline fallback |
+| `src/ingestion/tradingview_scanner.py` | Bulk fundamentals + technicals from the TradingView India scanner (8,000+ symbols) |
+| `src/strategies/fundamental_analysis.py` | Piotroski F-Score · Altman Z/Z″ · Beneish M-Score · Magic Formula · Graham · quality · **sector-relative 0-100 composite** with reasons |
+| `src/strategies/factor_model.py` | `factor_composite(..., sector_map=...)` — optional **sector-neutral** z-scoring |
+| `scripts/build_site.py` | Static per-stock `/stock/SYMBOL.html` site (score + why + metrics + disclaimer) |
+| `scripts/build_all_stocks.py` | Orchestrates scanner → scoring → site |
+
+> ⚠️ **Read before publishing (legal / SEBI):**
+> - **Scraping Screener.in or TradingView for a *public* website is prohibited by their ToS.**
+>   These modules are for **personal research only**. To publish, swap in a **licensed vendor**
+>   (e.g. Twelve Data + Redistribution Add-On, or EODHD) for prices/fundamentals.
+> - The generated site is **SEBI-safe by design**: scores are framed as **non-directional
+>   educational data summaries**, never "Buy/Sell/Target", and every page carries a disclaimer.
+>   Publishing explicit buy/sell calls would require **SEBI Research-Analyst registration**.
+> - Full analysis: see the research report under `~/.copilot/.../research/` and `docs/DESIGN.md`.
 
 ---
 

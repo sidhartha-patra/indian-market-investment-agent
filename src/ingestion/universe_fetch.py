@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 NSE_EQUITY_L = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
 KITE_INSTRUMENTS = "https://api.kite.trade/instruments/{exchange}"
 _HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-_CACHE = DATA_DIR / "universe_all.parquet"
+_CACHE = DATA_DIR / "universe_all.csv"
 _TIMEOUT = 30
 
 
@@ -78,7 +78,7 @@ def get_all_indian_stocks(
     """
     if use_cache and not refresh and _CACHE.exists():
         try:
-            return pd.read_parquet(_CACHE)
+            return pd.read_csv(_CACHE)
         except Exception as exc:  # noqa: BLE001
             logger.warning("Universe cache unreadable (%s); refetching", exc)
 
@@ -116,7 +116,7 @@ def get_all_indian_stocks(
 
     try:
         DATA_DIR.mkdir(exist_ok=True)
-        combined.to_parquet(_CACHE)
+        combined.to_csv(_CACHE, index=False)
     except Exception as exc:  # noqa: BLE001
         logger.warning("Could not write universe cache: %s", exc)
     return combined
