@@ -82,28 +82,52 @@ def frame_to_records(scored: pd.DataFrame) -> list[dict]:
     return records
 
 
-def run(limit: int = 2000, out_dir: str = "site", demo: bool = False) -> dict:
-    if demo:
+def run(
+    source: str = "tradingview",
+    limit: int = 2000,
+    out_dir: str = "site",
+    mode: str = "full",
+    symbols: list[str] | None = None,
+) -> dict:
+    """Build the site from the chosen data source.
+
+    source='demo'        -> offline sample (no network, always legal/public).
+    source='tradingview' -> full universe, PERSONAL research only (not for public).
+    source='twelvedata'  -> licensed, COMPLIANT for a public site (needs API key).
+                            mode='quotes' refreshes only prices (cheap, hourly);
+                            mode='full' refreshes fundamentals too (daily).
+    """
+    if source == "demo":
         from scripts.build_site import _demo_records
         return build_site(_demo_records(), out_dir=out_dir)
 
-    from src.ingestion.tradingview_scanner import fetch_india_scanner
+    if source == "twelvedata":
+        from src.ingestion.twelvedata_provider import build_dataset
+        logger.info("Fetching Twelve Data (mode=%s)...", mode)
+        frame = build_dataset(symbols=symbols, mode=mode)
+        scored = fa.fundamental_scores(frame, sector_col="sector")
+        return build_site(frame_to_records(scored), out_dir=out_dir)
 
+    # default: tradingview (personal research)
+    from src.ingestion.tradingview_scanner import fetch_india_scanner
     logger.info("Fetching India scanner (limit=%d)...", limit)
     scanner_df = fetch_india_scanner(limit=limit)
     frame = scanner_to_frame(scanner_df)
     logger.info("Scoring %d stocks sector-relative...", len(frame))
     scored = fa.fundamental_scores(frame, sector_col="sector")
-    records = frame_to_records(scored)
-    return build_site(records, out_dir=out_dir)
+    return build_site(frame_to_records(scored), out_dir=out_dir)
 
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     ap = argparse.ArgumentParser()
-    ap.add_argument("--limit", type=int, default=2000)
+    ap.add_argument("--source", choices=["demo", "tradingview", "twelvedata"], default="tradingview")
+    ap.add_argument("--mode", choices=["full", "quotes"], default="full",
+                    help="twelvedata only: 'full' refreshes fundamentals, 'quotes' only prices")
+    ap.add_argument("--limit", type=int, default=2000, help="tradingview only: max symbols")
     ap.add_argument("--out", default="site")
-    ap.add_argument("--demo", action="store_true")
+    ap.add_argument("--demo", action="store_true", help="alias for --source demo")
     args = ap.parse_args()
-    res = run(limit=args.limit, out_dir=args.out, demo=args.demo)
+    src = "demo" if args.demo else args.source
+    res = run(source=src, limit=args.limit, out_dir=args.out, mode=args.mode)
     print(f"Built {res['pages']} pages -> {res['index']}")
