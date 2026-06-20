@@ -169,6 +169,24 @@ def _pillar_bars(pillars: dict | None) -> str:
     return "".join(bars)
 
 
+def _tv_chart(symbol, exchange="NSE") -> str:
+    """Official TradingView chart widget embed (compliant: data stays on TV servers)."""
+    sym = _esc(symbol)
+    ex = "BSE" if str(exchange).upper() == "BSE" else "NSE"
+    return (
+        "<div class='card'><h3>📈 Live chart</h3>"
+        f"<div class='tradingview-widget-container'><div id='tv_{sym}'></div>"
+        "<script type='text/javascript' src='https://s3.tradingview.com/tv.js'></script>"
+        "<script type='text/javascript'>new TradingView.widget({"
+        f"\"width\":\"100%\",\"height\":400,\"symbol\":\"{ex}:{sym}\",\"interval\":\"D\","
+        "\"timezone\":\"Asia/Kolkata\",\"theme\":\"dark\",\"style\":\"1\",\"locale\":\"in\","
+        f"\"hide_side_toolbar\":true,\"allow_symbol_change\":false,\"container_id\":\"tv_{sym}\""
+        "});</script></div>"
+        "<p class='band'>Live chart via the official TradingView widget — price is real-time / "
+        "exchange-delayed per TradingView. Educational only.</p></div>"
+    )
+
+
 def _stock_html(rec: dict, generated_at: str) -> str:
     sym = _esc(rec.get("symbol"))
     name = _esc(rec.get("name") or sym)
@@ -201,6 +219,7 @@ It is descriptive, not a recommendation.</p>{_pillar_bars(rec.get('pillars'))}</
 <b class='pos'>Supportive signals</b><ul class='why'>{_why_list(positives, 'pos')}</ul>
 <b class='neg'>Cautionary signals</b><ul class='why'>{_why_list(negatives, 'neg')}</ul>
 {('<b>Risks</b><ul class=why>'+_why_list(risks,'band')+'</ul>') if risks else ''}</div>
+{_tv_chart(rec.get('symbol'), rec.get('exchange') or 'NSE')}
 <div class='card'><h3>Key fundamentals</h3>{_metric_cards(rec.get('metrics'))}</div>
 <div class='foot'>{DISCLAIMER_FULL}<br>Data source: {_esc(rec.get('source') or 'see methodology')}.</div>
 </div></body></html>"""
