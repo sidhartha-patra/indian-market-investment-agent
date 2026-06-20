@@ -71,6 +71,22 @@ def _winsor_zscore(s: pd.Series, limit: float = 3.0) -> pd.Series:
     return z.clip(-limit, limit).fillna(0.0)
 
 
+def _sector_neutral_zscore(s: pd.Series, sectors: pd.Series, limit: float = 3.0) -> pd.Series:
+    """Winsorised z-score computed *within each sector*.
+
+    Comparing a bank's P/E to an IT firm's creates hidden sector bets; scoring each
+    metric against sector peers removes them. Falls back to a universe-wide z-score
+    for any sector with too few names to standardise.
+    """
+    out = pd.Series(0.0, index=s.index, dtype=float)
+    sectors = sectors.reindex(s.index).fillna("OTHER")
+    for sector in sectors.unique():
+        mask = sectors == sector
+        sub = s[mask]
+        out.loc[mask] = _winsor_zscore(sub, limit) if mask.sum() >= 3 else _winsor_zscore(s, limit)[mask]
+    return out
+
+
 def compute_factors(
     price_data: dict[str, pd.DataFrame],
     fundamentals: dict[str, dict] | None = None,
@@ -98,8 +114,14 @@ def factor_composite(
     fundamentals: dict[str, dict] | None = None,
     weights: dict[str, float] | None = None,
     top_n: int = 10,
+    sector_map: dict[str, str] | None = None,
 ) -> pd.DataFrame:
-    """Rank a universe by the weighted multi-factor composite score (0-100)."""
+    """Rank a universe by the weighted multi-factor composite score (0-100).
+
+    When ``sector_map`` (ticker -> sector) is supplied, every factor is z-scored
+    *within its sector* (sector-neutral), which removes hidden sector bets and is the
+    recommended mode for cross-sector universes.
+    """
     factors = compute_factors(price_data, fundamentals)
     if factors.empty:
         return pd.DataFrame(columns=["ticker", "score"])
@@ -109,9 +131,17 @@ def factor_composite(
     weights = {k: v for k, v in weights.items() if k in factors.columns}
     norm = sum(weights.values()) or 1.0
 
+    sectors = None
+    if sector_map:
+        sectors = factors["ticker"].map(lambda t: sector_map.get(t) or sector_map.get(
+            str(t).replace(".NS", "").replace(".BO", "")) or "OTHER")
+
     composite = pd.Series(0.0, index=factors.index)
     for factor, weight in weights.items():
-        z = _winsor_zscore(factors[factor])
+        if sectors is not None:
+            z = _sector_neutral_zscore(factors[factor], sectors)
+        else:
+            z = _winsor_zscore(factors[factor])
         factors[f"z_{factor}"] = z.round(2)
         composite += (weight / norm) * z
 
@@ -122,6 +152,8 @@ def factor_composite(
         "STRONG_BUY",
         np.where(factors["score"] >= 60, "BUY", np.where(factors["score"] >= 40, "HOLD", "AVOID")),
     )
+    if sectors is not None:
+        factors["sector"] = sectors.values
     for col in ("momentum", "low_vol", "trend", "quality_px", "value", "quality_fund"):
         if col in factors.columns:
             factors[col] = factors[col].round(2)
@@ -132,9 +164,10 @@ def screen(
     price_data: dict[str, pd.DataFrame],
     top_n: int = 10,
     fundamentals: dict[str, dict] | None = None,
+    sector_map: dict[str, str] | None = None,
 ) -> pd.DataFrame:
     """Screener-style wrapper for the recommendation pipeline."""
-    return factor_composite(price_data, fundamentals=fundamentals, top_n=top_n)
+    return factor_composite(price_data, fundamentals=fundamentals, top_n=top_n, sector_map=sector_map)
 
 
 if __name__ == "__main__":
