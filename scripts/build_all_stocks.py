@@ -57,7 +57,8 @@ def scanner_to_frame(scanner_df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def frame_to_records(scored: pd.DataFrame) -> list[dict]:
+def frame_to_records(scored: pd.DataFrame,
+                     source_label: str = "TradingView (personal research)") -> list[dict]:
     """Build per-stock website records from a scored DataFrame."""
     pillar_cols = [c for c in scored.columns if c.startswith("z_")]
     records = []
@@ -77,7 +78,7 @@ def frame_to_records(scored: pd.DataFrame) -> list[dict]:
             "fundamental_score": r.get("fundamental_score"), "tier": r.get("tier"),
             "reasons": reasons, "why": {"positives": positives, "negatives": negatives, "risks": []},
             "pillars": pillars, "metrics": metrics,
-            "source": "TradingView (personal research) — replace with licensed vendor before publishing",
+            "source": source_label,
         })
     return records
 
@@ -92,6 +93,8 @@ def run(
     """Build the site from the chosen data source.
 
     source='demo'        -> offline sample (no network, always legal/public).
+    source='yfinance'    -> FREE, no key, full fundamentals for all NSE/BSE stocks
+                            (Yahoo Finance; educational/personal use — see docs/DESIGN.md).
     source='tradingview' -> full universe, PERSONAL research only (not for public).
     source='twelvedata'  -> licensed, COMPLIANT for a public site (needs API key).
                             mode='quotes' refreshes only prices (cheap, hourly);
@@ -106,7 +109,18 @@ def run(
         logger.info("Fetching Twelve Data (mode=%s)...", mode)
         frame = build_dataset(symbols=symbols, mode=mode)
         scored = fa.fundamental_scores(frame, sector_col="sector")
-        return build_site(frame_to_records(scored), out_dir=out_dir)
+        return build_site(frame_to_records(scored, "Twelve Data (licensed)"), out_dir=out_dir)
+
+    if source == "yfinance":
+        from src.ingestion.yfinance_provider import build_dataset
+        logger.info("Fetching Yahoo Finance (mode=%s)...", mode)
+        frame = build_dataset(symbols=symbols, mode=mode)
+        scored = fa.fundamental_scores(frame, sector_col="sector")
+        records = frame_to_records(scored, "Yahoo Finance (educational; not for commercial use)")
+        if not records:  # CI resilience: never deploy an empty site
+            from scripts.build_site import _demo_records
+            records = _demo_records()
+        return build_site(records, out_dir=out_dir)
 
     # default: tradingview (personal research)
     from src.ingestion.tradingview_scanner import fetch_india_scanner
@@ -121,7 +135,8 @@ def run(
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     ap = argparse.ArgumentParser()
-    ap.add_argument("--source", choices=["demo", "tradingview", "twelvedata"], default="tradingview")
+    ap.add_argument("--source", choices=["demo", "yfinance", "tradingview", "twelvedata"],
+                    default="tradingview")
     ap.add_argument("--mode", choices=["full", "quotes"], default="full",
                     help="twelvedata only: 'full' refreshes fundamentals, 'quotes' only prices")
     ap.add_argument("--limit", type=int, default=2000, help="tradingview only: max symbols")

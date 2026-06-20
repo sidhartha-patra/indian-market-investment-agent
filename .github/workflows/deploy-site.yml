@@ -35,17 +35,17 @@ jobs:
           cache: pip
 
       - name: Install build dependencies
-        run: pip install pandas numpy requests
+        run: pip install pandas numpy requests yfinance
 
-      - name: Choose data source (licensed vendor if key present, else public demo)
+      - name: Choose data source (licensed vendor if key present, else free Yahoo Finance)
         id: src
         run: |
           if [ -n "$TWELVEDATA_API_KEY" ]; then
             echo "source=twelvedata" >> "$GITHUB_OUTPUT"
-            echo "Using Twelve Data (compliant licensed source)."
+            echo "Using Twelve Data (licensed source)."
           else
-            echo "source=demo" >> "$GITHUB_OUTPUT"
-            echo "::warning::TWELVEDATA_API_KEY not set — deploying the sample demo site. Add the secret to publish real data."
+            echo "source=yfinance" >> "$GITHUB_OUTPUT"
+            echo "::notice::No TWELVEDATA_API_KEY set — building from free Yahoo Finance (educational, no commercial use). Add the secret to switch to the licensed source. If Yahoo blocks the CI runner, the build falls back to the sample site."
           fi
 
       - name: Build site
