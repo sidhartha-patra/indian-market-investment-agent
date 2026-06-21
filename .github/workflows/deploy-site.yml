@@ -48,8 +48,8 @@ jobs:
             echo "::notice::No key — ranking the FULL Indian market via TradingView and displaying the top 50 from Yahoo Finance (educational). Falls back to Nifty 50 / sample if upstreams are unavailable."
           fi
 
-      - name: Build site (top 50 screened from the whole market)
-        run: python -m scripts.build_all_stocks --source ${{ steps.src.outputs.source }} --mode full --top 50 --out ./site
+      - name: Build site (top 50 screened from the whole market + live movers)
+        run: python -m scripts.build_all_stocks --source ${{ steps.src.outputs.source }} --mode full --top 50 --with-movers --movers-source yfinance --movers-top 10 --out ./site
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

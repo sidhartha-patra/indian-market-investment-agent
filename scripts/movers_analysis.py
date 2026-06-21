@@ -43,13 +43,159 @@ def _merge_metrics(tv_row: dict, screener_metrics: dict | None) -> dict:
     m["name"] = tv_row.get("name") or m.get("name") or tv_row.get("symbol")
     m["sector"] = tv_row.get("sector") or m.get("sector") or "OTHER"
     m["price"] = _num(tv_row.get("close")) or m.get("price")
-    m["high_52w"] = _num(tv_row.get("price_52_week_high"))
-    m["low_52w"] = _num(tv_row.get("price_52_week_low"))
+    if _num(tv_row.get("price_52_week_high")) is not None:
+        m["high_52w"] = _num(tv_row.get("price_52_week_high"))
+    if _num(tv_row.get("price_52_week_low")) is not None:
+        m["low_52w"] = _num(tv_row.get("price_52_week_low"))
     m["change_today_pct"] = round(_num(tv_row.get("change")), 1) if _num(tv_row.get("change")) is not None else None
     vd = _num(tv_row.get("Volatility.D"))
     if vd is not None:
         m["ann_vol_pct"] = round(vd * (252 ** 0.5), 1)  # daily vol % -> annualised
     return m
+
+
+def _yf_enrich(yf_ticker: str) -> dict:
+    """Best-effort Yahoo Finance fundamentals for a ticker (FREE, no key, CI-safe)."""
+    try:
+        import yfinance as yf
+
+        from src.ingestion.yfinance_provider import map_info
+        info = yf.Ticker(yf_ticker).info or {}
+        return {k: v for k, v in map_info(info).items() if v is not None}
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Yahoo enrich failed for %s: %s", yf_ticker, exc)
+        return {}
+
+
+def _screener_enrich(symbol: str, delay: float = 0.6) -> dict:
+    """Best-effort Screener.in fundamentals (PERSONAL research only — keep off public CI)."""
+    try:
+        from src.ingestion.screener import get_screener_fundamentals
+        from src.strategies.fundamental_analysis import normalize_screener
+        m = normalize_screener(get_screener_fundamentals(symbol) or {})
+        time.sleep(delay)
+        return m
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Screener enrich failed for %s: %s", symbol, exc)
+        return {}
+
+
+def _enriched_metrics(tv_row: dict, source: str, screener_delay: float = 0.6) -> tuple[dict, str]:
+    """Merge fundamentals (Screener and/or Yahoo) UNDER TradingView technicals.
+
+    ``source``:
+      * ``yfinance`` — Yahoo only (CI-safe, publishable).
+      * ``screener`` — Screener.in only (personal use).
+      * ``both``     — Screener + Yahoo (Screener wins; Yahoo fills gaps).
+      * ``auto``     — Screener, falling back to Yahoo when Screener is empty.
+      * ``none``     — TradingView technicals only.
+    Returns ``(metrics, fundamentals_source_label)``.
+    """
+    sym = str(tv_row.get("symbol") or "")
+    yf_ticker = tv_row.get("yf_ticker") or f"{sym}.NS"
+    fund: dict = {}
+    used: list[str] = []
+
+    if source in ("screener", "both", "auto"):
+        scr = _screener_enrich(sym, screener_delay)
+        if scr:
+            fund.update(scr)
+            used.append("Screener.in")
+
+    want_yahoo = source in ("yfinance", "both") or (source == "auto" and not fund)
+    if want_yahoo:
+        yfm = _yf_enrich(yf_ticker)
+        for k, v in yfm.items():
+            fund.setdefault(k, v)  # don't clobber Screener values
+        if yfm:
+            used.append("Yahoo Finance")
+
+    metrics = _merge_metrics(tv_row, fund)  # TV technicals authoritative on top
+    return metrics, (" + ".join(used) if used else "TradingView technicals only")
+
+
+# Display titles/icons for the website movers sections.
+SECTION_TITLES: dict[str, tuple[str, str]] = {
+    "gainers": ("Top Gainers", "📈"),
+    "losers": ("Top Losers", "📉"),
+    "most_active": ("Most Active", "🔥"),
+    "most_volatile": ("Most Volatile", "🎢"),
+    "high_dividend": ("High Dividend", "💰"),
+    "top_performers_1y": ("1-Year Leaders", "🏆"),
+    "oversold": ("Oversold (RSI<30)", "🧲"),
+    "overbought": ("Overbought (RSI>70)", "🌡️"),
+}
+
+
+def build_section_records(
+    sections: tuple[str, ...] = ("gainers", "losers", "most_active"),
+    top_each: int = 15,
+    source: str = "auto",
+    max_per: int = 10,
+    screener_delay: float = 0.6,
+) -> dict:
+    """Build website-ready market-mover records grouped by TradingView collection.
+
+    Each record is :func:`scripts.build_site.build_site`-compatible (symbol / name /
+    sector / price / metrics / recommendation / why) and additionally carries
+    ``change_today_pct`` + ``collection``. Returns
+    ``{"generated_at": ..., "sections": {name: [record, ...]}}``.
+
+    Resilient: a failing collection or stock is skipped, never fatal.
+    """
+    from datetime import datetime, timezone
+
+    from src.ingestion.tradingview_scanner import fetch_collection
+    from src.strategies import recommendation as rec
+
+    out_sections: dict[str, list[dict]] = {}
+    for name in sections:
+        try:
+            df = fetch_collection(name, top=top_each)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("collection %s failed: %s", name, exc)
+            continue
+        if df is None or df.empty:
+            continue
+
+        recs: list[dict] = []
+        for tv_row in df.to_dict("records")[:max_per]:
+            sym = tv_row.get("symbol")
+            if not sym:
+                continue
+            try:
+                metrics, fsrc = _enriched_metrics(tv_row, source, screener_delay)
+                r = rec.recommend(metrics, sector_score=None)
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("recommend failed for %s: %s", sym, exc)
+                continue
+            recs.append({
+                "symbol": sym,
+                "name": metrics.get("name"),
+                "sector": metrics.get("sector"),
+                "exchange": tv_row.get("tv_exchange") or "NSE",
+                "price": metrics.get("price"),
+                "fundamental_score": None,
+                "tier": None,
+                "change_today_pct": metrics.get("change_today_pct"),
+                "collection": name,
+                "collections": [name],
+                "metrics": metrics,
+                "recommendation": r,
+                "why": {"positives": r.get("positives", []),
+                        "negatives": r.get("negatives", []),
+                        "risks": r.get("red_flags", [])},
+                "fundamentals_source": fsrc,
+                "source": f"TradingView technicals + {fsrc}",
+            })
+        if recs:
+            out_sections[name] = recs
+        logger.info("section %-14s -> %d records", name, len(recs))
+
+    return {
+        "generated_at": datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M %Z"),
+        "sections": out_sections,
+    }
 
 
 def analyze(top_each: int = 30, max_symbols: int = 40, use_screener: bool = True,

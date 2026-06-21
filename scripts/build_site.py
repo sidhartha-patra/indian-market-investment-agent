@@ -60,6 +60,10 @@ th{cursor:pointer;color:var(--mut);user-select:none;position:sticky;top:0;backgr
 .pos{color:var(--good)}.neg{color:var(--bad)}ul.why{margin:6px 0;padding-left:18px}
 .foot{color:var(--mut);font-size:12px;margin-top:24px;border-top:1px solid #21262d;padding-top:12px}
 .band{font-size:12px;color:var(--mut)}
+.movers-banner{display:block;background:#0d2818;border:1px solid var(--good);color:#7ee2a8;padding:11px 14px;border-radius:8px;margin:12px 0;font-weight:600}
+.movers-banner:hover{text-decoration:none;background:#10301d}
+.chip{display:inline-block;font-size:11px;color:var(--mut);background:#11161c;border:1px solid #21262d;border-radius:10px;padding:1px 7px;margin:0 4px 0 0}
+td .sub2{font-size:11px;color:var(--mut)}
 """
 
 _SORT_JS = """
@@ -92,7 +96,7 @@ def _score_class(score: float | None) -> str:
     return "s-hi" if score >= 66 else "s-mid" if score >= 40 else "s-lo"
 
 
-def _index_html(records: list[dict], generated_at: str) -> str:
+def _index_html(records: list[dict], generated_at: str, has_movers: bool = False) -> str:
     rows = []
     for r in records:
         sym = _esc(r.get("symbol"))
@@ -118,6 +122,7 @@ def _index_html(records: list[dict], generated_at: str) -> str:
 <header><h1>📊 Indian Stock Explorer</h1>
 <div class='sub'>Sector-relative educational fundamental scores · {len(records)} stocks · updated {_esc(generated_at)}</div></header>
 <div class='disclaimer'>⚠️ {DISCLAIMER_SHORT}</div>
+{"<a class='movers-banner' href='movers.html'>📈 Today&#39;s Top Gainers · Losers · Most-Active — live technicals + fundamentals, model signals &amp; Low/Base/High projections →</a>" if has_movers else ""}
 <input class='search' id='q' onkeyup='filt()' placeholder='Search by symbol, name or sector…'>
 <table id='tbl'><thead><tr>
 <th onclick='sortTable(0,false)'>Symbol</th><th onclick='sortTable(1,false)'>Name</th>
@@ -202,6 +207,104 @@ def _horizons_block(h: dict | None) -> str:
 
 
 _VERDICT_CLASS = {"STRONG_BUY": "s-hi", "BUY": "s-hi", "HOLD": "s-mid", "SELL": "s-lo", "AVOID": "s-lo"}
+
+
+def _pctf(v: Any) -> str:
+    return f"{v:+g}%" if isinstance(v, (int, float)) else "—"
+
+
+def _proj_cell(hz: dict | None) -> str:
+    """One horizon's Low/Base/High return scenario as a compact table cell."""
+    if not hz:
+        return "<td class='band'>—</td>"
+    p = hz.get("projection") or {}
+    base, low, high = p.get("base_pct"), p.get("low_pct"), p.get("high_pct")
+    stance = _esc(hz.get("stance") or "")
+    if not isinstance(base, (int, float)):
+        return f"<td class='band'>{stance}</td>"
+    cls = "pos" if base > 0 else "neg" if base < 0 else "band"
+    rng = (f"{_pctf(low)} … {_pctf(high)}"
+           if isinstance(low, (int, float)) and isinstance(high, (int, float)) else "")
+    return (f"<td data-v='{base}'><span class='{cls}'><b>{_pctf(base)}</b></span>"
+            f"<div class='sub2'>{rng}</div><div class='sub2'>{stance}</div></td>")
+
+
+def _mover_row(rec: dict) -> str:
+    """A market-mover table row: technicals + fundamentals + signal + S/M/L projection."""
+    sym = _esc(rec.get("symbol"))
+    name = _esc((rec.get("name") or "")[:24])
+    m = rec.get("metrics") or {}
+    rc = rec.get("recommendation") or {}
+    h = rc.get("horizons") or {}
+    chg = rec.get("change_today_pct")
+    chg_cls = ("pos" if isinstance(chg, (int, float)) and chg > 0
+               else "neg" if isinstance(chg, (int, float)) and chg < 0 else "band")
+    vcls = _VERDICT_CLASS.get(rc.get("verdict", ""), "s-mid")
+    conv = rc.get("conviction")
+    roce = m.get("roce") if m.get("roce") is not None else m.get("roa")
+    return (
+        "<tr>"
+        f"<td><a href='stock/{sym}.html'><b>{sym}</b></a><div class='sub2'>{name}</div></td>"
+        f"<td data-v='{_esc(rec.get('price'))}'>{_fmt(rec.get('price'))}</td>"
+        f"<td data-v='{_esc(chg)}'><span class='{chg_cls}'>{_pctf(chg)}</span></td>"
+        f"<td data-v='{_esc(m.get('pe'))}'>{_fmt(m.get('pe'), 1)}</td>"
+        f"<td data-v='{_esc(m.get('roe'))}'>{_fmt(m.get('roe'), 1)}</td>"
+        f"<td data-v='{_esc(roce)}'>{_fmt(roce, 1)}</td>"
+        f"<td data-v='{_esc(m.get('dividend_yield'))}'>{_fmt(m.get('dividend_yield'), 2)}</td>"
+        f"<td data-v='{conv if isinstance(conv, (int, float)) else 0}'>"
+        f"<span class='score {vcls}'>{_esc(rc.get('verdict'))}</span>"
+        f"<div class='sub2'>conv {_esc(conv)}/100</div></td>"
+        f"{_proj_cell(h.get('short_term'))}{_proj_cell(h.get('mid_term'))}{_proj_cell(h.get('long_term'))}"
+        "</tr>"
+    )
+
+
+def _movers_section(name: str, recs: list[dict]) -> str:
+    from scripts.movers_analysis import SECTION_TITLES
+    title, icon = SECTION_TITLES.get(name, (name.replace("_", " ").title(), "•"))
+    src = _esc((recs[0].get("fundamentals_source") if recs else "") or "")
+    rows = "".join(_mover_row(r) for r in recs)
+    return (
+        f"<div class='card'><h2 style='margin:.1em 0'>{icon} {title} "
+        f"<span class='band' style='font-size:13px'>· {len(recs)} stocks · "
+        f"TradingView technicals + {src}</span></h2>"
+        "<div style='overflow-x:auto'><table><thead><tr>"
+        "<th onclick='sortTable(0,false)'>Symbol</th><th onclick='sortTable(1,true)'>Price</th>"
+        "<th onclick='sortTable(2,true)'>Chg%</th><th onclick='sortTable(3,true)'>P/E</th>"
+        "<th onclick='sortTable(4,true)'>ROE%</th><th onclick='sortTable(5,true)'>ROCE%</th>"
+        "<th onclick='sortTable(6,true)'>Div%</th><th onclick='sortTable(7,true)'>Model signal</th>"
+        "<th>Short (~1m)</th><th>Mid (~6m)</th><th>Long (3y)</th>"
+        "</tr></thead><tbody>" + rows + "</tbody></table></div>"
+        "<p class='band'>Tap a symbol for the full model signal, frameworks &amp; detailed "
+        "Low/Base/High scenarios. Return cells are <b>scenarios, not predictions</b>.</p></div>"
+    )
+
+
+def _movers_page_html(movers: dict, generated_at: str) -> str:
+    """Render the standalone Top Gainers / Losers / Most-Active movers page."""
+    secs = movers.get("sections") or {}
+    order = ["gainers", "losers", "most_active", "most_volatile", "high_dividend",
+             "top_performers_1y", "oversold", "overbought"]
+    ordered = [n for n in order if secs.get(n)] + [n for n in secs if n not in order and secs.get(n)]
+    body = "".join(_movers_section(n, secs[n]) for n in ordered)
+    if not body:
+        body = "<div class='card'><p class='band'>No market-mover data available right now.</p></div>"
+    gen = _esc(movers.get("generated_at") or generated_at)
+    n_secs = len(ordered)
+    return f"""<!doctype html><html lang='en'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Today&#39;s Market Movers — Gainers, Losers &amp; Most-Active (India)</title>
+<meta property='og:title' content='Today&#39;s Indian Market Movers — with model signals &amp; projections'>
+<meta property='og:description' content='Top gainers, losers and most-active Indian stocks with fundamentals, educational model signals and Low/Base/High return scenarios. Not investment advice.'>
+<style>{_CSS}</style></head><body><div class='wrap'>
+<div class='sub'><a href='index.html'>← All stocks</a></div>
+<header><h1>📈 Today&#39;s Market Movers</h1>
+<div class='sub'>{n_secs} live sections · TradingView technicals enriched with fundamentals · updated {gen}</div></header>
+<div class='disclaimer'>⚠️ {DISCLAIMER_SHORT}</div>
+{body}
+<div class='foot'>{DISCLAIMER_FULL}<br>Technicals: TradingView (display-only). Fundamentals: Yahoo Finance / Screener.in. Educational use only.</div>
+</div><script>{_SORT_JS}</script></body></html>"""
+
 
 
 def _recommendation_html(rec: dict | None) -> str:
@@ -309,22 +412,44 @@ def build_site(
     records: list[dict],
     out_dir: str | Path = "site",
     generated_at: str | None = None,
+    movers: dict | None = None,
 ) -> dict:
     """Generate the full static site. Returns counts + output paths.
 
     Each record: {symbol, name, sector, exchange, price, fundamental_score, tier,
     reasons|why{positives,negatives,risks}, pillars{name:z}, metrics{canonical:value}}.
+
+    ``movers`` (optional): ``{"generated_at", "sections": {name: [record, ...]}}`` from
+    :func:`scripts.movers_analysis.build_section_records`. When supplied, a ``movers.html``
+    page (Top Gainers / Losers / Most-Active …) is rendered, a detail page is generated for
+    every mover symbol, and the index links to it.
     """
     out = Path(out_dir)
     (out / "stock").mkdir(parents=True, exist_ok=True)
     (out / "data").mkdir(parents=True, exist_ok=True)
     gen = generated_at or datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M %Z")
 
+    has_movers = bool(movers and movers.get("sections"))
     records = sorted(records, key=lambda r: (r.get("fundamental_score") or -1), reverse=True)
-    (out / "index.html").write_text(_index_html(records, gen), encoding="utf-8")
+    (out / "index.html").write_text(_index_html(records, gen, has_movers=has_movers), encoding="utf-8")
+    written: set[str] = set()
     for rec in records:
         sym = str(rec.get("symbol", "UNKNOWN"))
         (out / "stock" / f"{sym}.html").write_text(_stock_html(rec, gen), encoding="utf-8")
+        written.add(sym)
+
+    extra_pages = 0
+    if has_movers:
+        for sec in movers["sections"].values():
+            for rec in sec:
+                sym = str(rec.get("symbol") or "").strip()
+                if sym and sym not in written:
+                    (out / "stock" / f"{sym}.html").write_text(_stock_html(rec, gen), encoding="utf-8")
+                    written.add(sym)
+                    extra_pages += 1
+        (out / "movers.html").write_text(_movers_page_html(movers, gen), encoding="utf-8")
+        (out / "data" / "movers.json").write_text(
+            json.dumps(movers, indent=2, default=str), encoding="utf-8")
 
     index_json = [{"symbol": r.get("symbol"), "name": r.get("name"), "sector": r.get("sector"),
                    "price": r.get("price"), "score": r.get("fundamental_score"), "tier": r.get("tier"),
@@ -334,9 +459,11 @@ def build_site(
         json.dumps({"generated_at": gen, "count": len(records), "stocks": index_json}, indent=2,
                    default=str), encoding="utf-8")
 
-    logger.info("Built site with %d stock pages -> %s", len(records), out.resolve())
-    return {"out_dir": str(out.resolve()), "pages": len(records) + 1,
-            "index": str((out / "index.html").resolve())}
+    logger.info("Built site with %d stock pages (+%d movers, movers=%s) -> %s",
+                len(records), extra_pages, has_movers, out.resolve())
+    return {"out_dir": str(out.resolve()), "pages": len(records) + 1 + extra_pages + (1 if has_movers else 0),
+            "index": str((out / "index.html").resolve()), "has_movers": has_movers,
+            "movers": str((out / "movers.html").resolve()) if has_movers else None}
 
 
 def _demo_records() -> list[dict]:
@@ -372,7 +499,53 @@ def _demo_records() -> list[dict]:
     return recs
 
 
+def _demo_movers() -> dict:
+    """Offline sample movers payload (no network) for demos and tests."""
+    from src.strategies.recommendation import recommend
+    seed = {
+        "gainers": [
+            ("ADANIPORTS", "Adani Ports & SEZ", "Industrials", 1450.0, 6.2,
+             {"pe": 28.0, "roe": 16.0, "roce": 13.5, "debt_to_equity": 0.9, "dividend_yield": 0.5,
+              "profit_growth_5y": 18.0, "sma50": 1380.0, "sma200": 1320.0,
+              "high_52w": 1620.0, "low_52w": 1000.0}),
+            ("TATAMOTORS", "Tata Motors", "Consumer Cyclical", 720.0, 4.1,
+             {"pe": 9.0, "roe": 22.0, "roce": 16.0, "debt_to_equity": 1.2, "dividend_yield": 0.6,
+              "profit_growth_5y": 25.0, "sma50": 700.0, "sma200": 760.0,
+              "high_52w": 1180.0, "low_52w": 600.0}),
+        ],
+        "losers": [
+            ("YESBANK", "Yes Bank", "Financial Services", 18.5, -5.4,
+             {"pe": 32.0, "roe": 3.0, "roce": 5.0, "debt_to_equity": 2.4, "dividend_yield": 0.0,
+              "profit_growth_5y": -4.0, "sma50": 21.0, "sma200": 23.0,
+              "high_52w": 28.0, "low_52w": 17.0}),
+        ],
+        "most_active": [
+            ("RELIANCE", "Reliance Industries", "Energy", 1310.0, 1.2,
+             {"pe": 22.8, "roe": 8.9, "roce": 10.3, "debt_to_equity": 0.44, "dividend_yield": 0.46,
+              "profit_growth_5y": 12.0, "sma50": 1290.0, "sma200": 1240.0,
+              "high_52w": 1600.0, "low_52w": 1100.0}),
+        ],
+    }
+    sections: dict[str, list[dict]] = {}
+    for name, items in seed.items():
+        recs = []
+        for sym, nm, sec, price, chg, metrics in items:
+            m = {**metrics, "symbol": sym, "name": nm, "sector": sec, "price": price}
+            r = recommend(m, sector_score=None)
+            recs.append({
+                "symbol": sym, "name": nm, "sector": sec, "exchange": "NSE", "price": price,
+                "fundamental_score": None, "tier": None, "change_today_pct": chg,
+                "collection": name, "collections": [name], "metrics": m, "recommendation": r,
+                "why": {"positives": r.get("positives", []), "negatives": r.get("negatives", []),
+                        "risks": r.get("red_flags", [])},
+                "fundamentals_source": "demo", "source": "demo",
+            })
+        sections[name] = recs
+    return {"generated_at": datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M %Z"),
+            "sections": sections}
+
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    res = build_site(_demo_records(), out_dir="site")
+    res = build_site(_demo_records(), out_dir="site", movers=_demo_movers())
     print(f"Open: {res['index']}  ({res['pages']} pages)")

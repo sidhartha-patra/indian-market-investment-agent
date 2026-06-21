@@ -94,6 +94,10 @@ def run(
     symbols: list[str] | None = None,
     top: int | None = None,
     min_mcap: float = 1e10,
+    with_movers: bool = False,
+    movers_source: str = "yfinance",
+    movers_sections: tuple[str, ...] = ("gainers", "losers", "most_active"),
+    movers_top: int = 10,
 ) -> dict:
     """Build the site from the chosen data source.
 
@@ -107,17 +111,25 @@ def run(
     source='twelvedata'  -> licensed, COMPLIANT for a public site (needs API key).
 
     ``min_mcap`` (INR) floors the ranked universe to exclude penny/micro-cap noise.
+
+    ``with_movers`` adds a Top Gainers / Losers / Most-Active section (TradingView
+    technicals + ``movers_source`` fundamentals). Use ``movers_source='yfinance'`` for the
+    public build (CI-safe); ``'both'``/``'auto'`` add Screener.in for personal research.
     """
     if source == "demo":
-        from scripts.build_site import _demo_records
-        return build_site(_demo_records(), out_dir=out_dir)
+        from scripts.build_site import _demo_movers, _demo_records
+        return build_site(_demo_records(), out_dir=out_dir,
+                          movers=_demo_movers() if with_movers else None)
+
+    movers = _maybe_build_movers(with_movers, movers_source, movers_sections, movers_top)
 
     if source == "twelvedata":
         from src.ingestion.twelvedata_provider import build_dataset
         logger.info("Fetching Twelve Data (mode=%s)...", mode)
         frame = build_dataset(symbols=symbols, mode=mode)
         scored = fa.fundamental_scores(frame, sector_col="sector")
-        return build_site(frame_to_records(scored, "Twelve Data (licensed)"), out_dir=out_dir)
+        return build_site(frame_to_records(scored, "Twelve Data (licensed)"), out_dir=out_dir,
+                          movers=movers)
 
     if source == "yfinance":
         from src.ingestion.twelvedata_provider import NIFTY_50_SYMBOLS
@@ -132,7 +144,7 @@ def run(
         if not records:  # CI resilience: never deploy an empty site
             from scripts.build_site import _demo_records
             records = _demo_records()
-        return build_site(records, out_dir=out_dir)
+        return build_site(records, out_dir=out_dir, movers=movers)
 
     if source == "hybrid":
         top_syms = _rank_full_market_via_tradingview(top or 50, min_mcap)
@@ -151,7 +163,7 @@ def run(
         if not records:
             from scripts.build_site import _demo_records
             records = _demo_records()
-        return build_site(records, out_dir=out_dir)
+        return build_site(records, out_dir=out_dir, movers=movers)
 
     # tradingview (personal research)
     from src.ingestion.tradingview_scanner import fetch_india_scanner
@@ -166,7 +178,24 @@ def run(
         scanner_df = fetch_india_scanner(limit=limit)
         frame = scanner_to_frame(scanner_df)
         scored = fa.fundamental_scores(frame, sector_col="sector")
-    return build_site(frame_to_records(scored), out_dir=out_dir)
+    return build_site(frame_to_records(scored), out_dir=out_dir, movers=movers)
+
+
+def _maybe_build_movers(with_movers: bool, source: str,
+                        sections: tuple[str, ...], top: int) -> dict | None:
+    """Build the market-mover sections (best-effort; never fatal to the site build)."""
+    if not with_movers:
+        return None
+    try:
+        from scripts.movers_analysis import build_section_records
+        movers = build_section_records(
+            sections=sections, top_each=max(top + 5, 12), source=source, max_per=top)
+        if movers.get("sections"):
+            return movers
+        logger.warning("Movers requested but no sections returned; skipping movers page.")
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Movers build failed (%s); site will build without movers.", exc)
+    return None
 
 
 def _apply_quality_gate(frame: pd.DataFrame) -> pd.DataFrame:
@@ -215,8 +244,16 @@ if __name__ == "__main__":
                     help="min market cap (INR) for the ranked universe (default ~Rs 1,000 Cr)")
     ap.add_argument("--out", default="site")
     ap.add_argument("--demo", action="store_true", help="alias for --source demo")
+    ap.add_argument("--with-movers", action="store_true",
+                    help="add a Top Gainers/Losers/Most-Active section to the site")
+    ap.add_argument("--movers-source", default="yfinance",
+                    choices=["yfinance", "screener", "both", "auto", "none"],
+                    help="fundamentals for movers: yfinance (CI-safe) / screener/both/auto (personal)")
+    ap.add_argument("--movers-top", type=int, default=10, help="stocks per movers section")
     args = ap.parse_args()
     src = "demo" if args.demo else args.source
     res = run(source=src, limit=args.limit, out_dir=args.out, mode=args.mode,
-              top=args.top, min_mcap=args.min_mcap)
-    print(f"Built {res['pages']} pages -> {res['index']}")
+              top=args.top, min_mcap=args.min_mcap, with_movers=args.with_movers,
+              movers_source=args.movers_source, movers_top=args.movers_top)
+    print(f"Built {res['pages']} pages -> {res['index']}"
+          + (f"  (+movers: {res['movers']})" if res.get("has_movers") else ""))

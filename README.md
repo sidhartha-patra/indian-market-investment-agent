@@ -112,6 +112,26 @@ market on fundamentals naturally surfaces strong **small/mid-caps** — higher r
 
 > ⚖️ Signals are **educational model signals**, never SEBI-registered advice or price-target calls.
 
+### 📈 Today's Market Movers (Gainers / Losers / Most-Active)
+
+Add a live **Top Gainers · Losers · Most-Active** page to the site. Each mover pulls **TradingView
+technicals** (price, % change, 52-week range, volatility) and is enriched with **fundamentals**
+(P/E, ROE, ROCE, dividend yield) plus an **educational model signal** and **Low / Base / High**
+return scenarios for short / mid / long term. A banner on the home page links to `movers.html`,
+and every mover gets a full detail page.
+
+```bash
+# Public, CI-safe: TradingView technicals + Yahoo Finance fundamentals
+python -m scripts.build_all_stocks --source hybrid --top 50 --with-movers --movers-source yfinance
+
+# Personal research: add Screener.in depth (ROCE, Piotroski, 5y growth, pledging)
+python -m scripts.build_all_stocks --source tradingview --top 50 --with-movers --movers-source both
+```
+
+`--movers-source`: `yfinance` (free, publishable) · `screener`/`both`/`auto` (Screener.in — personal
+use only, keep off the public site). The public GitHub Pages build uses `yfinance`. Volatility and
+return bands are **capped** so penny-stock movers can't produce absurd scenarios.
+
 ---
 
 ## 🏗️ Architecture
