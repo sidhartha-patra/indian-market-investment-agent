@@ -6,10 +6,11 @@
 #   Unregister-ScheduledTask -TaskName "IndianStockSite-Refresh" -Confirm:$false
 param(
     [string]$TaskName = "IndianStockSite-Refresh",
-    [string]$Time1 = "08:30",
-    [string]$Time2 = "18:00",
-    [switch]$Publish,              # use refresh_and_publish.ps1 (exhaustive AI build + git push)
+    [string]$Time1 = "07:00",
+    [string]$Time2 = "17:00",
+    [switch]$Publish,              # use refresh_and_publish.ps1 (exhaustive AI build + git push + email)
     [int]$RecTop = 300,            # stocks the AI Buy/Sell/Hold analyses (when -Publish)
+    [string]$Email = "sipatra@microsoft.com",  # completion-notification recipient (when -Publish)
     [switch]$NoMl,                 # skip ML forecasts (faster) when -Publish
     [int]$TimeLimitHours = 6       # max run time — exhaustive AI+ML can take hours
 )
@@ -17,7 +18,7 @@ param(
 $ErrorActionPreference = "Stop"
 if ($Publish) {
     $script = Join-Path $PSScriptRoot "refresh_and_publish.ps1"
-    $extra = "-RecTop $RecTop" + $(if ($NoMl) { " -NoMl" } else { "" })
+    $extra = "-RecTop $RecTop -Email `"$Email`"" + $(if ($NoMl) { " -NoMl" } else { "" })
 } else {
     $script = Join-Path $PSScriptRoot "refresh_local_site.ps1"
     $extra = ""

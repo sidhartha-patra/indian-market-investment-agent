@@ -17,6 +17,9 @@ param(
     [int]$Top = 50,                     # home-page "top picks from the whole market"
     [string]$Branch = "gh-pages",      # branch GitHub Pages serves from
     [string]$MoversSource = "yfinance",# 'both'/'auto' adds Screener depth (personal use)
+    [string]$Email = "sipatra@microsoft.com",  # where the "done" notification goes
+    [string]$PagesUrl = "https://sidhartha-patra.github.io/indian-market-investment-agent/",
+    [switch]$NoEmail,                   # skip the completion email
     [switch]$NoPush,                    # build only, skip the git push (dry run)
     [switch]$NoMl,                      # skip ML forecasts (faster)
     [switch]$Serve,                     # also serve the build locally on -Port
@@ -67,43 +70,85 @@ if ($Serve) {
     }
 }
 
-if ($NoPush) { Write-Host "-NoPush set; skipping publish."; return }
+$published = $false
+if ($NoPush) {
+    Write-Host "-NoPush set; skipping publish."
+} else {
+    # --- Publish: mirror the build into a `gh-pages` worktree and push -------------------------
+    $pub = Join-Path $repo ".gh-pages-publish"
+    git fetch origin --quiet 2>$null
+    $remoteHasBranch = (git ls-remote --heads origin $Branch) -ne $null -and (git ls-remote --heads origin $Branch) -ne ""
 
-# --- Publish: mirror the build into a `gh-pages` worktree and push -------------------------
-$pub = Join-Path $repo ".gh-pages-publish"
-git fetch origin --quiet 2>$null
-$remoteHasBranch = (git ls-remote --heads origin $Branch) -ne $null -and (git ls-remote --heads origin $Branch) -ne ""
-
-if (-not (Test-Path (Join-Path $pub ".git"))) {
-    git worktree prune 2>$null | Out-Null
-    if ($remoteHasBranch) {
-        git worktree add $pub $Branch
+    if (-not (Test-Path (Join-Path $pub ".git"))) {
+        git worktree prune 2>$null | Out-Null
+        if ($remoteHasBranch) {
+            git worktree add $pub $Branch
+        } else {
+            git worktree add --detach $pub
+            Push-Location $pub
+            git checkout --orphan $Branch
+            git reset --hard 2>$null | Out-Null
+            Pop-Location
+        }
     } else {
-        git worktree add --detach $pub
         Push-Location $pub
-        git checkout --orphan $Branch
-        git reset --hard 2>$null | Out-Null
+        if ($remoteHasBranch) { git checkout $Branch 2>$null; git pull --ff-only origin $Branch 2>$null }
         Pop-Location
     }
-} else {
+
+    # Replace published content with the fresh build (keep .git).
+    Get-ChildItem -Force $pub | Where-Object { $_.Name -ne ".git" } | Remove-Item -Recurse -Force
+    Copy-Item -Path (Join-Path $build "*") -Destination $pub -Recurse -Force
+
     Push-Location $pub
-    if ($remoteHasBranch) { git checkout $Branch 2>$null; git pull --ff-only origin $Branch 2>$null }
+    git add -A
+    if ((git status --porcelain).Length -eq 0) {
+        Write-Host "No changes to publish."
+        $published = $true
+    } else {
+        git -c user.name="sidhartha-patra" -c user.email="15684919+sidhartha-patra@users.noreply.github.com" `
+            commit -m "site: automated refresh $stamp" --quiet
+        git push origin $Branch
+        if ($LASTEXITCODE -eq 0) { $published = $true; Write-Host "[$(Get-Date -Format u)] Published to '$Branch'." }
+        else { Write-Host "Push failed (exit $LASTEXITCODE)." }
+    }
     Pop-Location
+    Write-Host "Ensure Settings -> Pages -> Source = 'Deploy from a branch' -> '$Branch' / root."
 }
 
-# Replace published content with the fresh build (keep .git).
-Get-ChildItem -Force $pub | Where-Object { $_.Name -ne ".git" } | Remove-Item -Recurse -Force
-Copy-Item -Path (Join-Path $build "*") -Destination $pub -Recurse -Force
-
-Push-Location $pub
-git add -A
-if ((git status --porcelain).Length -eq 0) {
-    Write-Host "No changes to publish."
-} else {
-    git -c user.name="sidhartha-patra" -c user.email="15684919+sidhartha-patra@users.noreply.github.com" `
-        commit -m "site: automated refresh $stamp" --quiet
-    git push origin $Branch
-    Write-Host "[$(Get-Date -Format u)] Published to '$Branch'. Pages will update shortly."
+# --- Completion email via the local mail MCP (same one your other agents use) --------------
+if (-not $NoEmail) {
+    try {
+        $stats = @{ universe = "?"; ai = "?"; buy = "?"; hold = "?"; sell = "?" }
+        $recJson = Join-Path $build "data\recommendations.json"
+        if (Test-Path $recJson) {
+            $r = Get-Content $recJson -Raw | ConvertFrom-Json
+            $stats.universe = $r.universe_count; $stats.ai = $r.ai_analysed
+            $stats.buy = $r.buckets.BUY.Count; $stats.hold = $r.buckets.HOLD.Count; $stats.sell = $r.buckets.SELL.Count
+        }
+        $statusLine = if ($NoPush) { "Built locally (not published)." } elseif ($published) { "Published to GitHub Pages." } else { "Built, but publish FAILED — check the log." }
+        $subject = "Indian Stock Agent - refresh $(Get-Date -Format 'yyyy-MM-dd HH:mm') ($($stats.buy) buy / $($stats.sell) sell)"
+        $html = @"
+<div style='font-family:Segoe UI,Arial,sans-serif;max-width:640px'>
+<h2 style='margin:0 0 6px'>Indian Market Investment Agent - daily refresh</h2>
+<p style='color:#555'>$statusLine &nbsp;|&nbsp; $stamp</p>
+<table style='border-collapse:collapse;font-size:14px'>
+<tr><td style='padding:3px 10px'>Stocks analysed</td><td><b>$($stats.universe)</b> (AI: $($stats.ai))</td></tr>
+<tr><td style='padding:3px 10px'>Top Buy / Hold / Sell</td><td><b style='color:#2e7d32'>$($stats.buy)</b> / $($stats.hold) / <b style='color:#c62828'>$($stats.sell)</b></td></tr>
+</table>
+<p><a href='$PagesUrl'>Open the site</a> &nbsp;|&nbsp;
+<a href='${PagesUrl}recommendations.html'>Buy / Sell / Hold</a> &nbsp;|&nbsp;
+<a href='${PagesUrl}search.html'>Search a stock</a></p>
+<p style='color:#999;font-size:12px'>Educational model output, not investment advice. Auto-generated by refresh_and_publish.ps1.</p>
+</div>
+"@
+        $tmp = Join-Path $env:TEMP "invest_agent_email_$(Get-Random).html"
+        Set-Content -Path $tmp -Value $html -Encoding UTF8
+        Write-Host "[$(Get-Date -Format u)] Emailing $Email via local mail MCP..."
+        node (Join-Path $PSScriptRoot "notify_email.mjs") $Email $subject $tmp 2>&1 | Write-Host
+        Remove-Item $tmp -ErrorAction SilentlyContinue
+    } catch {
+        Write-Host "Email step failed (non-fatal): $_"
+    }
 }
-Pop-Location
-Write-Host "Done. Ensure Settings -> Pages -> Source = 'Deploy from a branch' -> '$Branch' / root."
+Write-Host "[$(Get-Date -Format u)] === refresh_and_publish complete ==="
