@@ -83,46 +83,42 @@ $published = $false
 if ($NoPush -or $buildFailed) {
     Write-Host "Skipping publish ($(if ($buildFailed) {'build failed'} else {'-NoPush'}))."
 } else {
-    # --- Publish: mirror the build into a `gh-pages` worktree and push -------------------------
-    $pub = Join-Path $repo ".gh-pages-publish"
-    git fetch origin --quiet 2>$null
-    $remoteHasBranch = (git ls-remote --heads origin $Branch) -ne $null -and (git ls-remote --heads origin $Branch) -ne ""
+    # --- Publish via a SEPARATE clone OUTSIDE OneDrive (avoids OneDrive locking .git) ----------
+    $pub = "C:\Users\sipatra\.investagent-ghpages"
+    $credFile = "C:/Users/sipatra/.investagent.git-credentials"
+    $remoteUrl = "https://github.com/sidhartha-patra/indian-market-investment-agent.git"
+    $remoteHasBranch = (git ls-remote --heads $remoteUrl $Branch) -ne $null -and (git ls-remote --heads $remoteUrl $Branch) -ne ""
 
     if (-not (Test-Path (Join-Path $pub ".git"))) {
-        git worktree prune 2>$null | Out-Null
+        Remove-Item $pub -Recurse -Force -ErrorAction SilentlyContinue
         if ($remoteHasBranch) {
-            git worktree add $pub $Branch
+            git -c credential.helper="store --file=$credFile" clone --branch $Branch --single-branch $remoteUrl $pub 2>&1 | Out-Null
         } else {
-            git worktree add --detach $pub
-            Push-Location $pub
-            git checkout --orphan $Branch
-            git reset --hard 2>$null | Out-Null
-            Pop-Location
+            git -c credential.helper="store --file=$credFile" clone $remoteUrl $pub 2>&1 | Out-Null
+            Push-Location $pub; git checkout --orphan $Branch; git rm -rf . 2>$null | Out-Null; Pop-Location
         }
+    }
+    if (-not (Test-Path (Join-Path $pub ".git"))) {
+        Write-Host "Publish clone failed; skipping publish."
     } else {
         Push-Location $pub
-        if ($remoteHasBranch) { git checkout $Branch 2>$null; git pull --ff-only origin $Branch 2>$null }
+        git config credential.helper "store --file=$credFile"
+        git config user.name "sidhartha-patra"; git config user.email "15684919+sidhartha-patra@users.noreply.github.com"
+        if ($remoteHasBranch) { git fetch origin $Branch 2>$null; git checkout $Branch 2>$null; git reset --hard "origin/$Branch" 2>$null | Out-Null }
+        # Replace published content with the fresh build (keep .git).
+        Get-ChildItem -Force . | Where-Object { $_.Name -ne ".git" } | Remove-Item -Recurse -Force
+        Copy-Item -Path (Join-Path $build "*") -Destination . -Recurse -Force
+        git add -A
+        if ((git status --porcelain).Length -eq 0) {
+            Write-Host "No changes to publish."; $published = $true
+        } else {
+            git commit -m "site: automated refresh $stamp" --quiet
+            git push origin $Branch
+            if ($LASTEXITCODE -eq 0) { $published = $true; Write-Host "[$(Get-Date -Format u)] Published to '$Branch'." }
+            else { Write-Host "Push failed (exit $LASTEXITCODE)." }
+        }
         Pop-Location
     }
-
-    # Replace published content with the fresh build (keep .git).
-    Get-ChildItem -Force $pub | Where-Object { $_.Name -ne ".git" } | Remove-Item -Recurse -Force
-    Copy-Item -Path (Join-Path $build "*") -Destination $pub -Recurse -Force
-
-    Push-Location $pub
-    git add -A
-    if ((git status --porcelain).Length -eq 0) {
-        Write-Host "No changes to publish."
-        $published = $true
-    } else {
-        git -c user.name="sidhartha-patra" -c user.email="15684919+sidhartha-patra@users.noreply.github.com" `
-            commit -m "site: automated refresh $stamp" --quiet
-        git push origin $Branch
-        if ($LASTEXITCODE -eq 0) { $published = $true; Write-Host "[$(Get-Date -Format u)] Published to '$Branch'." }
-        else { Write-Host "Push failed (exit $LASTEXITCODE)." }
-    }
-    Pop-Location
-    Write-Host "Ensure Settings -> Pages -> Source = 'Deploy from a branch' -> '$Branch' / root."
 }
 
 # --- Completion email via the local mail MCP (same one your other agents use) --------------
