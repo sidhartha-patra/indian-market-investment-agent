@@ -1,0 +1,230 @@
+[
+  {
+    "s": "GARUDA",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 77.3,
+    "b": [
+      "PE ratio of 12.93 indicates potential undervaluation compared to industry peers.",
+      "ROE of 31.13% suggests effective management and high profitability.",
+      "Current ratio of 2.61 reflects strong liquidity, indicating the ability to cover short-term obligations."
+    ],
+    "se": [
+      "Quality score of 25 signals low operational quality, raising concerns about sustainability.",
+      "Graham score of 3 indicates potential overvaluation based on intrinsic value assessment.",
+      "Lack of dividend yield may deter income-focused investors."
+    ],
+    "ai": true
+  },
+  {
+    "s": "GESHIP",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 77.5,
+    "b": [
+      "Low PE ratio of 6.99 suggests the stock is undervalued compared to peers.",
+      "Strong net margin of 54.40% indicates high profitability.",
+      "Current ratio of 7.08 reflects excellent liquidity, reducing bankruptcy risk."
+    ],
+    "se": [
+      "Quality score of 17 indicates low operational quality, which may affect future performance.",
+      "Graham score of 3 suggests the stock is not fundamentally sound, raising red flags.",
+      "Low analyst coverage with only 2 analysts may lead to volatility in price targets."
+    ],
+    "ai": true
+  },
+  {
+    "s": "HBLENGINE",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 65.9,
+    "b": [
+      "High ROE of 44.09% suggests strong profitability.",
+      "Low debt-to-equity ratio of 0.03 indicates financial stability.",
+      "Current ratio of 3.57 shows strong liquidity."
+    ],
+    "se": [
+      "Low quality score of 25 raises concerns about sustainability.",
+      "Graham score of 2 signals potential overvaluation and risk.",
+      "PE ratio of 27.72 may indicate the stock is overvalued relative to earnings."
+    ],
+    "ai": true
+  },
+  {
+    "s": "INFOBEAN",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 65.9,
+    "b": [
+      "PE ratio of 18.73 suggests it may be undervalued compared to peers.",
+      "ROE of 23.24% indicates strong profitability relative to equity.",
+      "Current ratio of 10.14 shows excellent liquidity, reducing bankruptcy risk."
+    ],
+    "se": [
+      "Quality score of 25 indicates low quality, raising concerns about sustainability of earnings.",
+      "Graham score of 2 suggests the stock is not fundamentally sound, indicating potential overvaluation.",
+      "No data available for Altman Z-score, which limits assessment of financial health."
+    ],
+    "ai": true
+  },
+  {
+    "s": "JAYKAY",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 65.9,
+    "b": [
+      "Low PE ratio of 10.88 suggests potential undervaluation compared to peers.",
+      "High ROE of 40.48% indicates strong profitability and efficient use of equity.",
+      "Very low debt-to-equity ratio of 0.057 reflects strong financial stability."
+    ],
+    "se": [
+      "Quality score of 25 indicates low quality, raising concerns about sustainability.",
+      "Graham score of 3 suggests the stock is not fundamentally sound, indicating potential risks.",
+      "No data available for Altman Z-score, which limits assessment of bankruptcy risk."
+    ],
+    "ai": true
+  },
+  {
+    "s": "JSLL",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 68.3,
+    "b": [
+      "High ROE of 59.95% indicates strong profitability and efficient use of equity.",
+      "Low debt-to-equity ratio of 0.27 suggests financial stability and lower risk of insolvency.",
+      "Current ratio of 3.25 indicates strong liquidity, providing a buffer against short-term liabilities."
+    ],
+    "se": [
+      "Low quality score of 25 raises concerns about the sustainability of earnings and business practices.",
+      "Graham score of 2 indicates potential overvaluation or fundamental weaknesses.",
+      "Lack of data for Altman's Z-score prevents assessment of bankruptcy risk, leaving uncertainty."
+    ],
+    "ai": true
+  },
+  {
+    "s": "KPRMILL",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "HOLD",
+    "sc": 59.0,
+    "b": [
+      "PE ratio of 13.61 suggests undervaluation compared to industry average.",
+      "ROE of 16.20% indicates strong profitability relative to equity.",
+      "Current ratio of 4.37 shows excellent liquidity, reducing bankruptcy risk."
+    ],
+    "se": [
+      "Quality score of 17 indicates low quality, raising concerns about earnings sustainability.",
+      "Graham score of 3 signals potential overvaluation or risk, suggesting caution.",
+      "Analyst consensus shows a target downside of -8.1%, indicating bearish sentiment."
+    ],
+    "ai": true
+  },
+  {
+    "s": "ONIXSOLAR",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 77.3,
+    "b": [
+      "PE ratio of 10.89 indicates potential undervaluation compared to industry peers.",
+      "Net margin of 23.56% reflects strong profitability and operational efficiency.",
+      "Debt-to-equity ratio of 0.05 shows low financial leverage, reducing bankruptcy risk."
+    ],
+    "se": [
+      "Quality score of 10 indicates low quality, raising concerns about sustainability of earnings.",
+      "Graham score of 3 suggests the stock is not fundamentally sound, indicating potential overvaluation.",
+      "Lack of data for PB and EV/EBITDA metrics limits comprehensive valuation analysis."
+    ],
+    "ai": true
+  },
+  {
+    "s": "PGINVIT",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 77.3,
+    "b": [
+      "PE ratio of 9.37 indicates undervaluation compared to industry peers.",
+      "High dividend yield of 12.78% provides attractive income for investors.",
+      "Strong operating margin of 67.89% suggests efficient cost management."
+    ],
+    "se": [
+      "Low quality score of 10 raises concerns about the reliability of financial metrics.",
+      "Graham score of 4 indicates potential overvaluation risks.",
+      "Absence of Altman Z-score data suggests uncertainty in financial stability."
+    ],
+    "ai": true
+  },
+  {
+    "s": "ROLEXRINGS",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 76.2,
+    "b": [
+      "Low PE ratio of 6.83 suggests undervaluation compared to industry averages.",
+      "Strong net margin of 12.34% indicates effective cost management and profitability.",
+      "Current ratio of 8.29 shows excellent liquidity, suggesting the company can easily cover short-term obligations."
+    ],
+    "se": [
+      "Quality score of 10 with a signal of LOW_QUALITY raises concerns about operational sustainability.",
+      "Graham score of 3 indicates potential fundamental weaknesses, suggesting caution.",
+      "Lack of dividend yield may deter income-focused investors."
+    ],
+    "ai": true
+  },
+  {
+    "s": "SPARC",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 65.9,
+    "b": [
+      "PE ratio of 4.98 suggests undervaluation compared to industry peers.",
+      "ROE of 276.89% indicates exceptional profitability and efficient use of equity.",
+      "Current ratio of 2.47 shows strong liquidity, indicating the ability to cover short-term liabilities."
+    ],
+    "se": [
+      "Quality score of 25 indicates low quality, raising concerns about the reliability of financial metrics.",
+      "Graham score of 3 signals an 'AVOID' rating, suggesting potential fundamental weaknesses.",
+      "Lack of data on PB ratio and Altman Z-score creates uncertainty about financial stability."
+    ],
+    "ai": true
+  },
+  {
+    "s": "WAAREEINDO",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 65.9,
+    "b": [
+      "Low PE of 7.03 suggests undervaluation compared to peers.",
+      "High ROE of 150.63% indicates exceptional profitability.",
+      "Strong current ratio of 6.70 reflects robust liquidity position."
+    ],
+    "se": [
+      "Low quality score of 25 raises concerns about financial stability.",
+      "Graham score of 3 suggests the stock is not fundamentally sound.",
+      "No dividend yield may deter income-focused investors."
+    ],
+    "ai": true
+  }
+]

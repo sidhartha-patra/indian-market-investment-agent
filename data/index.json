@@ -1,0 +1,177 @@
+{
+  "generated_at": "2026-06-21 09:57 India Standard Time",
+  "count": 19,
+  "stocks": [
+    {
+      "symbol": "TAJGVK",
+      "name": "TAJ GVK HOTELS & RESORTS",
+      "sector": "Consumer Cyclical",
+      "price": 338.45,
+      "score": 100.0,
+      "tier": "TOP_DECILE",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "GARUDA",
+      "name": "GARUDA CONSTRUCT N ENG L",
+      "sector": "Industrials",
+      "price": 170.16,
+      "score": 94.7,
+      "tier": "TOP_DECILE",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "GESHIP",
+      "name": "THE GE SHPG.LTD",
+      "sector": "Industrials",
+      "price": 1437.7,
+      "score": 89.5,
+      "tier": "TOP_DECILE",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "INFOBEAN",
+      "name": "INFOBEANS TECHNO. LTD.",
+      "sector": "Technology",
+      "price": 166.83,
+      "score": 84.2,
+      "tier": "TOP_DECILE",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "NATIONALUM",
+      "name": "NATIONAL ALUMINIUM CO LTD",
+      "sector": "Basic Materials",
+      "price": 376.0,
+      "score": 78.9,
+      "tier": "STRONG",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "SPARC",
+      "name": "SUN PHARMA ADV.RES.CO.LTD",
+      "sector": "Healthcare",
+      "price": 238.09,
+      "score": 73.7,
+      "tier": "STRONG",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "GPPL",
+      "name": "GUJARAT PIPAVAV PORT LTD",
+      "sector": "Industrials",
+      "price": 153.08,
+      "score": 68.4,
+      "tier": "STRONG",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "PGINVIT",
+      "name": "PGINVIT.NS,0P0001MGQ9,2267108",
+      "sector": "OTHER",
+      "price": 95.96,
+      "score": 63.2,
+      "tier": "STRONG",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "FRONTSP",
+      "name": "FRONTIER SPRINGS LTD.",
+      "sector": "OTHER",
+      "price": 1417.6,
+      "score": 57.9,
+      "tier": "AVERAGE",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "JSLL",
+      "name": "JEENA SIKHO LIFECARE LTD",
+      "sector": "Healthcare",
+      "price": 557.2,
+      "score": 52.6,
+      "tier": "AVERAGE",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "SEAMECLTD",
+      "name": "SEAMEC LIMITED",
+      "sector": "Industrials",
+      "price": 1366.8,
+      "score": 47.4,
+      "tier": "AVERAGE",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "WAAREEINDO",
+      "name": "INDOSOLAR LIMITED",
+      "sector": "Technology",
+      "price": 416.5,
+      "score": 42.1,
+      "tier": "AVERAGE",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "MUKANDLTD",
+      "name": "MUKAND LTD.",
+      "sector": "Basic Materials",
+      "price": 135.81,
+      "score": 36.8,
+      "tier": "WEAK",
+      "signal": "HOLD"
+    },
+    {
+      "symbol": "OSWALPUMPS",
+      "name": "OSWAL PUMPS LIMITED",
+      "sector": "Industrials",
+      "price": 422.9,
+      "score": 31.6,
+      "tier": "WEAK",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "HBLENGINE",
+      "name": "HBL ENGINEERING LTD",
+      "sector": "Industrials",
+      "price": 815.5,
+      "score": 26.3,
+      "tier": "WEAK",
+      "signal": "SELL"
+    },
+    {
+      "symbol": "ROLEXRINGS",
+      "name": "ROLEX RINGS LIMITED",
+      "sector": "Industrials",
+      "price": 143.23,
+      "score": 21.1,
+      "tier": "WEAK",
+      "signal": "AVOID"
+    },
+    {
+      "symbol": "JAYKAY",
+      "name": "JAYKAY ENTERPRISES LTD",
+      "sector": "Industrials",
+      "price": 184.48,
+      "score": 15.8,
+      "tier": "WEAK",
+      "signal": "AVOID"
+    },
+    {
+      "symbol": "SAMHI",
+      "name": "SAMHI HOTELS LIMITED",
+      "sector": "Consumer Cyclical",
+      "price": 175.81,
+      "score": 10.5,
+      "tier": "WEAK",
+      "signal": "AVOID"
+    },
+    {
+      "symbol": "KPRMILL",
+      "name": "KPR MILL LTD.",
+      "sector": "Consumer Cyclical",
+      "price": 1159.75,
+      "score": 5.3,
+      "tier": "WEAK",
+      "signal": "AVOID"
+    }
+  ]
+}
