@@ -132,6 +132,18 @@ python -m scripts.build_all_stocks --source tradingview --top 50 --with-movers -
 use only, keep off the public site). The public GitHub Pages build uses `yfinance`. Volatility and
 return bands are **capped** so penny-stock movers can't produce absurd scenarios.
 
+### 📋 Nifty 50 page (alongside the all-market Top 50)
+
+The home page lists the **Top 50 screened from the WHOLE market** (often small/mid-cap heavy). To keep
+the familiar large-cap index handy, add a dedicated **Nifty 50** page that coexists with it:
+
+```bash
+python -m scripts.build_all_stocks --source hybrid --top 50 --with-nifty50   # adds nifty50.html + a home-page link
+```
+
+`--with-nifty50` builds `nifty50.html` (same sortable table, model signals, detail pages) from the live
+NSE Nifty-50 constituents via Yahoo Finance, and links it from the home page. The public build enables it.
+
 ---
 
 ## 🏗️ Architecture

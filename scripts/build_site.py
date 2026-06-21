@@ -20,6 +20,7 @@ from __future__ import annotations
 import html
 import json
 import logging
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -96,7 +97,8 @@ def _score_class(score: float | None) -> str:
     return "s-hi" if score >= 66 else "s-mid" if score >= 40 else "s-lo"
 
 
-def _index_html(records: list[dict], generated_at: str, has_movers: bool = False) -> str:
+def _stock_table(records: list[dict]) -> str:
+    """The shared sortable/searchable stock table (used by index + named-list pages)."""
     rows = []
     for r in records:
         sym = _esc(r.get("symbol"))
@@ -113,6 +115,31 @@ def _index_html(records: list[dict], generated_at: str, has_movers: bool = False
             f"<td>{_esc(r.get('tier'))}</td>"
             f"</tr>"
         )
+    return ("<table id='tbl'><thead><tr>"
+            "<th onclick='sortTable(0,false)'>Symbol</th><th onclick='sortTable(1,false)'>Name</th>"
+            "<th onclick='sortTable(2,false)'>Sector</th><th onclick='sortTable(3,true)'>Price</th>"
+            "<th onclick='sortTable(4,true)'>Score /100</th><th onclick='sortTable(5,false)'>Signal</th>"
+            "<th onclick='sortTable(6,false)'>Band</th>"
+            f"</tr></thead><tbody>{''.join(rows)}</tbody></table>")
+
+
+def _slug(title: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", str(title).lower()) or "list"
+
+
+def _index_html(records: list[dict], generated_at: str, has_movers: bool = False,
+                extra_links: list[tuple[str, str]] | None = None) -> str:
+    banners = []
+    if has_movers:
+        banners.append(
+            "<a class='movers-banner' href='movers.html'>📈 Today&#39;s Top Gainers · Losers · "
+            "Most-Active — live technicals + fundamentals, model signals &amp; Low/Base/High "
+            "projections →</a>")
+    for title, href in (extra_links or []):
+        banners.append(
+            f"<a class='movers-banner' href='{_esc(href)}'>📋 {_esc(title)} — fundamental scores, "
+            f"model signals &amp; multi-horizon projections →</a>")
+    nav = "\n".join(banners)
     return f"""<!doctype html><html lang='en'><head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width,initial-scale=1'>
 <title>Indian Stock Explorer — Educational Fundamental Scores</title>
@@ -120,16 +147,32 @@ def _index_html(records: list[dict], generated_at: str, has_movers: bool = False
 <meta property='og:description' content='Sector-relative fundamental scores for Indian stocks. Educational only, not investment advice.'>
 <style>{_CSS}</style></head><body><div class='wrap'>
 <header><h1>📊 Indian Stock Explorer</h1>
-<div class='sub'>Sector-relative educational fundamental scores · {len(records)} stocks · updated {_esc(generated_at)}</div></header>
+<div class='sub'>Top picks screened from the WHOLE Indian market · sector-relative educational scores · {len(records)} stocks · updated {_esc(generated_at)}</div></header>
 <div class='disclaimer'>⚠️ {DISCLAIMER_SHORT}</div>
-{"<a class='movers-banner' href='movers.html'>📈 Today&#39;s Top Gainers · Losers · Most-Active — live technicals + fundamentals, model signals &amp; Low/Base/High projections →</a>" if has_movers else ""}
+{nav}
 <input class='search' id='q' onkeyup='filt()' placeholder='Search by symbol, name or sector…'>
-<table id='tbl'><thead><tr>
-<th onclick='sortTable(0,false)'>Symbol</th><th onclick='sortTable(1,false)'>Name</th>
-<th onclick='sortTable(2,false)'>Sector</th><th onclick='sortTable(3,true)'>Price</th>
-<th onclick='sortTable(4,true)'>Score /100</th><th onclick='sortTable(5,false)'>Signal</th><th onclick='sortTable(6,false)'>Band</th>
-</tr></thead><tbody>{''.join(rows)}</tbody></table>
+{_stock_table(records)}
 <div class='foot'>{DISCLAIMER_FULL}</div></div><script>{_SORT_JS}</script></body></html>"""
+
+
+def _list_page_html(title: str, records: list[dict], generated_at: str, subtitle: str = "") -> str:
+    """A standalone named-list page (e.g. 'Nifty 50') reusing the index table."""
+    sub = subtitle or f"{len(records)} stocks · sector-relative educational scores"
+    return f"""<!doctype html><html lang='en'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>{_esc(title)} — Educational Fundamental Scores</title>
+<meta property='og:title' content='{_esc(title)} — Educational Fundamental Scores &amp; Model Signals'>
+<meta property='og:description' content='{_esc(title)} constituents with sector-relative fundamental scores, educational model signals and multi-horizon projections. Not investment advice.'>
+<style>{_CSS}</style></head><body><div class='wrap'>
+<div class='sub'><a href='index.html'>← All stocks (Top 50 from the whole market)</a></div>
+<header><h1>📋 {_esc(title)}</h1>
+<div class='sub'>{_esc(sub)} · updated {_esc(generated_at)}</div></header>
+<div class='disclaimer'>⚠️ {DISCLAIMER_SHORT}</div>
+<input class='search' id='q' onkeyup='filt()' placeholder='Search by symbol, name or sector…'>
+{_stock_table(records)}
+<div class='foot'>{DISCLAIMER_FULL}</div></div><script>{_SORT_JS}</script></body></html>"""
+
+
 
 
 def _why_list(items: list[str] | None, cls: str) -> str:
@@ -413,6 +456,7 @@ def build_site(
     out_dir: str | Path = "site",
     generated_at: str | None = None,
     movers: dict | None = None,
+    extra_lists: dict[str, list[dict]] | None = None,
 ) -> dict:
     """Generate the full static site. Returns counts + output paths.
 
@@ -423,6 +467,11 @@ def build_site(
     :func:`scripts.movers_analysis.build_section_records`. When supplied, a ``movers.html``
     page (Top Gainers / Losers / Most-Active …) is rendered, a detail page is generated for
     every mover symbol, and the index links to it.
+
+    ``extra_lists`` (optional): ``{"Nifty 50": [record, ...], ...}`` named stock lists. Each
+    becomes a standalone ``<slug>.html`` page (e.g. ``nifty50.html``) with the same sortable
+    table + detail pages, linked from the home page. Lets the all-market Top 50 coexist with
+    curated index lists like Nifty 50.
     """
     out = Path(out_dir)
     (out / "stock").mkdir(parents=True, exist_ok=True)
@@ -430,26 +479,41 @@ def build_site(
     gen = generated_at or datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M %Z")
 
     has_movers = bool(movers and movers.get("sections"))
+    lists = {t: r for t, r in (extra_lists or {}).items() if r}
+    extra_links = [(t, f"{_slug(t)}.html") for t in lists]
+
     records = sorted(records, key=lambda r: (r.get("fundamental_score") or -1), reverse=True)
-    (out / "index.html").write_text(_index_html(records, gen, has_movers=has_movers), encoding="utf-8")
+    (out / "index.html").write_text(
+        _index_html(records, gen, has_movers=has_movers, extra_links=extra_links), encoding="utf-8")
     written: set[str] = set()
     for rec in records:
         sym = str(rec.get("symbol", "UNKNOWN"))
         (out / "stock" / f"{sym}.html").write_text(_stock_html(rec, gen), encoding="utf-8")
         written.add(sym)
 
+    def _emit_detail_pages(recs: list[dict]) -> int:
+        n = 0
+        for rec in recs:
+            sym = str(rec.get("symbol") or "").strip()
+            if sym and sym not in written:
+                (out / "stock" / f"{sym}.html").write_text(_stock_html(rec, gen), encoding="utf-8")
+                written.add(sym)
+                n += 1
+        return n
+
     extra_pages = 0
     if has_movers:
         for sec in movers["sections"].values():
-            for rec in sec:
-                sym = str(rec.get("symbol") or "").strip()
-                if sym and sym not in written:
-                    (out / "stock" / f"{sym}.html").write_text(_stock_html(rec, gen), encoding="utf-8")
-                    written.add(sym)
-                    extra_pages += 1
+            extra_pages += _emit_detail_pages(sec)
         (out / "movers.html").write_text(_movers_page_html(movers, gen), encoding="utf-8")
         (out / "data" / "movers.json").write_text(
             json.dumps(movers, indent=2, default=str), encoding="utf-8")
+
+    for title, recs in lists.items():
+        recs_sorted = sorted(recs, key=lambda r: (r.get("fundamental_score") or -1), reverse=True)
+        extra_pages += _emit_detail_pages(recs_sorted)
+        (out / f"{_slug(title)}.html").write_text(
+            _list_page_html(title, recs_sorted, gen), encoding="utf-8")
 
     index_json = [{"symbol": r.get("symbol"), "name": r.get("name"), "sector": r.get("sector"),
                    "price": r.get("price"), "score": r.get("fundamental_score"), "tier": r.get("tier"),
@@ -459,10 +523,12 @@ def build_site(
         json.dumps({"generated_at": gen, "count": len(records), "stocks": index_json}, indent=2,
                    default=str), encoding="utf-8")
 
-    logger.info("Built site with %d stock pages (+%d movers, movers=%s) -> %s",
-                len(records), extra_pages, has_movers, out.resolve())
-    return {"out_dir": str(out.resolve()), "pages": len(records) + 1 + extra_pages + (1 if has_movers else 0),
+    logger.info("Built site: %d main + %d extra pages (movers=%s, lists=%s) -> %s",
+                len(records), extra_pages, has_movers, list(lists), out.resolve())
+    return {"out_dir": str(out.resolve()),
+            "pages": len(records) + 1 + extra_pages + (1 if has_movers else 0) + len(lists),
             "index": str((out / "index.html").resolve()), "has_movers": has_movers,
+            "lists": [h for _, h in extra_links],
             "movers": str((out / "movers.html").resolve()) if has_movers else None}
 
 
@@ -547,5 +613,6 @@ def _demo_movers() -> dict:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    res = build_site(_demo_records(), out_dir="site", movers=_demo_movers())
+    res = build_site(_demo_records(), out_dir="site", movers=_demo_movers(),
+                     extra_lists={"Nifty 50": _demo_records()})
     print(f"Open: {res['index']}  ({res['pages']} pages)")

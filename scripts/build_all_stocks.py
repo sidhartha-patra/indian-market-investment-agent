@@ -98,6 +98,7 @@ def run(
     movers_source: str = "yfinance",
     movers_sections: tuple[str, ...] = ("gainers", "losers", "most_active"),
     movers_top: int = 10,
+    with_nifty50: bool = False,
 ) -> dict:
     """Build the site from the chosen data source.
 
@@ -119,9 +120,11 @@ def run(
     if source == "demo":
         from scripts.build_site import _demo_movers, _demo_records
         return build_site(_demo_records(), out_dir=out_dir,
-                          movers=_demo_movers() if with_movers else None)
+                          movers=_demo_movers() if with_movers else None,
+                          extra_lists={"Nifty 50": _demo_records()} if with_nifty50 else None)
 
     movers = _maybe_build_movers(with_movers, movers_source, movers_sections, movers_top)
+    extra_lists = _maybe_build_nifty50(with_nifty50)
 
     if source == "twelvedata":
         from src.ingestion.twelvedata_provider import build_dataset
@@ -129,7 +132,7 @@ def run(
         frame = build_dataset(symbols=symbols, mode=mode)
         scored = fa.fundamental_scores(frame, sector_col="sector")
         return build_site(frame_to_records(scored, "Twelve Data (licensed)"), out_dir=out_dir,
-                          movers=movers)
+                          movers=movers, extra_lists=extra_lists)
 
     if source == "yfinance":
         from src.ingestion.twelvedata_provider import NIFTY_50_SYMBOLS
@@ -144,7 +147,7 @@ def run(
         if not records:  # CI resilience: never deploy an empty site
             from scripts.build_site import _demo_records
             records = _demo_records()
-        return build_site(records, out_dir=out_dir, movers=movers)
+        return build_site(records, out_dir=out_dir, movers=movers, extra_lists=extra_lists)
 
     if source == "hybrid":
         top_syms = _rank_full_market_via_tradingview(top or 50, min_mcap)
@@ -163,7 +166,7 @@ def run(
         if not records:
             from scripts.build_site import _demo_records
             records = _demo_records()
-        return build_site(records, out_dir=out_dir, movers=movers)
+        return build_site(records, out_dir=out_dir, movers=movers, extra_lists=extra_lists)
 
     # tradingview (personal research)
     from src.ingestion.tradingview_scanner import fetch_india_scanner
@@ -178,7 +181,31 @@ def run(
         scanner_df = fetch_india_scanner(limit=limit)
         frame = scanner_to_frame(scanner_df)
         scored = fa.fundamental_scores(frame, sector_col="sector")
-    return build_site(frame_to_records(scored), out_dir=out_dir, movers=movers)
+    return build_site(frame_to_records(scored), out_dir=out_dir, movers=movers,
+                      extra_lists=extra_lists)
+
+
+def _maybe_build_nifty50(with_nifty50: bool) -> dict | None:
+    """Build a Nifty-50 named list (Yahoo Finance, CI-safe). Best-effort; never fatal."""
+    if not with_nifty50:
+        return None
+    try:
+        from src.ingestion.twelvedata_provider import NIFTY_50_SYMBOLS
+        from src.ingestion.universe_fetch import nifty_index_symbols
+        from src.ingestion.yfinance_provider import build_dataset
+        syms = nifty_index_symbols("nifty50", fallback=NIFTY_50_SYMBOLS)
+        logger.info("Building Nifty 50 list for %d symbols...", len(syms))
+        frame = build_dataset(symbols=syms, mode="full")
+        if "price" in frame.columns:
+            frame = frame[frame["price"].notna()]
+        scored = fa.fundamental_scores(frame, sector_col="sector")
+        recs = frame_to_records(scored, "Yahoo Finance — Nifty 50 constituents (educational)")
+        if recs:
+            return {"Nifty 50": recs}
+        logger.warning("Nifty 50 list empty; skipping.")
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Nifty 50 list build failed (%s); site builds without it.", exc)
+    return None
 
 
 def _maybe_build_movers(with_movers: bool, source: str,
@@ -250,10 +277,17 @@ if __name__ == "__main__":
                     choices=["yfinance", "screener", "both", "auto", "none"],
                     help="fundamentals for movers: yfinance (CI-safe) / screener/both/auto (personal)")
     ap.add_argument("--movers-top", type=int, default=10, help="stocks per movers section")
+    ap.add_argument("--with-nifty50", action="store_true",
+                    help="also build a dedicated Nifty 50 page alongside the all-market Top 50")
     args = ap.parse_args()
     src = "demo" if args.demo else args.source
     res = run(source=src, limit=args.limit, out_dir=args.out, mode=args.mode,
               top=args.top, min_mcap=args.min_mcap, with_movers=args.with_movers,
-              movers_source=args.movers_source, movers_top=args.movers_top)
+              movers_source=args.movers_source, movers_top=args.movers_top,
+              with_nifty50=args.with_nifty50)
+    extras = []
+    if res.get("has_movers"):
+        extras.append("movers")
+    extras += res.get("lists", [])
     print(f"Built {res['pages']} pages -> {res['index']}"
-          + (f"  (+movers: {res['movers']})" if res.get("has_movers") else ""))
+          + (f"  (+{', '.join(extras)})" if extras else ""))

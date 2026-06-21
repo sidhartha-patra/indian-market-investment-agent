@@ -44,3 +44,28 @@ def test_stock_page_has_score_and_why(tmp_path):
     assert "91" in html
     assert "Why" in html and "Supportive signals" in html
     assert "og:title" in html  # shareable preview metadata
+
+
+def test_extra_list_builds_named_page_and_links(tmp_path):
+    res = build_site(_demo_records(), out_dir=tmp_path, extra_lists={"Nifty 50": _demo_records()})
+    assert "nifty50.html" in res["lists"]
+    page = tmp_path / "nifty50.html"
+    assert page.exists()
+    html = page.read_text(encoding="utf-8")
+    assert "Nifty 50" in html
+    assert "RELIANCE" in html and "stock/RELIANCE.html" in html
+    # The home page links to the Nifty 50 page (coexists with the all-market Top 50).
+    index = (tmp_path / "index.html").read_text(encoding="utf-8")
+    assert "nifty50.html" in index and "Nifty 50" in index
+    # SEBI framing preserved, no entry/target calls.
+    low = html.lower()
+    assert "not investment advice" in low and "sebi" in low
+    assert "buy at" not in low and "target price" not in low
+
+
+def test_extra_list_empty_is_ignored(tmp_path):
+    res = build_site(_demo_records(), out_dir=tmp_path, extra_lists={"Nifty 50": []})
+    assert res["lists"] == []
+    assert not (tmp_path / "nifty50.html").exists()
+    index = (tmp_path / "index.html").read_text(encoding="utf-8")
+    assert "nifty50.html" not in index
