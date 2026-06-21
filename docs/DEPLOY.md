@@ -84,24 +84,38 @@ deep, *grounded* fundamental analysis per stock — blending the deterministic m
 **Gen-AI analyst** that reasons only from the validated numbers (and cross-checks data
 across sources). Each stock gets an explicit **Buy case** and **Sell case**.
 
-### Free AI — GitHub Models (no paid key)
+### Free AI in CI — no PAT needed
 
-1. Create a **fine-grained or classic PAT** with the **`models: read`** scope at
-   **https://github.com/settings/personal-access-tokens** (or **Settings → Developer
-   settings → Personal access tokens**). No repo scopes are needed.
-2. Repo → **Settings → Secrets and variables → Actions → New repository secret** →
-   **Name:** `MODELS_TOKEN`  **Value:** *(paste the PAT)*.
-3. (Optional) Repo → **Settings → Secrets and variables → Actions → Variables** → add
-   **`REC_TOP`** (e.g. `300`) to set how many stocks the recommendations analyse.
+The workflow grants `permissions: models: read` and passes the **built-in `GITHUB_TOKEN`** to the
+build, so **GitHub Models works in CI out of the box — no secret required**. The pages build with
+full AI automatically. (Optional overrides: set a `MODELS_TOKEN` PAT, or an `ANTHROPIC_API_KEY`
+to switch the analyst to **Claude Opus**, or `OPENAI_API_KEY` / Azure. No key of any kind ⇒ the
+build still works via the deterministic rules-based analyst.)
 
-That's it — the next run builds `recommendations.html` + `search.html`. **Without**
-`MODELS_TOKEN`, the build still works and falls back to the **deterministic (rules-based)**
-analyst, so the pages never break.
+Optional: add a repo **Variable** `REC_TOP` (e.g. `300`) to set how many stocks the
+recommendations analyse.
 
 > Free GitHub Models has a **daily request cap**. The build is **exhaustive but resumable**:
 > the AI cache (`data/ai_cache`, persisted via `actions/cache`) accumulates coverage across
-> runs, so the whole universe gets full AI analysis over a few runs. A single local run with
-> the cap removed (paid key) does everything at once.
+> runs, so the whole universe gets full AI analysis over a few runs.
+
+### 💻 Alternative: build locally & auto-publish (no CI limits, runs for hours)
+
+Prefer to do the exhaustive analysis on your own machine (free AI via your `gh` login, no rate
+caps, no 6-hour job limit)? A twice-daily Scheduled Task can build everything and **push it to a
+`gh-pages` branch** that Pages serves:
+
+```powershell
+# one-time: register the auto-publish task (08:30 + 18:00 local), exhaustive over 300 stocks
+powershell -ExecutionPolicy Bypass -File scripts\register_local_task.ps1 -Publish -RecTop 300
+# then flip: Settings -> Pages -> Source = "Deploy from a branch" -> gh-pages / root
+```
+
+The script (`scripts/refresh_and_publish.ps1`) builds with your local `gh` token (free GitHub
+Models) into a staging dir and pushes it to `gh-pages`. Your analysis **state** (`data/ai_cache`)
+stays on your machine and is reused every run, so coverage accumulates. Caveat: your PC must be
+awake at the scheduled times. (Pages serves **either** the Actions build **or** the `gh-pages`
+branch — pick one Source.)
 
 ### Upgrade to Claude Opus (optional, paid)
 
