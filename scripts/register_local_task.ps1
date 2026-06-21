@@ -12,7 +12,7 @@ param(
     [int]$RecTop = 300,            # stocks the AI Buy/Sell/Hold analyses (when -Publish)
     [string]$Email = "sipatra@microsoft.com",  # completion-notification recipient (when -Publish)
     [switch]$NoMl,                 # skip ML forecasts (faster) when -Publish
-    [int]$TimeLimitHours = 6       # max run time — exhaustive AI+ML can take hours
+    [int]$TimeLimitHours = 6       # max run time - exhaustive AI+ML can take hours
 )
 
 $ErrorActionPreference = "Stop"
@@ -45,9 +45,9 @@ Register-ScheduledTask -TaskName $TaskName -Action $action -Trigger $triggers `
 
 Write-Host "Registered '$TaskName' at $Time1 + $Time2 (local time)."
 if ($Publish) {
-    Write-Host "Mode: PUBLISH — builds exhaustively (RecTop=$RecTop) and pushes the 'gh-pages' branch."
+    Write-Host "Mode: PUBLISH - builds exhaustively (RecTop=$RecTop) and pushes the 'gh-pages' branch."
     Write-Host "Ensure: (1) git is authenticated for sidhartha-patra, (2) Settings -> Pages -> Source = 'Deploy from a branch' -> gh-pages."
 } else {
-    Write-Host "Mode: LOCAL PREVIEW — serves at http://localhost:8765/ (not published)."
+    Write-Host "Mode: LOCAL PREVIEW - serves at http://localhost:8765/ (not published)."
 }
 Write-Host "Run now with: Start-ScheduledTask -TaskName '$TaskName'"

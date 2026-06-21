@@ -56,7 +56,7 @@ $buildArgs = @(
 if ($NoMl) { $buildArgs += "--no-ml" }
 $buildArgs += @("--out", $build)
 
-Write-Host "[$(Get-Date -Format u)] Building (this can take a while — exhaustive AI + ML)…"
+Write-Host "[$(Get-Date -Format u)] Building (this can take a while - exhaustive AI + ML)..."
 & $py @buildArgs
 if ($LASTEXITCODE -ne 0) { throw "Build failed (exit $LASTEXITCODE)." }
 New-Item -ItemType File -Path (Join-Path $build ".nojekyll") -Force | Out-Null  # serve _-prefixed paths
@@ -126,7 +126,7 @@ if (-not $NoEmail) {
             $stats.universe = $r.universe_count; $stats.ai = $r.ai_analysed
             $stats.buy = $r.buckets.BUY.Count; $stats.hold = $r.buckets.HOLD.Count; $stats.sell = $r.buckets.SELL.Count
         }
-        $statusLine = if ($NoPush) { "Built locally (not published)." } elseif ($published) { "Published to GitHub Pages." } else { "Built, but publish FAILED — check the log." }
+        $statusLine = if ($NoPush) { "Built locally (not published)." } elseif ($published) { "Published to GitHub Pages." } else { "Built, but publish FAILED - check the log." }
         $subject = "Indian Stock Agent - refresh $(Get-Date -Format 'yyyy-MM-dd HH:mm') ($($stats.buy) buy / $($stats.sell) sell)"
         $html = @"
 <div style='font-family:Segoe UI,Arial,sans-serif;max-width:640px'>
