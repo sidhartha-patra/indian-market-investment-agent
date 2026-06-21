@@ -65,6 +65,18 @@ th{cursor:pointer;color:var(--mut);user-select:none;position:sticky;top:0;backgr
 .movers-banner:hover{text-decoration:none;background:#10301d}
 .chip{display:inline-block;font-size:11px;color:var(--mut);background:#11161c;border:1px solid #21262d;border-radius:10px;padding:1px 7px;margin:0 4px 0 0}
 td .sub2{font-size:11px;color:var(--mut)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media(max-width:640px){.twocol{grid-template-columns:1fr}}
+.opt{border-radius:10px;padding:10px 12px}
+.opt-buy{background:#0d2818;border:1px solid #1c5235}.opt-sell{background:#2a1416;border:1px solid #5a2630}
+.opt-h{font-weight:700;margin-bottom:4px}
+.comp{display:inline-block;font-size:12px;background:#11161c;border:1px solid #21262d;border-radius:8px;padding:2px 8px;margin:2px 4px 2px 0}
+.aicard{border-left:3px solid var(--accent)}
+.tabs{display:flex;gap:6px;margin:10px 0;flex-wrap:wrap}
+.tab{cursor:pointer;padding:8px 16px;border-radius:8px;border:1px solid #30363d;background:var(--card);color:var(--fg);font-weight:600;font-size:14px}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab.buy.active{background:var(--good);border-color:var(--good)}.tab.sell.active{background:var(--bad);border-color:var(--bad)}
+.aibadge{font-size:11px;padding:1px 7px;border-radius:8px;background:#13294a;color:#7fb0ff;border:1px solid #1e3a63}
 """
 
 _SORT_JS = """
@@ -128,8 +140,17 @@ def _slug(title: str) -> str:
 
 
 def _index_html(records: list[dict], generated_at: str, has_movers: bool = False,
-                extra_links: list[tuple[str, str]] | None = None) -> str:
+                extra_links: list[tuple[str, str]] | None = None,
+                has_reco: bool = False, has_search: bool = False) -> str:
     banners = []
+    if has_reco:
+        banners.append(
+            "<a class='movers-banner' href='recommendations.html'>🎯 Top Buy / Sell / Hold — "
+            "AI + fundamentals + analyst consensus + ML, with an explicit Buy case &amp; Sell case →</a>")
+    if has_search:
+        banners.append(
+            "<a class='movers-banner' href='search.html'>🔎 Search any stock — deep AI fundamental "
+            "analysis: Buy or Sell? →</a>")
     if has_movers:
         banners.append(
             "<a class='movers-banner' href='movers.html'>📈 Today&#39;s Top Gainers · Losers · "
@@ -394,6 +415,139 @@ def _recommendation_html(rec: dict | None) -> str:
     )
 
 
+def _verdict_pill(verdict: Any) -> str:
+    cls = _VERDICT_CLASS.get(str(verdict).upper(), "s-mid")
+    return f"<span class='score {cls}'>{_esc(str(verdict).replace('_', ' '))}</span>"
+
+
+def _components_badges(components: dict | None) -> str:
+    """Per-signal lean badges (fundamental / AI / analyst / ML / news), colour-coded."""
+    if not components:
+        return ""
+    order = [("fundamental", "Fundamentals"), ("ai", "AI"), ("analyst", "Analysts"),
+             ("ml", "ML"), ("news", "News")]
+    out = []
+    for k, lbl in order:
+        if k in components and isinstance(components[k], (int, float)):
+            v = components[k]
+            cls = "pos" if v > 0.1 else "neg" if v < -0.1 else "band"
+            out.append(f"<span class='comp'>{lbl} <b class='{cls}'>{v:+.2f}</b></span>")
+    return "".join(out)
+
+
+def _two_options_html(buy_case: list | None, sell_case: list | None) -> str:
+    """The two explicit options the user asked for: a Buy case and a Sell case."""
+    bc = "".join(f"<li class='pos'>{_esc(x)}</li>" for x in (buy_case or [])) or "<li class='band'>—</li>"
+    sc = "".join(f"<li class='neg'>{_esc(x)}</li>" for x in (sell_case or [])) or "<li class='band'>—</li>"
+    return ("<div class='twocol'>"
+            f"<div class='opt opt-buy'><div class='opt-h pos'>🟢 The Buy case</div>"
+            f"<ul class='why'>{bc}</ul></div>"
+            f"<div class='opt opt-sell'><div class='opt-h neg'>🔴 The Sell case</div>"
+            f"<ul class='why'>{sc}</ul></div></div>")
+
+
+def _analyst_line(ac: dict | None) -> str:
+    if not ac:
+        return ""
+    bits = []
+    if ac.get("buy_pct") is not None:
+        bits.append(f"{_fmt(ac.get('buy_pct'), 0)}% buy / {_fmt(ac.get('sell_pct'), 0)}% sell (brokers)")
+    if ac.get("rec_key"):
+        bits.append(_esc(str(ac["rec_key"]).replace("_", " ")))
+    if ac.get("target_upside_pct") is not None:
+        cls = "pos" if ac["target_upside_pct"] >= 0 else "neg"
+        bits.append(f"target <span class='{cls}'>{ac['target_upside_pct']:+g}%</span>")
+    if ac.get("analyst_n"):
+        bits.append(f"{_esc(ac['analyst_n'])} analysts")
+    if ac.get("tech_rating"):
+        bits.append(f"tech: {_esc(ac['tech_rating'])}")
+    return " · ".join(bits)
+
+
+def _ml_line(ml: dict | None) -> str:
+    if not ml or ml.get("error"):
+        return ""
+    cls = "pos" if ml.get("direction") == "UP" else "neg" if ml.get("direction") == "DOWN" else "band"
+    return (f"<span class='{cls}'>{_esc(ml.get('direction'))} {_fmt(ml.get('predicted_return_pct'), 1)}%</span> "
+            f"over ~{_esc(ml.get('horizon_days'))}d · P(up) {_esc(ml.get('prob_up'))} · "
+            f"range {_fmt(ml.get('return_lower_pct'), 1)}%…{_fmt(ml.get('return_upper_pct'), 1)}% "
+            f"<span class='band'>({_esc(ml.get('model'))}, conformal)</span>")
+
+
+def _ai_analysis_html(deep: dict | None) -> str:
+    """The headline Gen-AI deep-research card: composite verdict + grounded two-sided cases."""
+    if not deep:
+        return ""
+    comp = deep.get("composite") or {}
+    ai = deep.get("ai") or {}
+    ac = deep.get("analyst_consensus") or {}
+    ml = deep.get("ml_forecast") or {}
+    news = deep.get("news") or {}
+    if not comp and not ai:
+        return ""
+
+    provider = comp.get("ai_provider") or ai.get("provider") or "model"
+    is_ai = ai.get("source") == "ai"
+    badge = (f"<span class='aibadge'>🤖 {_esc(provider)}</span>" if is_ai
+             else "<span class='aibadge'>rules-based (no LLM)</span>")
+    verdict = comp.get("verdict") or ai.get("verdict") or "HOLD"
+    score = comp.get("score")
+    thesis = ai.get("thesis") or comp.get("thesis") or ""
+    buy_case = comp.get("buy_case") or ai.get("buy_case") or []
+    sell_case = comp.get("sell_case") or ai.get("sell_case") or []
+    critique = comp.get("data_critique") or ai.get("data_critique") or []
+    hv = ai.get("horizon_view") or comp.get("horizon_view") or {}
+    dq = deep.get("data_quality") or {}
+
+    extras = []
+    a_line = _analyst_line(ac)
+    if a_line:
+        extras.append(f"<div class='metric'><div class='k'>Analyst / broker consensus</div>"
+                      f"<div class='v' style='font-size:14px'>{a_line}</div></div>")
+    m_line = _ml_line(ml)
+    if m_line:
+        extras.append(f"<div class='metric'><div class='k'>ML forecast (conformal)</div>"
+                      f"<div class='v' style='font-size:14px'>{m_line}</div></div>")
+    if news and news.get("net_sentiment") is not None:
+        cls = "pos" if news["net_sentiment"] >= 0 else "neg"
+        extras.append(f"<div class='metric'><div class='k'>News sentiment ({_esc(news.get('n'))} headlines)</div>"
+                      f"<div class='v'><span class='{cls}'>{news['net_sentiment']:+.2f}</span> "
+                      f"<span class='band'>{_esc(news.get('source'))}</span></div></div>")
+    if dq.get("confidence") is not None:
+        extras.append(f"<div class='metric'><div class='k'>Data quality (cross-checked)</div>"
+                      f"<div class='v'>{_esc(dq.get('confidence'))}/100 "
+                      f"<span class='band'>{_esc(dq.get('verdict'))}, {_esc(dq.get('n_sources'))} sources</span></div></div>")
+
+    horizons = ""
+    if any(hv.values()):
+        horizons = ("<p class='band'><b>Outlook:</b> "
+                    f"Short — {_esc(hv.get('short'))} · Mid — {_esc(hv.get('mid'))} · "
+                    f"Long — {_esc(hv.get('long'))}</p>")
+    critique_html = ("<p class='band'><b>🔎 Data critique:</b> " + "; ".join(_esc(c) for c in critique) + "</p>"
+                     if critique else "")
+    conflicts = dq.get("conflicts") or []
+    suspect = dq.get("suspect") or []
+    flags_html = ""
+    if conflicts or suspect:
+        items = "".join(f"<li class='neg'>⚠ {_esc(x)}</li>" for x in (conflicts + suspect)[:6])
+        flags_html = f"<details><summary class='band'>Source disagreements &amp; suspect values</summary><ul class='why'>{items}</ul></details>"
+
+    return (
+        "<div class='card aicard'><h3>🤖 AI deep research — Buy or Sell?</h3>"
+        f"<p>{_verdict_pill(verdict)} &nbsp; "
+        + (f"<b>{_esc(score)}</b>/100 composite &nbsp; " if score is not None else "")
+        + f"{badge} &nbsp;·&nbsp; <span class='band'>{_esc(comp.get('rationale'))}</span></p>"
+        + (f"<p>{_esc(thesis)}</p>" if thesis else "")
+        + _two_options_html(buy_case, sell_case)
+        + (f"<p class='band'><b>Signals:</b> {_components_badges(comp.get('components'))} "
+           f"&nbsp; agreement {_esc(comp.get('agreement'))}</p>" if comp.get("components") else "")
+        + (f"<div class='grid'>{''.join(extras)}</div>" if extras else "")
+        + horizons + critique_html + flags_html
+        + "<p class='band'>⚠️ AI-assisted educational analysis, grounded in the data shown — "
+        "scenarios and reasoning, NOT investment advice or a guaranteed prediction.</p></div>"
+    )
+
+
 def _tv_chart(symbol, exchange="NSE") -> str:
     """Official TradingView chart widget embed (compliant: data stays on TV servers)."""
     sym = _esc(symbol)
@@ -440,6 +594,7 @@ def _stock_html(rec: dict, generated_at: str) -> str:
 <span class='band'>(sector-relative percentile · band: {_esc(rec.get('tier'))})</span></h2>
 <p class='band'>This score summarises publicly available fundamentals relative to sector peers.
 It is descriptive, not a recommendation.</p>{_pillar_bars(rec.get('pillars'))}</div>
+{_ai_analysis_html(rec.get('deep'))}
 {_recommendation_html(rec.get('recommendation'))}
 <div class='card'><h3>Why — what the data shows</h3>
 <b class='pos'>Supportive signals</b><ul class='why'>{_why_list(positives, 'pos')}</ul>
@@ -451,12 +606,146 @@ It is descriptive, not a recommendation.</p>{_pillar_bars(rec.get('pillars'))}</
 </div></body></html>"""
 
 
+def _reco_card(rank: int, deep: dict) -> str:
+    sym = _esc(deep.get("symbol"))
+    name = _esc((deep.get("name") or "")[:42])
+    comp = deep.get("composite") or {}
+    a = _analyst_line(deep.get("analyst_consensus"))
+    m = _ml_line(deep.get("ml_forecast"))
+    return (
+        "<div class='card'>"
+        f"<h3 style='margin:.1em 0'>#{rank} <a href='stock/{sym}.html'>{sym}</a> "
+        f"<span class='band' style='font-size:13px'>{name} · {_esc(deep.get('sector'))} · "
+        f"₹{_fmt(deep.get('price'))}</span></h3>"
+        f"<p>{_verdict_pill(comp.get('verdict'))} &nbsp; <b>{_esc(comp.get('score'))}</b>/100 "
+        f"&nbsp;·&nbsp; <span class='band'>{_esc(comp.get('rationale'))}</span></p>"
+        f"{_two_options_html(comp.get('buy_case'), comp.get('sell_case'))}"
+        + (f"<p class='band'>{_components_badges(comp.get('components'))} · agreement "
+           f"{_esc(comp.get('agreement'))}</p>" if comp.get("components") else "")
+        + (f"<p class='band'><b>Analysts:</b> {a}</p>" if a else "")
+        + (f"<p class='band'><b>ML:</b> {m}</p>" if m else "")
+        + f"<p class='band'><a href='stock/{sym}.html'>Full AI deep research →</a></p></div>"
+    )
+
+
+def _reco_pane(group: str, cards: list[dict], visible: bool) -> str:
+    style = "" if visible else "display:none"
+    if not cards:
+        body = f"<p class='band'>No {group.lower()} ideas surfaced in this run.</p>"
+    else:
+        body = "".join(_reco_card(i + 1, d) for i, d in enumerate(cards))
+    return f"<div class='reco-pane' data-g='{group}' style='{style}'>{body}</div>"
+
+
+_RECO_JS = """
+function showPane(g,el){var p=document.querySelectorAll('.reco-pane');
+for(var i=0;i<p.length;i++){p[i].style.display=p[i].getAttribute('data-g')==g?'':'none';}
+var t=document.querySelectorAll('.tab');for(var j=0;j<t.length;j++){t[j].classList.remove('active');}
+el.classList.add('active');}
+"""
+
+
+def _reco_page_html(reco: dict, generated_at: str) -> str:
+    buckets = reco.get("buckets") or {}
+    buy, hold, sell = buckets.get("BUY", []), buckets.get("HOLD", []), buckets.get("SELL", [])
+    provider = _esc(reco.get("provider") or "model")
+    gen = _esc(reco.get("generated_at") or generated_at)
+    ucount = _esc(reco.get("universe_count") or "")
+    tabs = ("<div class='tabs'>"
+            f"<div class='tab buy active' onclick=\"showPane('BUY',this)\">🟢 Buy ({len(buy)})</div>"
+            f"<div class='tab' onclick=\"showPane('HOLD',this)\">🟡 Hold ({len(hold)})</div>"
+            f"<div class='tab sell' onclick=\"showPane('SELL',this)\">🔴 Sell ({len(sell)})</div></div>")
+    panes = (_reco_pane("BUY", buy, True) + _reco_pane("HOLD", hold, False)
+             + _reco_pane("SELL", sell, False))
+    return f"""<!doctype html><html lang='en'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Top Buy / Sell / Hold — AI + Fundamental Recommendations (India)</title>
+<meta property='og:title' content='Top Buy / Sell / Hold Indian stocks — AI + fundamentals + analyst consensus'>
+<meta property='og:description' content='Top 10 Buy, Sell and Hold Indian stocks ranked by a composite of fundamentals, Gen-AI analysis, analyst/broker consensus, ML forecast and news. Educational, not advice.'>
+<style>{_CSS}</style></head><body><div class='wrap'>
+<div class='sub'><a href='index.html'>← All stocks</a> &nbsp;·&nbsp; <a href='search.html'>🔎 Search a stock</a></div>
+<header><h1>🎯 Top Buy / Sell / Hold</h1>
+<div class='sub'>Composite of fundamentals + Gen-AI analyst + analyst/broker consensus + ML forecast + news ·
+screened from {ucount} stocks · AI: {provider} · updated {gen}</div></header>
+<div class='disclaimer'>⚠️ {DISCLAIMER_SHORT}</div>
+<p class='band'>Each idea blends five independent signals and shows an explicit <b class='pos'>Buy case</b>
+and <b class='neg'>Sell case</b>. Ranked by composite conviction. Educational model output — not advice.</p>
+{tabs}{panes}
+<div class='foot'>{DISCLAIMER_FULL}</div></div><script>{_RECO_JS}</script></body></html>"""
+
+
+_SEARCH_JS = """
+var D=window.__SEARCH__||[];
+var CLS={STRONG_BUY:'s-hi',BUY:'s-hi',HOLD:'s-mid',SELL:'s-lo',AVOID:'s-lo'};
+function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function li(a,cls){return (a&&a.length)?a.map(function(x){return "<li class='"+cls+"'>"+esc(x)+"</li>";}).join(''):"<li class='band'>—</li>";}
+function card(e){var c=CLS[e.v]||'s-mid';
+return "<div class='card'><h3 style='margin:.1em 0'><a href='stock/"+esc(e.s)+".html'>"+esc(e.s)+"</a> "+
+"<span class='band' style='font-size:13px'>"+esc(e.n)+" · "+esc(e.sec)+" · ₹"+esc(e.p)+"</span></h3>"+
+"<p><span class='score "+c+"'>"+esc((e.v||'').replace('_',' '))+"</span> "+(e.sc!=null?"<b>"+esc(e.sc)+"</b>/100":'')+
+(e.ai?" <span class='aibadge'>🤖 AI</span>":"")+"</p>"+
+"<div class='twocol'><div class='opt opt-buy'><div class='opt-h pos'>🟢 Buy case</div><ul class='why'>"+li(e.b,'pos')+"</ul></div>"+
+"<div class='opt opt-sell'><div class='opt-h neg'>🔴 Sell case</div><ul class='why'>"+li(e.se,'neg')+"</ul></div></div>"+
+"<p class='band'><a href='stock/"+esc(e.s)+".html'>Full deep research →</a></p></div>";}
+function run(){var q=document.getElementById('q').value.trim().toLowerCase();var box=document.getElementById('res');
+if(!q){box.innerHTML="<p class='band'>Type a stock symbol or company name to see its deep analysis and the Buy vs Sell case.</p>";return;}
+var m=D.filter(function(e){return ((e.s||'')+' '+(e.n||'')).toLowerCase().indexOf(q)>-1;});
+m.sort(function(a,b){return (a.s.toLowerCase()==q?-1:b.s.toLowerCase()==q?1:0);});
+m=m.slice(0,12);
+if(!m.length){box.innerHTML="<div class='card'><p>No analysed match for <b>"+esc(q)+"</b>. This site searches our pre-analysed universe of "+D.length+" stocks. Try the NSE symbol (e.g. RELIANCE, TCS), or view it on <a target='_blank' rel='noopener' href='https://www.screener.in/company/"+esc(q.toUpperCase())+"/'>Screener.in</a> / <a target='_blank' rel='noopener' href='https://www.tradingview.com/symbols/NSE-"+esc(q.toUpperCase())+"/'>TradingView</a>.</p></div>";return;}
+box.innerHTML=m.map(card).join('');}
+"""
+
+
+def _search_entry(deep_or_rec: dict) -> dict:
+    """Compact, embeddable search record with the two-sided case."""
+    comp = deep_or_rec.get("composite") or {}
+    ai = deep_or_rec.get("ai") or {}
+    rec = deep_or_rec.get("recommendation") or {}
+    buy = comp.get("buy_case") or ai.get("buy_case") or rec.get("positives") or []
+    sell = comp.get("sell_case") or ai.get("sell_case") or rec.get("negatives") or []
+    return {
+        "s": deep_or_rec.get("symbol"),
+        "n": (deep_or_rec.get("name") or "")[:48],
+        "sec": deep_or_rec.get("sector") or "",
+        "p": deep_or_rec.get("price"),
+        "v": comp.get("verdict") or rec.get("verdict") or "HOLD",
+        "sc": comp.get("score"),
+        "b": [str(x)[:200] for x in buy[:3]],
+        "se": [str(x)[:200] for x in sell[:3]],
+        "ai": bool(ai.get("source") == "ai"),
+    }
+
+
+def _search_page_html(search_index: list[dict], generated_at: str, provider: str = "") -> str:
+    data = json.dumps(search_index, default=str, ensure_ascii=False)
+    n = len(search_index)
+    prov = _esc(provider or "model")
+    return f"""<!doctype html><html lang='en'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Search a stock — AI fundamental analysis, Buy or Sell? (India)</title>
+<meta property='og:title' content='Search any Indian stock — AI fundamental analysis: Buy or Sell?'>
+<meta property='og:description' content='Search a stock and get its deep fundamental analysis with an explicit Buy case and Sell case. Educational, not advice.'>
+<style>{_CSS}</style></head><body><div class='wrap'>
+<div class='sub'><a href='index.html'>← All stocks</a> &nbsp;·&nbsp; <a href='recommendations.html'>🎯 Top Buy/Sell/Hold</a></div>
+<header><h1>🔎 Search a stock — Buy or Sell?</h1>
+<div class='sub'>Deep fundamental analysis across {n} pre-analysed stocks · AI: {prov} · updated {_esc(generated_at)}</div></header>
+<div class='disclaimer'>⚠️ {DISCLAIMER_SHORT}</div>
+<input class='search' id='q' oninput='run()' autofocus placeholder='Type a symbol or company name — e.g. RELIANCE, Infosys, HDFC Bank…'>
+<div id='res'><p class='band'>Type a stock symbol or company name to see its deep analysis and the Buy vs Sell case.</p></div>
+<div class='foot'>{DISCLAIMER_FULL}</div></div>
+<script>window.__SEARCH__={data};</script><script>{_SEARCH_JS}</script></body></html>"""
+
+
 def build_site(
     records: list[dict],
     out_dir: str | Path = "site",
     generated_at: str | None = None,
     movers: dict | None = None,
     extra_lists: dict[str, list[dict]] | None = None,
+    recommendations: dict | None = None,
+    search_index: list[dict] | None = None,
+    deep_by_symbol: dict[str, dict] | None = None,
 ) -> dict:
     """Generate the full static site. Returns counts + output paths.
 
@@ -472,6 +761,12 @@ def build_site(
     becomes a standalone ``<slug>.html`` page (e.g. ``nifty50.html``) with the same sortable
     table + detail pages, linked from the home page. Lets the all-market Top 50 coexist with
     curated index lists like Nifty 50.
+
+    ``recommendations`` (optional): ``{"generated_at","provider","universe_count",
+    "buckets":{"BUY":[deep,...],"HOLD":[...],"SELL":[...]}}`` -> ``recommendations.html``.
+    ``search_index`` (optional): list of compact search records -> ``search.html``.
+    ``deep_by_symbol`` (optional): ``{SYMBOL: deep_dive}`` attached to matching stock detail
+    pages so they show the full AI deep-research card.
     """
     out = Path(out_dir)
     (out / "stock").mkdir(parents=True, exist_ok=True)
@@ -479,16 +774,28 @@ def build_site(
     gen = generated_at or datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M %Z")
 
     has_movers = bool(movers and movers.get("sections"))
+    has_reco = bool(recommendations and (recommendations.get("buckets") or {}))
+    has_search = bool(search_index)
     lists = {t: r for t, r in (extra_lists or {}).items() if r}
     extra_links = [(t, f"{_slug(t)}.html") for t in lists]
+    deep_by_symbol = {str(k).upper(): v for k, v in (deep_by_symbol or {}).items()}
+    if recommendations:  # reco stocks always carry their AI card onto the detail page
+        for bucket in (recommendations.get("buckets") or {}).values():
+            for d in bucket:
+                deep_by_symbol.setdefault(str(d.get("symbol", "")).upper(), d)
+
+    def _with_deep(rec: dict) -> dict:
+        d = deep_by_symbol.get(str(rec.get("symbol", "")).upper())
+        return {**rec, "deep": d} if d and "deep" not in rec else rec
 
     records = sorted(records, key=lambda r: (r.get("fundamental_score") or -1), reverse=True)
     (out / "index.html").write_text(
-        _index_html(records, gen, has_movers=has_movers, extra_links=extra_links), encoding="utf-8")
+        _index_html(records, gen, has_movers=has_movers, extra_links=extra_links,
+                    has_reco=has_reco, has_search=has_search), encoding="utf-8")
     written: set[str] = set()
     for rec in records:
         sym = str(rec.get("symbol", "UNKNOWN"))
-        (out / "stock" / f"{sym}.html").write_text(_stock_html(rec, gen), encoding="utf-8")
+        (out / "stock" / f"{sym}.html").write_text(_stock_html(_with_deep(rec), gen), encoding="utf-8")
         written.add(sym)
 
     def _emit_detail_pages(recs: list[dict]) -> int:
@@ -496,7 +803,7 @@ def build_site(
         for rec in recs:
             sym = str(rec.get("symbol") or "").strip()
             if sym and sym not in written:
-                (out / "stock" / f"{sym}.html").write_text(_stock_html(rec, gen), encoding="utf-8")
+                (out / "stock" / f"{sym}.html").write_text(_stock_html(_with_deep(rec), gen), encoding="utf-8")
                 written.add(sym)
                 n += 1
         return n
@@ -515,6 +822,25 @@ def build_site(
         (out / f"{_slug(title)}.html").write_text(
             _list_page_html(title, recs_sorted, gen), encoding="utf-8")
 
+    if has_reco:
+        # ensure every recommended stock has a detail page (with its deep card)
+        for bucket in recommendations["buckets"].values():
+            extra_pages += _emit_detail_pages([
+                {"symbol": d.get("symbol"), "name": d.get("name"), "sector": d.get("sector"),
+                "exchange": d.get("exchange") or "NSE", "price": d.get("price"),
+                "metrics": d.get("metrics"), "recommendation": d.get("recommendation"),
+                "deep": d} for d in bucket])
+        (out / "recommendations.html").write_text(_reco_page_html(recommendations, gen), encoding="utf-8")
+        (out / "data" / "recommendations.json").write_text(
+            json.dumps(recommendations, indent=2, default=str), encoding="utf-8")
+
+    if has_search:
+        prov = (recommendations or {}).get("provider", "")
+        (out / "search.html").write_text(
+            _search_page_html(search_index, gen, provider=prov), encoding="utf-8")
+        (out / "data" / "search.json").write_text(
+            json.dumps(search_index, indent=2, default=str, ensure_ascii=False), encoding="utf-8")
+
     index_json = [{"symbol": r.get("symbol"), "name": r.get("name"), "sector": r.get("sector"),
                    "price": r.get("price"), "score": r.get("fundamental_score"), "tier": r.get("tier"),
                    "signal": (r.get("recommendation") or {}).get("verdict")}
@@ -523,12 +849,16 @@ def build_site(
         json.dumps({"generated_at": gen, "count": len(records), "stocks": index_json}, indent=2,
                    default=str), encoding="utf-8")
 
-    logger.info("Built site: %d main + %d extra pages (movers=%s, lists=%s) -> %s",
-                len(records), extra_pages, has_movers, list(lists), out.resolve())
+    logger.info("Built site: %d main + %d extra (movers=%s, lists=%s, reco=%s, search=%s) -> %s",
+                len(records), extra_pages, has_movers, list(lists), has_reco, has_search, out.resolve())
     return {"out_dir": str(out.resolve()),
-            "pages": len(records) + 1 + extra_pages + (1 if has_movers else 0) + len(lists),
+            "pages": len(records) + 1 + extra_pages + (1 if has_movers else 0) + len(lists)
+                     + (1 if has_reco else 0) + (1 if has_search else 0),
             "index": str((out / "index.html").resolve()), "has_movers": has_movers,
+            "has_reco": has_reco, "has_search": has_search,
             "lists": [h for _, h in extra_links],
+            "recommendations": str((out / "recommendations.html").resolve()) if has_reco else None,
+            "search": str((out / "search.html").resolve()) if has_search else None,
             "movers": str((out / "movers.html").resolve()) if has_movers else None}
 
 
@@ -611,8 +941,46 @@ def _demo_movers() -> dict:
             "sections": sections}
 
 
+def _demo_recommendations() -> dict:
+    """Offline sample Buy/Hold/Sell buckets (deterministic deep-dive, no network)."""
+    from src.strategies.deep_research import deep_dive
+    seed = [
+        ("TCS", "Tata Consultancy Services", "IT", 3450.0,
+         {"pe": 27.0, "roe": 47.0, "roce": 58.0, "debt_to_equity": 0.05, "dividend_yield": 1.6,
+          "profit_growth_5y": 12.0, "high_52w": 4200, "low_52w": 3000, "sma50": 3400, "sma200": 3550}),
+        ("TATAMOTORS", "Tata Motors", "Consumer Cyclical", 720.0,
+         {"pe": 9.0, "roe": 22.0, "roce": 16.0, "debt_to_equity": 1.2, "profit_growth_5y": 25.0,
+          "high_52w": 1180, "low_52w": 600, "sma50": 700, "sma200": 760}),
+        ("RELIANCE", "Reliance Industries", "Energy", 1310.0,
+         {"pe": 22.8, "roe": 8.9, "roce": 10.3, "debt_to_equity": 0.44, "profit_growth_5y": 12.0,
+          "high_52w": 1600, "low_52w": 1100, "sma50": 1290, "sma200": 1240}),
+        ("YESBANK", "Yes Bank", "Financial Services", 18.5,
+         {"pe": 32.0, "roe": 3.0, "roce": 5.0, "debt_to_equity": 2.4, "profit_growth_5y": -4.0,
+          "high_52w": 28, "low_52w": 17, "sma50": 21, "sma200": 23}),
+    ]
+    deeps = [deep_dive(s, {**m, "name": n, "sector": sec, "price": p}, sector_score=None,
+                       use_ai=False, use_ml=False, use_news=False, use_analyst=False)
+             for s, n, sec, p, m in seed]
+    buckets: dict[str, list[dict]] = {"BUY": [], "HOLD": [], "SELL": []}
+    for d in deeps:
+        buckets[d["composite"]["group"]].append(d)
+    for g in buckets:
+        buckets[g].sort(key=lambda d: d["composite"]["score"], reverse=(g != "SELL"))
+    return {"generated_at": datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M %Z"),
+            "provider": "deterministic (demo)", "universe_count": len(seed), "buckets": buckets}
+
+
+def _demo_search_index(reco: dict) -> list[dict]:
+    out = []
+    for bucket in (reco.get("buckets") or {}).values():
+        out.extend(_search_entry(d) for d in bucket)
+    return out
+
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
+    reco = _demo_recommendations()
     res = build_site(_demo_records(), out_dir="site", movers=_demo_movers(),
-                     extra_lists={"Nifty 50": _demo_records()})
+                     extra_lists={"Nifty 50": _demo_records()},
+                     recommendations=reco, search_index=_demo_search_index(reco))
     print(f"Open: {res['index']}  ({res['pages']} pages)")
