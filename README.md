@@ -144,6 +144,35 @@ python -m scripts.build_all_stocks --source hybrid --top 50 --with-nifty50   # a
 `--with-nifty50` builds `nifty50.html` (same sortable table, model signals, detail pages) from the live
 NSE Nifty-50 constituents via Yahoo Finance, and links it from the home page. The public build enables it.
 
+### 🤖 AI Recommendations + 🔎 Search (Buy / Sell / Hold)
+
+Two AI-powered surfaces, both grounded in the data:
+
+- **`recommendations.html`** — **Top Buy / Hold / Sell** tabs. Each idea is a **composite** of five
+  independent signals — the deterministic fundamental model, a **Gen-AI analyst**, **analyst/broker
+  consensus** (Yahoo target + rating, optional Moneycontrol buy/sell/hold %), a **conformal ML
+  forecast**, and **news sentiment** — shown with an explicit **Buy case** and **Sell case** and the
+  per-signal breakdown.
+- **`search.html`** — type any stock; get its deep fundamental analysis and the **Buy vs Sell** case.
+
+The Gen-AI analyst reasons **only from the validated numbers** (data is cross-checked across sources;
+conflicts and implausible values are flagged and down-weighted) and never invents figures. It runs on
+**free GitHub Models** by default, **Claude Opus** if you add `ANTHROPIC_API_KEY` — with a deterministic
+fallback so it always works.
+
+```bash
+# exhaustive AI + ML deep-dive over 300 stocks (set MODELS_TOKEN for free AI; cache makes it resumable)
+python -m scripts.build_all_stocks --source hybrid --top 50 --with-movers --with-nifty50 \
+  --with-recommendations --rec-top 300
+python -m scripts.recommendations --top 300          # standalone; --no-ml / --moneycontrol optional
+```
+
+See [`docs/DEPLOY.md`](docs/DEPLOY.md#-ai-recommendations--search-buy--sell--hold) for the one-secret
+(`MODELS_TOKEN`) setup. **Accuracy-first:** analysis is exhaustive and cached/resumable, not sampled.
+
+> ⚖️ Recommendations are **educational model output**, not SEBI-registered advice. Universe metrics use
+> the TradingView scanner (personal-research ToS) — swap in a licensed vendor for a redistributable product.
+
 ---
 
 ## 🏗️ Architecture

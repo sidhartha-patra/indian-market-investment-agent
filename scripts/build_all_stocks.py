@@ -99,6 +99,12 @@ def run(
     movers_sections: tuple[str, ...] = ("gainers", "losers", "most_active"),
     movers_top: int = 10,
     with_nifty50: bool = False,
+    with_recommendations: bool = False,
+    rec_top: int = 300,
+    rec_min_mcap: float = 1e10,
+    ai_budget: int | None = None,
+    ml_budget: int | None = None,
+    rec_moneycontrol: bool = False,
 ) -> dict:
     """Build the site from the chosen data source.
 
@@ -116,15 +122,26 @@ def run(
     ``with_movers`` adds a Top Gainers / Losers / Most-Active section (TradingView
     technicals + ``movers_source`` fundamentals). Use ``movers_source='yfinance'`` for the
     public build (CI-safe); ``'both'``/``'auto'`` add Screener.in for personal research.
+
+    ``with_recommendations`` adds the AI-powered Buy/Hold/Sell tabs + the Search tab (exhaustive
+    deep-dive over ``rec_top`` stocks; ``ai_budget``/``ml_budget`` ``None`` = unlimited).
     """
     if source == "demo":
-        from scripts.build_site import _demo_movers, _demo_records
+        from scripts.build_site import (_demo_movers, _demo_records, _demo_recommendations,
+                                        _demo_search_index)
+        reco = _demo_recommendations() if with_recommendations else None
         return build_site(_demo_records(), out_dir=out_dir,
                           movers=_demo_movers() if with_movers else None,
-                          extra_lists={"Nifty 50": _demo_records()} if with_nifty50 else None)
+                          extra_lists={"Nifty 50": _demo_records()} if with_nifty50 else None,
+                          recommendations=reco,
+                          search_index=_demo_search_index(reco) if reco else None)
 
     movers = _maybe_build_movers(with_movers, movers_source, movers_sections, movers_top)
     extra_lists = _maybe_build_nifty50(with_nifty50)
+    reco = _maybe_build_recommendations(with_recommendations, rec_top, rec_min_mcap,
+                                        ai_budget, ml_budget, rec_moneycontrol)
+    reco_kw = {"recommendations": reco, "search_index": reco["search_index"],
+               "deep_by_symbol": reco["deep_by_symbol"]} if reco else {}
 
     if source == "twelvedata":
         from src.ingestion.twelvedata_provider import build_dataset
@@ -132,7 +149,7 @@ def run(
         frame = build_dataset(symbols=symbols, mode=mode)
         scored = fa.fundamental_scores(frame, sector_col="sector")
         return build_site(frame_to_records(scored, "Twelve Data (licensed)"), out_dir=out_dir,
-                          movers=movers, extra_lists=extra_lists)
+                          movers=movers, extra_lists=extra_lists, **reco_kw)
 
     if source == "yfinance":
         from src.ingestion.twelvedata_provider import NIFTY_50_SYMBOLS
@@ -147,7 +164,7 @@ def run(
         if not records:  # CI resilience: never deploy an empty site
             from scripts.build_site import _demo_records
             records = _demo_records()
-        return build_site(records, out_dir=out_dir, movers=movers, extra_lists=extra_lists)
+        return build_site(records, out_dir=out_dir, movers=movers, extra_lists=extra_lists, **reco_kw)
 
     if source == "hybrid":
         top_syms = _rank_full_market_via_tradingview(top or 50, min_mcap)
@@ -166,7 +183,7 @@ def run(
         if not records:
             from scripts.build_site import _demo_records
             records = _demo_records()
-        return build_site(records, out_dir=out_dir, movers=movers, extra_lists=extra_lists)
+        return build_site(records, out_dir=out_dir, movers=movers, extra_lists=extra_lists, **reco_kw)
 
     # tradingview (personal research)
     from src.ingestion.tradingview_scanner import fetch_india_scanner
@@ -182,7 +199,29 @@ def run(
         frame = scanner_to_frame(scanner_df)
         scored = fa.fundamental_scores(frame, sector_col="sector")
     return build_site(frame_to_records(scored), out_dir=out_dir, movers=movers,
-                      extra_lists=extra_lists)
+                      extra_lists=extra_lists, **reco_kw)
+
+
+def _maybe_build_recommendations(enabled: bool, top: int, min_mcap: float,
+                                 ai_budget: int | None, ml_budget: int | None,
+                                 use_moneycontrol: bool) -> dict | None:
+    """Build the exhaustive AI Buy/Hold/Sell + search payload (best-effort; never fatal)."""
+    if not enabled:
+        return None
+    try:
+        from scripts.recommendations import build as build_reco
+        reco = build_reco(top=top, min_mcap=min_mcap, ai_budget=ai_budget,
+                          ml_budget=ml_budget, use_moneycontrol=use_moneycontrol)
+        if reco.get("buckets"):
+            logger.info("Recommendations: %d analysed (%d via AI) -> Buy %d / Hold %d / Sell %d",
+                        reco["universe_count"], reco.get("ai_analysed", 0),
+                        len(reco["buckets"]["BUY"]), len(reco["buckets"]["HOLD"]),
+                        len(reco["buckets"]["SELL"]))
+            return reco
+        logger.warning("Recommendations requested but none produced; skipping.")
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Recommendations build failed (%s); site builds without them.", exc)
+    return None
 
 
 def _maybe_build_nifty50(with_nifty50: bool) -> dict | None:
@@ -279,15 +318,34 @@ if __name__ == "__main__":
     ap.add_argument("--movers-top", type=int, default=10, help="stocks per movers section")
     ap.add_argument("--with-nifty50", action="store_true",
                     help="also build a dedicated Nifty 50 page alongside the all-market Top 50")
+    ap.add_argument("--with-recommendations", action="store_true",
+                    help="add AI Buy/Hold/Sell tabs + Search tab (exhaustive deep-dive)")
+    ap.add_argument("--rec-top", type=int, default=300,
+                    help="recommendations universe size (ranked by fundamentals)")
+    ap.add_argument("--rec-min-mcap", type=float, default=1e10)
+    ap.add_argument("--ai-budget", type=int, default=None,
+                    help="cap NEW LLM analyses per run (default: unlimited/exhaustive; cache resumes)")
+    ap.add_argument("--ml-budget", type=int, default=None,
+                    help="cap ML forecasts per run (default: unlimited)")
+    ap.add_argument("--no-ml", action="store_true", help="skip ML forecasts in recommendations")
+    ap.add_argument("--rec-moneycontrol", action="store_true",
+                    help="add Moneycontrol broker buy/sell/hold %% to recommendations (personal)")
     args = ap.parse_args()
     src = "demo" if args.demo else args.source
     res = run(source=src, limit=args.limit, out_dir=args.out, mode=args.mode,
               top=args.top, min_mcap=args.min_mcap, with_movers=args.with_movers,
               movers_source=args.movers_source, movers_top=args.movers_top,
-              with_nifty50=args.with_nifty50)
+              with_nifty50=args.with_nifty50, with_recommendations=args.with_recommendations,
+              rec_top=args.rec_top, rec_min_mcap=args.rec_min_mcap, ai_budget=args.ai_budget,
+              ml_budget=(0 if args.no_ml else args.ml_budget),
+              rec_moneycontrol=args.rec_moneycontrol)
     extras = []
     if res.get("has_movers"):
         extras.append("movers")
+    if res.get("has_reco"):
+        extras.append("recommendations")
+    if res.get("has_search"):
+        extras.append("search")
     extras += res.get("lists", [])
     print(f"Built {res['pages']} pages -> {res['index']}"
           + (f"  (+{', '.join(extras)})" if extras else ""))

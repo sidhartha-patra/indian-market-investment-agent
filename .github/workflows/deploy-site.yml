@@ -24,8 +24,13 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 350          # exhaustive AI + ML deep-dive can run for hours
     env:
       TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
+      MODELS_TOKEN: ${{ secrets.MODELS_TOKEN }}          # GitHub Models (free) — models:read PAT
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}  # optional: switches AI to Claude Opus
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}        # optional
+      REC_TOP: ${{ vars.REC_TOP || '300' }}               # universe size for recommendations
     steps:
       - uses: actions/checkout@v4
 
@@ -35,7 +40,17 @@ jobs:
           cache: pip
 
       - name: Install build dependencies
-        run: pip install pandas numpy requests yfinance
+        run: pip install pandas numpy requests yfinance scikit-learn xgboost beautifulsoup4 lxml
+
+      # Persist the Gen-AI analysis cache across runs so coverage accumulates and
+      # exhaustive deep-dives are resumable (each run continues where the last left off).
+      - name: Restore AI analysis cache
+        uses: actions/cache@v4
+        with:
+          path: data/ai_cache
+          key: ai-cache-${{ github.run_id }}
+          restore-keys: |
+            ai-cache-
 
       - name: Choose data source (licensed vendor if key present, else hybrid top-50)
         id: src
@@ -48,8 +63,20 @@ jobs:
             echo "::notice::No key — ranking the FULL Indian market via TradingView and displaying the top 50 from Yahoo Finance (educational). Falls back to Nifty 50 / sample if upstreams are unavailable."
           fi
 
-      - name: Build site (top 50 screened from the whole market + live movers + Nifty 50)
-        run: python -m scripts.build_all_stocks --source ${{ steps.src.outputs.source }} --mode full --top 50 --with-movers --movers-source yfinance --movers-top 10 --with-nifty50 --out ./site
+      - name: Report AI provider
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then echo "::notice::AI: Anthropic Claude (Opus-capable).";
+          elif [ -n "$MODELS_TOKEN" ]; then echo "::notice::AI: GitHub Models (free).";
+          else echo "::warning::No MODELS_TOKEN/ANTHROPIC_API_KEY secret — recommendations fall back to the deterministic (rules-based) analyst."; fi
+
+      - name: Build site (top 50 + movers + Nifty 50 + AI Buy/Sell/Hold + Search)
+        run: >
+          python -m scripts.build_all_stocks
+          --source ${{ steps.src.outputs.source }} --mode full --top 50
+          --with-movers --movers-source yfinance --movers-top 10
+          --with-nifty50
+          --with-recommendations --rec-top ${REC_TOP}
+          --out ./site
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -76,6 +76,47 @@ Watch the run finish; the deploy step prints your live **Pages URL**.
 
 ---
 
+## 🤖 AI recommendations + Search (Buy / Sell / Hold)
+
+The site can include **AI-powered Buy/Hold/Sell tabs** and a **Search tab** that runs a
+deep, *grounded* fundamental analysis per stock — blending the deterministic model,
+**analyst/broker consensus**, a **conformal ML forecast**, **news sentiment**, and a
+**Gen-AI analyst** that reasons only from the validated numbers (and cross-checks data
+across sources). Each stock gets an explicit **Buy case** and **Sell case**.
+
+### Free AI — GitHub Models (no paid key)
+
+1. Create a **fine-grained or classic PAT** with the **`models: read`** scope at
+   **https://github.com/settings/personal-access-tokens** (or **Settings → Developer
+   settings → Personal access tokens**). No repo scopes are needed.
+2. Repo → **Settings → Secrets and variables → Actions → New repository secret** →
+   **Name:** `MODELS_TOKEN`  **Value:** *(paste the PAT)*.
+3. (Optional) Repo → **Settings → Secrets and variables → Actions → Variables** → add
+   **`REC_TOP`** (e.g. `300`) to set how many stocks the recommendations analyse.
+
+That's it — the next run builds `recommendations.html` + `search.html`. **Without**
+`MODELS_TOKEN`, the build still works and falls back to the **deterministic (rules-based)**
+analyst, so the pages never break.
+
+> Free GitHub Models has a **daily request cap**. The build is **exhaustive but resumable**:
+> the AI cache (`data/ai_cache`, persisted via `actions/cache`) accumulates coverage across
+> runs, so the whole universe gets full AI analysis over a few runs. A single local run with
+> the cap removed (paid key) does everything at once.
+
+### Upgrade to Claude Opus (optional, paid)
+
+Add an **`ANTHROPIC_API_KEY`** secret and the client switches to **Claude (incl. Opus)**
+automatically — zero code change, no daily cap. Set `ANTHROPIC_MODEL` (repo variable) to the
+exact Opus model id you want. `OPENAI_API_KEY` / Azure OpenAI are also supported.
+
+### Cost / time
+
+Exhaustive AI + ML over ~300 stocks can take a while (the workflow allows up to ~6 h and
+caches results). ML forecasts train a small per-stock model on price history; the AI calls
+are cached by a data fingerprint so unchanged stocks are never re-analysed.
+
+---
+
 ## Refresh cadence
 
 `deploy-site.yml` runs **twice daily, Mon–Fri**:
@@ -126,7 +167,17 @@ python -m scripts.build_all_stocks --source demo                 # offline sampl
 python -m scripts.build_all_stocks --source yfinance             # FREE, no key, full fundamentals (educational)
 python -m scripts.build_all_stocks --source twelvedata --mode full   # licensed, public-safe (needs key)
 python -m scripts.build_all_stocks --source tradingview --limit 2000 # full universe, personal only
+
+# AI Buy/Sell/Hold + Search (exhaustive deep-dive; set MODELS_TOKEN for free GitHub Models AI):
+python -m scripts.build_all_stocks --source hybrid --top 50 --with-movers --with-nifty50 \
+  --with-recommendations --rec-top 300
+
+# Recommendations only (standalone), exhaustive over 300 names:
+python -m scripts.recommendations --top 300            # add --no-ml to skip ML, --moneycontrol for broker %
 ```
+
+Set the AI provider via env/secrets: `MODELS_TOKEN` (free GitHub Models, default) ·
+`ANTHROPIC_API_KEY` (Claude Opus) · `OPENAI_API_KEY` / Azure. No key ⇒ deterministic analyst.
 
 > Disclaimer: educational/decision-support only — not investment advice, not a SEBI-registered
 > research report. Data may be delayed or inaccurate. Consult a SEBI-registered adviser.
