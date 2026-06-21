@@ -793,18 +793,26 @@ def build_site(
         _index_html(records, gen, has_movers=has_movers, extra_links=extra_links,
                     has_reco=has_reco, has_search=has_search), encoding="utf-8")
     written: set[str] = set()
+
+    def _write_stock_page(rec: dict) -> bool:
+        sym = str(rec.get("symbol") or "UNKNOWN")
+        try:
+            (out / "stock" / f"{sym}.html").write_text(_stock_html(_with_deep(rec), gen), encoding="utf-8")
+            written.add(sym)
+            return True
+        except Exception as exc:  # noqa: BLE001 — one bad page must not abort a 300-stock build
+            logger.warning("skipped stock page %s: %s", sym, exc)
+            written.add(sym)
+            return False
+
     for rec in records:
-        sym = str(rec.get("symbol", "UNKNOWN"))
-        (out / "stock" / f"{sym}.html").write_text(_stock_html(_with_deep(rec), gen), encoding="utf-8")
-        written.add(sym)
+        _write_stock_page(rec)
 
     def _emit_detail_pages(recs: list[dict]) -> int:
         n = 0
         for rec in recs:
             sym = str(rec.get("symbol") or "").strip()
-            if sym and sym not in written:
-                (out / "stock" / f"{sym}.html").write_text(_stock_html(_with_deep(rec), gen), encoding="utf-8")
-                written.add(sym)
+            if sym and sym not in written and _write_stock_page(rec):
                 n += 1
         return n
 

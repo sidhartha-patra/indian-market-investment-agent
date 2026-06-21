@@ -32,6 +32,11 @@ $py = Join-Path $repo ".venv\Scripts\python.exe"
 if (-not (Test-Path $py)) { $py = "python" }
 Set-Location $repo
 $stamp = Get-Date -Format u
+$logDir = "C:\Users\sipatra\.investagent-logs"
+if (-not (Test-Path $logDir)) { New-Item -ItemType Directory -Path $logDir -Force | Out-Null }
+$logFile = Join-Path $logDir ("refresh_{0}.log" -f (Get-Date -Format "yyyyMMdd_HHmmss"))
+try { Start-Transcript -Path $logFile -Force | Out-Null } catch {}
+$buildFailed = $false
 Write-Host "[$stamp] === refresh_and_publish (RecTop=$RecTop, source=$Source) ==="
 
 # --- Free AI: hand the build your gh login token so GitHub Models works with no PAT --------
@@ -58,11 +63,15 @@ $buildArgs += @("--out", $build)
 
 Write-Host "[$(Get-Date -Format u)] Building (this can take a while - exhaustive AI + ML)..."
 & $py @buildArgs
-if ($LASTEXITCODE -ne 0) { throw "Build failed (exit $LASTEXITCODE)." }
-New-Item -ItemType File -Path (Join-Path $build ".nojekyll") -Force | Out-Null  # serve _-prefixed paths
-Write-Host "[$(Get-Date -Format u)] Build complete -> $build"
+if ($LASTEXITCODE -ne 0) {
+    $buildFailed = $true
+    Write-Host "[$(Get-Date -Format u)] BUILD FAILED (exit $LASTEXITCODE). Skipping publish; will email a failure notice."
+} else {
+    New-Item -ItemType File -Path (Join-Path $build ".nojekyll") -Force | Out-Null  # serve _-prefixed paths
+    Write-Host "[$(Get-Date -Format u)] Build complete -> $build"
+}
 
-if ($Serve) {
+if ($Serve -and -not $buildFailed) {
     $listening = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue
     if (-not $listening) {
         Start-Process -FilePath $py -ArgumentList @("-m", "http.server", "$Port", "--directory", "`"$build`"") -WindowStyle Hidden
@@ -71,8 +80,8 @@ if ($Serve) {
 }
 
 $published = $false
-if ($NoPush) {
-    Write-Host "-NoPush set; skipping publish."
+if ($NoPush -or $buildFailed) {
+    Write-Host "Skipping publish ($(if ($buildFailed) {'build failed'} else {'-NoPush'}))."
 } else {
     # --- Publish: mirror the build into a `gh-pages` worktree and push -------------------------
     $pub = Join-Path $repo ".gh-pages-publish"
@@ -126,8 +135,9 @@ if (-not $NoEmail) {
             $stats.universe = $r.universe_count; $stats.ai = $r.ai_analysed
             $stats.buy = $r.buckets.BUY.Count; $stats.hold = $r.buckets.HOLD.Count; $stats.sell = $r.buckets.SELL.Count
         }
-        $statusLine = if ($NoPush) { "Built locally (not published)." } elseif ($published) { "Published to GitHub Pages." } else { "Built, but publish FAILED - check the log." }
-        $subject = "Indian Stock Agent - refresh $(Get-Date -Format 'yyyy-MM-dd HH:mm') ($($stats.buy) buy / $($stats.sell) sell)"
+        $statusLine = if ($buildFailed) { "BUILD FAILED - see log $logFile" } elseif ($NoPush) { "Built locally (not published)." } elseif ($published) { "Published to GitHub Pages." } else { "Built, but publish FAILED - check the log." }
+        $flag = if ($buildFailed) { "[FAILED] " } else { "" }
+        $subject = "${flag}Indian Stock Agent - refresh $(Get-Date -Format 'yyyy-MM-dd HH:mm') ($($stats.buy) buy / $($stats.sell) sell)"
         $html = @"
 <div style='font-family:Segoe UI,Arial,sans-serif;max-width:640px'>
 <h2 style='margin:0 0 6px'>Indian Market Investment Agent - daily refresh</h2>
@@ -151,4 +161,6 @@ if (-not $NoEmail) {
         Write-Host "Email step failed (non-fatal): $_"
     }
 }
-Write-Host "[$(Get-Date -Format u)] === refresh_and_publish complete ==="
+Write-Host "[$(Get-Date -Format u)] === refresh_and_publish complete (log: $logFile) ==="
+try { Stop-Transcript | Out-Null } catch {}
+if ($buildFailed) { exit 1 }
