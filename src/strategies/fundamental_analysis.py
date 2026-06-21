@@ -452,7 +452,8 @@ _TV_MAP = {
     "free_cash_flow": "fcf", "earnings_per_share_basic_ttm": "eps",
     "dividend_yield_recent": "dividend_yield", "market_cap_basic": "market_cap",
     "earnings_per_share_diluted_yoy_growth_ttm": "eps_growth_3y", "sector": "sector",
-    "industry": "industry",
+    "industry": "industry", "EMA50": "sma50", "EMA200": "sma200",
+    "price_52_week_high": "high_52w", "price_52_week_low": "low_52w",
 }
 
 
