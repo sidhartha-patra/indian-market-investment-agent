@@ -171,29 +171,34 @@ def _pillar_bars(pillars: dict | None) -> str:
 
 
 def _horizons_block(h: dict | None) -> str:
-    """Render the short/mid/long-term outlook table (educational scenarios)."""
+    """Render the short/mid/long-term outlook + Low/Base/High return scenarios."""
     if not h:
         return ""
 
+    def _pct(v):
+        return f"{v:+g}%" if isinstance(v, (int, float)) else "—"
+
     def row(key: str, label: str) -> str:
         hz = h.get(key, {}) or {}
-        gain = "—"
-        if hz.get("illustrative_move_pct") is not None:
-            gain = f"±{hz['illustrative_move_pct']}% typical move"
-        elif hz.get("illustrative_annual_return_pct") is not None:
-            gain = f"~{hz['illustrative_annual_return_pct']}%/yr (scenario)"
+        p = hz.get("projection") or {}
+        if p:
+            proj = (f"<span class='neg'>{_pct(p.get('low_pct'))}</span> / {_pct(p.get('base_pct'))} / "
+                    f"<span class='pos'>{_pct(p.get('high_pct'))}</span>")
+        else:
+            proj = "—"
         if hz.get("analyst_consensus_upside_pct") is not None:
-            gain += f" · analysts {hz['analyst_consensus_upside_pct']:+g}%"
+            proj += f"<br><span class='band'>analysts {hz['analyst_consensus_upside_pct']:+g}%</span>"
         return (f"<tr><td><b>{label}</b> <span class='band'>{_esc(hz.get('horizon'))}</span></td>"
                 f"<td>{_esc(hz.get('stance'))}</td>"
                 f"<td class='band'>{_esc('; '.join(hz.get('drivers', [])))}</td>"
-                f"<td>{_esc(gain)}</td></tr>")
+                f"<td>{proj}</td></tr>")
 
     return ("<h4 style='margin:14px 0 4px'>⏱️ Short / Mid / Long-term outlook</h4>"
             "<table><thead><tr><th>Horizon</th><th>Stance</th><th>Drivers</th>"
-            "<th>Illustrative gain*</th></tr></thead><tbody>"
+            "<th>Return scenario — Low / Base / High*</th></tr></thead><tbody>"
             f"{row('short_term', 'Short')}{row('mid_term', 'Mid')}{row('long_term', 'Long')}"
-            f"</tbody></table><p class='band'>*{_esc(h.get('note'))}</p>")
+            f"</tbody></table><p class='band'>*Low = bearish / High = bullish <b>scenarios, not "
+            f"predictions</b>. {_esc(h.get('note'))}</p>")
 
 
 _VERDICT_CLASS = {"STRONG_BUY": "s-hi", "BUY": "s-hi", "HOLD": "s-mid", "SELL": "s-lo", "AVOID": "s-lo"}

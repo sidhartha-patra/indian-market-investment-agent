@@ -17,6 +17,8 @@ so it runs on **Screener.in** data (``recommend_from_screener``) or any other so
 """
 from __future__ import annotations
 
+import math
+
 from src.strategies import fundamental_analysis as fa
 
 _num = fa._num
@@ -167,6 +169,40 @@ def _illustrative_long_return(m: dict) -> tuple[float | None, str]:
                     "not a forecast")
 
 
+def _ann_vol_pct(m: dict) -> float:
+    """Best-effort annualised volatility %: explicit field, else 52-week-range proxy."""
+    av = _num(m.get("ann_vol_pct"))
+    if av:
+        return min(120.0, max(12.0, av))
+    price, hi, lo = _num(m.get("price")), _num(m.get("high_52w")), _num(m.get("low_52w"))
+    if price and hi and lo and price > 0 and hi > lo:
+        return min(120.0, max(12.0, (hi - lo) / price * 100 * 0.55))
+    return 30.0
+
+
+def _vol_band(ann_vol_pct: float, days: int, base: float) -> dict:
+    """High/low return scenario for a horizon = base ±1.5σ scaled to ``days``."""
+    sigma = ann_vol_pct * math.sqrt(days / 252.0)
+    return {"low_pct": round(base - 1.5 * sigma, 1), "base_pct": round(base, 1),
+            "high_pct": round(base + 1.5 * sigma, 1), "method": "±1.5σ realised-volatility band"}
+
+
+def _fundamental_band(m: dict, years: int = 3) -> dict:
+    """Long-term high/low scenario = earnings growth ± re-rating, compounded."""
+    pg = _num(m.get("profit_growth_5y"))
+    dy = _num(m.get("dividend_yield")) or 0.0
+    g = max(-10.0, min(25.0, pg)) if pg is not None else 6.0
+    base_annual = g + dy
+    bull_annual = min(40.0, base_annual + 8.0)      # earnings hold + multiple re-rates up
+    bear_annual = max(-25.0, (g * 0.4) + dy - 9.0)  # growth halves + de-rating
+
+    def comp(annual: float) -> float:
+        return round(((1 + annual / 100.0) ** years - 1) * 100, 1)
+
+    return {"low_pct": comp(bear_annual), "base_pct": comp(base_annual), "high_pct": comp(bull_annual),
+            "horizon_years": years, "method": "fundamental bull/base/bear (growth ± re-rating)"}
+
+
 def horizon_outlook(m: dict, long_verdict: str, conviction: float) -> dict:
     """Short / mid / long-term outlook from cheap technicals + the fundamental verdict.
 
@@ -225,6 +261,11 @@ def horizon_outlook(m: dict, long_verdict: str, conviction: float) -> dict:
                         f"(conviction {conviction}/100)"],
             "illustrative_annual_return_pct": annual, "scenario": scenario,
             "analyst_consensus_upside_pct": analyst_upside, "confidence": "moderate"}
+
+    av = _ann_vol_pct(m)
+    short["projection"] = _vol_band(av, 21, 0.0)
+    mid["projection"] = _vol_band(av, 126, {"BUY": 4.0, "AVOID": -4.0}.get(m_stance, 0.0))
+    long["projection"] = _fundamental_band(m)
 
     return {"short_term": short, "mid_term": mid, "long_term": long,
             "note": ("Outlooks are scenario-based, NOT profit predictions. Short/mid-term are "
@@ -437,11 +478,11 @@ def detailed_markdown(rec: dict, symbol: str = "", forecast: list[dict] | None =
         lines.append("\n## Short / Mid / Long-term outlook")
         for key, label in (("short_term", "Short"), ("mid_term", "Mid"), ("long_term", "Long")):
             hz = h.get(key, {})
+            p = hz.get("projection") or {}
             extra = ""
-            if hz.get("illustrative_move_pct") is not None:
-                extra = f" · ±{hz['illustrative_move_pct']}% typical move"
-            elif hz.get("illustrative_annual_return_pct") is not None:
-                extra = f" · ~{hz['illustrative_annual_return_pct']}%/yr (scenario)"
+            if p:
+                extra = (f" · scenario {p.get('low_pct'):+g}% / {p.get('base_pct'):+g}% / "
+                         f"{p.get('high_pct'):+g}% (low/base/high)")
             lines.append(f"- **{label}** ({hz.get('horizon')}): {hz.get('stance')}{extra} — "
                          + "; ".join(hz.get("drivers", [])))
         lines.append(f"\n> {h.get('note')}")
