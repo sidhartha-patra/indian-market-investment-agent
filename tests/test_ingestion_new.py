@@ -58,3 +58,20 @@ def test_universe_dedup_prefers_nse(monkeypatch):
     df = uf.get_all_indian_stocks(use_cache=False, refresh=True)
     # Same ISIN dual-listed -> keep one row, prefer NSE.
     assert len(df) == 1 and df.iloc[0]["exchange"] == "NSE"
+
+
+def test_build_payload_sort_and_filters():
+    body = tv.build_payload(["name", "change"], limit=20, sort_by="change", sort_order="asc",
+                            extra_filters=[{"left": "RSI", "operation": "greater", "right": 70}])
+    assert body["sort"] == {"sortBy": "change", "sortOrder": "asc"}
+    assert body["range"] == [0, 20]
+    assert any(f.get("left") == "RSI" for f in body["filter"])
+
+
+def test_collections_defined():
+    needed = {"gainers", "losers", "most_active", "most_volatile", "overbought", "oversold"}
+    assert needed <= set(tv.COLLECTIONS)
+    assert tv.COLLECTIONS["gainers"]["sort_order"] == "desc"
+    assert tv.COLLECTIONS["losers"]["sort_order"] == "asc"
+    for cfg in tv.COLLECTIONS.values():
+        assert "sort_by" in cfg and cfg["sort_order"] in ("asc", "desc")

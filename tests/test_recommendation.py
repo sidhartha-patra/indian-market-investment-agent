@@ -64,6 +64,22 @@ def test_downtrend_mid_term_bearish():
     assert h["mid_term"]["stance"] == "AVOID"
 
 
+def test_horizon_projections_low_base_high():
+    h = horizon_outlook(_STRONG, "BUY", 70)
+    for key in ("short_term", "mid_term", "long_term"):
+        p = h[key]["projection"]
+        assert p["low_pct"] <= p["base_pct"] <= p["high_pct"]
+    # Long-term bull scenario must exceed the bear scenario.
+    lt = h["long_term"]["projection"]
+    assert lt["high_pct"] > lt["low_pct"]
+
+
+def test_recommend_includes_projections():
+    r = recommend(_STRONG, sector_score=85)
+    assert "projection" in r["horizons"]["short_term"]
+    assert "projection" in r["horizons"]["long_term"]
+
+
 def test_detailed_markdown_renders():
     md = detailed_markdown(recommend(_STRONG, sector_score=85), "GOODCO")
     assert "GOODCO" in md

@@ -173,18 +173,20 @@ def _ann_vol_pct(m: dict) -> float:
     """Best-effort annualised volatility %: explicit field, else 52-week-range proxy."""
     av = _num(m.get("ann_vol_pct"))
     if av:
-        return min(120.0, max(12.0, av))
+        return min(80.0, max(12.0, av))
     price, hi, lo = _num(m.get("price")), _num(m.get("high_52w")), _num(m.get("low_52w"))
     if price and hi and lo and price > 0 and hi > lo:
-        return min(120.0, max(12.0, (hi - lo) / price * 100 * 0.55))
+        return min(80.0, max(12.0, (hi - lo) / price * 100 * 0.55))
     return 30.0
 
 
 def _vol_band(ann_vol_pct: float, days: int, base: float) -> dict:
-    """High/low return scenario for a horizon = base ±1.5σ scaled to ``days``."""
+    """High/low return scenario for a horizon = base ±1.5σ scaled to ``days`` (capped)."""
     sigma = ann_vol_pct * math.sqrt(days / 252.0)
-    return {"low_pct": round(base - 1.5 * sigma, 1), "base_pct": round(base, 1),
-            "high_pct": round(base + 1.5 * sigma, 1), "method": "±1.5σ realised-volatility band"}
+    low = max(-60.0, round(base - 1.5 * sigma, 1))
+    high = min(80.0, round(base + 1.5 * sigma, 1))
+    return {"low_pct": low, "base_pct": round(base, 1), "high_pct": high,
+            "method": "±1.5σ realised-volatility band (capped)"}
 
 
 def _fundamental_band(m: dict, years: int = 3) -> dict:
@@ -199,8 +201,9 @@ def _fundamental_band(m: dict, years: int = 3) -> dict:
     def comp(annual: float) -> float:
         return round(((1 + annual / 100.0) ** years - 1) * 100, 1)
 
-    return {"low_pct": comp(bear_annual), "base_pct": comp(base_annual), "high_pct": comp(bull_annual),
-            "horizon_years": years, "method": "fundamental bull/base/bear (growth ± re-rating)"}
+    return {"low_pct": max(-60.0, comp(bear_annual)), "base_pct": comp(base_annual),
+            "high_pct": min(300.0, comp(bull_annual)), "horizon_years": years,
+            "method": "fundamental bull/base/bear (growth ± re-rating)"}
 
 
 def horizon_outlook(m: dict, long_verdict: str, conviction: float) -> dict:
