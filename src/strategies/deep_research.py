@@ -91,12 +91,20 @@ def news_signal(symbol: str, limit: int = 8, use_llm: bool = False) -> dict | No
 
     if use_llm:
         try:
-            from src.agent.sentiment import classify_sentiment
-            res = classify_sentiment(titles) or []
-            score = sum(1 if r.get("sentiment") == "bullish" else -1 if r.get("sentiment") == "bearish"
-                        else 0 for r in res)
-            net = round(score / max(1, len(res)), 2)
-            return {"net_sentiment": net, "n": len(res), "sample": titles[:3], "source": "llm"}
+            from src.ai import llm
+            if llm.is_available():
+                sysmsg = ("You classify Indian market news headlines by sentiment for the named "
+                          "company. Output ONLY JSON {\"results\":[{\"sentiment\":\"bullish|bearish|"
+                          "neutral\"}, ...]} with one item per headline, in the same order.")
+                user = (f"Company: {symbol}\nHeadlines:\n"
+                        + "\n".join(f"{i + 1}. {t}" for i, t in enumerate(titles)))
+                data = llm.chat_json(sysmsg, user, max_tokens=500, temperature=0.0)
+                results = data.get("results") if isinstance(data, dict) else data
+                if isinstance(results, list) and results:
+                    sc = sum(1 if r.get("sentiment") == "bullish" else
+                             -1 if r.get("sentiment") == "bearish" else 0 for r in results)
+                    return {"net_sentiment": round(sc / max(1, len(results)), 2),
+                            "n": len(results), "sample": titles[:3], "source": "llm"}
         except Exception as exc:  # noqa: BLE001
             logger.debug("LLM news classify failed for %s: %s", symbol, exc)
 
