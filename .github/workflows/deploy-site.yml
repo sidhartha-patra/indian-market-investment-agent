@@ -15,6 +15,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  models: read          # lets the built-in GITHUB_TOKEN call GitHub Models (free) — no PAT needed
 
 # Never run two deploys at once.
 concurrency:
@@ -27,7 +28,10 @@ jobs:
     timeout-minutes: 350          # exhaustive AI + ML deep-dive can run for hours
     env:
       TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
-      MODELS_TOKEN: ${{ secrets.MODELS_TOKEN }}          # GitHub Models (free) — models:read PAT
+      # Free AI with NO PAT: the built-in GITHUB_TOKEN + `permissions: models: read` (above)
+      # can call GitHub Models. MODELS_TOKEN (a models:read PAT) is only an optional override.
+      GITHUB_TOKEN: ${{ github.token }}
+      MODELS_TOKEN: ${{ secrets.MODELS_TOKEN }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}  # optional: switches AI to Claude Opus
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}        # optional
       REC_TOP: ${{ vars.REC_TOP || '300' }}               # universe size for recommendations
@@ -66,8 +70,8 @@ jobs:
       - name: Report AI provider
         run: |
           if [ -n "$ANTHROPIC_API_KEY" ]; then echo "::notice::AI: Anthropic Claude (Opus-capable).";
-          elif [ -n "$MODELS_TOKEN" ]; then echo "::notice::AI: GitHub Models (free).";
-          else echo "::warning::No MODELS_TOKEN/ANTHROPIC_API_KEY secret — recommendations fall back to the deterministic (rules-based) analyst."; fi
+          elif [ -n "$MODELS_TOKEN" ]; then echo "::notice::AI: GitHub Models via MODELS_TOKEN (free).";
+          else echo "::notice::AI: GitHub Models via the built-in GITHUB_TOKEN (models: read) — no PAT needed."; fi
 
       - name: Build site (top 50 + movers + Nifty 50 + AI Buy/Sell/Hold + Search)
         run: >
