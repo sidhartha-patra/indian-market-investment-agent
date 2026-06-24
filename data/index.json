@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23 17:43 India Standard Time",
+  "generated_at": "2026-06-24 07:21 India Standard Time",
   "count": 45,
   "stocks": [
     {
@@ -48,19 +48,19 @@
       "signal": "STRONG_BUY"
     },
     {
-      "symbol": "3BBLACKBIO",
-      "name": "3B BLACKBIO DX LTD.",
-      "sector": "OTHER",
-      "price": 1181.1,
+      "symbol": "NATIONALUM",
+      "name": "NATIONAL ALUMINIUM CO LTD",
+      "sector": "Basic Materials",
+      "price": 355.4,
       "score": 88.9,
       "tier": "TOP_DECILE",
       "signal": "STRONG_BUY"
     },
     {
-      "symbol": "NATIONALUM",
-      "name": "NATIONAL ALUMINIUM CO LTD",
-      "sector": "Basic Materials",
-      "price": 355.4,
+      "symbol": "3BBLACKBIO",
+      "name": "3B BLACKBIO DX LTD.",
+      "sector": "OTHER",
+      "price": 1181.1,
       "score": 86.7,
       "tier": "TOP_DECILE",
       "signal": "STRONG_BUY"
