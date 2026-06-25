@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24 17:42 India Standard Time",
+  "generated_at": "2026-06-25 07:31 India Standard Time",
   "count": 45,
   "stocks": [
     {
@@ -12,19 +12,19 @@
       "signal": "STRONG_BUY"
     },
     {
-      "symbol": "HINDZINC",
-      "name": "HINDUSTAN ZINC LIMITED",
-      "sector": "Basic Materials",
-      "price": 541.95,
+      "symbol": "GARUDA",
+      "name": "GARUDA CONSTRUCT N ENG L",
+      "sector": "Industrials",
+      "price": 183.93,
       "score": 97.8,
       "tier": "TOP_DECILE",
       "signal": "STRONG_BUY"
     },
     {
-      "symbol": "GARUDA",
-      "name": "GARUDA CONSTRUCT N ENG L",
-      "sector": "Industrials",
-      "price": 183.93,
+      "symbol": "HINDZINC",
+      "name": "HINDUSTAN ZINC LIMITED",
+      "sector": "Basic Materials",
+      "price": 541.95,
       "score": 95.6,
       "tier": "TOP_DECILE",
       "signal": "STRONG_BUY"
