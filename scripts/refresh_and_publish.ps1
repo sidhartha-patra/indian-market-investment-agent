@@ -83,41 +83,53 @@ $published = $false
 if ($NoPush -or $buildFailed) {
     Write-Host "Skipping publish ($(if ($buildFailed) {'build failed'} else {'-NoPush'}))."
 } else {
-    # --- Publish via a SEPARATE clone OUTSIDE OneDrive (avoids OneDrive locking .git) ----------
-    $pub = "C:\Users\sipatra\.investagent-ghpages"
-    $credFile = "C:/Users/sipatra/.investagent.git-credentials"
-    $remoteUrl = "https://github.com/sidhartha-patra/indian-market-investment-agent.git"
-    $remoteHasBranch = (git ls-remote --heads $remoteUrl $Branch) -ne $null -and (git ls-remote --heads $remoteUrl $Branch) -ne ""
+    # git writes normal progress to stderr; with ErrorActionPreference=Stop that aborts the
+    # script. Switch to Continue for the publish and gate on $LASTEXITCODE explicitly.
+    $ErrorActionPreference = "Continue"
+    try {
+        $pub = "C:\Users\sipatra\.investagent-ghpages"
+        $credFile = "C:/Users/sipatra/.investagent.git-credentials"
+        $remoteUrl = "https://github.com/sidhartha-patra/indian-market-investment-agent.git"
+        $lsr = git ls-remote --heads $remoteUrl $Branch 2>$null
+        $remoteHasBranch = -not [string]::IsNullOrWhiteSpace($lsr)
 
-    if (-not (Test-Path (Join-Path $pub ".git"))) {
-        Remove-Item $pub -Recurse -Force -ErrorAction SilentlyContinue
-        if ($remoteHasBranch) {
-            git -c credential.helper="store --file=$credFile" clone --branch $Branch --single-branch $remoteUrl $pub 2>&1 | Out-Null
-        } else {
-            git -c credential.helper="store --file=$credFile" clone $remoteUrl $pub 2>&1 | Out-Null
-            Push-Location $pub; git checkout --orphan $Branch; git rm -rf . 2>$null | Out-Null; Pop-Location
+        if (-not (Test-Path (Join-Path $pub ".git"))) {
+            Remove-Item $pub -Recurse -Force -ErrorAction SilentlyContinue
+            if ($remoteHasBranch) {
+                git -c credential.helper="store --file=$credFile" clone --branch $Branch --single-branch $remoteUrl $pub 2>&1 | Out-Null
+            } else {
+                git -c credential.helper="store --file=$credFile" clone $remoteUrl $pub 2>&1 | Out-Null
+                Push-Location $pub; git checkout --orphan $Branch 2>&1 | Out-Null; git rm -rf . 2>&1 | Out-Null; Pop-Location
+            }
         }
-    }
-    if (-not (Test-Path (Join-Path $pub ".git"))) {
-        Write-Host "Publish clone failed; skipping publish."
-    } else {
-        Push-Location $pub
-        git config credential.helper "store --file=$credFile"
-        git config user.name "sidhartha-patra"; git config user.email "15684919+sidhartha-patra@users.noreply.github.com"
-        if ($remoteHasBranch) { git fetch origin $Branch 2>$null; git checkout $Branch 2>$null; git reset --hard "origin/$Branch" 2>$null | Out-Null }
-        # Replace published content with the fresh build (keep .git).
-        Get-ChildItem -Force . | Where-Object { $_.Name -ne ".git" } | Remove-Item -Recurse -Force
-        Copy-Item -Path (Join-Path $build "*") -Destination . -Recurse -Force
-        git add -A
-        if ((git status --porcelain).Length -eq 0) {
-            Write-Host "No changes to publish."; $published = $true
+        if (-not (Test-Path (Join-Path $pub ".git"))) {
+            Write-Host "Publish clone failed; skipping publish."
         } else {
-            git commit -m "site: automated refresh $stamp" --quiet
-            git push origin $Branch
-            if ($LASTEXITCODE -eq 0) { $published = $true; Write-Host "[$(Get-Date -Format u)] Published to '$Branch'." }
-            else { Write-Host "Push failed (exit $LASTEXITCODE)." }
+            Push-Location $pub
+            git config credential.helper "store --file=$credFile" 2>&1 | Out-Null
+            git config user.name "sidhartha-patra" 2>&1 | Out-Null
+            git config user.email "15684919+sidhartha-patra@users.noreply.github.com" 2>&1 | Out-Null
+            if ($remoteHasBranch) {
+                git fetch origin $Branch 2>&1 | Out-Null
+                git checkout $Branch 2>&1 | Out-Null
+                git reset --hard "origin/$Branch" 2>&1 | Out-Null
+            }
+            # Replace published content with the fresh build (keep .git).
+            Get-ChildItem -Force . | Where-Object { $_.Name -ne ".git" } | Remove-Item -Recurse -Force
+            Copy-Item -Path (Join-Path $build "*") -Destination . -Recurse -Force
+            git add -A 2>&1 | Out-Null
+            if ([string]::IsNullOrWhiteSpace((git status --porcelain))) {
+                Write-Host "No changes to publish."; $published = $true
+            } else {
+                git commit -m "site: automated refresh $stamp" --quiet 2>&1 | Out-Null
+                git push origin $Branch 2>&1 | Write-Host
+                if ($LASTEXITCODE -eq 0) { $published = $true; Write-Host "[$(Get-Date -Format u)] Published to '$Branch'." }
+                else { Write-Host "Push failed (exit $LASTEXITCODE)." }
+            }
+            Pop-Location
         }
-        Pop-Location
+    } catch {
+        Write-Host "Publish step error (non-fatal): $_"
     }
 }
 
