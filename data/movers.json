@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28 07:01 India Standard Time",
+  "generated_at": "2026-06-28 17:00 India Standard Time",
   "sections": {
     "gainers": [
       {
@@ -4734,7 +4734,7 @@
           "sma200": 51.2221,
           "high_52w": 68.3,
           "low_52w": 38.19,
-          "analyst_target": 65.84615,
+          "analyst_target": 65.86231,
           "analyst_n": 13.0,
           "revenue_growth_5y": 44.9,
           "profit_growth_5y": -5.6,
@@ -4867,7 +4867,7 @@
               ],
               "illustrative_annual_return_pct": -5.6,
               "scenario": "~-6%/yr illustrative total return IF profits compound near their 5y rate (-6%) and the P/E holds, plus ~0.0% dividend \u2014 a scenario, not a forecast",
-              "analyst_consensus_upside_pct": 15.2,
+              "analyst_consensus_upside_pct": 15.3,
               "confidence": "moderate",
               "projection": {
                 "low_pct": -30.1,
