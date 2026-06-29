@@ -1,237 +1,11 @@
 {
-  "generated_at": "2026-06-28 17:24 India Standard Time",
+  "generated_at": "2026-06-29 07:08 India Standard Time",
   "provider": "GitHub Models",
   "universe_count": 300,
-  "ai_analysed": 298,
+  "ai_analysed": 300,
   "ml_analysed": 237,
   "buckets": {
     "BUY": [
-      {
-        "symbol": "GRAUWEIL",
-        "name": null,
-        "sector": null,
-        "price": null,
-        "metrics": {
-          "pe": 20.121698243673073,
-          "pb": NaN,
-          "ev_ebitda": 14.686852955390334,
-          "roe": 16.2322295460127,
-          "roa": 11.9775936771859,
-          "opm": 14.2157521588656,
-          "net_margin": 13.7780988542052,
-          "debt_to_equity": 0.013433429176335701,
-          "current_ratio": 2.71249055177627,
-          "fcf_yield": NaN,
-          "dividend_yield": 0.6900358818658571,
-          "market_cap_cr": 3285.4196804,
-          "symbol": "GRAUWEIL"
-        },
-        "recommendation": {
-          "verdict": "STRONG_BUY",
-          "verdict_label": "Strong Buy (educational model signal)",
-          "conviction": 82.6,
-          "confidence": "moderate",
-          "summary": "GRAUWEIL scores 82.6/100 on the fundamental model \u2192 Strong Buy. Supported by financial health.",
-          "assessments": [
-            {
-              "pillar": "Valuation",
-              "verdict": "Fair",
-              "detail": "P/E 20.1",
-              "points": 2.0
-            },
-            {
-              "pillar": "Profitability",
-              "verdict": "Decent",
-              "detail": "ROE 16.2%, net margin 13.8%, OPM 14.2%, ROA 12.0%",
-              "points": 2.0
-            },
-            {
-              "pillar": "Growth",
-              "verdict": "Steady",
-              "detail": "no growth data",
-              "points": 0.0
-            },
-            {
-              "pillar": "Financial health",
-              "verdict": "Solid",
-              "detail": "D/E 0.01, current ratio 2.7",
-              "points": 7.0
-            },
-            {
-              "pillar": "Governance",
-              "verdict": "Acceptable",
-              "detail": "no ownership data",
-              "points": 0.0
-            }
-          ],
-          "frameworks": {
-            "quality_score": {
-              "quality_score": 17,
-              "gp_ta": 0.0,
-              "roe": 16.2322295460127,
-              "roce": 0,
-              "reasons": [],
-              "signal": "LOW_QUALITY"
-            },
-            "graham": {
-              "graham_score": 2,
-              "criteria_met": {
-                "adequate_size": true,
-                "current_ratio_ge2": true,
-                "earnings_stability": false,
-                "dividend_record": false,
-                "earnings_growth": false,
-                "moderate_pe": false,
-                "moderate_pb": false
-              },
-              "graham_number": null,
-              "margin_of_safety_pct": null,
-              "signal": "AVOID"
-            },
-            "altman": {
-              "z_score": null,
-              "model": "n/a",
-              "zone": "NO_DATA"
-            }
-          },
-          "positives": [
-            "Financial health: D/E 0.01, current ratio 2.7"
-          ],
-          "negatives": [
-            "No major fundamental weaknesses detected"
-          ],
-          "red_flags": [],
-          "what_would_change": [
-            "Deteriorating margins, falling ROCE, or rising leverage would downgrade the signal"
-          ],
-          "data_gaps": [
-            "Growth",
-            "Governance"
-          ],
-          "horizons": {
-            "short_term": {
-              "horizon": "days\u2013weeks",
-              "stance": "WATCH",
-              "drivers": [
-                "insufficient price data"
-              ],
-              "illustrative_move_pct": null,
-              "confidence": "low",
-              "projection": {
-                "low_pct": -13.0,
-                "base_pct": 0.0,
-                "high_pct": 13.0,
-                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
-              }
-            },
-            "mid_term": {
-              "horizon": "1\u20136 months",
-              "stance": "HOLD",
-              "drivers": [
-                "insufficient trend data"
-              ],
-              "confidence": "low-moderate",
-              "projection": {
-                "low_pct": -31.8,
-                "base_pct": 0.0,
-                "high_pct": 31.8,
-                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
-              }
-            },
-            "long_term": {
-              "horizon": "1\u20133+ years",
-              "stance": "ACCUMULATE",
-              "drivers": [
-                "fundamental model: Strong Buy (conviction 82.6/100)"
-              ],
-              "illustrative_annual_return_pct": null,
-              "scenario": "growth data unavailable",
-              "analyst_consensus_upside_pct": null,
-              "confidence": "moderate",
-              "projection": {
-                "low_pct": -16.7,
-                "base_pct": 21.4,
-                "high_pct": 50.9,
-                "horizon_years": 3,
-                "method": "fundamental bull/base/bear (growth \u00b1 re-rating)"
-              }
-            },
-            "note": "Outlooks are scenario-based, NOT profit predictions. Short/mid-term are technical and weak; the long-term fundamental view is the most reliable. Any of them can fail on news, earnings, macro or black-swan events."
-          },
-          "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
-        },
-        "ai": {
-          "thesis": "GRAUWEIL scores 82.6/100 on the fundamental model \u2192 Strong Buy. Supported by financial health.",
-          "buy_case": [
-            "Financial health: D/E 0.01, current ratio 2.7"
-          ],
-          "sell_case": [
-            "No major fundamental weaknesses detected"
-          ],
-          "key_risks": [],
-          "catalysts": [
-            "Deteriorating margins, falling ROCE, or rising leverage would downgrade the signal"
-          ],
-          "data_critique": [
-            "Inputs not LLM-reviewed; see data-quality panel."
-          ],
-          "moat": "none",
-          "verdict": "STRONG_BUY",
-          "lean": 0.65,
-          "conviction": 82.6,
-          "confidence": "moderate",
-          "horizon_view": {
-            "short": "WATCH",
-            "mid": "HOLD",
-            "long": "ACCUMULATE"
-          },
-          "source": "deterministic",
-          "provider": "deterministic (no LLM)"
-        },
-        "composite": {
-          "verdict": "STRONG_BUY",
-          "group": "BUY",
-          "score": 92.0,
-          "lean": 0.841,
-          "agreement": 1.0,
-          "signals_used": [
-            "fundamental",
-            "ai"
-          ],
-          "components": {
-            "fundamental": 1.0,
-            "ai": 0.65
-          },
-          "rationale": "fundamentals STRONG_BUY \u00b7 AI lean +0.65",
-          "data_quality": null,
-          "has_red_flag": false,
-          "buy_case": [
-            "Financial health: D/E 0.01, current ratio 2.7"
-          ],
-          "sell_case": [
-            "No major fundamental weaknesses detected"
-          ],
-          "thesis": "GRAUWEIL scores 82.6/100 on the fundamental model \u2192 Strong Buy. Supported by financial health.",
-          "ai_provider": "deterministic (no LLM)",
-          "ai_source": "deterministic",
-          "data_critique": [
-            "Inputs not LLM-reviewed; see data-quality panel."
-          ],
-          "horizon_view": {
-            "short": "WATCH",
-            "mid": "HOLD",
-            "long": "ACCUMULATE"
-          }
-        },
-        "analyst_consensus": {
-          "rec_key": "none",
-          "source": "yahoo"
-        },
-        "news": null,
-        "ml_forecast": null,
-        "data_quality": null,
-        "exchange": "NSE"
-      },
       {
         "symbol": "TBZ",
         "name": null,
@@ -777,276 +551,6 @@
           "direction": "UP",
           "confidence": 0.686,
           "n_train": 469,
-          "disclaimer": "Probabilistic estimate, not a guarantee. Intervals are conformal (historically calibrated) and can break during news/earnings/macro shocks."
-        },
-        "data_quality": null,
-        "exchange": "NSE"
-      },
-      {
-        "symbol": "DBL",
-        "name": null,
-        "sector": null,
-        "price": null,
-        "metrics": {
-          "pe": 5.474365630939395,
-          "pb": NaN,
-          "ev_ebitda": 8.627938281115524,
-          "roe": 21.9008712731237,
-          "roa": 6.692987475530609,
-          "opm": 16.3387437784475,
-          "net_margin": 14.4966782470462,
-          "debt_to_equity": 1.17752237755812,
-          "current_ratio": 1.56297689489775,
-          "fcf_yield": NaN,
-          "dividend_yield": 0.21838829438742086,
-          "market_cap_cr": 7438.3484018,
-          "symbol": "DBL"
-        },
-        "recommendation": {
-          "verdict": "STRONG_BUY",
-          "verdict_label": "Strong Buy (educational model signal)",
-          "conviction": 82.7,
-          "confidence": "moderate",
-          "summary": "DBL scores 82.7/100 on the fundamental model \u2192 Strong Buy. Supported by valuation, profitability.",
-          "assessments": [
-            {
-              "pillar": "Valuation",
-              "verdict": "Cheap",
-              "detail": "P/E 5.5",
-              "points": 6.0
-            },
-            {
-              "pillar": "Profitability",
-              "verdict": "Decent",
-              "detail": "ROE 21.9%, net margin 14.5%, OPM 16.3%, ROA 6.7%",
-              "points": 5.0
-            },
-            {
-              "pillar": "Growth",
-              "verdict": "Steady",
-              "detail": "no growth data",
-              "points": 0.0
-            },
-            {
-              "pillar": "Financial health",
-              "verdict": "Adequate",
-              "detail": "D/E 1.18, current ratio 1.6",
-              "points": 0.0
-            },
-            {
-              "pillar": "Governance",
-              "verdict": "Acceptable",
-              "detail": "no ownership data",
-              "points": 0.0
-            }
-          ],
-          "frameworks": {
-            "quality_score": {
-              "quality_score": 17,
-              "gp_ta": 0.0,
-              "roe": 21.9008712731237,
-              "roce": 0,
-              "reasons": [],
-              "signal": "LOW_QUALITY"
-            },
-            "graham": {
-              "graham_score": 2,
-              "criteria_met": {
-                "adequate_size": true,
-                "current_ratio_ge2": false,
-                "earnings_stability": false,
-                "dividend_record": false,
-                "earnings_growth": false,
-                "moderate_pe": true,
-                "moderate_pb": false
-              },
-              "graham_number": null,
-              "margin_of_safety_pct": null,
-              "signal": "AVOID"
-            },
-            "altman": {
-              "z_score": null,
-              "model": "n/a",
-              "zone": "NO_DATA"
-            }
-          },
-          "positives": [
-            "Valuation: P/E 5.5",
-            "Profitability: ROE 21.9%, net margin 14.5%, OPM 16.3%, ROA 6.7%"
-          ],
-          "negatives": [
-            "No major fundamental weaknesses detected"
-          ],
-          "red_flags": [],
-          "what_would_change": [
-            "Deteriorating margins, falling ROCE, or rising leverage would downgrade the signal"
-          ],
-          "data_gaps": [
-            "Growth",
-            "Governance"
-          ],
-          "horizons": {
-            "short_term": {
-              "horizon": "days\u2013weeks",
-              "stance": "WATCH",
-              "drivers": [
-                "insufficient price data"
-              ],
-              "illustrative_move_pct": null,
-              "confidence": "low",
-              "projection": {
-                "low_pct": -13.0,
-                "base_pct": 0.0,
-                "high_pct": 13.0,
-                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
-              }
-            },
-            "mid_term": {
-              "horizon": "1\u20136 months",
-              "stance": "HOLD",
-              "drivers": [
-                "insufficient trend data"
-              ],
-              "confidence": "low-moderate",
-              "projection": {
-                "low_pct": -31.8,
-                "base_pct": 0.0,
-                "high_pct": 31.8,
-                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
-              }
-            },
-            "long_term": {
-              "horizon": "1\u20133+ years",
-              "stance": "ACCUMULATE",
-              "drivers": [
-                "fundamental model: Strong Buy (conviction 82.7/100)"
-              ],
-              "illustrative_annual_return_pct": null,
-              "scenario": "growth data unavailable",
-              "analyst_consensus_upside_pct": null,
-              "confidence": "moderate",
-              "projection": {
-                "low_pct": -17.9,
-                "base_pct": 19.8,
-                "high_pct": 49.0,
-                "horizon_years": 3,
-                "method": "fundamental bull/base/bear (growth \u00b1 re-rating)"
-              }
-            },
-            "note": "Outlooks are scenario-based, NOT profit predictions. Short/mid-term are technical and weak; the long-term fundamental view is the most reliable. Any of them can fail on news, earnings, macro or black-swan events."
-          },
-          "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
-        },
-        "ai": {
-          "thesis": "DBL scores 82.7/100 on the fundamental model \u2192 Strong Buy. Supported by valuation, profitability.",
-          "buy_case": [
-            "Valuation: P/E 5.5",
-            "Profitability: ROE 21.9%, net margin 14.5%, OPM 16.3%, ROA 6.7%",
-            "Analyst target implies +18.6% vs price",
-            "ML forecast UP (P(up)=0.677, 6.67%)",
-            "News sentiment +0.50 (2 headlines)"
-          ],
-          "sell_case": [
-            "No major fundamental weaknesses detected"
-          ],
-          "key_risks": [],
-          "catalysts": [
-            "Deteriorating margins, falling ROCE, or rising leverage would downgrade the signal"
-          ],
-          "data_critique": [
-            "Inputs not LLM-reviewed; see data-quality panel."
-          ],
-          "moat": "none",
-          "verdict": "STRONG_BUY",
-          "lean": 0.65,
-          "conviction": 82.7,
-          "confidence": "moderate",
-          "horizon_view": {
-            "short": "WATCH",
-            "mid": "HOLD",
-            "long": "ACCUMULATE"
-          },
-          "source": "deterministic",
-          "provider": "deterministic (no LLM)"
-        },
-        "composite": {
-          "verdict": "STRONG_BUY",
-          "group": "BUY",
-          "score": 81.6,
-          "lean": 0.632,
-          "agreement": 1.0,
-          "signals_used": [
-            "fundamental",
-            "ai",
-            "analyst",
-            "ml",
-            "news"
-          ],
-          "components": {
-            "fundamental": 1.0,
-            "ai": 0.65,
-            "analyst": 0.43,
-            "ml": 0.22,
-            "news": 0.5
-          },
-          "rationale": "fundamentals STRONG_BUY \u00b7 analysts +18.6% target (buy) \u00b7 ML up (P0.677) \u00b7 news +0.5 \u00b7 AI lean +0.65",
-          "data_quality": null,
-          "has_red_flag": false,
-          "buy_case": [
-            "Valuation: P/E 5.5",
-            "Profitability: ROE 21.9%, net margin 14.5%, OPM 16.3%, ROA 6.7%",
-            "Analyst target implies +18.6% vs price",
-            "ML forecast UP (P(up)=0.677, 6.67%)",
-            "News sentiment +0.50 (2 headlines)"
-          ],
-          "sell_case": [
-            "No major fundamental weaknesses detected"
-          ],
-          "thesis": "DBL scores 82.7/100 on the fundamental model \u2192 Strong Buy. Supported by valuation, profitability.",
-          "ai_provider": "deterministic (no LLM)",
-          "ai_source": "deterministic",
-          "data_critique": [
-            "Inputs not LLM-reviewed; see data-quality panel."
-          ],
-          "horizon_view": {
-            "short": "WATCH",
-            "mid": "HOLD",
-            "long": "ACCUMULATE"
-          }
-        },
-        "analyst_consensus": {
-          "target_upside_pct": 18.6,
-          "analyst_target": 540.2,
-          "rec_mean": 2.2,
-          "rec_key": "buy",
-          "analyst_n": 5,
-          "source": "yahoo"
-        },
-        "news": {
-          "net_sentiment": 0.5,
-          "n": 2,
-          "sample": [
-            "Dilip Buildcon Ltd (BOM:540047) Q3 2026 Earnings Call Highlights: Navigating Challenges with ...",
-            "Dilip Buildcon Ltd (BOM:540047) Q2 2026 Earnings Call Highlights: Strategic Diversification ..."
-          ],
-          "source": "llm"
-        },
-        "ml_forecast": {
-          "model": "xgboost",
-          "horizon_days": 21,
-          "coverage": 0.8,
-          "last_close": 459.70001220703125,
-          "last_date": "2026-06-25",
-          "predicted_return_pct": 6.67,
-          "predicted_price": 490.35,
-          "price_lower": 439.72,
-          "price_upper": 540.98,
-          "return_lower_pct": -4.35,
-          "return_upper_pct": 17.68,
-          "prob_up": 0.677,
-          "direction": "UP",
-          "confidence": 0.23,
-          "n_train": 467,
           "disclaimer": "Probabilistic estimate, not a guarantee. Intervals are conformal (historically calibrated) and can break during news/earnings/macro shocks."
         },
         "data_quality": null,
@@ -2686,6 +2190,547 @@
           "direction": "UP",
           "confidence": 0.186,
           "n_train": 308,
+          "disclaimer": "Probabilistic estimate, not a guarantee. Intervals are conformal (historically calibrated) and can break during news/earnings/macro shocks."
+        },
+        "data_quality": null,
+        "exchange": "NSE"
+      },
+      {
+        "symbol": "FORCEMOT",
+        "name": null,
+        "sector": null,
+        "price": null,
+        "metrics": {
+          "pe": 20.000108749435864,
+          "pb": NaN,
+          "ev_ebitda": 15.781078124397398,
+          "roe": 33.5270304298139,
+          "roa": 20.7065446339231,
+          "opm": 13.2179904052644,
+          "net_margin": 13.3777554501742,
+          "debt_to_equity": 0.0,
+          "current_ratio": 1.87436772950074,
+          "fcf_yield": NaN,
+          "dividend_yield": 0.2718455047627332,
+          "market_cap_cr": 24234.8360202,
+          "symbol": "FORCEMOT"
+        },
+        "recommendation": {
+          "verdict": "STRONG_BUY",
+          "verdict_label": "Strong Buy (educational model signal)",
+          "conviction": 90.7,
+          "confidence": "moderate",
+          "summary": "FORCEMOT scores 90.7/100 on the fundamental model \u2192 Strong Buy. Supported by profitability, financial health.",
+          "assessments": [
+            {
+              "pillar": "Valuation",
+              "verdict": "Fair",
+              "detail": "P/E 20.0",
+              "points": 2.0
+            },
+            {
+              "pillar": "Profitability",
+              "verdict": "Decent",
+              "detail": "ROE 33.5%, net margin 13.4%, OPM 13.2%, ROA 20.7%",
+              "points": 5.0
+            },
+            {
+              "pillar": "Growth",
+              "verdict": "Steady",
+              "detail": "no growth data",
+              "points": 0.0
+            },
+            {
+              "pillar": "Financial health",
+              "verdict": "Solid",
+              "detail": "D/E 0.00, current ratio 1.9",
+              "points": 5.0
+            },
+            {
+              "pillar": "Governance",
+              "verdict": "Acceptable",
+              "detail": "no ownership data",
+              "points": 0.0
+            }
+          ],
+          "frameworks": {
+            "quality_score": {
+              "quality_score": 25,
+              "gp_ta": 0.0,
+              "roe": 33.5270304298139,
+              "roce": 0,
+              "reasons": [
+                "ROE 34% with low D/E 0.00"
+              ],
+              "signal": "LOW_QUALITY"
+            },
+            "graham": {
+              "graham_score": 1,
+              "criteria_met": {
+                "adequate_size": true,
+                "current_ratio_ge2": false,
+                "earnings_stability": false,
+                "dividend_record": false,
+                "earnings_growth": false,
+                "moderate_pe": false,
+                "moderate_pb": false
+              },
+              "graham_number": null,
+              "margin_of_safety_pct": null,
+              "signal": "AVOID"
+            },
+            "altman": {
+              "z_score": null,
+              "model": "n/a",
+              "zone": "NO_DATA"
+            }
+          },
+          "positives": [
+            "Profitability: ROE 33.5%, net margin 13.4%, OPM 13.2%, ROA 20.7%",
+            "Financial health: D/E 0.00, current ratio 1.9"
+          ],
+          "negatives": [
+            "No major fundamental weaknesses detected"
+          ],
+          "red_flags": [],
+          "what_would_change": [
+            "Deteriorating margins, falling ROCE, or rising leverage would downgrade the signal"
+          ],
+          "data_gaps": [
+            "Growth",
+            "Governance"
+          ],
+          "horizons": {
+            "short_term": {
+              "horizon": "days\u2013weeks",
+              "stance": "WATCH",
+              "drivers": [
+                "insufficient price data"
+              ],
+              "illustrative_move_pct": null,
+              "confidence": "low",
+              "projection": {
+                "low_pct": -13.0,
+                "base_pct": 0.0,
+                "high_pct": 13.0,
+                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
+              }
+            },
+            "mid_term": {
+              "horizon": "1\u20136 months",
+              "stance": "HOLD",
+              "drivers": [
+                "insufficient trend data"
+              ],
+              "confidence": "low-moderate",
+              "projection": {
+                "low_pct": -31.8,
+                "base_pct": 0.0,
+                "high_pct": 31.8,
+                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
+              }
+            },
+            "long_term": {
+              "horizon": "1\u20133+ years",
+              "stance": "ACCUMULATE",
+              "drivers": [
+                "fundamental model: Strong Buy (conviction 90.7/100)"
+              ],
+              "illustrative_annual_return_pct": null,
+              "scenario": "growth data unavailable",
+              "analyst_consensus_upside_pct": null,
+              "confidence": "moderate",
+              "projection": {
+                "low_pct": -17.8,
+                "base_pct": 20.0,
+                "high_pct": 49.2,
+                "horizon_years": 3,
+                "method": "fundamental bull/base/bear (growth \u00b1 re-rating)"
+              }
+            },
+            "note": "Outlooks are scenario-based, NOT profit predictions. Short/mid-term are technical and weak; the long-term fundamental view is the most reliable. Any of them can fail on news, earnings, macro or black-swan events."
+          },
+          "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
+        },
+        "ai": {
+          "thesis": "FORCEMOT has a PE ratio of 20.00 and a strong ROE of 33.53%, indicating solid profitability. The company maintains a debt-to-equity ratio of 0.0, reflecting a robust balance sheet. However, the quality score is low at 25, suggesting potential concerns about the sustainability of these metrics.",
+          "buy_case": [
+            "Strong ROE of 33.53% indicating efficient use of equity capital.",
+            "Debt-to-equity ratio of 0.0 suggests no financial leverage, reducing risk.",
+            "Current ratio of 1.87 indicates good short-term liquidity position."
+          ],
+          "sell_case": [
+            "Low quality score of 25 raises concerns about the sustainability of earnings.",
+            "Graham score of 1 indicates potential overvaluation or fundamental weaknesses.",
+            "No data on Altman Z-score suggests uncertainty in bankruptcy risk."
+          ],
+          "key_risks": [
+            "Market volatility affecting stock price performance.",
+            "Potential operational inefficiencies due to low quality score.",
+            "Changes in macroeconomic conditions impacting profitability."
+          ],
+          "catalysts": [
+            "Positive earnings report could enhance investor sentiment.",
+            "Strategic partnerships or expansions could drive growth.",
+            "Improvement in quality metrics could attract more investors."
+          ],
+          "data_critique": [
+            "Inputs look consistent but low quality score and Graham score suggest caution in reliability.",
+            "Lack of data on Altman Z-score limits understanding of financial health."
+          ],
+          "moat": "weak",
+          "verdict": "HOLD",
+          "lean": 0.0,
+          "conviction": 55.0,
+          "confidence": "low",
+          "horizon_view": {
+            "short": "1-2 weeks for potential volatility",
+            "mid": "3-6 months for earnings impact",
+            "long": "1-2 years for growth trajectory"
+          },
+          "source": "ai",
+          "provider": "GitHub Models"
+        },
+        "composite": {
+          "verdict": "STRONG_BUY",
+          "group": "BUY",
+          "score": 79.6,
+          "lean": 0.592,
+          "agreement": 0.67,
+          "signals_used": [
+            "fundamental",
+            "ai",
+            "ml"
+          ],
+          "components": {
+            "fundamental": 1.0,
+            "ai": 0.0,
+            "ml": 0.76
+          },
+          "rationale": "fundamentals STRONG_BUY \u00b7 ML up (P0.953) \u00b7 AI lean +0.00",
+          "data_quality": null,
+          "has_red_flag": false,
+          "buy_case": [
+            "Strong ROE of 33.53% indicating efficient use of equity capital.",
+            "Debt-to-equity ratio of 0.0 suggests no financial leverage, reducing risk.",
+            "Current ratio of 1.87 indicates good short-term liquidity position."
+          ],
+          "sell_case": [
+            "Low quality score of 25 raises concerns about the sustainability of earnings.",
+            "Graham score of 1 indicates potential overvaluation or fundamental weaknesses.",
+            "No data on Altman Z-score suggests uncertainty in bankruptcy risk."
+          ],
+          "thesis": "FORCEMOT has a PE ratio of 20.00 and a strong ROE of 33.53%, indicating solid profitability. The company maintains a debt-to-equity ratio of 0.0, reflecting a robust balance sheet. However, the quality score is low at 25, suggesting potential concerns about the sustainability of these metrics.",
+          "ai_provider": "GitHub Models",
+          "ai_source": "ai",
+          "data_critique": [
+            "Inputs look consistent but low quality score and Graham score suggest caution in reliability.",
+            "Lack of data on Altman Z-score limits understanding of financial health."
+          ],
+          "horizon_view": {
+            "short": "1-2 weeks for potential volatility",
+            "mid": "3-6 months for earnings impact",
+            "long": "1-2 years for growth trajectory"
+          }
+        },
+        "analyst_consensus": {
+          "rec_key": "none",
+          "source": "yahoo"
+        },
+        "news": null,
+        "ml_forecast": {
+          "model": "xgboost",
+          "horizon_days": 21,
+          "coverage": 0.8,
+          "last_close": 18391.0,
+          "last_date": "2026-06-25",
+          "predicted_return_pct": 17.62,
+          "predicted_price": 21631.97,
+          "price_lower": 19142.39,
+          "price_upper": 24121.54,
+          "return_lower_pct": 4.09,
+          "return_upper_pct": 31.16,
+          "prob_up": 0.953,
+          "direction": "UP",
+          "confidence": 0.682,
+          "n_train": 428,
+          "disclaimer": "Probabilistic estimate, not a guarantee. Intervals are conformal (historically calibrated) and can break during news/earnings/macro shocks."
+        },
+        "data_quality": null,
+        "exchange": "NSE"
+      },
+      {
+        "symbol": "ANANTRAJ",
+        "name": null,
+        "sector": null,
+        "price": null,
+        "metrics": {
+          "pe": 32.63591793398494,
+          "pb": NaN,
+          "ev_ebitda": 28.32324524450002,
+          "roe": 11.153742373093301,
+          "roa": 9.14765493959928,
+          "opm": 24.2050685420501,
+          "net_margin": 22.0922629506051,
+          "debt_to_equity": 0.117563325853256,
+          "current_ratio": 9.75464219207236,
+          "fcf_yield": NaN,
+          "dividend_yield": 0.19138755980861244,
+          "market_cap_cr": 18803.5692062,
+          "symbol": "ANANTRAJ"
+        },
+        "recommendation": {
+          "verdict": "STRONG_BUY",
+          "verdict_label": "Strong Buy (educational model signal)",
+          "conviction": 82.7,
+          "confidence": "moderate",
+          "summary": "ANANTRAJ scores 82.7/100 on the fundamental model \u2192 Strong Buy. Supported by financial health.",
+          "assessments": [
+            {
+              "pillar": "Valuation",
+              "verdict": "Fair",
+              "detail": "P/E 32.6",
+              "points": 0.0
+            },
+            {
+              "pillar": "Profitability",
+              "verdict": "Weak",
+              "detail": "ROE 11.2%, net margin 22.1%, OPM 24.2%, ROA 9.1%",
+              "points": 0.0
+            },
+            {
+              "pillar": "Growth",
+              "verdict": "Steady",
+              "detail": "no growth data",
+              "points": 0.0
+            },
+            {
+              "pillar": "Financial health",
+              "verdict": "Solid",
+              "detail": "D/E 0.12, current ratio 9.8",
+              "points": 7.0
+            },
+            {
+              "pillar": "Governance",
+              "verdict": "Acceptable",
+              "detail": "no ownership data",
+              "points": 0.0
+            }
+          ],
+          "frameworks": {
+            "quality_score": {
+              "quality_score": 10,
+              "gp_ta": 0.0,
+              "roe": 11.153742373093301,
+              "roce": 0,
+              "reasons": [],
+              "signal": "LOW_QUALITY"
+            },
+            "graham": {
+              "graham_score": 2,
+              "criteria_met": {
+                "adequate_size": true,
+                "current_ratio_ge2": true,
+                "earnings_stability": false,
+                "dividend_record": false,
+                "earnings_growth": false,
+                "moderate_pe": false,
+                "moderate_pb": false
+              },
+              "graham_number": null,
+              "margin_of_safety_pct": null,
+              "signal": "AVOID"
+            },
+            "altman": {
+              "z_score": null,
+              "model": "n/a",
+              "zone": "NO_DATA"
+            }
+          },
+          "positives": [
+            "Financial health: D/E 0.12, current ratio 9.8"
+          ],
+          "negatives": [
+            "No major fundamental weaknesses detected"
+          ],
+          "red_flags": [],
+          "what_would_change": [
+            "A de-rating below ~25x P/E (now 33) would improve the margin of safety",
+            "Deteriorating margins, falling ROCE, or rising leverage would downgrade the signal"
+          ],
+          "data_gaps": [
+            "Growth",
+            "Governance"
+          ],
+          "horizons": {
+            "short_term": {
+              "horizon": "days\u2013weeks",
+              "stance": "WATCH",
+              "drivers": [
+                "insufficient price data"
+              ],
+              "illustrative_move_pct": null,
+              "confidence": "low",
+              "projection": {
+                "low_pct": -13.0,
+                "base_pct": 0.0,
+                "high_pct": 13.0,
+                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
+              }
+            },
+            "mid_term": {
+              "horizon": "1\u20136 months",
+              "stance": "HOLD",
+              "drivers": [
+                "insufficient trend data"
+              ],
+              "confidence": "low-moderate",
+              "projection": {
+                "low_pct": -31.8,
+                "base_pct": 0.0,
+                "high_pct": 31.8,
+                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
+              }
+            },
+            "long_term": {
+              "horizon": "1\u20133+ years",
+              "stance": "ACCUMULATE",
+              "drivers": [
+                "fundamental model: Strong Buy (conviction 82.7/100)"
+              ],
+              "illustrative_annual_return_pct": null,
+              "scenario": "growth data unavailable",
+              "analyst_consensus_upside_pct": null,
+              "confidence": "moderate",
+              "projection": {
+                "low_pct": -18.0,
+                "base_pct": 19.7,
+                "high_pct": 48.9,
+                "horizon_years": 3,
+                "method": "fundamental bull/base/bear (growth \u00b1 re-rating)"
+              }
+            },
+            "note": "Outlooks are scenario-based, NOT profit predictions. Short/mid-term are technical and weak; the long-term fundamental view is the most reliable. Any of them can fail on news, earnings, macro or black-swan events."
+          },
+          "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
+        },
+        "ai": {
+          "thesis": "Anant Raj Ltd has a PE ratio of 32.64 and a net margin of 22.09%, indicating strong profitability, but its quality score is low, suggesting potential concerns about earnings sustainability. The current ratio of 9.75 indicates excellent liquidity, while the debt-to-equity ratio of 0.12 reflects a conservative capital structure.",
+          "buy_case": [
+            "Analyst consensus shows a strong buy recommendation with a target upside of 34.3% based on a mean target of 700.0.",
+            "The company has a high current ratio of 9.75, indicating strong liquidity and ability to cover short-term liabilities.",
+            "The net margin of 22.09% suggests robust profitability, which could support future growth."
+          ],
+          "sell_case": [
+            "The quality score is low (10), indicating potential issues with earnings quality and sustainability.",
+            "The Graham score of 2 suggests that the stock is overvalued based on fundamental analysis.",
+            "The predicted return from the ML forecast is only 3.29%, indicating limited upside potential in the near term."
+          ],
+          "key_risks": [
+            "Low quality score may indicate volatility in earnings.",
+            "High valuation metrics (PE of 32.64) could lead to price corrections if growth slows.",
+            "Market sentiment could shift negatively, impacting stock performance."
+          ],
+          "catalysts": [
+            "Positive earnings reports could enhance investor confidence and drive the stock price higher.",
+            "Any strategic partnerships or expansions could boost growth prospects.",
+            "Improvement in quality metrics could lead to a re-rating of the stock."
+          ],
+          "data_critique": [
+            "Inputs look consistent, but the low quality score and Graham score raise concerns about the reliability of the earnings.",
+            "The absence of a Z-score limits the assessment of financial distress risk."
+          ],
+          "moat": "weak",
+          "verdict": "HOLD",
+          "lean": 0.2,
+          "conviction": 60.0,
+          "confidence": "low",
+          "horizon_view": {
+            "short": "monitor for earnings updates",
+            "mid": "potential for moderate growth",
+            "long": "uncertain due to quality concerns"
+          },
+          "source": "ai",
+          "provider": "GitHub Models"
+        },
+        "composite": {
+          "verdict": "STRONG_BUY",
+          "group": "BUY",
+          "score": 79.4,
+          "lean": 0.588,
+          "agreement": 0.8,
+          "signals_used": [
+            "fundamental",
+            "ai",
+            "analyst",
+            "ml",
+            "news"
+          ],
+          "components": {
+            "fundamental": 1.0,
+            "ai": 0.2,
+            "analyst": 0.67,
+            "ml": 0.03,
+            "news": 1.0
+          },
+          "rationale": "fundamentals STRONG_BUY \u00b7 analysts +34.3% target (strong_buy) \u00b7 ML up (P0.527) \u00b7 news +1.0 \u00b7 AI lean +0.20",
+          "data_quality": null,
+          "has_red_flag": false,
+          "buy_case": [
+            "Analyst consensus shows a strong buy recommendation with a target upside of 34.3% based on a mean target of 700.0.",
+            "The company has a high current ratio of 9.75, indicating strong liquidity and ability to cover short-term liabilities.",
+            "The net margin of 22.09% suggests robust profitability, which could support future growth."
+          ],
+          "sell_case": [
+            "The quality score is low (10), indicating potential issues with earnings quality and sustainability.",
+            "The Graham score of 2 suggests that the stock is overvalued based on fundamental analysis.",
+            "The predicted return from the ML forecast is only 3.29%, indicating limited upside potential in the near term."
+          ],
+          "thesis": "Anant Raj Ltd has a PE ratio of 32.64 and a net margin of 22.09%, indicating strong profitability, but its quality score is low, suggesting potential concerns about earnings sustainability. The current ratio of 9.75 indicates excellent liquidity, while the debt-to-equity ratio of 0.12 reflects a conservative capital structure.",
+          "ai_provider": "GitHub Models",
+          "ai_source": "ai",
+          "data_critique": [
+            "Inputs look consistent, but the low quality score and Graham score raise concerns about the reliability of the earnings.",
+            "The absence of a Z-score limits the assessment of financial distress risk."
+          ],
+          "horizon_view": {
+            "short": "monitor for earnings updates",
+            "mid": "potential for moderate growth",
+            "long": "uncertain due to quality concerns"
+          }
+        },
+        "analyst_consensus": {
+          "target_upside_pct": 34.3,
+          "analyst_target": 700.0,
+          "rec_mean": 1.33,
+          "rec_key": "strong_buy",
+          "analyst_n": 3,
+          "source": "yahoo"
+        },
+        "news": {
+          "net_sentiment": 1.0,
+          "n": 1,
+          "sample": [
+            "Anant Raj Ltd (BOM:515055) Q2 2026 Earnings Call Highlights: Robust Revenue Growth and ..."
+          ],
+          "source": "llm"
+        },
+        "ml_forecast": {
+          "model": "xgboost",
+          "horizon_days": 21,
+          "coverage": 0.8,
+          "last_close": 522.5499877929688,
+          "last_date": "2026-06-25",
+          "predicted_return_pct": 3.29,
+          "predicted_price": 539.73,
+          "price_lower": 473.16,
+          "price_upper": 606.29,
+          "return_lower_pct": -9.45,
+          "return_upper_pct": 16.03,
+          "prob_up": 0.527,
+          "direction": "UP",
+          "confidence": 0.039,
+          "n_train": 469,
           "disclaimer": "Probabilistic estimate, not a guarantee. Intervals are conformal (historically calibrated) and can break during news/earnings/macro shocks."
         },
         "data_quality": null,
@@ -5257,29 +5302,29 @@
           "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
         },
         "ai": {
-          "thesis": "OFSS has a high PE ratio of 36.32 and a low debt-to-equity ratio of 0.004, indicating strong profitability and minimal leverage. However, its quality score is low at 25, and the Graham score suggests it is an avoid, reflecting potential overvaluation. The current ratio of 5.43 indicates strong liquidity, but the lack of dividend yield may deter income-focused investors.",
+          "thesis": "OFSS has a PE ratio of 36.32 and a PB ratio of 12.20, indicating a premium valuation. The company exhibits strong profitability with a ROE of 32.61% and a net margin of 34.40%. However, the quality score is low at 25, and the Graham score suggests an avoid stance, indicating potential concerns about valuation sustainability.",
           "buy_case": [
-            "Strong ROE of 32.61% suggests efficient use of equity capital.",
-            "High operating margin of 45.12% indicates strong operational efficiency.",
-            "Low debt-to-equity ratio of 0.004 reflects minimal financial risk."
+            "Strong ROE of 32.61% indicating efficient use of equity capital.",
+            "Low debt-to-equity ratio of 0.004, suggesting a strong balance sheet with minimal leverage.",
+            "High operating margin of 45.12% reflecting strong operational efficiency."
           ],
           "sell_case": [
             "High PE ratio of 36.32 may indicate overvaluation compared to peers.",
-            "Low quality score of 25 raises concerns about fundamental strength.",
-            "Analyst consensus shows a target downside of -2.4%, indicating bearish sentiment."
+            "Analyst consensus shows a target downside of -2.4%, suggesting limited upside potential.",
+            "Low quality score of 25 raises concerns about the sustainability of earnings."
           ],
           "key_risks": [
-            "Potential for earnings volatility due to low quality score.",
-            "Market sentiment could negatively impact stock price given recent news.",
-            "High valuation metrics may lead to price corrections."
+            "Market volatility affecting stock price performance.",
+            "Potential for earnings disappointment given high valuation metrics.",
+            "Regulatory changes impacting operational efficiency."
           ],
           "catalysts": [
-            "Improvement in quality metrics could enhance investor confidence.",
-            "Positive earnings surprise could shift analyst sentiment.",
-            "Broader market recovery could lift stock performance."
+            "Improvement in market sentiment could drive stock price higher.",
+            "Positive earnings report exceeding expectations could boost confidence.",
+            "Strategic partnerships or new product launches enhancing growth prospects."
           ],
           "data_critique": [
-            "Inputs look consistent but low quality score and Graham score suggest caution in reliability."
+            "Inputs look consistent but the quality score is low, indicating potential reliability issues with the underlying data."
           ],
           "moat": "weak",
           "verdict": "SELL",
@@ -5287,9 +5332,9 @@
           "conviction": 55.0,
           "confidence": "low",
           "horizon_view": {
-            "short": "1-2 weeks",
-            "mid": "2-6 months",
-            "long": "1-2 years"
+            "short": "1-2 weeks for potential volatility",
+            "mid": "3-6 months for earnings impact",
+            "long": "1-2 years for market positioning"
           },
           "source": "ai",
           "provider": "GitHub Models"
@@ -5318,25 +5363,25 @@
           "data_quality": null,
           "has_red_flag": false,
           "buy_case": [
-            "Strong ROE of 32.61% suggests efficient use of equity capital.",
-            "High operating margin of 45.12% indicates strong operational efficiency.",
-            "Low debt-to-equity ratio of 0.004 reflects minimal financial risk."
+            "Strong ROE of 32.61% indicating efficient use of equity capital.",
+            "Low debt-to-equity ratio of 0.004, suggesting a strong balance sheet with minimal leverage.",
+            "High operating margin of 45.12% reflecting strong operational efficiency."
           ],
           "sell_case": [
             "High PE ratio of 36.32 may indicate overvaluation compared to peers.",
-            "Low quality score of 25 raises concerns about fundamental strength.",
-            "Analyst consensus shows a target downside of -2.4%, indicating bearish sentiment."
+            "Analyst consensus shows a target downside of -2.4%, suggesting limited upside potential.",
+            "Low quality score of 25 raises concerns about the sustainability of earnings."
           ],
-          "thesis": "OFSS has a high PE ratio of 36.32 and a low debt-to-equity ratio of 0.004, indicating strong profitability and minimal leverage. However, its quality score is low at 25, and the Graham score suggests it is an avoid, reflecting potential overvaluation. The current ratio of 5.43 indicates strong liquidity, but the lack of dividend yield may deter income-focused investors.",
+          "thesis": "OFSS has a PE ratio of 36.32 and a PB ratio of 12.20, indicating a premium valuation. The company exhibits strong profitability with a ROE of 32.61% and a net margin of 34.40%. However, the quality score is low at 25, and the Graham score suggests an avoid stance, indicating potential concerns about valuation sustainability.",
           "ai_provider": "GitHub Models",
           "ai_source": "ai",
           "data_critique": [
-            "Inputs look consistent but low quality score and Graham score suggest caution in reliability."
+            "Inputs look consistent but the quality score is low, indicating potential reliability issues with the underlying data."
           ],
           "horizon_view": {
-            "short": "1-2 weeks",
-            "mid": "2-6 months",
-            "long": "1-2 years"
+            "short": "1-2 weeks for potential volatility",
+            "mid": "3-6 months for earnings impact",
+            "long": "1-2 years for market positioning"
           }
         },
         "analyst_consensus": {
@@ -5360,11 +5405,11 @@
           "coverage": 0.8,
           "last_close": 10974.5,
           "last_date": "2026-06-25",
-          "predicted_return_pct": -1.99,
-          "predicted_price": 10755.69,
-          "price_lower": 7939.79,
+          "predicted_return_pct": -1.98,
+          "predicted_price": 10757.21,
+          "price_lower": 7942.82,
           "price_upper": 13571.6,
-          "return_lower_pct": -27.65,
+          "return_lower_pct": -27.62,
           "return_upper_pct": 23.66,
           "prob_up": 0.548,
           "direction": "DOWN",
@@ -5463,14 +5508,14 @@
       "v": "BUY",
       "sc": 62.1,
       "b": [
-        "Strong liquidity with a current ratio of 9.78, suggesting the company can easily cover its short-term liabilities.",
-        "A net margin of 22.62% indicates effective cost management and profitability.",
-        "Analyst consensus shows a target upside of 6.7%, suggesting potential for price appreciation."
+        "Strong liquidity with a current ratio of 9.78, suggesting financial stability.",
+        "Net margin of 22.62% indicates robust profitability.",
+        "Low debt-to-equity ratio of 0.02 reflects minimal financial risk."
       ],
       "se": [
-        "Low quality score of 10 raises concerns about the sustainability of earnings.",
-        "Graham score of 2 signals potential overvaluation and suggests investors should avoid the stock.",
-        "ML forecast predicts a return of -7.35%, indicating a potential decline in stock price."
+        "Low quality score of 10 raises concerns about operational efficiency.",
+        "Graham score of 2 suggests potential overvaluation or risk in fundamentals.",
+        "ML forecast predicts a -7.54% return, indicating bearish sentiment."
       ],
       "ai": true
     },
@@ -5841,16 +5886,16 @@
       "sec": "",
       "p": null,
       "v": "BUY",
-      "sc": 73.7,
+      "sc": 73.9,
       "b": [
         "Low PE ratio of 7.06 suggests undervaluation compared to peers.",
-        "High operating margin of 82.72% indicates strong operational efficiency.",
-        "Strong current ratio of 8.04 reflects excellent liquidity position."
+        "High operating profit margin of 82.72% indicates strong operational efficiency.",
+        "Current ratio of 8.04 reflects excellent liquidity, minimizing short-term financial risk."
       ],
       "se": [
-        "Low quality score of 10 indicates potential issues with earnings quality.",
-        "Graham score of 3 suggests it may be an avoid based on fundamental analysis.",
-        "High EV/EBITDA of 132.33 raises concerns about valuation sustainability."
+        "Low quality score of 10 raises concerns about the sustainability of earnings.",
+        "Graham score of 3 signals potential overvaluation or risk in fundamentals.",
+        "Lack of analyst consensus and news sentiment may indicate uncertainty in market perception."
       ],
       "ai": true
     },
@@ -6467,17 +6512,19 @@
       "n": "",
       "sec": "",
       "p": null,
-      "v": "STRONG_BUY",
-      "sc": 81.6,
+      "v": "BUY",
+      "sc": 73.5,
       "b": [
-        "Valuation: P/E 5.5",
-        "Profitability: ROE 21.9%, net margin 14.5%, OPM 16.3%, ROA 6.7%",
-        "Analyst target implies +18.6% vs price"
+        "PE ratio of 5.47 suggests undervaluation compared to industry peers.",
+        "ROE of 21.90% indicates strong profitability relative to equity.",
+        "Current ratio of 1.56 shows good liquidity, which can support operational stability."
       ],
       "se": [
-        "No major fundamental weaknesses detected"
+        "Low quality score of 17 raises concerns about financial stability and operational efficiency.",
+        "Graham score of 2 signals potential overvaluation or poor fundamentals, suggesting caution.",
+        "Debt-to-equity ratio of 1.18 indicates significant leverage, which could pose risks in downturns."
       ],
-      "ai": false
+      "ai": true
     },
     {
       "s": "DEEPINDS",
@@ -6656,16 +6703,16 @@
       "sec": "",
       "p": null,
       "v": "BUY",
-      "sc": 73.5,
+      "sc": 73.6,
       "b": [
-        "Analyst consensus recommends a buy with a target upside of 36.8%, indicating strong market confidence.",
-        "The company has a robust net margin of 20.51%, showcasing effective cost management and profitability.",
-        "A dividend yield of 3.02% provides a steady income stream for investors."
+        "Strong ROE of 27.60% indicates effective management and profitability.",
+        "Low debt-to-equity ratio of 0.06 suggests financial stability and low risk of insolvency.",
+        "Analyst consensus recommends a buy with a target upside of 36.8%, indicating confidence in future growth."
       ],
       "se": [
-        "The quality score of 25 signals low quality, which could indicate potential underlying issues.",
-        "The Graham score of 2 suggests that the stock is overvalued based on fundamental analysis.",
-        "The Altman Z-score is not available, which raises concerns about the company's financial health."
+        "Low quality score of 25 raises concerns about the reliability of financial metrics.",
+        "Graham score of 2 signals an avoid recommendation, indicating potential overvaluation.",
+        "Current ratio of 2.31, while healthy, may indicate inefficiencies in asset utilization."
       ],
       "ai": true
     },
@@ -7396,15 +7443,19 @@
       "n": "",
       "sec": "",
       "p": null,
-      "v": "STRONG_BUY",
-      "sc": 92.0,
+      "v": "BUY",
+      "sc": 65.9,
       "b": [
-        "Financial health: D/E 0.01, current ratio 2.7"
+        "Low debt-to-equity ratio of 0.01 indicates strong financial stability.",
+        "Current ratio of 2.71 suggests good liquidity and ability to cover short-term obligations.",
+        "Dividend yield of 0.69% provides some return to shareholders, albeit modest."
       ],
       "se": [
-        "No major fundamental weaknesses detected"
+        "Low quality score of 17 raises concerns about the company's operational efficiency and management.",
+        "Graham score of 2 signals potential overvaluation or poor fundamentals, suggesting caution.",
+        "Lack of analyst consensus and news sentiment could indicate uncertainty in market perception."
       ],
-      "ai": false
+      "ai": true
     },
     {
       "s": "GROWW",
@@ -8972,14 +9023,14 @@
       "v": "BUY",
       "sc": 62.6,
       "b": [
-        "Strong net margin of 48.54% indicates high profitability potential.",
-        "Low debt-to-equity ratio of 0.038 suggests a robust balance sheet with minimal financial risk.",
-        "Current ratio of 1.83 shows good short-term liquidity, indicating the ability to cover short-term obligations."
+        "Strong net margin of 48.54% suggests high profitability and operational efficiency.",
+        "Low debt-to-equity ratio of 0.038 indicates minimal financial risk and strong balance sheet health.",
+        "High ROE of 20.49% reflects effective management and good returns on equity."
       ],
       "se": [
-        "Low quality score of 25 raises concerns about the sustainability of earnings and operational efficiency.",
+        "Low quality score of 25 raises concerns about the sustainability of earnings.",
         "Graham score of 2 indicates potential overvaluation or fundamental weaknesses.",
-        "ML forecast predicts a decline in price to \u20b9315.53, suggesting bearish sentiment."
+        "ML forecast predicts a price drop of 6.58%, suggesting bearish sentiment in the near term."
       ],
       "ai": true
     },
@@ -9122,16 +9173,16 @@
       "sec": "",
       "p": null,
       "v": "BUY",
-      "sc": 71.8,
+      "sc": 74.3,
       "b": [
-        "PE ratio of 10.52 suggests undervaluation compared to industry peers.",
-        "ROE of 29.42% indicates strong profitability and efficient use of equity.",
-        "Current ratio of 3.60 shows excellent liquidity, reducing short-term financial risk."
+        "The PE ratio of 10.52 suggests the stock may be undervalued compared to peers.",
+        "A high ROE of 29.42% indicates efficient management and strong profitability.",
+        "The current ratio of 3.60 shows excellent liquidity, providing a buffer against financial distress."
       ],
       "se": [
-        "Low quality score of 25 raises concerns about financial stability and operational efficiency.",
-        "Graham score of 3 indicates potential fundamental weaknesses that could affect long-term viability.",
-        "Analyst consensus rating of 'hold' suggests caution among experts, limiting upside potential."
+        "The low quality score of 25 raises concerns about the sustainability of earnings.",
+        "The Graham score of 3 signals an 'AVOID' rating, indicating potential fundamental weaknesses.",
+        "The predicted return of only 1.25% over the next 21 days suggests limited short-term upside."
       ],
       "ai": true
     },
@@ -9333,14 +9384,14 @@
       "v": "HOLD",
       "sc": 58.5,
       "b": [
-        "Strong ROE of 32.61% suggests efficient use of equity capital.",
-        "High operating margin of 45.12% indicates strong operational efficiency.",
-        "Low debt-to-equity ratio of 0.004 reflects minimal financial risk."
+        "Strong ROE of 32.61% indicating efficient use of equity capital.",
+        "Low debt-to-equity ratio of 0.004, suggesting a strong balance sheet with minimal leverage.",
+        "High operating margin of 45.12% reflecting strong operational efficiency."
       ],
       "se": [
         "High PE ratio of 36.32 may indicate overvaluation compared to peers.",
-        "Low quality score of 25 raises concerns about fundamental strength.",
-        "Analyst consensus shows a target downside of -2.4%, indicating bearish sentiment."
+        "Analyst consensus shows a target downside of -2.4%, suggesting limited upside potential.",
+        "Low quality score of 25 raises concerns about the sustainability of earnings."
       ],
       "ai": true
     },
@@ -9561,14 +9612,14 @@
       "v": "BUY",
       "sc": 73.9,
       "b": [
-        "Low PE ratio of 9.36 indicates potential undervaluation compared to peers.",
+        "Low PE ratio of 9.36 suggests undervaluation compared to peers.",
         "High dividend yield of 12.80% provides attractive income for investors.",
-        "Strong operating profit margin of 67.89% reflects efficient cost management."
+        "Strong current ratio of 30.43 indicates excellent liquidity and financial health."
       ],
       "se": [
-        "Low quality score of 10 raises concerns about the reliability of financial metrics.",
-        "Graham score of 4 suggests caution and potential overvaluation risks.",
-        "ML forecast predicts a downward price movement with a predicted return of -1.09%."
+        "Low quality score of 10 raises concerns about the sustainability of earnings.",
+        "Graham score of 4 indicates potential risks in valuation and financial stability.",
+        "ML forecast predicts a decline in price to 92.72, suggesting bearish sentiment."
       ],
       "ai": true
     },
@@ -10264,14 +10315,14 @@
       "v": "BUY",
       "sc": 70.6,
       "b": [
-        "Analyst consensus shows a strong buy with a target upside of 32.7%, indicating significant growth potential.",
-        "The company has a low debt-to-equity ratio of 0.19, suggesting strong financial health and lower risk.",
-        "A dividend yield of 0.48% provides some return to shareholders, enhancing the attractiveness of the stock."
+        "Analyst consensus shows a strong buy recommendation with a target upside of 32.7% based on a mean target of 279.0.",
+        "The company has a healthy current ratio of 1.31, indicating good short-term financial stability.",
+        "A dividend yield of 0.48% provides some income to investors, which can be attractive in a low-interest-rate environment."
       ],
       "se": [
-        "The quality score is low (10), indicating potential issues with earnings quality or sustainability.",
-        "The Graham score is 1, which signals an avoid recommendation, suggesting the stock may be overvalued.",
-        "The ML forecast predicts a potential decline of 1.34%, indicating bearish sentiment in the short term."
+        "The quality score is low (10), suggesting potential issues with the company's operational efficiency or financial health.",
+        "The Graham score of 1 indicates that the stock is overvalued based on fundamental analysis, which could lead to price corrections.",
+        "The ML forecast predicts a potential decline of -1.39% in the short term, indicating bearish sentiment in the near future."
       ],
       "ai": true
     },
@@ -10471,15 +10522,15 @@
       "sec": "",
       "p": null,
       "v": "BUY",
-      "sc": 66.9,
+      "sc": 65.6,
       "b": [
-        "PE ratio of 15.4 suggests it is undervalued compared to industry peers.",
-        "ROE of 48.72% indicates high profitability and efficient use of equity.",
-        "Dividend yield of 5.25% provides attractive income to investors."
+        "PE ratio of 15.4 suggests it may be undervalued compared to peers.",
+        "ROE of 48.72% indicates strong profitability and efficient use of equity.",
+        "Dividend yield of 5.25% provides attractive income for investors."
       ],
       "se": [
-        "Low quality score of 25 raises concerns about the sustainability of earnings.",
-        "Recent news sentiment is negative (-0.12), indicating market apprehension.",
+        "Quality score of 25 indicates low quality, raising concerns about earnings sustainability.",
+        "Negative news sentiment (-0.38) suggests market apprehension regarding future performance.",
         "Graham score of 2 signals potential overvaluation risks."
       ],
       "ai": true
@@ -13570,29 +13621,29 @@
         "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
       },
       "ai": {
-        "thesis": "PGINVIT shows a low PE ratio of 9.36 and a high dividend yield of 12.80%, suggesting potential value and income generation. However, the quality score is low, indicating concerns about the company's fundamentals despite strong operational metrics like a net margin of 72.48%.",
+        "thesis": "PGINVIT has a low PE ratio of 9.36 and a high dividend yield of 12.80%, indicating potential value and income generation. However, the quality score is low, suggesting underlying issues that may affect long-term performance. The current ratio of 30.43 indicates strong liquidity, but the Graham score of 4 signals caution. Overall, while the stock appears attractive based on certain metrics, the quality concerns warrant careful consideration.",
         "buy_case": [
-          "Low PE ratio of 9.36 indicates potential undervaluation compared to peers.",
+          "Low PE ratio of 9.36 suggests undervaluation compared to peers.",
           "High dividend yield of 12.80% provides attractive income for investors.",
-          "Strong operating profit margin of 67.89% reflects efficient cost management."
+          "Strong current ratio of 30.43 indicates excellent liquidity and financial health."
         ],
         "sell_case": [
-          "Low quality score of 10 raises concerns about the reliability of financial metrics.",
-          "Graham score of 4 suggests caution and potential overvaluation risks.",
-          "ML forecast predicts a downward price movement with a predicted return of -1.09%."
+          "Low quality score of 10 raises concerns about the sustainability of earnings.",
+          "Graham score of 4 indicates potential risks in valuation and financial stability.",
+          "ML forecast predicts a decline in price to 92.72, suggesting bearish sentiment."
         ],
         "key_risks": [
-          "Low quality score may indicate potential accounting or operational issues.",
-          "Market volatility could impact stock performance despite current metrics.",
-          "Predicted downward trend in ML forecast could lead to losses."
+          "Potential earnings quality issues due to low quality score.",
+          "Market volatility affecting stock price despite current metrics.",
+          "Changes in dividend policy could impact income generation."
         ],
         "catalysts": [
-          "Positive earnings report could improve sentiment and stock price.",
-          "Increased market interest in high dividend yield stocks could drive demand.",
-          "Strategic initiatives or partnerships that enhance growth prospects."
+          "Improvement in earnings quality could enhance investor confidence.",
+          "Positive macroeconomic developments may boost stock performance.",
+          "Strategic initiatives or partnerships that improve growth prospects."
         ],
         "data_critique": [
-          "Inputs look consistent but low quality score and lack of Altman Z-score raise concerns about data reliability."
+          "Inputs look consistent, but low quality score and Graham score suggest caution in relying solely on these metrics."
         ],
         "moat": "weak",
         "verdict": "HOLD",
@@ -13600,9 +13651,9 @@
         "conviction": 55.0,
         "confidence": "low",
         "horizon_view": {
-          "short": "monitor for short-term price movements",
-          "mid": "evaluate quarterly performance",
-          "long": "assess long-term growth potential"
+          "short": "Monitor for short-term price movements.",
+          "mid": "Evaluate quarterly earnings for performance trends.",
+          "long": "Assess long-term viability based on quality improvements."
         },
         "source": "ai",
         "provider": "GitHub Models"
@@ -13627,25 +13678,25 @@
         "data_quality": null,
         "has_red_flag": false,
         "buy_case": [
-          "Low PE ratio of 9.36 indicates potential undervaluation compared to peers.",
+          "Low PE ratio of 9.36 suggests undervaluation compared to peers.",
           "High dividend yield of 12.80% provides attractive income for investors.",
-          "Strong operating profit margin of 67.89% reflects efficient cost management."
+          "Strong current ratio of 30.43 indicates excellent liquidity and financial health."
         ],
         "sell_case": [
-          "Low quality score of 10 raises concerns about the reliability of financial metrics.",
-          "Graham score of 4 suggests caution and potential overvaluation risks.",
-          "ML forecast predicts a downward price movement with a predicted return of -1.09%."
+          "Low quality score of 10 raises concerns about the sustainability of earnings.",
+          "Graham score of 4 indicates potential risks in valuation and financial stability.",
+          "ML forecast predicts a decline in price to 92.72, suggesting bearish sentiment."
         ],
-        "thesis": "PGINVIT shows a low PE ratio of 9.36 and a high dividend yield of 12.80%, suggesting potential value and income generation. However, the quality score is low, indicating concerns about the company's fundamentals despite strong operational metrics like a net margin of 72.48%.",
+        "thesis": "PGINVIT has a low PE ratio of 9.36 and a high dividend yield of 12.80%, indicating potential value and income generation. However, the quality score is low, suggesting underlying issues that may affect long-term performance. The current ratio of 30.43 indicates strong liquidity, but the Graham score of 4 signals caution. Overall, while the stock appears attractive based on certain metrics, the quality concerns warrant careful consideration.",
         "ai_provider": "GitHub Models",
         "ai_source": "ai",
         "data_critique": [
-          "Inputs look consistent but low quality score and lack of Altman Z-score raise concerns about data reliability."
+          "Inputs look consistent, but low quality score and Graham score suggest caution in relying solely on these metrics."
         ],
         "horizon_view": {
-          "short": "monitor for short-term price movements",
-          "mid": "evaluate quarterly performance",
-          "long": "assess long-term growth potential"
+          "short": "Monitor for short-term price movements.",
+          "mid": "Evaluate quarterly earnings for performance trends.",
+          "long": "Assess long-term viability based on quality improvements."
         }
       },
       "analyst_consensus": {
@@ -13658,15 +13709,15 @@
         "coverage": 0.8,
         "last_close": 93.79000091552734,
         "last_date": "2026-06-25",
-        "predicted_return_pct": -1.09,
-        "predicted_price": 92.77,
-        "price_lower": 88.81,
-        "price_upper": 96.72,
-        "return_lower_pct": -5.31,
-        "return_upper_pct": 3.12,
+        "predicted_return_pct": -1.14,
+        "predicted_price": 92.72,
+        "price_lower": 88.73,
+        "price_upper": 96.7,
+        "return_lower_pct": -5.39,
+        "return_upper_pct": 3.11,
         "prob_up": 0.688,
         "direction": "DOWN",
-        "confidence": 0.245,
+        "confidence": 0.244,
         "n_train": 469,
         "disclaimer": "Probabilistic estimate, not a guarantee. Intervals are conformal (historically calibrated) and can break during news/earnings/macro shocks."
       },
@@ -15215,40 +15266,43 @@
         "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
       },
       "ai": {
-        "thesis": "National Aluminium Co Ltd (NATIONALUM) exhibits a low PE ratio of 10.52 and a high ROE of 29.42%, indicating potential undervaluation and strong profitability. However, the quality score is low at 25, and the Graham score suggests an 'AVOID' rating, raising concerns about its overall financial health.",
+        "thesis": "NATIONALUM exhibits a low PE ratio of 10.52 and a high ROE of 29.42%, indicating potential undervaluation and strong profitability. However, the quality score is low, suggesting concerns about earnings sustainability. The market cap stands at approximately \u20b961,012.91 crores, reflecting significant size in the industry.",
         "buy_case": [
-          "PE ratio of 10.52 suggests undervaluation compared to industry peers.",
-          "ROE of 29.42% indicates strong profitability and efficient use of equity.",
-          "Current ratio of 3.60 shows excellent liquidity, reducing short-term financial risk."
+          "The PE ratio of 10.52 suggests the stock may be undervalued compared to peers.",
+          "A high ROE of 29.42% indicates efficient management and strong profitability.",
+          "The current ratio of 3.60 shows excellent liquidity, providing a buffer against financial distress.",
+          "Analyst consensus indicates a target upside of 22.9%, suggesting potential for price appreciation.",
+          "Positive news sentiment of 0.62 reflects favorable market perception."
         ],
         "sell_case": [
-          "Low quality score of 25 raises concerns about financial stability and operational efficiency.",
-          "Graham score of 3 indicates potential fundamental weaknesses that could affect long-term viability.",
-          "Analyst consensus rating of 'hold' suggests caution among experts, limiting upside potential."
+          "The low quality score of 25 raises concerns about the sustainability of earnings.",
+          "The Graham score of 3 signals an 'AVOID' rating, indicating potential fundamental weaknesses.",
+          "The predicted return of only 1.25% over the next 21 days suggests limited short-term upside.",
+          "The debt-to-equity ratio of 0.0028, while low, may indicate under-leverage which could limit growth opportunities."
         ],
         "key_risks": [
-          "Volatility in alumina prices could impact profitability.",
-          "Low analyst consensus may indicate market skepticism about future growth.",
-          "Potential regulatory changes affecting the aluminium sector."
+          "Low quality score may indicate volatility in earnings.",
+          "Potential for adverse market reactions to negative news, as indicated by the low confidence in ML forecasts.",
+          "Dependence on commodity prices, which can be volatile and impact profitability."
         ],
         "catalysts": [
-          "Positive earnings reports could improve sentiment and drive stock price up.",
-          "Increased demand for aluminium in infrastructure projects could boost revenues.",
-          "Any upgrades from analysts could lead to increased investor interest."
+          "Positive earnings reports could improve sentiment and drive the stock higher.",
+          "Potential inclusion in key indices could attract institutional investment.",
+          "Improvement in global aluminum prices could enhance revenue."
         ],
         "data_critique": [
-          "Inputs show significant inconsistencies, particularly with the Graham score and quality score, which suggest caution in relying on these metrics.",
-          "The absence of a Z-score indicates a lack of comprehensive financial health data."
+          "The low quality score and conflicting Graham score suggest caution in relying on these metrics.",
+          "Data quality appears inconsistent, particularly with the Altman Z-score being unavailable."
         ],
         "moat": "weak",
         "verdict": "HOLD",
-        "lean": 0.0,
+        "lean": 0.2,
         "conviction": 55.0,
         "confidence": "low",
         "horizon_view": {
-          "short": "1-3 weeks for potential price movement.",
-          "mid": "3-6 months for earnings impact.",
-          "long": "1-2 years for structural changes in the aluminium market."
+          "short": "1-2 weeks may see limited movement.",
+          "mid": "3-6 months could reveal clearer trends.",
+          "long": "1-2 years dependent on commodity market conditions."
         },
         "source": "ai",
         "provider": "GitHub Models"
@@ -15256,9 +15310,9 @@
       "composite": {
         "verdict": "BUY",
         "group": "BUY",
-        "score": 71.8,
-        "lean": 0.435,
-        "agreement": 0.8,
+        "score": 74.3,
+        "lean": 0.485,
+        "agreement": 1.0,
         "signals_used": [
           "fundamental",
           "ai",
@@ -15268,35 +15322,38 @@
         ],
         "components": {
           "fundamental": 1.0,
-          "ai": 0.0,
+          "ai": 0.2,
           "analyst": 0.23,
           "ml": 0.18,
           "news": 0.62
         },
-        "rationale": "fundamentals STRONG_BUY \u00b7 analysts +22.9% target (hold) \u00b7 ML up (P0.656) \u00b7 news +0.62 \u00b7 AI lean +0.00",
+        "rationale": "fundamentals STRONG_BUY \u00b7 analysts +22.9% target (hold) \u00b7 ML up (P0.656) \u00b7 news +0.62 \u00b7 AI lean +0.20",
         "data_quality": null,
         "has_red_flag": false,
         "buy_case": [
-          "PE ratio of 10.52 suggests undervaluation compared to industry peers.",
-          "ROE of 29.42% indicates strong profitability and efficient use of equity.",
-          "Current ratio of 3.60 shows excellent liquidity, reducing short-term financial risk."
+          "The PE ratio of 10.52 suggests the stock may be undervalued compared to peers.",
+          "A high ROE of 29.42% indicates efficient management and strong profitability.",
+          "The current ratio of 3.60 shows excellent liquidity, providing a buffer against financial distress.",
+          "Analyst consensus indicates a target upside of 22.9%, suggesting potential for price appreciation.",
+          "Positive news sentiment of 0.62 reflects favorable market perception."
         ],
         "sell_case": [
-          "Low quality score of 25 raises concerns about financial stability and operational efficiency.",
-          "Graham score of 3 indicates potential fundamental weaknesses that could affect long-term viability.",
-          "Analyst consensus rating of 'hold' suggests caution among experts, limiting upside potential."
+          "The low quality score of 25 raises concerns about the sustainability of earnings.",
+          "The Graham score of 3 signals an 'AVOID' rating, indicating potential fundamental weaknesses.",
+          "The predicted return of only 1.25% over the next 21 days suggests limited short-term upside.",
+          "The debt-to-equity ratio of 0.0028, while low, may indicate under-leverage which could limit growth opportunities."
         ],
-        "thesis": "National Aluminium Co Ltd (NATIONALUM) exhibits a low PE ratio of 10.52 and a high ROE of 29.42%, indicating potential undervaluation and strong profitability. However, the quality score is low at 25, and the Graham score suggests an 'AVOID' rating, raising concerns about its overall financial health.",
+        "thesis": "NATIONALUM exhibits a low PE ratio of 10.52 and a high ROE of 29.42%, indicating potential undervaluation and strong profitability. However, the quality score is low, suggesting concerns about earnings sustainability. The market cap stands at approximately \u20b961,012.91 crores, reflecting significant size in the industry.",
         "ai_provider": "GitHub Models",
         "ai_source": "ai",
         "data_critique": [
-          "Inputs show significant inconsistencies, particularly with the Graham score and quality score, which suggest caution in relying on these metrics.",
-          "The absence of a Z-score indicates a lack of comprehensive financial health data."
+          "The low quality score and conflicting Graham score suggest caution in relying on these metrics.",
+          "Data quality appears inconsistent, particularly with the Altman Z-score being unavailable."
         ],
         "horizon_view": {
-          "short": "1-3 weeks for potential price movement.",
-          "mid": "3-6 months for earnings impact.",
-          "long": "1-2 years for structural changes in the aluminium market."
+          "short": "1-2 weeks may see limited movement.",
+          "mid": "3-6 months could reveal clearer trends.",
+          "long": "1-2 years dependent on commodity market conditions."
         }
       },
       "analyst_consensus": {
@@ -15323,12 +15380,12 @@
         "coverage": 0.8,
         "last_close": 332.1499938964844,
         "last_date": "2026-06-25",
-        "predicted_return_pct": 1.18,
-        "predicted_price": 336.06,
-        "price_lower": 267.1,
-        "price_upper": 405.02,
-        "return_lower_pct": -19.58,
-        "return_upper_pct": 21.94,
+        "predicted_return_pct": 1.25,
+        "predicted_price": 336.3,
+        "price_lower": 267.45,
+        "price_upper": 405.15,
+        "return_lower_pct": -19.48,
+        "return_upper_pct": 21.98,
         "prob_up": 0.656,
         "direction": "UP",
         "confidence": 0.156,
@@ -17325,29 +17382,29 @@
         "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
       },
       "ai": {
-        "thesis": "Bajaj Holdings has a low PE ratio of 7.06, indicating potential undervaluation. The company boasts a high operating margin of 82.72% and a net margin of 857.46%, suggesting strong profitability. However, the quality score is low, and the Graham score indicates it may be an avoid.",
+        "thesis": "Bajaj Holdings has a low PE ratio of 7.06, indicating potential undervaluation. The company exhibits strong operational metrics with an operating profit margin of 82.72% and a net margin of 857.46%, suggesting efficient cost management. However, the quality score is low, and the Graham score indicates an 'avoid' signal, which raises concerns about long-term sustainability.",
         "buy_case": [
           "Low PE ratio of 7.06 suggests undervaluation compared to peers.",
-          "High operating margin of 82.72% indicates strong operational efficiency.",
-          "Strong current ratio of 8.04 reflects excellent liquidity position."
+          "High operating profit margin of 82.72% indicates strong operational efficiency.",
+          "Current ratio of 8.04 reflects excellent liquidity, minimizing short-term financial risk."
         ],
         "sell_case": [
-          "Low quality score of 10 indicates potential issues with earnings quality.",
-          "Graham score of 3 suggests it may be an avoid based on fundamental analysis.",
-          "High EV/EBITDA of 132.33 raises concerns about valuation sustainability."
+          "Low quality score of 10 raises concerns about the sustainability of earnings.",
+          "Graham score of 3 signals potential overvaluation or risk in fundamentals.",
+          "Lack of analyst consensus and news sentiment may indicate uncertainty in market perception."
         ],
         "key_risks": [
-          "Market volatility affecting stock price.",
-          "Potential governance issues due to low quality score.",
-          "Economic downturn impacting profitability."
+          "Potential for earnings volatility due to low quality score.",
+          "Market perception may shift negatively due to low Graham score.",
+          "Dependence on macroeconomic factors affecting overall market sentiment."
         ],
         "catalysts": [
-          "Improvement in quality score could enhance investor confidence.",
-          "Positive earnings report could drive stock price up.",
-          "Strategic acquisitions or partnerships may boost growth."
+          "Improvement in quality metrics could enhance investor confidence.",
+          "Positive news or earnings surprises could drive stock price higher.",
+          "Broader market recovery may benefit stock performance."
         ],
         "data_critique": [
-          "Inputs look consistent, but low quality score and Graham score indicate potential reliability issues in financial health."
+          "Inputs look consistent, but low quality score and Graham score indicate potential issues with data reliability and fundamental strength."
         ],
         "moat": "weak",
         "verdict": "HOLD",
@@ -17356,8 +17413,8 @@
         "confidence": "low",
         "horizon_view": {
           "short": "monitor for short-term price movements",
-          "mid": "evaluate quarterly earnings",
-          "long": "assess long-term growth strategy"
+          "mid": "evaluate quarterly performance",
+          "long": "assess long-term sustainability of earnings"
         },
         "source": "ai",
         "provider": "GitHub Models"
@@ -17365,8 +17422,8 @@
       "composite": {
         "verdict": "BUY",
         "group": "BUY",
-        "score": 73.7,
-        "lean": 0.474,
+        "score": 73.9,
+        "lean": 0.477,
         "agreement": 0.67,
         "signals_used": [
           "fundamental",
@@ -17376,31 +17433,31 @@
         "components": {
           "fundamental": 1.0,
           "ai": 0.0,
-          "ml": 0.21
+          "ml": 0.23
         },
-        "rationale": "fundamentals STRONG_BUY \u00b7 ML up (P0.677) \u00b7 AI lean +0.00",
+        "rationale": "fundamentals STRONG_BUY \u00b7 ML up (P0.688) \u00b7 AI lean +0.00",
         "data_quality": null,
         "has_red_flag": false,
         "buy_case": [
           "Low PE ratio of 7.06 suggests undervaluation compared to peers.",
-          "High operating margin of 82.72% indicates strong operational efficiency.",
-          "Strong current ratio of 8.04 reflects excellent liquidity position."
+          "High operating profit margin of 82.72% indicates strong operational efficiency.",
+          "Current ratio of 8.04 reflects excellent liquidity, minimizing short-term financial risk."
         ],
         "sell_case": [
-          "Low quality score of 10 indicates potential issues with earnings quality.",
-          "Graham score of 3 suggests it may be an avoid based on fundamental analysis.",
-          "High EV/EBITDA of 132.33 raises concerns about valuation sustainability."
+          "Low quality score of 10 raises concerns about the sustainability of earnings.",
+          "Graham score of 3 signals potential overvaluation or risk in fundamentals.",
+          "Lack of analyst consensus and news sentiment may indicate uncertainty in market perception."
         ],
-        "thesis": "Bajaj Holdings has a low PE ratio of 7.06, indicating potential undervaluation. The company boasts a high operating margin of 82.72% and a net margin of 857.46%, suggesting strong profitability. However, the quality score is low, and the Graham score indicates it may be an avoid.",
+        "thesis": "Bajaj Holdings has a low PE ratio of 7.06, indicating potential undervaluation. The company exhibits strong operational metrics with an operating profit margin of 82.72% and a net margin of 857.46%, suggesting efficient cost management. However, the quality score is low, and the Graham score indicates an 'avoid' signal, which raises concerns about long-term sustainability.",
         "ai_provider": "GitHub Models",
         "ai_source": "ai",
         "data_critique": [
-          "Inputs look consistent, but low quality score and Graham score indicate potential reliability issues in financial health."
+          "Inputs look consistent, but low quality score and Graham score indicate potential issues with data reliability and fundamental strength."
         ],
         "horizon_view": {
           "short": "monitor for short-term price movements",
-          "mid": "evaluate quarterly earnings",
-          "long": "assess long-term growth strategy"
+          "mid": "evaluate quarterly performance",
+          "long": "assess long-term sustainability of earnings"
         }
       },
       "analyst_consensus": {
@@ -17414,15 +17471,15 @@
         "coverage": 0.8,
         "last_close": 10599.0,
         "last_date": "2026-06-25",
-        "predicted_return_pct": 1.09,
-        "predicted_price": 10714.94,
-        "price_lower": 9523.29,
-        "price_upper": 11906.59,
-        "return_lower_pct": -10.15,
-        "return_upper_pct": 12.34,
-        "prob_up": 0.677,
+        "predicted_return_pct": 1.0,
+        "predicted_price": 10704.53,
+        "price_lower": 9510.79,
+        "price_upper": 11898.27,
+        "return_lower_pct": -10.27,
+        "return_upper_pct": 12.26,
+        "prob_up": 0.688,
         "direction": "UP",
-        "confidence": 0.201,
+        "confidence": 0.213,
         "n_train": 469,
         "disclaimer": "Probabilistic estimate, not a guarantee. Intervals are conformal (historically calibrated) and can break during news/earnings/macro shocks."
       },
@@ -17584,28 +17641,30 @@
         "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
       },
       "ai": {
-        "thesis": "ADVENZYMES has a PE ratio of 23.11 and a net margin of 22.62%, indicating decent profitability. However, it has a low quality score of 10, suggesting potential issues with earnings quality. The market cap stands at \u20b93901.81 crore, and the current ratio is exceptionally high at 9.78, indicating strong liquidity but possibly overcapitalization.",
+        "thesis": "ADVENZYMES has a PE ratio of 23.11 and a net margin of 22.62%, indicating decent profitability. However, the quality score is low, and the Graham score suggests an avoid stance, reflecting potential valuation concerns. The current ratio is very high at 9.78, indicating strong liquidity but raising questions about asset utilization.",
         "buy_case": [
-          "Strong liquidity with a current ratio of 9.78, suggesting the company can easily cover its short-term liabilities.",
-          "A net margin of 22.62% indicates effective cost management and profitability.",
-          "Analyst consensus shows a target upside of 6.7%, suggesting potential for price appreciation."
+          "Strong liquidity with a current ratio of 9.78, suggesting financial stability.",
+          "Net margin of 22.62% indicates robust profitability.",
+          "Low debt-to-equity ratio of 0.02 reflects minimal financial risk."
         ],
         "sell_case": [
-          "Low quality score of 10 raises concerns about the sustainability of earnings.",
-          "Graham score of 2 signals potential overvaluation and suggests investors should avoid the stock.",
-          "ML forecast predicts a return of -7.35%, indicating a potential decline in stock price."
+          "Low quality score of 10 raises concerns about operational efficiency.",
+          "Graham score of 2 suggests potential overvaluation or risk in fundamentals.",
+          "ML forecast predicts a -7.54% return, indicating bearish sentiment."
         ],
         "key_risks": [
-          "Market volatility affecting stock performance.",
-          "Potential issues with earnings quality due to low quality score.",
-          "Dependence on market sentiment which is currently neutral to positive."
+          "Market volatility affecting stock price.",
+          "Dependence on market sentiment as indicated by net sentiment of 0.25.",
+          "Potential operational inefficiencies due to low quality score."
         ],
         "catalysts": [
-          "Positive earnings report could improve sentiment and stock price.",
-          "New analyst coverage or upgrades could drive interest and investment."
+          "Positive earnings results could improve sentiment and stock price.",
+          "Analyst upgrades could lead to increased investor interest.",
+          "New product launches or market expansions could drive growth."
         ],
         "data_critique": [
-          "Inputs look consistent, but the low quality score and Graham score suggest caution in relying solely on these metrics."
+          "Inputs show inconsistencies, particularly with the quality score and Graham score suggesting caution in reliability.",
+          "No data available for Altman Z-score, limiting assessment of bankruptcy risk."
         ],
         "moat": "weak",
         "verdict": "SELL",
@@ -17613,9 +17672,9 @@
         "conviction": 55.0,
         "confidence": "low",
         "horizon_view": {
-          "short": "1-2 weeks",
-          "mid": "2-3 months",
-          "long": "1-2 years"
+          "short": "1-2 weeks for earnings reactions",
+          "mid": "3-6 months for market adjustments",
+          "long": "1-2 years for fundamental improvements"
         },
         "source": "ai",
         "provider": "GitHub Models"
@@ -17624,7 +17683,7 @@
         "verdict": "BUY",
         "group": "BUY",
         "score": 62.1,
-        "lean": 0.243,
+        "lean": 0.241,
         "agreement": 0.6,
         "signals_used": [
           "fundamental",
@@ -17637,32 +17696,33 @@
           "fundamental": 1.0,
           "ai": -0.5,
           "analyst": 0.17,
-          "ml": 0.06,
+          "ml": 0.05,
           "news": 0.25
         },
-        "rationale": "fundamentals STRONG_BUY \u00b7 analysts +6.7% target (none) \u00b7 ML down (P0.559) \u00b7 news +0.25 \u00b7 AI lean -0.50",
+        "rationale": "fundamentals STRONG_BUY \u00b7 analysts +6.7% target (none) \u00b7 ML down (P0.548) \u00b7 news +0.25 \u00b7 AI lean -0.50",
         "data_quality": null,
         "has_red_flag": false,
         "buy_case": [
-          "Strong liquidity with a current ratio of 9.78, suggesting the company can easily cover its short-term liabilities.",
-          "A net margin of 22.62% indicates effective cost management and profitability.",
-          "Analyst consensus shows a target upside of 6.7%, suggesting potential for price appreciation."
+          "Strong liquidity with a current ratio of 9.78, suggesting financial stability.",
+          "Net margin of 22.62% indicates robust profitability.",
+          "Low debt-to-equity ratio of 0.02 reflects minimal financial risk."
         ],
         "sell_case": [
-          "Low quality score of 10 raises concerns about the sustainability of earnings.",
-          "Graham score of 2 signals potential overvaluation and suggests investors should avoid the stock.",
-          "ML forecast predicts a return of -7.35%, indicating a potential decline in stock price."
+          "Low quality score of 10 raises concerns about operational efficiency.",
+          "Graham score of 2 suggests potential overvaluation or risk in fundamentals.",
+          "ML forecast predicts a -7.54% return, indicating bearish sentiment."
         ],
-        "thesis": "ADVENZYMES has a PE ratio of 23.11 and a net margin of 22.62%, indicating decent profitability. However, it has a low quality score of 10, suggesting potential issues with earnings quality. The market cap stands at \u20b93901.81 crore, and the current ratio is exceptionally high at 9.78, indicating strong liquidity but possibly overcapitalization.",
+        "thesis": "ADVENZYMES has a PE ratio of 23.11 and a net margin of 22.62%, indicating decent profitability. However, the quality score is low, and the Graham score suggests an avoid stance, reflecting potential valuation concerns. The current ratio is very high at 9.78, indicating strong liquidity but raising questions about asset utilization.",
         "ai_provider": "GitHub Models",
         "ai_source": "ai",
         "data_critique": [
-          "Inputs look consistent, but the low quality score and Graham score suggest caution in relying solely on these metrics."
+          "Inputs show inconsistencies, particularly with the quality score and Graham score suggesting caution in reliability.",
+          "No data available for Altman Z-score, limiting assessment of bankruptcy risk."
         ],
         "horizon_view": {
-          "short": "1-2 weeks",
-          "mid": "2-3 months",
-          "long": "1-2 years"
+          "short": "1-2 weeks for earnings reactions",
+          "mid": "3-6 months for market adjustments",
+          "long": "1-2 years for fundamental improvements"
         }
       },
       "analyst_consensus": {
@@ -17688,15 +17748,15 @@
         "coverage": 0.8,
         "last_close": 348.3500061035156,
         "last_date": "2026-06-25",
-        "predicted_return_pct": -7.35,
-        "predicted_price": 322.74,
-        "price_lower": 226.27,
-        "price_upper": 419.2,
-        "return_lower_pct": -35.05,
-        "return_upper_pct": 20.34,
-        "prob_up": 0.559,
+        "predicted_return_pct": -7.54,
+        "predicted_price": 322.08,
+        "price_lower": 225.51,
+        "price_upper": 418.64,
+        "return_lower_pct": -35.26,
+        "return_upper_pct": 20.18,
+        "prob_up": 0.548,
         "direction": "DOWN",
-        "confidence": 0.059,
+        "confidence": 0.048,
         "n_train": 469,
         "disclaimer": "Probabilistic estimate, not a guarantee. Intervals are conformal (historically calibrated) and can break during news/earnings/macro shocks."
       },
@@ -25339,29 +25399,29 @@
         "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
       },
       "ai": {
-        "thesis": "OFSS has a high PE ratio of 36.32 and a low debt-to-equity ratio of 0.004, indicating strong profitability and minimal leverage. However, its quality score is low at 25, and the Graham score suggests it is an avoid, reflecting potential overvaluation. The current ratio of 5.43 indicates strong liquidity, but the lack of dividend yield may deter income-focused investors.",
+        "thesis": "OFSS has a PE ratio of 36.32 and a PB ratio of 12.20, indicating a premium valuation. The company exhibits strong profitability with a ROE of 32.61% and a net margin of 34.40%. However, the quality score is low at 25, and the Graham score suggests an avoid stance, indicating potential concerns about valuation sustainability.",
         "buy_case": [
-          "Strong ROE of 32.61% suggests efficient use of equity capital.",
-          "High operating margin of 45.12% indicates strong operational efficiency.",
-          "Low debt-to-equity ratio of 0.004 reflects minimal financial risk."
+          "Strong ROE of 32.61% indicating efficient use of equity capital.",
+          "Low debt-to-equity ratio of 0.004, suggesting a strong balance sheet with minimal leverage.",
+          "High operating margin of 45.12% reflecting strong operational efficiency."
         ],
         "sell_case": [
           "High PE ratio of 36.32 may indicate overvaluation compared to peers.",
-          "Low quality score of 25 raises concerns about fundamental strength.",
-          "Analyst consensus shows a target downside of -2.4%, indicating bearish sentiment."
+          "Analyst consensus shows a target downside of -2.4%, suggesting limited upside potential.",
+          "Low quality score of 25 raises concerns about the sustainability of earnings."
         ],
         "key_risks": [
-          "Potential for earnings volatility due to low quality score.",
-          "Market sentiment could negatively impact stock price given recent news.",
-          "High valuation metrics may lead to price corrections."
+          "Market volatility affecting stock price performance.",
+          "Potential for earnings disappointment given high valuation metrics.",
+          "Regulatory changes impacting operational efficiency."
         ],
         "catalysts": [
-          "Improvement in quality metrics could enhance investor confidence.",
-          "Positive earnings surprise could shift analyst sentiment.",
-          "Broader market recovery could lift stock performance."
+          "Improvement in market sentiment could drive stock price higher.",
+          "Positive earnings report exceeding expectations could boost confidence.",
+          "Strategic partnerships or new product launches enhancing growth prospects."
         ],
         "data_critique": [
-          "Inputs look consistent but low quality score and Graham score suggest caution in reliability."
+          "Inputs look consistent but the quality score is low, indicating potential reliability issues with the underlying data."
         ],
         "moat": "weak",
         "verdict": "SELL",
@@ -25369,9 +25429,9 @@
         "conviction": 55.0,
         "confidence": "low",
         "horizon_view": {
-          "short": "1-2 weeks",
-          "mid": "2-6 months",
-          "long": "1-2 years"
+          "short": "1-2 weeks for potential volatility",
+          "mid": "3-6 months for earnings impact",
+          "long": "1-2 years for market positioning"
         },
         "source": "ai",
         "provider": "GitHub Models"
@@ -25400,25 +25460,25 @@
         "data_quality": null,
         "has_red_flag": false,
         "buy_case": [
-          "Strong ROE of 32.61% suggests efficient use of equity capital.",
-          "High operating margin of 45.12% indicates strong operational efficiency.",
-          "Low debt-to-equity ratio of 0.004 reflects minimal financial risk."
+          "Strong ROE of 32.61% indicating efficient use of equity capital.",
+          "Low debt-to-equity ratio of 0.004, suggesting a strong balance sheet with minimal leverage.",
+          "High operating margin of 45.12% reflecting strong operational efficiency."
         ],
         "sell_case": [
           "High PE ratio of 36.32 may indicate overvaluation compared to peers.",
-          "Low quality score of 25 raises concerns about fundamental strength.",
-          "Analyst consensus shows a target downside of -2.4%, indicating bearish sentiment."
+          "Analyst consensus shows a target downside of -2.4%, suggesting limited upside potential.",
+          "Low quality score of 25 raises concerns about the sustainability of earnings."
         ],
-        "thesis": "OFSS has a high PE ratio of 36.32 and a low debt-to-equity ratio of 0.004, indicating strong profitability and minimal leverage. However, its quality score is low at 25, and the Graham score suggests it is an avoid, reflecting potential overvaluation. The current ratio of 5.43 indicates strong liquidity, but the lack of dividend yield may deter income-focused investors.",
+        "thesis": "OFSS has a PE ratio of 36.32 and a PB ratio of 12.20, indicating a premium valuation. The company exhibits strong profitability with a ROE of 32.61% and a net margin of 34.40%. However, the quality score is low at 25, and the Graham score suggests an avoid stance, indicating potential concerns about valuation sustainability.",
         "ai_provider": "GitHub Models",
         "ai_source": "ai",
         "data_critique": [
-          "Inputs look consistent but low quality score and Graham score suggest caution in reliability."
+          "Inputs look consistent but the quality score is low, indicating potential reliability issues with the underlying data."
         ],
         "horizon_view": {
-          "short": "1-2 weeks",
-          "mid": "2-6 months",
-          "long": "1-2 years"
+          "short": "1-2 weeks for potential volatility",
+          "mid": "3-6 months for earnings impact",
+          "long": "1-2 years for market positioning"
         }
       },
       "analyst_consensus": {
@@ -25442,11 +25502,11 @@
         "coverage": 0.8,
         "last_close": 10974.5,
         "last_date": "2026-06-25",
-        "predicted_return_pct": -1.99,
-        "predicted_price": 10755.69,
-        "price_lower": 7939.79,
+        "predicted_return_pct": -1.98,
+        "predicted_price": 10757.21,
+        "price_lower": 7942.82,
         "price_upper": 13571.6,
-        "return_lower_pct": -27.65,
+        "return_lower_pct": -27.62,
         "return_upper_pct": 23.66,
         "prob_up": 0.548,
         "direction": "DOWN",
@@ -33947,34 +34007,29 @@
         "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
       },
       "ai": {
-        "thesis": "TCS has a PE ratio of 15.4 and a strong ROE of 48.72%, indicating solid profitability. However, the quality score is low at 25, suggesting potential concerns about earnings quality. The stock has a market cap of \u20b9758,206.43 crore and a dividend yield of 5.25%, which may attract income-focused investors despite recent negative sentiment.",
+        "thesis": "TCS exhibits a PE ratio of 15.4 and a strong ROE of 48.72%, indicating potential undervaluation relative to earnings. However, the quality score is low, suggesting concerns about the sustainability of these metrics. The market cap stands at \u20b9758,206.43 crore, reflecting its significant presence in the market.",
         "buy_case": [
-          "PE ratio of 15.4 suggests it is undervalued compared to industry peers.",
-          "ROE of 48.72% indicates high profitability and efficient use of equity.",
-          "Dividend yield of 5.25% provides attractive income to investors.",
-          "Analyst consensus shows a target upside of 39%, indicating potential for price appreciation.",
-          "Current ratio of 2.19 suggests strong liquidity position."
+          "PE ratio of 15.4 suggests it may be undervalued compared to peers.",
+          "ROE of 48.72% indicates strong profitability and efficient use of equity.",
+          "Dividend yield of 5.25% provides attractive income for investors."
         ],
         "sell_case": [
-          "Low quality score of 25 raises concerns about the sustainability of earnings.",
-          "Recent news sentiment is negative (-0.12), indicating market apprehension.",
-          "Graham score of 2 signals potential overvaluation risks.",
-          "Analyst recommendations show mixed signals with a mean recommendation of 2.0 (buy), but not overwhelmingly strong.",
-          "Predicted return of only 0.61% over the next 21 days suggests limited short-term upside."
+          "Quality score of 25 indicates low quality, raising concerns about earnings sustainability.",
+          "Negative news sentiment (-0.38) suggests market apprehension regarding future performance.",
+          "Graham score of 2 signals potential overvaluation risks."
         ],
         "key_risks": [
           "Market volatility affecting IT sector performance.",
-          "Regulatory changes impacting operational costs.",
-          "Dependence on US market which may face economic headwinds."
+          "Weak outlook from major players like Accenture impacting investor sentiment.",
+          "Low quality score may indicate underlying operational issues."
         ],
         "catalysts": [
-          "Improvement in global IT spending sentiment.",
-          "Positive earnings report exceeding market expectations.",
-          "Resolution of legal issues impacting financial performance."
+          "Positive earnings report could improve sentiment and stock price.",
+          "Strategic partnerships or contracts that enhance growth prospects.",
+          "Market recovery in the IT sector boosting overall valuations."
         ],
         "data_critique": [
-          "Data quality appears low due to conflicting signals such as low quality score and mixed analyst recommendations.",
-          "The Altman Z-score is unavailable, limiting insights into bankruptcy risk."
+          "Inputs look consistent, but low quality score and Graham score suggest caution in relying solely on these metrics."
         ],
         "moat": "weak",
         "verdict": "HOLD",
@@ -33982,9 +34037,9 @@
         "conviction": 55.0,
         "confidence": "low",
         "horizon_view": {
-          "short": "1-2 weeks for potential volatility.",
-          "mid": "3-6 months for earnings impact.",
-          "long": "1-2 years for market recovery."
+          "short": "monitor for short-term volatility",
+          "mid": "potential for recovery in IT sector",
+          "long": "uncertain growth trajectory over the next few years"
         },
         "source": "ai",
         "provider": "GitHub Models"
@@ -33992,8 +34047,8 @@
       "composite": {
         "verdict": "BUY",
         "group": "BUY",
-        "score": 66.9,
-        "lean": 0.339,
+        "score": 65.6,
+        "lean": 0.313,
         "agreement": 0.4,
         "signals_used": [
           "fundamental",
@@ -34007,36 +34062,31 @@
           "ai": 0.0,
           "analyst": 0.5,
           "ml": -0.33,
-          "news": -0.12
+          "news": -0.38
         },
-        "rationale": "fundamentals STRONG_BUY \u00b7 analysts +39% target (buy) \u00b7 ML up (P0.247) \u00b7 news -0.12 \u00b7 AI lean +0.00",
+        "rationale": "fundamentals STRONG_BUY \u00b7 analysts +39% target (buy) \u00b7 ML up (P0.247) \u00b7 news -0.38 \u00b7 AI lean +0.00",
         "data_quality": null,
         "has_red_flag": false,
         "buy_case": [
-          "PE ratio of 15.4 suggests it is undervalued compared to industry peers.",
-          "ROE of 48.72% indicates high profitability and efficient use of equity.",
-          "Dividend yield of 5.25% provides attractive income to investors.",
-          "Analyst consensus shows a target upside of 39%, indicating potential for price appreciation.",
-          "Current ratio of 2.19 suggests strong liquidity position."
+          "PE ratio of 15.4 suggests it may be undervalued compared to peers.",
+          "ROE of 48.72% indicates strong profitability and efficient use of equity.",
+          "Dividend yield of 5.25% provides attractive income for investors."
         ],
         "sell_case": [
-          "Low quality score of 25 raises concerns about the sustainability of earnings.",
-          "Recent news sentiment is negative (-0.12), indicating market apprehension.",
-          "Graham score of 2 signals potential overvaluation risks.",
-          "Analyst recommendations show mixed signals with a mean recommendation of 2.0 (buy), but not overwhelmingly strong.",
-          "Predicted return of only 0.61% over the next 21 days suggests limited short-term upside."
+          "Quality score of 25 indicates low quality, raising concerns about earnings sustainability.",
+          "Negative news sentiment (-0.38) suggests market apprehension regarding future performance.",
+          "Graham score of 2 signals potential overvaluation risks."
         ],
-        "thesis": "TCS has a PE ratio of 15.4 and a strong ROE of 48.72%, indicating solid profitability. However, the quality score is low at 25, suggesting potential concerns about earnings quality. The stock has a market cap of \u20b9758,206.43 crore and a dividend yield of 5.25%, which may attract income-focused investors despite recent negative sentiment.",
+        "thesis": "TCS exhibits a PE ratio of 15.4 and a strong ROE of 48.72%, indicating potential undervaluation relative to earnings. However, the quality score is low, suggesting concerns about the sustainability of these metrics. The market cap stands at \u20b9758,206.43 crore, reflecting its significant presence in the market.",
         "ai_provider": "GitHub Models",
         "ai_source": "ai",
         "data_critique": [
-          "Data quality appears low due to conflicting signals such as low quality score and mixed analyst recommendations.",
-          "The Altman Z-score is unavailable, limiting insights into bankruptcy risk."
+          "Inputs look consistent, but low quality score and Graham score suggest caution in relying solely on these metrics."
         ],
         "horizon_view": {
-          "short": "1-2 weeks for potential volatility.",
-          "mid": "3-6 months for earnings impact.",
-          "long": "1-2 years for market recovery."
+          "short": "monitor for short-term volatility",
+          "mid": "potential for recovery in IT sector",
+          "long": "uncertain growth trajectory over the next few years"
         }
       },
       "analyst_consensus": {
@@ -34048,12 +34098,12 @@
         "source": "yahoo"
       },
       "news": {
-        "net_sentiment": -0.12,
+        "net_sentiment": -0.38,
         "n": 8,
         "sample": [
+          "China, India See Top Firms Lose Market Cap Share in AI Lag",
           "India's Nifty IT index at three-year low as bellwether Accenture flags weak outlook",
-          "Indian IT stocks tumble as Accenture flags weak outlook",
-          "India's TCS to take $70 million hit after US Supreme Court rejects appeal"
+          "Indian IT stocks tumble as Accenture flags weak outlook"
         ],
         "source": "llm"
       },
@@ -34063,15 +34113,15 @@
         "coverage": 0.8,
         "last_close": 2094.699951171875,
         "last_date": "2026-06-25",
-        "predicted_return_pct": 0.61,
-        "predicted_price": 2107.38,
-        "price_lower": 1887.12,
-        "price_upper": 2327.65,
-        "return_lower_pct": -9.91,
-        "return_upper_pct": 11.12,
+        "predicted_return_pct": 0.62,
+        "predicted_price": 2107.58,
+        "price_lower": 1885.95,
+        "price_upper": 2329.22,
+        "return_lower_pct": -9.97,
+        "return_upper_pct": 11.2,
         "prob_up": 0.247,
         "direction": "UP",
-        "confidence": 0.298,
+        "confidence": 0.297,
         "n_train": 469,
         "disclaimer": "Probabilistic estimate, not a guarantee. Intervals are conformal (historically calibrated) and can break during news/earnings/macro shocks."
       },
@@ -42101,30 +42151,33 @@
         "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
       },
       "ai": {
-        "thesis": "Emami Ltd has a PE ratio of 22.35 and a strong ROE of 27.60%, indicating solid profitability. The company maintains a low debt-to-equity ratio of 0.06, suggesting financial stability. However, the quality score is low at 25, raising concerns about the overall quality of the stock.",
+        "thesis": "Emami Ltd exhibits a PE ratio of 22.35 and a strong ROE of 27.60%, indicating solid profitability. The company has a low debt-to-equity ratio of 0.06, suggesting strong balance sheet health. However, the quality score is low at 25, which raises concerns about the sustainability of its financial metrics.",
         "buy_case": [
-          "Analyst consensus recommends a buy with a target upside of 36.8%, indicating strong market confidence.",
-          "The company has a robust net margin of 20.51%, showcasing effective cost management and profitability.",
-          "A dividend yield of 3.02% provides a steady income stream for investors."
+          "Strong ROE of 27.60% indicates effective management and profitability.",
+          "Low debt-to-equity ratio of 0.06 suggests financial stability and low risk of insolvency.",
+          "Analyst consensus recommends a buy with a target upside of 36.8%, indicating confidence in future growth.",
+          "Dividend yield of 3.02% provides a steady income stream for investors.",
+          "Positive news sentiment (0.33) reflects favorable market perception and potential for growth."
         ],
         "sell_case": [
-          "The quality score of 25 signals low quality, which could indicate potential underlying issues.",
-          "The Graham score of 2 suggests that the stock is overvalued based on fundamental analysis.",
-          "The Altman Z-score is not available, which raises concerns about the company's financial health."
+          "Low quality score of 25 raises concerns about the reliability of financial metrics.",
+          "Graham score of 2 signals an avoid recommendation, indicating potential overvaluation.",
+          "Current ratio of 2.31, while healthy, may indicate inefficiencies in asset utilization.",
+          "ML forecast confidence is low (0.124), suggesting uncertainty in predicted returns."
         ],
         "key_risks": [
-          "Market volatility could impact stock performance given the current economic climate.",
-          "Potential changes in consumer preferences may affect sales growth in the long term.",
-          "High competition in the FMCG sector could pressure margins."
+          "Market volatility affecting consumer spending in the FMCG sector.",
+          "Potential supply chain disruptions impacting product availability.",
+          "Regulatory changes affecting operational costs and margins."
         ],
         "catalysts": [
-          "Positive earnings reports could further boost investor sentiment and stock price.",
-          "Strategic initiatives aimed at growth could enhance market position and profitability.",
-          "Any regulatory changes favoring the FMCG sector could provide a tailwind."
+          "Positive earnings reports exceeding analyst expectations could drive stock price up.",
+          "Strategic partnerships or acquisitions enhancing market position.",
+          "Successful product launches or expansions into new markets."
         ],
         "data_critique": [
-          "The inputs show some inconsistencies, particularly with the low quality score and the absence of a Z-score, which raises concerns about data reliability.",
-          "The metrics appear to conflict with the strong buy verdict from the model, suggesting a need for caution."
+          "Quality score is low, indicating potential issues with data reliability; conflicts with high ROE and low quality score.",
+          "Graham score suggests caution, conflicting with the strong buy verdict from the model."
         ],
         "moat": "weak",
         "verdict": "HOLD",
@@ -42132,9 +42185,9 @@
         "conviction": 55.0,
         "confidence": "low",
         "horizon_view": {
-          "short": "Monitoring for short-term volatility.",
-          "mid": "Expecting gradual performance improvement over the next few months.",
-          "long": "Long-term growth dependent on strategic execution and market conditions."
+          "short": "1-2 weeks for earnings reactions",
+          "mid": "3-6 months for market adjustments",
+          "long": "1-2 years for growth realization"
         },
         "source": "ai",
         "provider": "GitHub Models"
@@ -42142,8 +42195,8 @@
       "composite": {
         "verdict": "BUY",
         "group": "BUY",
-        "score": 73.5,
-        "lean": 0.47,
+        "score": 73.6,
+        "lean": 0.472,
         "agreement": 0.8,
         "signals_used": [
           "fundamental",
@@ -42156,33 +42209,36 @@
           "fundamental": 1.0,
           "ai": 0.0,
           "analyst": 0.59,
-          "ml": 0.13,
+          "ml": 0.14,
           "news": 0.33
         },
-        "rationale": "fundamentals STRONG_BUY \u00b7 analysts +36.8% target (buy) \u00b7 ML up (P0.613) \u00b7 news +0.33 \u00b7 AI lean +0.00",
+        "rationale": "fundamentals STRONG_BUY \u00b7 analysts +36.8% target (buy) \u00b7 ML up (P0.624) \u00b7 news +0.33 \u00b7 AI lean +0.00",
         "data_quality": null,
         "has_red_flag": false,
         "buy_case": [
-          "Analyst consensus recommends a buy with a target upside of 36.8%, indicating strong market confidence.",
-          "The company has a robust net margin of 20.51%, showcasing effective cost management and profitability.",
-          "A dividend yield of 3.02% provides a steady income stream for investors."
+          "Strong ROE of 27.60% indicates effective management and profitability.",
+          "Low debt-to-equity ratio of 0.06 suggests financial stability and low risk of insolvency.",
+          "Analyst consensus recommends a buy with a target upside of 36.8%, indicating confidence in future growth.",
+          "Dividend yield of 3.02% provides a steady income stream for investors.",
+          "Positive news sentiment (0.33) reflects favorable market perception and potential for growth."
         ],
         "sell_case": [
-          "The quality score of 25 signals low quality, which could indicate potential underlying issues.",
-          "The Graham score of 2 suggests that the stock is overvalued based on fundamental analysis.",
-          "The Altman Z-score is not available, which raises concerns about the company's financial health."
+          "Low quality score of 25 raises concerns about the reliability of financial metrics.",
+          "Graham score of 2 signals an avoid recommendation, indicating potential overvaluation.",
+          "Current ratio of 2.31, while healthy, may indicate inefficiencies in asset utilization.",
+          "ML forecast confidence is low (0.124), suggesting uncertainty in predicted returns."
         ],
-        "thesis": "Emami Ltd has a PE ratio of 22.35 and a strong ROE of 27.60%, indicating solid profitability. The company maintains a low debt-to-equity ratio of 0.06, suggesting financial stability. However, the quality score is low at 25, raising concerns about the overall quality of the stock.",
+        "thesis": "Emami Ltd exhibits a PE ratio of 22.35 and a strong ROE of 27.60%, indicating solid profitability. The company has a low debt-to-equity ratio of 0.06, suggesting strong balance sheet health. However, the quality score is low at 25, which raises concerns about the sustainability of its financial metrics.",
         "ai_provider": "GitHub Models",
         "ai_source": "ai",
         "data_critique": [
-          "The inputs show some inconsistencies, particularly with the low quality score and the absence of a Z-score, which raises concerns about data reliability.",
-          "The metrics appear to conflict with the strong buy verdict from the model, suggesting a need for caution."
+          "Quality score is low, indicating potential issues with data reliability; conflicts with high ROE and low quality score.",
+          "Graham score suggests caution, conflicting with the strong buy verdict from the model."
         ],
         "horizon_view": {
-          "short": "Monitoring for short-term volatility.",
-          "mid": "Expecting gradual performance improvement over the next few months.",
-          "long": "Long-term growth dependent on strategic execution and market conditions."
+          "short": "1-2 weeks for earnings reactions",
+          "mid": "3-6 months for market adjustments",
+          "long": "1-2 years for growth realization"
         }
       },
       "analyst_consensus": {
@@ -42209,15 +42265,15 @@
         "coverage": 0.8,
         "last_close": 396.95001220703125,
         "last_date": "2026-06-25",
-        "predicted_return_pct": 11.41,
-        "predicted_price": 442.23,
-        "price_lower": 373.81,
-        "price_upper": 510.65,
-        "return_lower_pct": -5.83,
-        "return_upper_pct": 28.64,
-        "prob_up": 0.613,
+        "predicted_return_pct": 11.56,
+        "predicted_price": 442.85,
+        "price_lower": 374.26,
+        "price_upper": 511.43,
+        "return_lower_pct": -5.71,
+        "return_upper_pct": 28.84,
+        "prob_up": 0.624,
         "direction": "UP",
-        "confidence": 0.113,
+        "confidence": 0.124,
         "n_train": 469,
         "disclaimer": "Probabilistic estimate, not a guarantee. Intervals are conformal (historically calibrated) and can break during news/earnings/macro shocks."
       },
@@ -49104,30 +49160,30 @@
         "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
       },
       "ai": {
-        "thesis": "MONARCH has a PE ratio of 14.81 and a strong net margin of 48.54%, indicating efficient profitability. However, the quality score is low at 25, suggesting potential underlying issues. The debt-to-equity ratio is very low at 0.038, indicating strong balance sheet health, but the Graham score of 2 signals caution. Overall, the stock's market cap is approximately \u20b92666.74 crore, reflecting its size in the market.",
+        "thesis": "MONARCH has a PE ratio of 14.81 and a strong net margin of 48.54%, indicating solid profitability. However, the quality score is low at 25, and the Graham score suggests it should be avoided. The company has a very low debt-to-equity ratio of 0.038, indicating strong balance sheet health, but the Altman Z-score is unavailable, raising concerns about financial stability.",
         "buy_case": [
-          "Strong net margin of 48.54% indicates high profitability potential.",
-          "Low debt-to-equity ratio of 0.038 suggests a robust balance sheet with minimal financial risk.",
-          "Current ratio of 1.83 shows good short-term liquidity, indicating the ability to cover short-term obligations."
+          "Strong net margin of 48.54% suggests high profitability and operational efficiency.",
+          "Low debt-to-equity ratio of 0.038 indicates minimal financial risk and strong balance sheet health.",
+          "High ROE of 20.49% reflects effective management and good returns on equity."
         ],
         "sell_case": [
-          "Low quality score of 25 raises concerns about the sustainability of earnings and operational efficiency.",
+          "Low quality score of 25 raises concerns about the sustainability of earnings.",
           "Graham score of 2 indicates potential overvaluation or fundamental weaknesses.",
-          "ML forecast predicts a decline in price to \u20b9315.53, suggesting bearish sentiment."
+          "ML forecast predicts a price drop of 6.58%, suggesting bearish sentiment in the near term."
         ],
         "key_risks": [
-          "Market volatility could impact stock performance negatively.",
-          "Potential operational inefficiencies due to low quality score.",
-          "Changes in macroeconomic conditions affecting profitability."
+          "Market volatility affecting stock price due to low confidence in ML forecast.",
+          "Potential operational issues given the low quality score.",
+          "Economic downturn impacting profitability despite current strong margins."
         ],
         "catalysts": [
-          "Improvement in operational efficiency could enhance profitability metrics.",
-          "Positive news or developments in the industry could boost investor sentiment.",
-          "Strategic initiatives leading to revenue growth could drive stock price up."
+          "Improvement in quality metrics could enhance investor confidence.",
+          "Positive earnings report could reverse bearish ML forecast predictions.",
+          "Strategic initiatives leading to growth in market share."
         ],
         "data_critique": [
-          "Inputs show some inconsistencies, particularly with the quality score and Graham score indicating potential issues.",
-          "The lack of a Z-score and low confidence in ML forecast suggests caution in relying on these metrics."
+          "Inputs show some inconsistencies, particularly with the quality score and Graham score indicating potential fundamental issues.",
+          "Lack of Altman Z-score data limits assessment of bankruptcy risk."
         ],
         "moat": "weak",
         "verdict": "SELL",
@@ -49135,9 +49191,9 @@
         "conviction": 55.0,
         "confidence": "low",
         "horizon_view": {
-          "short": "1-2 weeks for potential volatility",
-          "mid": "3-6 months for performance evaluation",
-          "long": "1-2 years for fundamental changes"
+          "short": "1-2 weeks for potential price adjustments",
+          "mid": "3-6 months for earnings impact",
+          "long": "1-2 years for fundamental improvements"
         },
         "source": "ai",
         "provider": "GitHub Models"
@@ -49162,26 +49218,26 @@
         "data_quality": null,
         "has_red_flag": false,
         "buy_case": [
-          "Strong net margin of 48.54% indicates high profitability potential.",
-          "Low debt-to-equity ratio of 0.038 suggests a robust balance sheet with minimal financial risk.",
-          "Current ratio of 1.83 shows good short-term liquidity, indicating the ability to cover short-term obligations."
+          "Strong net margin of 48.54% suggests high profitability and operational efficiency.",
+          "Low debt-to-equity ratio of 0.038 indicates minimal financial risk and strong balance sheet health.",
+          "High ROE of 20.49% reflects effective management and good returns on equity."
         ],
         "sell_case": [
-          "Low quality score of 25 raises concerns about the sustainability of earnings and operational efficiency.",
+          "Low quality score of 25 raises concerns about the sustainability of earnings.",
           "Graham score of 2 indicates potential overvaluation or fundamental weaknesses.",
-          "ML forecast predicts a decline in price to \u20b9315.53, suggesting bearish sentiment."
+          "ML forecast predicts a price drop of 6.58%, suggesting bearish sentiment in the near term."
         ],
-        "thesis": "MONARCH has a PE ratio of 14.81 and a strong net margin of 48.54%, indicating efficient profitability. However, the quality score is low at 25, suggesting potential underlying issues. The debt-to-equity ratio is very low at 0.038, indicating strong balance sheet health, but the Graham score of 2 signals caution. Overall, the stock's market cap is approximately \u20b92666.74 crore, reflecting its size in the market.",
+        "thesis": "MONARCH has a PE ratio of 14.81 and a strong net margin of 48.54%, indicating solid profitability. However, the quality score is low at 25, and the Graham score suggests it should be avoided. The company has a very low debt-to-equity ratio of 0.038, indicating strong balance sheet health, but the Altman Z-score is unavailable, raising concerns about financial stability.",
         "ai_provider": "GitHub Models",
         "ai_source": "ai",
         "data_critique": [
-          "Inputs show some inconsistencies, particularly with the quality score and Graham score indicating potential issues.",
-          "The lack of a Z-score and low confidence in ML forecast suggests caution in relying on these metrics."
+          "Inputs show some inconsistencies, particularly with the quality score and Graham score indicating potential fundamental issues.",
+          "Lack of Altman Z-score data limits assessment of bankruptcy risk."
         ],
         "horizon_view": {
-          "short": "1-2 weeks for potential volatility",
-          "mid": "3-6 months for performance evaluation",
-          "long": "1-2 years for fundamental changes"
+          "short": "1-2 weeks for potential price adjustments",
+          "mid": "3-6 months for earnings impact",
+          "long": "1-2 years for fundamental improvements"
         }
       },
       "analyst_consensus": {
@@ -49197,10 +49253,10 @@
         "last_date": "2026-06-25",
         "predicted_return_pct": -6.58,
         "predicted_price": 315.53,
-        "price_lower": 256.87,
-        "price_upper": 374.2,
-        "return_lower_pct": -23.95,
-        "return_upper_pct": 10.79,
+        "price_lower": 256.63,
+        "price_upper": 374.44,
+        "return_lower_pct": -24.02,
+        "return_upper_pct": 10.86,
         "prob_up": 0.505,
         "direction": "DOWN",
         "confidence": 0.006,
@@ -65193,43 +65249,55 @@
         "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
       },
       "ai": {
-        "thesis": "DBL scores 82.7/100 on the fundamental model \u2192 Strong Buy. Supported by valuation, profitability.",
+        "thesis": "Dilip Buildcon Ltd (DBL) has a low PE ratio of 5.47, indicating potential undervaluation, while its ROE stands at a healthy 21.90%. The company also boasts a net margin of 14.50% and a current ratio of 1.56, suggesting decent profitability and liquidity. However, the quality score is low, and the Graham score indicates an 'AVOID' signal, raising concerns about overall financial health.",
         "buy_case": [
-          "Valuation: P/E 5.5",
-          "Profitability: ROE 21.9%, net margin 14.5%, OPM 16.3%, ROA 6.7%",
-          "Analyst target implies +18.6% vs price",
-          "ML forecast UP (P(up)=0.677, 6.67%)",
-          "News sentiment +0.50 (2 headlines)"
+          "PE ratio of 5.47 suggests undervaluation compared to industry peers.",
+          "ROE of 21.90% indicates strong profitability relative to equity.",
+          "Current ratio of 1.56 shows good liquidity, which can support operational stability.",
+          "Analyst consensus recommends a 'buy' with a target upside of 18.6%, indicating positive market sentiment.",
+          "Dividend yield of 21.84% provides attractive income for investors."
         ],
         "sell_case": [
-          "No major fundamental weaknesses detected"
+          "Low quality score of 17 raises concerns about financial stability and operational efficiency.",
+          "Graham score of 2 signals potential overvaluation or poor fundamentals, suggesting caution.",
+          "Debt-to-equity ratio of 1.18 indicates significant leverage, which could pose risks in downturns.",
+          "Net sentiment of 0.5 reflects mixed news coverage, which may lead to volatility.",
+          "ML forecast shows a predicted return of only 6.67%, indicating limited upside potential in the near term."
         ],
-        "key_risks": [],
+        "key_risks": [
+          "High debt levels may impact financial flexibility during economic downturns.",
+          "Low quality score suggests potential operational inefficiencies.",
+          "Market volatility could affect stock performance despite positive analyst sentiment.",
+          "Economic conditions impacting the construction sector could adversely affect revenue."
+        ],
         "catalysts": [
-          "Deteriorating margins, falling ROCE, or rising leverage would downgrade the signal"
+          "Positive earnings reports could enhance investor confidence and drive stock price up.",
+          "Strategic diversification efforts may lead to new revenue streams and improved market position.",
+          "Infrastructure spending initiatives by the government could boost demand for construction services."
         ],
         "data_critique": [
-          "Inputs not LLM-reviewed; see data-quality panel."
+          "Data quality appears low due to the absence of certain metrics like PB and Z-score, which limits comprehensive analysis.",
+          "Conflicting signals from the Graham score and quality score suggest caution in relying solely on these inputs."
         ],
-        "moat": "none",
-        "verdict": "STRONG_BUY",
-        "lean": 0.65,
-        "conviction": 82.7,
-        "confidence": "moderate",
+        "moat": "weak",
+        "verdict": "HOLD",
+        "lean": 0.0,
+        "conviction": 55.0,
+        "confidence": "low",
         "horizon_view": {
-          "short": "WATCH",
-          "mid": "HOLD",
-          "long": "ACCUMULATE"
+          "short": "Potential price movement in weeks based on earnings releases.",
+          "mid": "Market sentiment may shift in months with strategic developments.",
+          "long": "Long-term growth contingent on infrastructure spending trends."
         },
-        "source": "deterministic",
-        "provider": "deterministic (no LLM)"
+        "source": "ai",
+        "provider": "GitHub Models"
       },
       "composite": {
-        "verdict": "STRONG_BUY",
+        "verdict": "BUY",
         "group": "BUY",
-        "score": 81.6,
-        "lean": 0.632,
-        "agreement": 1.0,
+        "score": 73.5,
+        "lean": 0.469,
+        "agreement": 0.8,
         "signals_used": [
           "fundamental",
           "ai",
@@ -65239,34 +65307,39 @@
         ],
         "components": {
           "fundamental": 1.0,
-          "ai": 0.65,
+          "ai": 0.0,
           "analyst": 0.43,
           "ml": 0.22,
           "news": 0.5
         },
-        "rationale": "fundamentals STRONG_BUY \u00b7 analysts +18.6% target (buy) \u00b7 ML up (P0.677) \u00b7 news +0.5 \u00b7 AI lean +0.65",
+        "rationale": "fundamentals STRONG_BUY \u00b7 analysts +18.6% target (buy) \u00b7 ML up (P0.677) \u00b7 news +0.5 \u00b7 AI lean +0.00",
         "data_quality": null,
         "has_red_flag": false,
         "buy_case": [
-          "Valuation: P/E 5.5",
-          "Profitability: ROE 21.9%, net margin 14.5%, OPM 16.3%, ROA 6.7%",
-          "Analyst target implies +18.6% vs price",
-          "ML forecast UP (P(up)=0.677, 6.67%)",
-          "News sentiment +0.50 (2 headlines)"
+          "PE ratio of 5.47 suggests undervaluation compared to industry peers.",
+          "ROE of 21.90% indicates strong profitability relative to equity.",
+          "Current ratio of 1.56 shows good liquidity, which can support operational stability.",
+          "Analyst consensus recommends a 'buy' with a target upside of 18.6%, indicating positive market sentiment.",
+          "Dividend yield of 21.84% provides attractive income for investors."
         ],
         "sell_case": [
-          "No major fundamental weaknesses detected"
+          "Low quality score of 17 raises concerns about financial stability and operational efficiency.",
+          "Graham score of 2 signals potential overvaluation or poor fundamentals, suggesting caution.",
+          "Debt-to-equity ratio of 1.18 indicates significant leverage, which could pose risks in downturns.",
+          "Net sentiment of 0.5 reflects mixed news coverage, which may lead to volatility.",
+          "ML forecast shows a predicted return of only 6.67%, indicating limited upside potential in the near term."
         ],
-        "thesis": "DBL scores 82.7/100 on the fundamental model \u2192 Strong Buy. Supported by valuation, profitability.",
-        "ai_provider": "deterministic (no LLM)",
-        "ai_source": "deterministic",
+        "thesis": "Dilip Buildcon Ltd (DBL) has a low PE ratio of 5.47, indicating potential undervaluation, while its ROE stands at a healthy 21.90%. The company also boasts a net margin of 14.50% and a current ratio of 1.56, suggesting decent profitability and liquidity. However, the quality score is low, and the Graham score indicates an 'AVOID' signal, raising concerns about overall financial health.",
+        "ai_provider": "GitHub Models",
+        "ai_source": "ai",
         "data_critique": [
-          "Inputs not LLM-reviewed; see data-quality panel."
+          "Data quality appears low due to the absence of certain metrics like PB and Z-score, which limits comprehensive analysis.",
+          "Conflicting signals from the Graham score and quality score suggest caution in relying solely on these inputs."
         ],
         "horizon_view": {
-          "short": "WATCH",
-          "mid": "HOLD",
-          "long": "ACCUMULATE"
+          "short": "Potential price movement in weeks based on earnings releases.",
+          "mid": "Market sentiment may shift in months with strategic developments.",
+          "long": "Long-term growth contingent on infrastructure spending trends."
         }
       },
       "analyst_consensus": {
@@ -65462,66 +65535,80 @@
         "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
       },
       "ai": {
-        "thesis": "GRAUWEIL scores 82.6/100 on the fundamental model \u2192 Strong Buy. Supported by financial health.",
+        "thesis": "GRAUWEIL has a PE ratio of 20.12 and a ROE of 16.23%, indicating reasonable profitability relative to its price. The company maintains a low debt-to-equity ratio of 0.01, suggesting strong balance sheet health. However, the quality score is low at 17, and the Graham score indicates an 'AVOID' signal, which raises concerns about its overall quality and valuation.",
         "buy_case": [
-          "Financial health: D/E 0.01, current ratio 2.7"
+          "Low debt-to-equity ratio of 0.01 indicates strong financial stability.",
+          "Current ratio of 2.71 suggests good liquidity and ability to cover short-term obligations.",
+          "Dividend yield of 0.69% provides some return to shareholders, albeit modest."
         ],
         "sell_case": [
-          "No major fundamental weaknesses detected"
+          "Low quality score of 17 raises concerns about the company's operational efficiency and management.",
+          "Graham score of 2 signals potential overvaluation or poor fundamentals, suggesting caution.",
+          "Lack of analyst consensus and news sentiment could indicate uncertainty in market perception."
         ],
-        "key_risks": [],
+        "key_risks": [
+          "Market volatility affecting stock price due to low analyst coverage.",
+          "Potential operational inefficiencies due to low quality score.",
+          "Economic downturn impacting profitability and margins."
+        ],
         "catalysts": [
-          "Deteriorating margins, falling ROCE, or rising leverage would downgrade the signal"
+          "Improvement in operational metrics leading to better quality scores.",
+          "Positive news or analyst upgrades that could enhance market perception.",
+          "Strategic initiatives that improve profitability and growth."
         ],
         "data_critique": [
-          "Inputs not LLM-reviewed; see data-quality panel."
+          "Inputs look consistent but the low quality score and Graham score indicate potential issues with the company's fundamentals."
         ],
-        "moat": "none",
-        "verdict": "STRONG_BUY",
-        "lean": 0.65,
-        "conviction": 82.6,
-        "confidence": "moderate",
+        "moat": "weak",
+        "verdict": "SELL",
+        "lean": -0.5,
+        "conviction": 55.0,
+        "confidence": "low",
         "horizon_view": {
-          "short": "WATCH",
-          "mid": "HOLD",
-          "long": "ACCUMULATE"
+          "short": "Monitoring for short-term volatility.",
+          "mid": "Evaluating operational improvements over the next few months.",
+          "long": "Assessing long-term viability and growth potential over the next few years."
         },
-        "source": "deterministic",
-        "provider": "deterministic (no LLM)"
+        "source": "ai",
+        "provider": "GitHub Models"
       },
       "composite": {
-        "verdict": "STRONG_BUY",
+        "verdict": "BUY",
         "group": "BUY",
-        "score": 92.0,
-        "lean": 0.841,
-        "agreement": 1.0,
+        "score": 65.9,
+        "lean": 0.318,
+        "agreement": 0.5,
         "signals_used": [
           "fundamental",
           "ai"
         ],
         "components": {
           "fundamental": 1.0,
-          "ai": 0.65
+          "ai": -0.5
         },
-        "rationale": "fundamentals STRONG_BUY \u00b7 AI lean +0.65",
+        "rationale": "fundamentals STRONG_BUY \u00b7 AI lean -0.50",
         "data_quality": null,
         "has_red_flag": false,
         "buy_case": [
-          "Financial health: D/E 0.01, current ratio 2.7"
+          "Low debt-to-equity ratio of 0.01 indicates strong financial stability.",
+          "Current ratio of 2.71 suggests good liquidity and ability to cover short-term obligations.",
+          "Dividend yield of 0.69% provides some return to shareholders, albeit modest."
         ],
         "sell_case": [
-          "No major fundamental weaknesses detected"
+          "Low quality score of 17 raises concerns about the company's operational efficiency and management.",
+          "Graham score of 2 signals potential overvaluation or poor fundamentals, suggesting caution.",
+          "Lack of analyst consensus and news sentiment could indicate uncertainty in market perception."
         ],
-        "thesis": "GRAUWEIL scores 82.6/100 on the fundamental model \u2192 Strong Buy. Supported by financial health.",
-        "ai_provider": "deterministic (no LLM)",
-        "ai_source": "deterministic",
+        "thesis": "GRAUWEIL has a PE ratio of 20.12 and a ROE of 16.23%, indicating reasonable profitability relative to its price. The company maintains a low debt-to-equity ratio of 0.01, suggesting strong balance sheet health. However, the quality score is low at 17, and the Graham score indicates an 'AVOID' signal, which raises concerns about its overall quality and valuation.",
+        "ai_provider": "GitHub Models",
+        "ai_source": "ai",
         "data_critique": [
-          "Inputs not LLM-reviewed; see data-quality panel."
+          "Inputs look consistent but the low quality score and Graham score indicate potential issues with the company's fundamentals."
         ],
         "horizon_view": {
-          "short": "WATCH",
-          "mid": "HOLD",
-          "long": "ACCUMULATE"
+          "short": "Monitoring for short-term volatility.",
+          "mid": "Evaluating operational improvements over the next few months.",
+          "long": "Assessing long-term viability and growth potential over the next few years."
         }
       },
       "analyst_consensus": {
@@ -66784,29 +66871,28 @@
         "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
       },
       "ai": {
-        "thesis": "Star Cement has a P/E ratio of 21.65 and a net margin of 10.42%, indicating reasonable profitability. However, the quality score is low, suggesting potential concerns about the sustainability of these metrics. The market cap stands at \u20b98508 crore, with a strong analyst consensus recommending a buy.",
+        "thesis": "Star Cement has a PE ratio of 21.65 and a net margin of 10.42%, indicating moderate profitability. The company has a low debt-to-equity ratio of 0.19, suggesting a strong balance sheet. However, the quality score is low, and the Graham score indicates an avoid signal, which raises concerns about its overall investment quality.",
         "buy_case": [
-          "Analyst consensus shows a strong buy with a target upside of 32.7%, indicating significant growth potential.",
-          "The company has a low debt-to-equity ratio of 0.19, suggesting strong financial health and lower risk.",
-          "A dividend yield of 0.48% provides some return to shareholders, enhancing the attractiveness of the stock."
+          "Analyst consensus shows a strong buy recommendation with a target upside of 32.7% based on a mean target of 279.0.",
+          "The company has a healthy current ratio of 1.31, indicating good short-term financial stability.",
+          "A dividend yield of 0.48% provides some income to investors, which can be attractive in a low-interest-rate environment."
         ],
         "sell_case": [
-          "The quality score is low (10), indicating potential issues with earnings quality or sustainability.",
-          "The Graham score is 1, which signals an avoid recommendation, suggesting the stock may be overvalued.",
-          "The ML forecast predicts a potential decline of 1.34%, indicating bearish sentiment in the short term."
+          "The quality score is low (10), suggesting potential issues with the company's operational efficiency or financial health.",
+          "The Graham score of 1 indicates that the stock is overvalued based on fundamental analysis, which could lead to price corrections.",
+          "The ML forecast predicts a potential decline of -1.39% in the short term, indicating bearish sentiment in the near future."
         ],
         "key_risks": [
-          "Low quality score may indicate unsustainable earnings.",
-          "Potential volatility due to macroeconomic factors affecting the cement industry.",
-          "Predicted return from ML model suggests a downward trend."
+          "Market volatility could impact stock performance given the low confidence in the ML forecast.",
+          "Potential operational challenges could arise from the low quality score, affecting profitability.",
+          "Economic downturns could lead to reduced demand for cement, impacting revenue."
         ],
         "catalysts": [
-          "Strong production and profit growth reported in recent earnings calls could drive positive sentiment.",
-          "Any improvement in quality metrics could enhance investor confidence.",
-          "Infrastructure spending in India may boost cement demand."
+          "Positive earnings reports could boost investor sentiment and drive the stock price higher.",
+          "Infrastructure spending by the government could increase demand for cement, benefiting the company."
         ],
         "data_critique": [
-          "Inputs look consistent, but the low quality score and avoid signal from the Graham score raise concerns about the reliability of the financial health indicators."
+          "The inputs show some inconsistencies, particularly with the Graham score and quality score, which suggest caution in relying solely on these metrics for investment decisions."
         ],
         "moat": "weak",
         "verdict": "HOLD",
@@ -66814,9 +66900,9 @@
         "conviction": 55.0,
         "confidence": "low",
         "horizon_view": {
-          "short": "potentially bearish in the coming weeks",
-          "mid": "uncertain outlook over the next few months",
-          "long": "growth dependent on industry trends over the next few years"
+          "short": "1-2 weeks",
+          "mid": "2-6 months",
+          "long": "1-2 years"
         },
         "source": "ai",
         "provider": "GitHub Models"
@@ -66845,25 +66931,25 @@
         "data_quality": null,
         "has_red_flag": false,
         "buy_case": [
-          "Analyst consensus shows a strong buy with a target upside of 32.7%, indicating significant growth potential.",
-          "The company has a low debt-to-equity ratio of 0.19, suggesting strong financial health and lower risk.",
-          "A dividend yield of 0.48% provides some return to shareholders, enhancing the attractiveness of the stock."
+          "Analyst consensus shows a strong buy recommendation with a target upside of 32.7% based on a mean target of 279.0.",
+          "The company has a healthy current ratio of 1.31, indicating good short-term financial stability.",
+          "A dividend yield of 0.48% provides some income to investors, which can be attractive in a low-interest-rate environment."
         ],
         "sell_case": [
-          "The quality score is low (10), indicating potential issues with earnings quality or sustainability.",
-          "The Graham score is 1, which signals an avoid recommendation, suggesting the stock may be overvalued.",
-          "The ML forecast predicts a potential decline of 1.34%, indicating bearish sentiment in the short term."
+          "The quality score is low (10), suggesting potential issues with the company's operational efficiency or financial health.",
+          "The Graham score of 1 indicates that the stock is overvalued based on fundamental analysis, which could lead to price corrections.",
+          "The ML forecast predicts a potential decline of -1.39% in the short term, indicating bearish sentiment in the near future."
         ],
-        "thesis": "Star Cement has a P/E ratio of 21.65 and a net margin of 10.42%, indicating reasonable profitability. However, the quality score is low, suggesting potential concerns about the sustainability of these metrics. The market cap stands at \u20b98508 crore, with a strong analyst consensus recommending a buy.",
+        "thesis": "Star Cement has a PE ratio of 21.65 and a net margin of 10.42%, indicating moderate profitability. The company has a low debt-to-equity ratio of 0.19, suggesting a strong balance sheet. However, the quality score is low, and the Graham score indicates an avoid signal, which raises concerns about its overall investment quality.",
         "ai_provider": "GitHub Models",
         "ai_source": "ai",
         "data_critique": [
-          "Inputs look consistent, but the low quality score and avoid signal from the Graham score raise concerns about the reliability of the financial health indicators."
+          "The inputs show some inconsistencies, particularly with the Graham score and quality score, which suggest caution in relying solely on these metrics for investment decisions."
         ],
         "horizon_view": {
-          "short": "potentially bearish in the coming weeks",
-          "mid": "uncertain outlook over the next few months",
-          "long": "growth dependent on industry trends over the next few years"
+          "short": "1-2 weeks",
+          "mid": "2-6 months",
+          "long": "1-2 years"
         }
       },
       "analyst_consensus": {
@@ -66890,12 +66976,12 @@
         "coverage": 0.8,
         "last_close": 210.64999389648438,
         "last_date": "2026-06-25",
-        "predicted_return_pct": -1.34,
-        "predicted_price": 207.82,
-        "price_lower": 172.59,
-        "price_upper": 243.06,
-        "return_lower_pct": -18.07,
-        "return_upper_pct": 15.39,
+        "predicted_return_pct": -1.39,
+        "predicted_price": 207.72,
+        "price_lower": 172.52,
+        "price_upper": 242.91,
+        "return_lower_pct": -18.1,
+        "return_upper_pct": 15.31,
         "prob_up": 0.011,
         "direction": "DOWN",
         "confidence": 0.576,
