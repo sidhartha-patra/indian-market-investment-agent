@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29 17:38 India Standard Time",
+  "generated_at": "2026-06-30 07:21 India Standard Time",
   "count": 43,
   "stocks": [
     {
@@ -111,19 +111,19 @@
       "signal": "BUY"
     },
     {
-      "symbol": "NITTAGELA",
-      "name": "NITTA GELATIN INDIA LTD.",
+      "symbol": "ADVENZYMES",
+      "name": "ADVANCED ENZYME TECH LTD",
       "sector": "Basic Materials",
-      "price": 1652.8,
+      "price": 321.1,
       "score": 72.1,
       "tier": "STRONG",
       "signal": "STRONG_BUY"
     },
     {
-      "symbol": "ADVENZYMES",
-      "name": "ADVANCED ENZYME TECH LTD",
+      "symbol": "NITTAGELA",
+      "name": "NITTA GELATIN INDIA LTD.",
       "sector": "Basic Materials",
-      "price": 321.1,
+      "price": 1652.8,
       "score": 69.8,
       "tier": "STRONG",
       "signal": "STRONG_BUY"
@@ -237,22 +237,22 @@
       "signal": "BUY"
     },
     {
-      "symbol": "SENCO",
-      "name": "SENCO GOLD LIMITED",
-      "sector": "Consumer Cyclical",
-      "price": 327.15,
-      "score": 39.5,
-      "tier": "WEAK",
-      "signal": "HOLD"
-    },
-    {
       "symbol": "ALPEXSOLAR",
       "name": "ALPEXSOLAR.NS,0P0001SDK4,104400",
       "sector": "OTHER",
       "price": 838.95,
-      "score": 37.2,
+      "score": 39.5,
       "tier": "WEAK",
       "signal": "SELL"
+    },
+    {
+      "symbol": "SENCO",
+      "name": "SENCO GOLD LIMITED",
+      "sector": "Consumer Cyclical",
+      "price": 327.15,
+      "score": 37.2,
+      "tier": "WEAK",
+      "signal": "HOLD"
     },
     {
       "symbol": "JSLL",
