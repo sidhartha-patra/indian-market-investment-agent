@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30 17:43 India Standard Time",
+  "generated_at": "2026-07-01 07:19 India Standard Time",
   "count": 44,
   "stocks": [
     {
@@ -75,19 +75,19 @@
       "signal": "STRONG_BUY"
     },
     {
-      "symbol": "3BBLACKBIO",
-      "name": "3B BLACKBIO DX LTD.",
-      "sector": "OTHER",
-      "price": 1168.8,
+      "symbol": "MODISONLTD",
+      "name": "MODISON LIMITED",
+      "sector": "Industrials",
+      "price": 297.65,
       "score": 81.8,
       "tier": "TOP_DECILE",
       "signal": "STRONG_BUY"
     },
     {
-      "symbol": "MODISONLTD",
-      "name": "MODISON LIMITED",
-      "sector": "Industrials",
-      "price": 297.65,
+      "symbol": "3BBLACKBIO",
+      "name": "3B BLACKBIO DX LTD.",
+      "sector": "OTHER",
+      "price": 1168.8,
       "score": 79.5,
       "tier": "STRONG",
       "signal": "STRONG_BUY"
@@ -255,22 +255,22 @@
       "signal": "SELL"
     },
     {
-      "symbol": "EUROPRATIK",
-      "name": "EURO PRATIK SALES LIMITED",
-      "sector": "Basic Materials",
-      "price": 281.6,
-      "score": 36.4,
-      "tier": "WEAK",
-      "signal": "HOLD"
-    },
-    {
       "symbol": "OSWALPUMPS",
       "name": "OSWAL PUMPS LIMITED",
       "sector": "Industrials",
       "price": 423.35,
-      "score": 34.1,
+      "score": 36.4,
       "tier": "WEAK",
       "signal": "BUY"
+    },
+    {
+      "symbol": "EUROPRATIK",
+      "name": "EURO PRATIK SALES LIMITED",
+      "sector": "Basic Materials",
+      "price": 281.6,
+      "score": 34.1,
+      "tier": "WEAK",
+      "signal": "HOLD"
     },
     {
       "symbol": "HBLENGINE",

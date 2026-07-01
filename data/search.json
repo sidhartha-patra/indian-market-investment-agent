@@ -45,14 +45,14 @@
     "v": "BUY",
     "sc": 65.9,
     "b": [
-      "Strong ROE of 24.86% indicating effective use of equity capital.",
-      "Low debt-to-equity ratio of 0.03 suggests financial stability and low risk of insolvency.",
+      "Strong ROE of 24.86% indicating effective management and profitability.",
+      "Low debt-to-equity ratio of 0.03 suggests minimal financial risk and strong balance sheet health.",
       "Current ratio of 2.66 indicates strong liquidity position, allowing for operational flexibility."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about the reliability of earnings.",
-      "Graham score of 2 signals potential overvaluation and fundamental weaknesses.",
-      "PE ratio of 19.91 may indicate the stock is overvalued compared to peers."
+      "Low quality score of 25 raises concerns about the reliability of financial metrics.",
+      "Graham score of 2 signals potential overvaluation and suggests investors should avoid the stock.",
+      "PE ratio of 19.91 may indicate the stock is overpriced relative to earnings, especially in a low-margin environment."
     ],
     "ai": true
   },
@@ -99,18 +99,19 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "STRONG_BUY",
-    "sc": 86.7,
+    "v": "BUY",
+    "sc": 74.2,
     "b": [
-      "Financial health: D/E 0.02, current ratio 9.8",
-      "Analyst target implies +20.3% vs price",
-      "News sentiment +0.25 (8 headlines)"
+      "Strong current ratio of 9.78 indicates excellent liquidity, reducing short-term financial risk.",
+      "Net margin of 22.62% suggests strong profitability, which could support future growth.",
+      "Analyst consensus shows a target upside of 20.3%, indicating potential for price appreciation."
     ],
     "se": [
-      "No major fundamental weaknesses detected",
-      "ML forecast DOWN (P(up)=0.806, -0.85%)"
+      "Quality score of 10 indicates low earnings quality, raising concerns about sustainability of profits.",
+      "Graham score of 2 suggests the stock may be overvalued based on fundamental analysis.",
+      "ML forecast predicts a slight decline in price (-0.85%), indicating potential bearish sentiment."
     ],
-    "ai": false
+    "ai": true
   },
   {
     "s": "AFCOM",
@@ -250,16 +251,16 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "BUY",
-    "sc": 69.2,
+    "v": "STRONG_BUY",
+    "sc": 78.0,
     "b": [
-      "Strong net margin of 22.12% indicates effective cost management and profitability.",
-      "Low debt-to-equity ratio of 0.017 suggests minimal financial risk and strong balance sheet health.",
+      "Strong net margin of 22.12% indicates high profitability.",
+      "Low debt-to-equity ratio of 0.017 suggests financial stability.",
       "Analyst consensus shows a target upside of 7.7%, indicating potential for price appreciation."
     ],
     "se": [
-      "Low quality score of 17 raises concerns about the sustainability of earnings and operational efficiency.",
-      "Graham score indicates an 'AVOID' signal, suggesting potential overvaluation or fundamental weaknesses.",
+      "Low quality score of 17 raises concerns about earnings reliability.",
+      "Graham score of 2 indicates potential overvaluation, suggesting caution.",
       "Current ratio of 5.21, while indicating liquidity, may suggest inefficiency in asset utilization."
     ],
     "ai": true
@@ -270,16 +271,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 76.7,
+    "sc": 76.6,
     "b": [
-      "PE ratio of 10.96 suggests undervaluation compared to industry peers.",
-      "ROE of 52.04% indicates strong profitability and efficient use of equity.",
-      "Current ratio of 1.71 shows good short-term financial health."
+      "Strong ROE of 52.04% suggests effective management and profitability.",
+      "Low P/E ratio of 10.96 may indicate undervaluation compared to peers.",
+      "Positive news sentiment with a net sentiment score of 1.0 indicates favorable market perception."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about the reliability of financial metrics.",
-      "Graham score of 2 signals potential overvaluation or fundamental weaknesses.",
-      "Debt to equity ratio of 0.95 indicates a relatively high level of debt, posing financial risk."
+      "Low quality score of 25 raises concerns about earnings reliability.",
+      "Graham score of 2 signals potential fundamental weaknesses, suggesting caution.",
+      "Debt-to-equity ratio of 0.95 indicates significant leverage, which could pose risks in downturns."
     ],
     "ai": true
   },
@@ -288,16 +289,16 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "HOLD",
-    "sc": 55.0,
+    "v": "BUY",
+    "sc": 66.3,
     "b": [
-      "Strong ROE of 16.77% indicating effective management of equity.",
-      "Low debt-to-equity ratio of 0.027 suggests minimal financial risk.",
-      "Current ratio of 2.32 indicates good short-term liquidity."
+      "Low debt-to-equity ratio of 0.03 indicates strong financial health.",
+      "Current ratio of 2.32 suggests good liquidity.",
+      "Net margin of 19.92% shows effective cost management."
     ],
     "se": [
-      "High PE ratio of 46.54 may indicate overvaluation and limit upside potential.",
-      "Low quality score of 17 raises concerns about the sustainability of earnings.",
+      "High PE ratio of 46.54 may indicate overvaluation.",
+      "Low quality score of 17 raises concerns about overall business quality.",
       "Graham score of 2 signals potential fundamental weaknesses."
     ],
     "ai": true
@@ -308,16 +309,16 @@
     "sec": "",
     "p": null,
     "v": "STRONG_BUY",
-    "sc": 77.6,
+    "sc": 77.7,
     "b": [
-      "Strong analyst consensus with a mean recommendation of 1.33 (strong buy)",
-      "High current ratio of 9.75 indicating excellent liquidity",
-      "Net margin of 22.09% demonstrating strong profitability"
+      "Strong analyst consensus with a recommendation of 'strong buy' from 3 analysts and a target upside of 34.3%.",
+      "High net margin of 22.09% suggests effective cost management and profitability.",
+      "Low debt-to-equity ratio of 0.12 indicates a strong balance sheet with minimal leverage."
     ],
     "se": [
-      "Low quality score of 10 suggests potential underlying issues",
-      "Graham score of 2 indicates the stock is considered to be overvalued",
-      "PE ratio of 32.55 may indicate overvaluation compared to industry peers"
+      "Low quality score of 10 raises concerns about the sustainability of earnings.",
+      "Graham score of 2 signals potential overvaluation based on fundamental analysis.",
+      "Predicted return of only 3.57% over the next 21 days suggests limited short-term upside."
     ],
     "ai": true
   },
@@ -348,14 +349,14 @@
     "v": "BUY",
     "sc": 70.7,
     "b": [
-      "Strong operating profit margin of 39.90% indicates efficient cost management.",
-      "Low debt-to-equity ratio of 0.005 suggests strong financial health and low risk of insolvency.",
+      "Strong operating profit margin of 39.90%, indicating efficient cost management and potential for high profitability.",
+      "Low debt-to-equity ratio of 0.005, suggesting minimal financial risk and strong balance sheet health.",
       "Positive news sentiment with a net sentiment score of 1.0, indicating favorable market perception."
     ],
     "se": [
-      "Low quality score of 17 raises concerns about the company's fundamentals and operational efficiency.",
-      "Graham score of 2 signals potential overvaluation or poor investment quality.",
-      "ML forecast predicts a potential price drop of 8.02%, indicating bearish sentiment in the near term."
+      "Low quality score of 17, which raises concerns about the sustainability of earnings and overall business quality.",
+      "Graham score of 2 indicates potential overvaluation or fundamental weaknesses, suggesting caution for value investors.",
+      "ML forecast predicts a potential decline in price to ₹743.57, indicating bearish sentiment in the near term."
     ],
     "ai": true
   },
@@ -384,16 +385,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 68.9,
+    "sc": 69.1,
     "b": [
-      "The analyst consensus recommends a strong buy with a target upside of 25.1%, indicating positive sentiment among experts.",
-      "The company has a high operating margin of 56.68%, suggesting strong operational efficiency.",
-      "A current ratio of 29.85 indicates excellent liquidity, which can support growth and stability."
+      "Strong net margin of 41.99% indicates high profitability and operational efficiency.",
+      "Current ratio of 29.85 suggests excellent liquidity, providing a buffer against short-term liabilities.",
+      "Analyst consensus rating of 'strong buy' with a target price of 348.875 suggests significant upside potential."
     ],
     "se": [
-      "The debt-to-equity ratio of 1.56 raises concerns about financial leverage and potential risks during downturns.",
-      "The low quality score (17) and Graham score (3) suggest underlying fundamental weaknesses.",
-      "The ML forecast predicts a potential decline of 5.45%, indicating bearish sentiment in the short term."
+      "High debt-to-equity ratio of 1.56 raises concerns about financial leverage and risk during downturns.",
+      "Low quality score of 17 indicates potential issues with business fundamentals.",
+      "ML forecast predicts a decline of 5.16% in the short term, suggesting bearish sentiment."
     ],
     "ai": true
   },
@@ -424,14 +425,14 @@
     "v": "BUY",
     "sc": 65.1,
     "b": [
-      "The PE ratio of 16.27 suggests the stock may be undervalued compared to its earnings.",
-      "A current ratio of 2.96 indicates strong liquidity, which can support operational stability.",
-      "The dividend yield of 1.82% provides a return to shareholders, which can be attractive in a low-interest-rate environment."
+      "PE ratio of 16.27 suggests the stock is reasonably valued compared to peers.",
+      "ROE of 15.80% indicates effective management and profitability.",
+      "Current ratio of 2.96 shows strong liquidity, reducing short-term financial risk."
     ],
     "se": [
-      "The low quality score of 17 raises concerns about the sustainability of earnings and operational efficiency.",
-      "The Graham score of 2 indicates potential overvaluation or poor fundamentals, suggesting caution.",
-      "The ML forecast predicts a negative return of -0.84%, indicating potential short-term price declines."
+      "Low quality score of 17 raises concerns about the company's operational efficiency.",
+      "Graham score of 2 indicates potential overvaluation or financial instability.",
+      "ML forecast predicts a -0.84% return over the next 21 days, suggesting short-term bearish sentiment."
     ],
     "ai": true
   },
@@ -574,16 +575,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 62.9,
+    "sc": 71.5,
     "b": [
       "Strong ROE of 32.25% indicates effective management and profitability.",
-      "Current ratio of 2.25 suggests robust liquidity, reducing short-term financial risk.",
-      "Dividend yield of 3.52% provides a return to shareholders, enhancing attractiveness."
+      "Dividend yield of 3.52% provides attractive income for investors.",
+      "Low debt-to-equity ratio of 0.36 suggests financial stability."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about financial stability and operational efficiency.",
-      "Graham score of 2 indicates potential overvaluation or poor fundamentals, suggesting caution.",
-      "Lack of data in Altman's Z-score limits assessment of bankruptcy risk."
+      "Low quality score of 25 raises concerns about operational efficiency and governance.",
+      "Graham score of 2 signals potential overvaluation or risk, suggesting caution.",
+      "Analyst consensus is absent, indicating a lack of confidence in market perception."
     ],
     "ai": true
   },
@@ -709,14 +710,14 @@
     "v": "HOLD",
     "sc": 50.0,
     "b": [
-      "Analyst consensus recommends a 'buy' with a target upside of 22.4%, suggesting positive market sentiment.",
+      "Analyst consensus recommends a 'buy' with a target upside of 22.4% tied to a price target of 1814.46.",
       "Strong ROE of 26.47% indicates effective management and profitability.",
-      "Net margin of 18.53% shows good operational efficiency."
+      "Positive news sentiment with a net sentiment score of 1.0 suggests favorable market perception."
     ],
     "se": [
-      "High P/E ratio of 42.79 may indicate overvaluation compared to industry peers.",
-      "Current ratio of 0.38 suggests potential liquidity issues.",
-      "ML forecast predicts a decline of 7.93%, indicating bearish sentiment."
+      "High PE ratio of 42.79 may indicate overvaluation compared to industry peers.",
+      "Low quality score of 25 raises concerns about operational efficiency and sustainability.",
+      "Current ratio of 0.38 signals potential liquidity issues, which could affect short-term financial stability."
     ],
     "ai": true
   },
@@ -726,16 +727,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 71.3,
+    "sc": 70.4,
     "b": [
-      "Strong ROE of 32.74% indicates effective management and profitability.",
-      "Current ratio of 2.91 suggests strong liquidity, enabling operational flexibility.",
-      "Analyst consensus shows a target upside of 31.7%, indicating potential for price appreciation."
+      "The company has a high ROE of 32.74%, indicating strong profitability relative to shareholder equity.",
+      "A low debt-to-equity ratio of 0.17 suggests financial stability and lower risk from leverage.",
+      "The analyst consensus indicates a target upside of 31.7%, suggesting significant growth potential."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about the sustainability of earnings.",
-      "Graham score of 2 indicates potential overvaluation, suggesting caution.",
-      "ML forecast predicts a slight decline of -0.32% in the next 21 days, indicating bearish sentiment."
+      "The quality score is low at 25, which raises concerns about the reliability of the financial metrics.",
+      "The Graham score is 2, indicating a potential 'AVOID' signal based on fundamental analysis.",
+      "The ML forecast predicts a negative return of -1.79%, suggesting potential price decline in the short term."
     ],
     "ai": true
   },
@@ -764,16 +765,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 63.1,
+    "sc": 69.4,
     "b": [
-      "Strong ROE of 44.79% suggests effective management and profitability.",
-      "High net margin of 48.27% indicates strong operational efficiency.",
-      "Analyst consensus shows a buy recommendation with a target price of ₹4257.94, implying a potential upside of 10.1%."
+      "Strong ROE of 44.79% indicates efficient use of equity capital.",
+      "High net margin of 48.27% reflects strong profitability.",
+      "Analyst consensus shows a buy recommendation with a target upside of 10.1%, suggesting potential for price appreciation."
     ],
     "se": [
       "High PE ratio of 63.27 may indicate overvaluation compared to industry peers.",
       "Low quality score of 25 raises concerns about the sustainability of earnings.",
-      "Graham score of 1 signals an avoid recommendation, suggesting fundamental weaknesses."
+      "ML forecast predicts a potential decline of 3.66%, indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -804,14 +805,14 @@
     "v": "BUY",
     "sc": 65.9,
     "b": [
-      "High ROE of 46.83% indicates strong profitability and efficient use of equity capital.",
-      "Low debt-to-equity ratio of 0.11 suggests financial stability and low leverage risk.",
-      "Current ratio of 1.46 indicates good short-term liquidity position."
+      "Strong ROE of 46.83% indicating effective management and profitability.",
+      "Low debt-to-equity ratio of 0.11 suggests financial stability and low risk of insolvency.",
+      "Current ratio of 1.46 indicates good short-term liquidity, allowing for operational flexibility."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about business fundamentals and operational efficiency.",
-      "Graham score of 1 signals potential overvaluation and suggests investors should avoid.",
-      "Net margin of 1.87% is relatively low, indicating potential issues with cost management or pricing power."
+      "Low quality score of 25 raises concerns about the reliability of earnings and overall business quality.",
+      "Graham score of 1 indicates potential overvaluation and fundamental weaknesses.",
+      "Net margin of 1.87% is relatively low, suggesting limited pricing power and profitability."
     ],
     "ai": true
   },
@@ -820,17 +821,17 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "STRONG_BUY",
-    "sc": 78.2,
+    "v": "BUY",
+    "sc": 75.7,
     "b": [
-      "Strong ROE of 39.03% indicating efficient use of equity",
-      "Low debt-to-equity ratio of 0.05 suggests financial stability",
-      "Analyst consensus rating of 1.55 (buy) with a target upside of 11.1%"
+      "High ROE of 39.03% indicates strong profitability and effective management.",
+      "Low debt-to-equity ratio of 0.05 suggests financial stability and low risk of insolvency.",
+      "Current ratio of 3.43 shows strong liquidity, enabling the company to cover short-term obligations."
     ],
     "se": [
-      "High PE ratio of 41.65 may indicate overvaluation",
-      "Low quality score of 25 suggests potential issues with earnings quality",
-      "Graham score of 2 indicates an 'AVOID' signal"
+      "High PE ratio of 41.65 may indicate overvaluation compared to industry peers.",
+      "Graham score of 2 signals potential concerns regarding intrinsic value and investment quality.",
+      "Quality score of 25 suggests low quality, raising concerns about sustainability of performance."
     ],
     "ai": true
   },
@@ -954,16 +955,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 70.7,
+    "sc": 70.6,
     "b": [
       "PE ratio of 9.60 suggests undervaluation compared to industry peers.",
-      "ROE of 20.42% indicates strong profitability and effective management.",
-      "Current ratio of 2.33 reflects solid liquidity, reducing short-term financial risk."
+      "ROE of 20.42% indicates strong profitability relative to equity.",
+      "Current ratio of 2.33 shows good short-term financial health."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about operational efficiency and sustainability.",
-      "Graham score of 3 signals potential fundamental weaknesses, suggesting caution.",
-      "ML forecast predicts a decline of 7.23%, indicating bearish sentiment in the near term."
+      "Low quality score of 25 raises concerns about earnings reliability.",
+      "Graham score of 3 signals an 'AVOID' rating, indicating potential fundamental weaknesses.",
+      "ML forecast predicts a 7.17% decline, suggesting bearish sentiment in the near term."
     ],
     "ai": true
   },
@@ -973,16 +974,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 64.9,
+    "sc": 70.6,
     "b": [
       "Low PE ratio of 5.55 suggests undervaluation compared to peers.",
       "Strong ROE of 32.12% indicates effective management and profitability.",
-      "Debt-to-equity ratio of 0.18 shows low financial leverage, reducing bankruptcy risk."
+      "Healthy current ratio of 1.43 implies good short-term financial stability."
     ],
     "se": [
       "Low quality score of 25 raises concerns about financial stability and operational efficiency.",
-      "Graham score of 2 signals potential overvaluation or risk, suggesting caution.",
-      "ML forecast predicts a price drop of 7.76%, indicating bearish sentiment."
+      "Graham score of 2 indicates potential fundamental weaknesses, suggesting caution.",
+      "ML forecast predicts a price drop of 9.21%, indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -1089,14 +1090,14 @@
     "v": "HOLD",
     "sc": 54.3,
     "b": [
-      "Strong ROE of 24.40% indicating efficient use of equity",
-      "Low debt-to-equity ratio of 0.01 suggests minimal financial risk",
-      "High operating margin of 41.16% reflects strong operational efficiency"
+      "Strong ROE of 24.40% indicates effective management and profitability potential.",
+      "Low debt-to-equity ratio of 0.01 suggests financial stability and low leverage risk.",
+      "High operating margin of 41.16% reflects strong operational efficiency."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about financial stability",
-      "Graham score of 3 indicates potential overvaluation or risk",
-      "ML forecast predicts a price drop of 16.44%, suggesting bearish sentiment"
+      "Low quality score of 25 raises concerns about the reliability of financial metrics.",
+      "ML forecast predicts a price drop of 16.44%, indicating bearish sentiment.",
+      "Graham score of 3 signals potential overvaluation or risk, suggesting caution."
     ],
     "ai": true
   },
@@ -1125,16 +1126,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 65.7,
+    "sc": 65.9,
     "b": [
       "PE ratio of 10.24 suggests undervaluation compared to industry peers.",
       "Dividend yield of 3.60% provides attractive income for investors.",
-      "Current ratio of 3.96 indicates strong liquidity, reducing financial risk."
+      "Low debt-to-equity ratio of 0.11 indicates strong balance sheet health."
     ],
     "se": [
-      "Low quality score of 10 raises concerns about operational efficiency and management effectiveness.",
-      "Graham score of 3 signals potential overvaluation or poor fundamentals.",
-      "Analyst consensus shows a target upside of 47.8%, but only two analysts provide coverage, indicating limited market confidence."
+      "Quality score of 10 signals low operational quality, raising concerns about sustainability.",
+      "Graham score of 3 indicates potential overvaluation or risk in fundamentals.",
+      "Analyst consensus shows only a modest upside of 47.8%, which may limit growth potential."
     ],
     "ai": true
   },
@@ -1144,16 +1145,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 74.1,
+    "sc": 76.6,
     "b": [
-      "PE ratio of 5.34 suggests undervaluation compared to industry peers.",
-      "ROE of 21.9% indicates strong profitability relative to equity.",
-      "Analyst consensus shows a target upside of 20.4%, with a mean recommendation leaning towards 'buy'."
+      "PE ratio of 5.34 indicates undervaluation compared to industry peers.",
+      "ROE of 21.9% reflects strong profitability and efficient use of equity.",
+      "Current ratio of 1.56 suggests good short-term financial health."
     ],
     "se": [
-      "Quality score of 17 indicates low quality, raising concerns about the sustainability of earnings.",
-      "Graham score of 2 suggests the stock is not fundamentally sound, indicating potential overvaluation risks.",
-      "Debt to equity ratio of 1.18 may pose risks in a rising interest rate environment."
+      "Quality score of 17 indicates low quality, raising concerns about sustainability.",
+      "Graham score of 2 suggests the stock is fundamentally weak and should be avoided.",
+      "Debt-to-equity ratio of 1.18 indicates significant leverage, posing financial risk."
     ],
     "ai": true
   },
@@ -1162,17 +1163,17 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "BUY",
-    "sc": 65.6,
+    "v": "HOLD",
+    "sc": 58.0,
     "b": [
-      "PE ratio of 16.17 suggests the stock is reasonably valued compared to earnings.",
-      "Net margin of 20.20% indicates strong profitability.",
-      "Current ratio of 2.69 shows good liquidity, suggesting the company can cover its short-term obligations."
+      "PE ratio of 16.17 suggests it may be undervalued compared to peers.",
+      "Net margin of 20.20% indicates strong profitability potential.",
+      "Current ratio of 2.69 reflects solid liquidity, reducing short-term financial risk."
     ],
     "se": [
-      "Quality score of 5 indicates low quality, raising concerns about sustainability.",
-      "Graham score of 2 signals potential overvaluation or financial instability.",
-      "Analyst consensus shows a target upside of 43%, but only one analyst's opinion may not reflect broader market sentiment."
+      "Low quality score of 5 raises concerns about overall business quality.",
+      "Graham score of 2 signals potential overvaluation or fundamental weakness.",
+      "ML forecast predicts a downward trend with a -0.73% return, indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -1277,16 +1278,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 68.3,
+    "sc": 70.5,
     "b": [
-      "Strong net margin of 23.56% indicates effective cost management.",
-      "Analyst consensus shows a buy recommendation with a target upside of 11.2%.",
-      "Positive news sentiment at 0.88 reflects favorable market perception."
+      "Strong net margin of 23.56% indicates effective cost management and profitability.",
+      "Analyst consensus shows a buy recommendation with a target upside of 11.2%, suggesting potential for price appreciation.",
+      "Low debt-to-equity ratio of 0.02 reflects financial stability and low risk of insolvency."
     ],
     "se": [
-      "Low quality score of 25 suggests potential underlying issues.",
-      "Graham score of 1 indicates the stock is considered overvalued.",
-      "ML forecast confidence at 0.21 is low, indicating uncertainty in price predictions."
+      "Low quality score of 25 raises concerns about the sustainability of earnings and operational efficiency.",
+      "Graham score of 1 indicates potential overvaluation and suggests caution in investment.",
+      "The predicted return from ML forecast is only 6.3%, which may not justify the current valuation."
     ],
     "ai": true
   },
@@ -1315,16 +1316,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 76.8,
+    "sc": 75.7,
     "b": [
-      "Low PE ratio of 8.92 indicates potential undervaluation compared to peers.",
-      "Strong net margin of 9.99% reflects efficient cost management and profitability.",
-      "Current ratio of 3.70 suggests robust liquidity, providing a cushion against short-term liabilities."
+      "PE ratio of 8.92 indicates potential undervaluation compared to industry peers.",
+      "ROE of 11.27% reflects strong profitability and efficient use of equity capital.",
+      "Current ratio of 3.70 suggests excellent liquidity, enabling the company to meet short-term obligations."
     ],
     "se": [
-      "Low quality score of 10 indicates potential issues with earnings quality or sustainability.",
-      "Graham score of 3 suggests the stock may not be a sound investment based on value principles.",
-      "Analyst consensus is lacking, indicating uncertainty in market perception."
+      "Low quality score of 10 raises concerns about the sustainability of earnings and operational efficiency.",
+      "Graham score of 3 signals potential overvaluation or financial instability, suggesting caution.",
+      "Absence of analyst consensus may indicate uncertainty in market outlook or lack of coverage."
     ],
     "ai": true
   },
@@ -1429,16 +1430,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 62.3,
+    "sc": 71.1,
     "b": [
-      "Strong ROE of 52.28% indicates high profitability and efficient use of equity capital.",
-      "Low debt-to-equity ratio of 0.0078 suggests a strong balance sheet with minimal financial risk.",
-      "Current ratio of 2.14 indicates good short-term liquidity, providing a buffer against financial distress."
+      "Strong ROE of 52.28% indicating efficient use of equity",
+      "Low debt-to-equity ratio of 0.0078 suggesting minimal financial risk",
+      "Current ratio of 2.14 indicating good short-term liquidity"
     ],
     "se": [
-      "High PE ratio of 42.59 raises concerns about overvaluation relative to earnings.",
-      "Low quality score of 25 signals potential issues with earnings sustainability and operational quality.",
-      "Graham score of 2 indicates valuation concerns, suggesting the stock may not be a sound investment based on fundamental analysis."
+      "High PE ratio of 42.59 may indicate overvaluation",
+      "Low quality score of 25 raises concerns about the sustainability of earnings",
+      "Graham score of 2 suggests the stock is not fundamentally sound"
     ],
     "ai": true
   },
@@ -1450,14 +1451,14 @@
     "v": "BUY",
     "sc": 71.1,
     "b": [
-      "Low debt-to-equity ratio of 0.01 suggests strong financial stability.",
-      "Current ratio of 3.25 indicates excellent liquidity.",
-      "Net margin of 11.84% shows healthy profitability."
+      "The PE ratio of 13.5 suggests the stock may be undervalued compared to the market average.",
+      "A low debt-to-equity ratio of 0.01 indicates strong financial health and low financial risk.",
+      "The net margin of 11.84% reflects efficient operations and profitability."
     ],
     "se": [
-      "Quality score of 10 indicates low financial quality, raising concerns about sustainability.",
-      "Graham score of 3 suggests the stock is overvalued.",
-      "Analyst consensus is a hold, indicating lack of strong bullish sentiment."
+      "The quality score of 10 indicates low quality, which may raise concerns about sustainability.",
+      "The Graham score of 3 suggests that the stock is not fundamentally sound, warranting caution.",
+      "The analyst consensus rating is 'hold', indicating uncertainty about future performance."
     ],
     "ai": true
   },
@@ -1524,16 +1525,16 @@
     "sec": "",
     "p": null,
     "v": "STRONG_BUY",
-    "sc": 79.2,
+    "sc": 81.7,
     "b": [
-      "Strong ROE of 22.69% indicating efficient use of equity capital.",
-      "Low debt-to-equity ratio of 0.054, suggesting strong financial health and low risk.",
-      "Analyst consensus suggests a target upside of 22.5%, indicating potential for price appreciation."
+      "Strong ROE of 22.69% indicates effective management and profitability.",
+      "Analyst consensus suggests a target upside of 22.5%, signaling potential for price appreciation.",
+      "Low debt-to-equity ratio of 0.054 suggests strong financial health and low risk of insolvency."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about earnings sustainability.",
-      "Graham score of 2 indicates potential overvaluation and fundamental weaknesses.",
-      "Current ratio of 2.61, while healthy, may suggest inefficiencies in asset utilization."
+      "Low quality score of 25 raises concerns about the sustainability of earnings.",
+      "Graham score of 2 indicates potential overvaluation and suggests 'AVOID'.",
+      "Current ratio of 2.61, while healthy, may indicate inefficiency in asset utilization."
     ],
     "ai": true
   },
@@ -1602,14 +1603,14 @@
     "v": "BUY",
     "sc": 66.5,
     "b": [
-      "PE ratio of 13.57 suggests it may be undervalued compared to peers.",
+      "PE ratio of 13.57 suggests the stock is undervalued compared to peers.",
       "Net margin of 33.85% indicates strong profitability.",
-      "Analyst consensus rating of strong buy with a target price of 629.78 suggests significant upside potential."
+      "Analyst consensus shows a strong buy recommendation with a target upside of 24.7%."
     ],
     "se": [
-      "Quality score of 17 indicates low quality, raising concerns about sustainability.",
-      "Graham score of 3 suggests it may be overvalued based on intrinsic value.",
-      "Debt to equity ratio of 1.11 indicates potential leverage risk."
+      "Quality score of 17 indicates low financial quality and potential risks.",
+      "Graham score of 3 suggests fundamental weaknesses, advising caution.",
+      "High debt-to-equity ratio of 1.11 raises concerns about financial leverage."
     ],
     "ai": true
   },
@@ -1621,14 +1622,14 @@
     "v": "BUY",
     "sc": 76.9,
     "b": [
-      "Analyst consensus indicates a target upside of 76.2%, suggesting significant potential for price appreciation tied to the current price of 260.0.",
-      "The company has a low debt-to-equity ratio of 0.058, indicating strong financial health and low leverage risk.",
-      "A robust net margin of 11.18% reflects effective cost management and profitability."
+      "Analyst consensus shows a target upside of 76.2%, indicating significant potential for price appreciation tied to the current price of 260.0.",
+      "The predicted return of 13.98% over the next 21 days suggests positive short-term momentum based on ML forecasts.",
+      "Strong revenue growth highlighted in recent earnings calls supports the bullish sentiment around the stock."
     ],
     "se": [
-      "The quality score is low (10), indicating potential issues with earnings quality and sustainability.",
-      "The Graham score of 2 signals an 'AVOID' recommendation, raising concerns about intrinsic value.",
-      "The Altman Z-score is not available, which limits insights into bankruptcy risk."
+      "The low quality score of 10 raises concerns about the company's operational efficiency and overall quality.",
+      "The Graham score of 2 indicates that the stock is potentially overvalued, suggesting caution for investors.",
+      "Despite a low debt-to-equity ratio, the lack of data in the Altman Z-score may indicate hidden financial risks."
     ],
     "ai": true
   },
@@ -1695,16 +1696,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 65.9,
+    "sc": 73.7,
     "b": [
       "Strong revenue growth highlighted in recent earnings call (net_sentiment: 1.0)",
       "Low debt-to-equity ratio of 0.13 indicates financial stability",
       "Current ratio of 3.44 suggests strong liquidity position"
     ],
     "se": [
-      "High P/E ratio of 40.82 may indicate overvaluation",
-      "Low quality score of 10 raises concerns about operational efficiency",
-      "Graham score of 2 signals potential undervaluation risks"
+      "High PE ratio of 40.82 may indicate overvaluation",
+      "Low quality score of 10 raises concerns about the company's fundamentals",
+      "ML forecast predicts a price decline of 4.25% with a confidence of 0.471"
     ],
     "ai": true
   },
@@ -1961,16 +1962,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 70.4,
+    "sc": 67.1,
     "b": [
-      "Analyst consensus indicates a target upside of 45.9%, suggesting significant growth potential tied to the current market cap of ₹1858.90 crore.",
-      "The predicted return from the ML forecast is 11.32% over the next 21 days, indicating positive short-term momentum based on the model's confidence of 0.71.",
-      "The current ratio of 2.37 suggests strong liquidity, which can help the company manage short-term obligations effectively."
+      "PE ratio of 16.20 indicates potential undervaluation compared to industry averages.",
+      "Current ratio of 2.37 suggests strong liquidity and ability to meet short-term obligations.",
+      "Analyst consensus indicates a target upside of 45.9%, suggesting significant growth potential."
     ],
     "se": [
-      "The quality score of 10 indicates low quality, which raises concerns about the sustainability of earnings and overall business health.",
-      "The Graham score of 2 signals an 'AVOID' recommendation, suggesting potential overvaluation or fundamental weaknesses.",
-      "The low confidence level of 0.235 in the ML forecast indicates uncertainty in the predicted price movement, which could lead to unexpected volatility."
+      "Low quality score of 10 raises concerns about operational efficiency and management effectiveness.",
+      "Graham score of 2 suggests the stock is not fundamentally sound, indicating potential overvaluation.",
+      "Predicted return from ML forecast is only 13.23%, which may not justify the risk."
     ],
     "ai": true
   },
@@ -2001,14 +2002,14 @@
     "v": "HOLD",
     "sc": 57.0,
     "b": [
-      "Strong ROE of 26.62% indicates effective management and profitability.",
-      "Low debt-to-equity ratio of 0.038 suggests strong financial stability and low leverage risk.",
-      "Dividend yield of 2.28% provides a return to shareholders, which can attract income-focused investors."
+      "Strong ROE of 26.62% indicates effective management and profitability potential.",
+      "Low debt-to-equity ratio of 0.038 suggests financial stability and low risk of bankruptcy.",
+      "Current ratio of 2.44 indicates strong liquidity, allowing for operational flexibility."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about the sustainability of earnings.",
-      "Graham score indicates an 'AVOID' rating, suggesting potential overvaluation.",
-      "ML forecast predicts a price drop to 1996.69, indicating bearish sentiment in the near term."
+      "Low quality score of 25 raises concerns about the sustainability of earnings and business practices.",
+      "Graham score of 2 indicates potential overvaluation, suggesting the stock may not be a good investment.",
+      "ML forecast predicts a decline of 7.67% in price, indicating bearish sentiment and potential downward pressure."
     ],
     "ai": true
   },
@@ -2056,16 +2057,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 72.2,
+    "sc": 75.0,
     "b": [
-      "Low debt-to-equity ratio of 0.08 indicates financial stability and low risk of insolvency.",
-      "Current ratio of 3.04 suggests strong liquidity, allowing for operational flexibility.",
-      "Analyst consensus target price of 300.0 implies a potential upside of 17.3% from current levels."
+      "Low debt-to-equity ratio of 0.08 indicates financial stability.",
+      "Analyst consensus suggests a target upside of 17.3%, with a target price of ₹300.",
+      "ML forecast predicts a price increase to ₹293.77, with a high probability of upward movement."
     ],
     "se": [
-      "Low quality score of 10 raises concerns about the sustainability of earnings and operational efficiency.",
-      "Graham score of 2 signals that the stock may be overvalued based on fundamental analysis.",
-      "The absence of a Z-score indicates potential financial distress or lack of data for comprehensive risk assessment."
+      "Low quality score of 10 raises concerns about operational efficiency.",
+      "Graham score of 2 signals an avoid recommendation, indicating potential overvaluation.",
+      "Current ratio of 3.04, while indicating liquidity, may suggest inefficiency in asset utilization."
     ],
     "ai": true
   },
@@ -2150,18 +2151,19 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "STRONG_BUY",
-    "sc": 92.0,
+    "v": "BUY",
+    "sc": 72.1,
     "b": [
-      "Profitability: ROE 68.9%, net margin 24.4%, OPM 18.5%, ROA 14.9%",
-      "Financial health: D/E 0.03, current ratio 1.3",
-      "News sentiment +1.00 (3 headlines)"
+      "High ROE of 68.94% indicates strong profitability and efficient use of equity.",
+      "Low debt-to-equity ratio of 0.03 suggests strong financial stability and low financial risk.",
+      "Positive news sentiment with a net sentiment score of 1.0 indicates favorable market perception."
     ],
     "se": [
-      "No major fundamental weaknesses detected",
-      "ML forecast DOWN (P(up)=0.882, -6.89%)"
+      "Low quality score of 25 raises concerns about the sustainability of earnings.",
+      "Graham score of 1 indicates the stock is potentially overvalued based on intrinsic value.",
+      "ML forecast predicts a potential price drop of 6.89%, suggesting bearish sentiment in the near term."
     ],
-    "ai": false
+    "ai": true
   },
   {
     "s": "HAPPYFORGE",
@@ -2172,13 +2174,32 @@
     "sc": 61.6,
     "b": [
       "Strong net margin of 19.51% indicating effective cost management and profitability.",
-      "Low debt-to-equity ratio of 0.15 suggests financial stability and low risk of insolvency.",
-      "Current ratio of 2.35 indicates good short-term liquidity, allowing for operational flexibility."
+      "Low debt-to-equity ratio of 0.15 suggests financial stability and lower risk of insolvency.",
+      "Current ratio of 2.35 indicates good short-term liquidity, providing confidence in meeting obligations."
     ],
     "se": [
       "High PE ratio of 48.15 may indicate overvaluation, posing a risk if earnings do not meet expectations.",
-      "Low quality score of 17 raises concerns about the sustainability of earnings and potential for future volatility.",
+      "Low quality score of 17 raises concerns about the sustainability of earnings and operational efficiency.",
       "Analyst consensus shows a target downside of -5.4%, indicating potential market skepticism about future performance."
+    ],
+    "ai": true
+  },
+  {
+    "s": "HARSHA",
+    "n": "",
+    "sec": "",
+    "p": null,
+    "v": "BUY",
+    "sc": 68.1,
+    "b": [
+      "Analyst consensus suggests a target upside of 15.4%, indicating potential for price appreciation.",
+      "The company has a healthy current ratio of 2.60, suggesting good short-term liquidity.",
+      "A low debt-to-equity ratio of 0.27 indicates financial stability and lower risk."
+    ],
+    "se": [
+      "The low quality score of 10 raises concerns about the reliability of earnings and operational efficiency.",
+      "The Graham score of 2 signals that the stock may be overvalued relative to its intrinsic value.",
+      "The ML forecast predicts a potential decline of 7.88%, indicating bearish sentiment in the near term."
     ],
     "ai": true
   },
@@ -2206,17 +2227,17 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "BUY",
-    "sc": 74.5,
+    "v": "STRONG_BUY",
+    "sc": 79.9,
     "b": [
-      "Strong ROE of 44.09% indicating high profitability",
-      "Low debt-to-equity ratio of 0.03 suggests financial stability",
-      "Current ratio of 3.57 indicates strong liquidity position"
+      "High ROE of 44.09% suggests effective use of equity capital.",
+      "Strong net margin of 24.67% indicates robust profitability.",
+      "Low debt-to-equity ratio of 0.03 implies low financial risk."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about earnings sustainability",
-      "Graham score of 2 suggests potential overvaluation",
-      "High PE ratio of 27.61 may indicate the stock is overpriced"
+      "Quality score of 25 indicates low quality, raising concerns about sustainability.",
+      "Graham score of 2 suggests the stock is overvalued or risky.",
+      "Analyst consensus shows no strong recommendations, indicating uncertainty."
     ],
     "ai": true
   },
@@ -2304,14 +2325,14 @@
     "v": "BUY",
     "sc": 62.9,
     "b": [
-      "Analyst consensus recommends a buy with a target upside of 20.8%, suggesting potential for price appreciation.",
-      "The company maintains a strong net margin of 16.1%, indicating effective cost management and profitability.",
-      "A low debt-to-equity ratio of 0.03 reflects strong balance sheet health, reducing financial risk."
+      "Analyst consensus recommends a buy with a target upside of 20.8%, indicating potential for price appreciation.",
+      "Strong ROE of 21.5% suggests effective management and profitability relative to equity.",
+      "Low debt-to-equity ratio of 0.03 indicates strong balance sheet health and low financial risk."
     ],
     "se": [
-      "The quality score of 25 signals low operational quality, which could impact long-term performance.",
-      "The Graham score of 1 indicates potential overvaluation, suggesting the stock may not be a sound investment at current prices.",
-      "The ML forecast predicts a slight decline of -0.78% in the next 21 days, indicating bearish sentiment."
+      "High PE ratio of 33.1 may indicate overvaluation, posing a risk if earnings do not meet expectations.",
+      "Low quality score of 25 raises concerns about the sustainability of earnings and overall business quality.",
+      "ML forecast predicts a potential decline in price to 2099.47, suggesting bearish sentiment in the near term."
     ],
     "ai": true
   },
@@ -2321,16 +2342,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 73.7,
+    "sc": 73.0,
     "b": [
-      "The analyst consensus recommends a buy with a target upside of 24%, suggesting potential for price appreciation.",
-      "The company has a strong operating profit margin (OPM) of 44.74%, indicating efficient cost management.",
-      "A low debt-to-equity ratio of 0.39 suggests a healthy balance sheet with manageable leverage."
+      "Strong ROE of 76.94% indicates effective management and profitability.",
+      "Analyst consensus rating is 2.4 (buy) with a target upside of 24%.",
+      "Current ratio of 1.47 suggests good short-term financial health."
     ],
     "se": [
-      "The low quality score of 25 raises concerns about the sustainability of earnings and overall financial health.",
-      "The Graham score of 1 indicates that the stock may be overvalued based on intrinsic value calculations.",
-      "The ML forecast shows a predicted return of only 0.93% over the next 21 days, with a low confidence level of 5.3%."
+      "Low quality score of 25 raises concerns about earnings reliability.",
+      "Graham score of 1 indicates potential overvaluation or risk.",
+      "ML forecast predicts a price decline of 1.47%, suggesting bearish sentiment."
     ],
     "ai": true
   },
@@ -2381,13 +2402,13 @@
     "sc": 50.0,
     "b": [
       "PE ratio of 9.75 suggests undervaluation compared to industry averages.",
-      "ROE of 14.15% indicates strong profitability and efficient use of equity.",
-      "Net margin of 45.69% reflects effective cost management and operational efficiency."
+      "ROE of 14.15% indicates effective management of equity.",
+      "Net margin of 45.69% reflects strong profitability."
     ],
     "se": [
-      "Quality score of 10 signals low quality, raising concerns about sustainability.",
-      "Graham score of 3 indicates potential overvaluation or financial instability.",
-      "Current ratio of 0.40 suggests liquidity issues, which could impact operations."
+      "Quality score of 10 indicates low quality, raising concerns about sustainability.",
+      "Current ratio of 0.40 suggests potential liquidity issues.",
+      "Graham score of 3 signals a strong recommendation to avoid the stock."
     ],
     "ai": true
   },
@@ -2437,14 +2458,14 @@
     "v": "BUY",
     "sc": 65.9,
     "b": [
-      "Strong ROE of 28.13% suggests effective management and profitability.",
-      "PE ratio of 17.49 is reasonable compared to industry averages, indicating potential for growth.",
-      "Dividend yield of 8.78% provides attractive income for investors."
+      "PE ratio of 17.49 suggests reasonable valuation compared to growth potential.",
+      "ROE of 28.13% indicates strong profitability and efficient use of equity.",
+      "Current ratio of 1.86 shows good liquidity position, which can support operations."
     ],
     "se": [
-      "Quality score of 17 indicates low earnings quality, which could lead to volatility.",
-      "Debt-to-equity ratio of 1.10 suggests higher financial risk, especially in downturns.",
-      "Graham score of 1 signals potential overvaluation or fundamental weaknesses."
+      "Quality score of 17 indicates low financial quality, raising concerns about sustainability.",
+      "Graham score of 1 suggests the stock is overvalued based on intrinsic value calculations.",
+      "Debt-to-equity ratio of 1.10 indicates significant leverage, which could pose risks in downturns."
     ],
     "ai": true
   },
@@ -2475,14 +2496,14 @@
     "v": "BUY",
     "sc": 69.1,
     "b": [
-      "Strong liquidity with a current ratio of 20.85, suggesting financial stability.",
-      "Net margin of 23.33% indicates strong profitability.",
-      "Low debt-to-equity ratio of 0.0037 shows minimal financial risk."
+      "Strong liquidity with a current ratio of 20.85, indicating the ability to cover short-term liabilities.",
+      "High net margin of 23.33%, suggesting effective cost management and profitability.",
+      "Low debt-to-equity ratio of 0.0037, indicating minimal financial risk from leverage."
     ],
     "se": [
-      "Low quality score of 10 raises concerns about the reliability of financial metrics.",
-      "Graham score of 2 indicates potential overvaluation or risk, suggesting caution.",
-      "ML forecast predicts a slight decline in price with a predicted return of -0.19%."
+      "Low quality score of 10, signaling potential issues with earnings quality or sustainability.",
+      "Graham score of 2 indicates the stock is overvalued based on fundamental analysis.",
+      "ML forecast predicts a price decline of 2.72%, suggesting bearish sentiment in the near term."
     ],
     "ai": true
   },
@@ -2492,16 +2513,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 60.6,
+    "sc": 60.7,
     "b": [
-      "Strong ROE of 28.35% indicating effective management and profitability.",
-      "Low debt-to-equity ratio of 0.014 suggests strong financial stability and low leverage risk.",
-      "Current ratio of 2.58 indicates good short-term liquidity, providing a buffer against financial distress."
+      "Strong ROE of 28.35% suggests effective management and profitability.",
+      "Low debt-to-equity ratio of 0.014 indicates strong financial health and low risk of bankruptcy.",
+      "Current ratio of 2.58 shows good short-term liquidity position."
     ],
     "se": [
-      "High PE ratio of 37.04 may indicate overvaluation compared to peers, posing a risk if earnings do not meet expectations.",
-      "Low quality score of 25 raises concerns about the sustainability of earnings and overall business quality.",
-      "ML forecast predicts a 22.27% decline, suggesting negative sentiment and potential market corrections."
+      "High PE ratio of 37.04 may indicate overvaluation, leading to potential price corrections.",
+      "Quality score of 25 signals low quality, raising concerns about sustainability.",
+      "ML forecast predicts a 20.01% decline in price, suggesting bearish sentiment."
     ],
     "ai": true
   },
@@ -2530,16 +2551,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 73.2,
+    "sc": 75.1,
     "b": [
-      "Strong ROE of 27.47% indicating effective management and profitability.",
-      "Low debt-to-equity ratio of 0.05, suggesting financial stability and low risk of insolvency.",
-      "Analyst consensus shows a target upside of 41.7%, indicating potential for significant price appreciation."
+      "Strong ROE of 27.47% indicates effective management and profitability.",
+      "Low debt-to-equity ratio of 0.05 suggests financial stability and low leverage risk.",
+      "Analyst consensus indicates a target upside of 41.7%, suggesting significant growth potential."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about the sustainability of earnings and operational efficiency.",
-      "Graham score of 2 indicates potential overvaluation or risk in fundamental quality.",
-      "Single analyst coverage may lead to biased or incomplete market sentiment."
+      "Low quality score of 25 raises concerns about the sustainability of earnings.",
+      "Graham score of 2 signals potential overvaluation or risk in fundamentals.",
+      "Only one analyst covering the stock may indicate limited market confidence."
     ],
     "ai": true
   },
@@ -2608,14 +2629,14 @@
     "v": "BUY",
     "sc": 75.5,
     "b": [
-      "PE ratio of 15.58 suggests it may be undervalued compared to peers.",
-      "Current ratio of 3.19 indicates strong liquidity, providing a buffer against short-term liabilities.",
-      "Dividend yield of 0.46% offers some return to investors, even in a volatile market."
+      "Strong revenue growth highlighted in recent earnings calls, suggesting robust operational performance.",
+      "Low debt-to-equity ratio of 0.11 indicates financial stability and low leverage risk.",
+      "Dividend yield of 0.46% provides a return to shareholders, enhancing attractiveness."
     ],
     "se": [
-      "Low quality score of 10 raises concerns about operational efficiency and sustainability.",
-      "Graham score of 2 indicates potential overvaluation or poor financial health.",
-      "ML forecast predicts a -4.53% return, suggesting downward pressure on the stock price."
+      "Low quality score of 10 raises concerns about the sustainability of earnings.",
+      "Graham score of 2 indicates potential overvaluation, suggesting caution.",
+      "ML forecast predicts a price drop of 4.53%, indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -2681,19 +2702,17 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "BUY",
-    "sc": 76.7,
+    "v": "STRONG_BUY",
+    "sc": 89.7,
     "b": [
-      "PE ratio of 11.83 suggests undervaluation compared to peers, potentially leading to price appreciation.",
-      "Strong net margin of 32.96% indicates effective cost management and profitability.",
-      "Current ratio of 25.89 reflects excellent liquidity, reducing short-term financial risk."
+      "Valuation: P/E 11.8",
+      "Financial health: D/E 0.00, current ratio 25.9",
+      "ML forecast UP (P(up)=0.538, 1.52%)"
     ],
     "se": [
-      "Low quality score of 10 raises concerns about the reliability of financial metrics and operational efficiency.",
-      "Graham score of 3 signals potential fundamental weaknesses, suggesting caution in investment decisions.",
-      "High EV/EBITDA of 27.92 may indicate overvaluation relative to earnings, posing a risk if earnings do not meet expectations."
+      "No major fundamental weaknesses detected"
     ],
-    "ai": true
+    "ai": false
   },
   {
     "s": "JAMNAAUTO",
@@ -2701,16 +2720,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 64.3,
+    "sc": 65.1,
     "b": [
-      "Analyst consensus indicates a target upside of 43.1%, suggesting significant growth potential.",
-      "The company has a low debt-to-equity ratio of 0.01, indicating minimal financial risk and strong balance sheet health.",
-      "A dividend yield of 1.88% provides a return to shareholders, which can be attractive in a low-interest-rate environment."
+      "PE ratio of 22.75 suggests reasonable valuation compared to growth potential.",
+      "ROE of 21.58% indicates strong returns on equity.",
+      "Current ratio of 1.31 shows good short-term financial health."
     ],
     "se": [
-      "The quality score is low at 25, indicating potential issues with earnings quality and sustainability.",
-      "The Graham score is 1, signaling an 'AVOID' rating, which raises concerns about intrinsic value.",
-      "The ML forecast predicts a potential decline of 8.81% in the stock price, indicating bearish sentiment in the near term."
+      "Quality score of 25 indicates low operational quality, which could affect future performance.",
+      "Graham score of 1 suggests potential overvaluation.",
+      "ML forecast predicts a return of -8.86%, indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -2741,14 +2760,14 @@
     "v": "HOLD",
     "sc": 50.0,
     "b": [
-      "PE ratio of 13.26 suggests undervaluation compared to market averages.",
-      "ROE of 22.19% indicates strong profitability relative to equity.",
+      "PE ratio of 13.26 suggests potential undervaluation compared to peers.",
+      "ROE of 22.19% indicates strong profitability and efficient use of equity.",
       "Dividend yield of 0.41% provides some income to investors."
     ],
     "se": [
-      "Quality score of 25 indicates low operational quality and potential risks.",
-      "Graham score of 2 suggests significant fundamental weaknesses and an 'AVOID' signal.",
-      "Current ratio of 0.85 raises concerns about liquidity and short-term financial health."
+      "Quality score of 25 indicates low quality, raising concerns about sustainability.",
+      "Graham score of 2 suggests significant risks and potential overvaluation.",
+      "Current ratio of 0.85 indicates potential liquidity issues."
     ],
     "ai": true
   },
@@ -2833,17 +2852,17 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "HOLD",
-    "sc": 58.9,
+    "v": "BUY",
+    "sc": 65.8,
     "b": [
-      "High ROE of 59.95% suggests strong profitability and efficient use of equity.",
-      "Current ratio of 3.25 indicates strong liquidity, providing a buffer against short-term liabilities.",
-      "Analyst consensus shows a target upside of 68.6%, indicating potential for significant price appreciation."
+      "High ROE of 59.95% indicates strong profitability and efficient use of equity.",
+      "Current ratio of 3.25 suggests excellent liquidity and ability to cover short-term obligations.",
+      "Analyst consensus shows a target upside of 68.6%, indicating significant potential for price appreciation."
     ],
     "se": [
-      "PE ratio of 33.28 may indicate overvaluation compared to industry peers.",
       "Low quality score of 25 raises concerns about the sustainability of earnings.",
-      "ML forecast predicts a potential decline of 13.19%, suggesting bearish sentiment."
+      "PE ratio of 33.28 may indicate overvaluation compared to industry peers.",
+      "ML forecast predicts a potential decline of 15.43%, suggesting bearish sentiment."
     ],
     "ai": true
   },
@@ -2929,16 +2948,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 74.0,
+    "sc": 66.2,
     "b": [
-      "PE ratio of 11.44 suggests the stock is undervalued compared to peers.",
-      "Current ratio of 5.18 indicates strong liquidity and ability to cover short-term liabilities.",
-      "Dividend yield of 1.35% provides a return to shareholders, enhancing attractiveness."
+      "P/E ratio of 11.44 suggests undervaluation compared to industry peers.",
+      "Strong current ratio of 5.18 indicates excellent liquidity and ability to cover short-term liabilities.",
+      "Net margin of 8.52% reflects solid profitability, supporting potential for future growth."
     ],
     "se": [
-      "Low quality score of 10 raises concerns about the sustainability of earnings.",
-      "Graham score of 3 signals potential overvaluation based on fundamental analysis.",
-      "Analyst consensus shows no strong recommendation, indicating uncertainty in market perception."
+      "Low quality score of 10 raises concerns about the company's operational efficiency and sustainability.",
+      "Graham score of 3 indicates an avoid signal, suggesting potential overvaluation or risk.",
+      "Analyst consensus shows no strong buy recommendations, indicating lack of confidence from experts."
     ],
     "ai": true
   },
@@ -2969,14 +2988,14 @@
     "v": "BUY",
     "sc": 72.4,
     "b": [
-      "PE ratio of 11.40 indicates undervaluation compared to industry averages.",
-      "ROE of 19.28% suggests strong profitability and effective management.",
-      "Net margin of 35.75% reflects high operational efficiency and profitability potential."
+      "PE ratio of 11.4 suggests undervaluation compared to industry peers.",
+      "ROE of 19.28% indicates strong profitability and efficient use of equity.",
+      "Net margin of 35.75% reflects robust operational efficiency and profitability."
     ],
     "se": [
-      "Quality score of 17 indicates low financial quality, which may raise red flags for investors.",
-      "Graham score of 2 suggests the stock is not a safe investment according to value investing principles.",
-      "Debt to equity ratio of 0.19 is low, but any increase in debt could impact financial stability."
+      "Quality score of 17 indicates low quality, raising concerns about sustainability.",
+      "Graham score of 2 signals an 'AVOID', suggesting potential overvaluation or risk.",
+      "Low confidence in ML forecast (0.167) suggests uncertainty in predicted price movements."
     ],
     "ai": true
   },
@@ -3026,14 +3045,14 @@
     "v": "BUY",
     "sc": 71.6,
     "b": [
-      "Strong revenue growth highlighted in recent earnings call, indicating robust operational performance.",
-      "Low debt-to-equity ratio of 0.03 suggests minimal financial risk and strong balance sheet health.",
-      "Analyst consensus shows a strong buy recommendation with a target upside of 22.5%, indicating positive market sentiment."
+      "Strong revenue growth indicated by positive news sentiment (net sentiment: 1.0) suggesting market confidence.",
+      "Analyst consensus is bullish with a strong buy recommendation (rec_mean: 1.44) and a target upside of 22.5%.",
+      "Low debt-to-equity ratio (0.03) indicates strong financial health and low risk of insolvency."
     ],
     "se": [
-      "High PE ratio of 44.43 may indicate overvaluation, posing a risk if earnings do not meet expectations.",
-      "Quality score is low at 25, suggesting potential issues with earnings quality or sustainability.",
-      "Graham score of 2 indicates an avoid signal, reflecting concerns about intrinsic value relative to market price."
+      "High PE ratio (44.43) suggests the stock may be overvalued, posing a risk if growth does not materialize.",
+      "Low quality score (25) raises concerns about the sustainability of earnings and operational efficiency.",
+      "Graham score of 2 indicates potential fundamental weaknesses, suggesting caution in investment."
     ],
     "ai": true
   },
@@ -3061,17 +3080,17 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "BUY",
-    "sc": 61.3,
+    "v": "HOLD",
+    "sc": 55.0,
     "b": [
       "Strong ROE of 21.84% indicates effective management and profitability.",
-      "Low debt-to-equity ratio of 0.0026 reflects financial stability and low risk.",
-      "Current ratio of 2.65 suggests good short-term liquidity."
+      "Low debt-to-equity ratio of 0.0026 suggests financial stability and low risk of insolvency.",
+      "Current ratio of 2.65 indicates good short-term liquidity, allowing for operational flexibility."
     ],
     "se": [
-      "High PE ratio of 49.97 may indicate overvaluation compared to peers.",
-      "Low quality score of 25 raises concerns about the sustainability of earnings.",
-      "Analyst consensus shows a target downside of -11.8%, indicating potential for price decline."
+      "High PE ratio of 49.97 may indicate overvaluation, posing a risk if earnings do not meet expectations.",
+      "Analyst consensus shows a target downside of -11.8%, suggesting potential for price decline.",
+      "Low quality score of 25 raises concerns about the reliability of financial metrics."
     ],
     "ai": true
   },
@@ -3119,16 +3138,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 68.1,
+    "sc": 69.0,
     "b": [
-      "Low PE ratio of 8.54 suggests undervaluation compared to peers.",
-      "Strong operating profit margin of 24.06% indicates efficient cost management.",
-      "Healthy current ratio of 4.68 suggests strong liquidity position."
+      "PE ratio of 8.54 suggests undervaluation compared to industry peers.",
+      "Current ratio of 4.68 indicates strong liquidity, reducing short-term financial risk.",
+      "Net margin of 16.22% reflects efficient cost management and profitability."
     ],
     "se": [
-      "Low quality score of 5 indicates potential issues in financial health.",
-      "Graham score of 3 signals an 'AVOID' recommendation, suggesting fundamental weaknesses.",
-      "ML forecast predicts a decline of 10.6%, indicating bearish sentiment."
+      "Low quality score of 5 raises concerns about the sustainability of earnings.",
+      "Graham score of 3 indicates potential fundamental weaknesses, suggesting caution.",
+      "ML forecast predicts a 9.16% decline, indicating bearish sentiment in the near term."
     ],
     "ai": true
   },
@@ -3159,14 +3178,14 @@
     "v": "STRONG_BUY",
     "sc": 78.0,
     "b": [
-      "Low debt-to-equity ratio of 0.03 indicates strong financial stability.",
-      "Current ratio of 8.06 suggests excellent liquidity, reducing short-term financial risk.",
-      "Net margin of 10.63% reflects effective cost management and profitability potential."
+      "Strong current ratio of 8.06 indicates excellent liquidity and ability to cover short-term liabilities.",
+      "Low debt-to-equity ratio of 0.03 suggests minimal financial risk and strong balance sheet health.",
+      "Positive net sentiment of 1.0 from recent news highlights strong domestic and export growth, which could drive future revenues."
     ],
     "se": [
-      "Quality score of 10 indicates low quality, raising concerns about sustainability.",
-      "Graham score of 3 suggests the stock is overvalued based on intrinsic value.",
-      "Analyst consensus shows no clear recommendation, indicating uncertainty in market sentiment."
+      "Low quality score of 10 raises concerns about operational efficiency and overall company quality.",
+      "Graham score of 3 signals potential overvaluation or fundamental weaknesses, suggesting caution.",
+      "Analyst consensus is 'none', indicating a lack of strong support or confidence from market analysts."
     ],
     "ai": true
   },
@@ -3176,16 +3195,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 65.0,
+    "sc": 72.7,
     "b": [
-      "Strong ROE of 25.43% indicates effective management and profitability.",
-      "Low debt-to-equity ratio of 0.011 suggests a strong balance sheet with minimal financial risk.",
-      "Current ratio of 3.99 indicates excellent liquidity, providing a buffer against short-term liabilities."
+      "Strong ROE of 25.43% indicates efficient use of equity capital.",
+      "Low debt-to-equity ratio of 0.011 suggests strong financial stability and low risk of insolvency.",
+      "Current ratio of 3.99 reflects excellent liquidity, allowing for operational flexibility."
     ],
     "se": [
       "High PE ratio of 58.84 may indicate overvaluation, posing a risk if earnings do not meet expectations.",
-      "Low quality score of 25 raises concerns about the sustainability of earnings and operational efficiency.",
-      "ML forecast predicts a potential decline of 4.43% in stock price, indicating bearish sentiment."
+      "Low quality score of 25 raises concerns about the reliability of financial performance.",
+      "ML forecast predicts a potential price drop to 1118.24, indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -3235,14 +3254,14 @@
     "v": "BUY",
     "sc": 75.2,
     "b": [
-      "PE ratio of 15.52 suggests it is undervalued compared to industry peers.",
-      "Net margin of 21.21% indicates strong profitability and operational efficiency.",
-      "Current ratio of 2.14 reflects good liquidity, providing a buffer against short-term liabilities."
+      "PE ratio of 15.52 indicates it may be undervalued compared to peers.",
+      "Net margin of 21.21% shows strong profitability, which could attract investors.",
+      "Current ratio of 2.14 suggests good liquidity, reducing short-term financial risk."
     ],
     "se": [
-      "Quality score of 17 indicates low financial quality, which could lead to future issues.",
-      "Graham score of 2 signals that the stock is not fundamentally sound, suggesting caution.",
-      "Low confidence in ML forecast (0.027) indicates potential volatility in price predictions."
+      "Quality score of 17 indicates low financial quality, raising concerns about sustainability.",
+      "Graham score of 2 suggests the stock is not a good value investment, indicating potential overvaluation.",
+      "Low confidence in ML forecast (0.027) suggests uncertainty in predicted returns."
     ],
     "ai": true
   },
@@ -3482,14 +3501,14 @@
     "v": "BUY",
     "sc": 73.5,
     "b": [
-      "Strong analyst consensus with a target upside of 45.5% tied to an analyst target of ₹1178.33.",
-      "Low debt-to-equity ratio of 0.0078 indicates strong financial health and low leverage risk.",
-      "High net margin of 28.30% suggests effective cost management and profitability."
+      "Strong net margin of 28.30% indicates high profitability.",
+      "Current ratio of 4.92 suggests excellent liquidity and financial health.",
+      "Analyst consensus shows a target upside of 45.5%, indicating potential for significant price appreciation."
     ],
     "se": [
       "Low quality score of 17 raises concerns about the sustainability of earnings.",
-      "Graham score of 2 indicates potential overvaluation, suggesting caution for value investors.",
-      "Predicted return of only 2.73% in the ML forecast may limit short-term upside."
+      "Graham score of 2 signals an avoid recommendation, indicating potential overvaluation.",
+      "Debt-to-equity ratio of 0.0078 suggests low leverage, but could also indicate underutilization of capital."
     ],
     "ai": true
   },
@@ -3518,16 +3537,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 73.6,
+    "sc": 67.4,
     "b": [
-      "Strong net margin of 19.83% indicates effective cost management and profitability.",
-      "Low debt-to-equity ratio of 0.007 suggests minimal financial risk and strong leverage.",
-      "Current ratio of 7.45 shows excellent liquidity, indicating the ability to cover short-term obligations."
+      "Strong net margin of 19.83% indicating effective cost management and profitability.",
+      "Low debt-to-equity ratio of 0.007 suggests minimal financial risk and strong balance sheet health.",
+      "Current ratio of 7.45 indicates excellent liquidity, providing a buffer against short-term obligations."
     ],
     "se": [
-      "Low quality score of 17 raises concerns about the sustainability of earnings.",
-      "Graham score of 2 indicates potential overvaluation or fundamental weaknesses.",
-      "ML forecast predicts a price drop of 4.74%, suggesting bearish sentiment in the near term."
+      "Quality score of 17 signals low quality, raising concerns about operational efficiency and sustainability.",
+      "Graham score of 2 indicates potential overvaluation, suggesting the stock may not be a good long-term investment.",
+      "ML forecast predicts a potential price drop to 829.56, indicating bearish sentiment in the near term."
     ],
     "ai": true
   },
@@ -3537,16 +3556,16 @@
     "sec": "",
     "p": null,
     "v": "HOLD",
-    "sc": 52.9,
+    "sc": 59.2,
     "b": [
-      "Strong ROE of 31.20% indicating effective management of equity.",
-      "Low debt-to-equity ratio of 0.046 suggests minimal financial risk.",
-      "Analyst consensus shows a target upside of 13.4%, indicating potential for price appreciation."
+      "Strong ROE of 31.20% suggests effective management and profitability.",
+      "Low debt-to-equity ratio of 0.046 indicates financial stability and low leverage risk.",
+      "Analyst consensus target upside of 13.4% implies potential for price appreciation."
     ],
     "se": [
-      "High PE ratio of 36.48 may indicate overvaluation compared to peers.",
-      "Low quality score of 25 raises concerns about the company's operational efficiency.",
-      "ML forecast predicts a potential price drop to 2256.95, indicating bearish sentiment."
+      "Low quality score of 25 raises concerns about the sustainability of earnings.",
+      "Graham score of 1 suggests the stock is overvalued based on intrinsic value.",
+      "ML forecast predicts a decline of 9.43%, indicating potential bearish sentiment."
     ],
     "ai": true
   },
@@ -3634,14 +3653,14 @@
     "v": "BUY",
     "sc": 65.9,
     "b": [
-      "Strong ROE of 15.85% indicating efficient use of equity capital.",
+      "Strong ROE of 15.85% indicates effective management and profitability.",
       "Low debt-to-equity ratio of 0.13 suggests financial stability and low leverage risk.",
-      "Current ratio of 3.75 indicates strong liquidity position, able to cover short-term liabilities."
+      "Current ratio of 3.75 indicates strong liquidity, allowing for operational flexibility."
     ],
     "se": [
-      "High PE ratio of 32.08 may indicate overvaluation compared to peers.",
-      "Low quality score of 17 raises concerns about the sustainability of earnings.",
-      "Graham score of 2 signals potential undervaluation risk, suggesting the stock may not be a safe investment."
+      "High PE ratio of 32.08 may indicate overvaluation compared to peers, posing a risk if earnings do not meet expectations.",
+      "Low quality score of 17 raises concerns about the sustainability of earnings and overall business quality.",
+      "Graham score of 2 signals potential fundamental weaknesses, suggesting caution for value investors."
     ],
     "ai": true
   },
@@ -3727,16 +3746,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 71.6,
+    "sc": 71.7,
     "b": [
-      "PE ratio of 13.57 suggests undervaluation compared to industry peers.",
-      "ROE of 14.17% indicates effective management of equity.",
-      "Analyst consensus shows a target upside of 20.1%, indicating potential for price appreciation."
+      "PE ratio of 13.57 suggests it may be undervalued compared to peers.",
+      "Analyst consensus indicates a target upside of 20.1%, suggesting potential for price appreciation.",
+      "Current ratio of 1.14 indicates adequate liquidity to meet short-term obligations."
     ],
     "se": [
-      "High debt-to-equity ratio of 1.08 raises concerns about financial leverage and risk.",
-      "Graham score of 2 indicates low intrinsic value, suggesting potential overvaluation.",
-      "ML forecast predicts a decline of 6.89%, indicating bearish sentiment."
+      "Quality score of 10 and Graham score of 2 indicate low quality and potential overvaluation risks.",
+      "Debt-to-equity ratio of 1.08 suggests higher financial leverage and risk.",
+      "ML forecast predicts a potential decline of 6.39%, indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -3841,16 +3860,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 60.7,
+    "sc": 67.0,
     "b": [
-      "Strong ROE of 20.11% indicating effective management and profitability.",
-      "Healthy net margin of 20.02% suggesting good operational efficiency.",
+      "Strong net margin of 20.02% indicating efficient cost management.",
+      "Healthy ROE of 20.11% suggesting effective use of equity.",
       "Current ratio of 2.61 indicates strong liquidity position."
     ],
     "se": [
-      "High PE ratio of 59.05 may indicate overvaluation compared to peers.",
-      "Low quality score of 25 suggests potential underlying issues in financial health.",
-      "Analyst consensus target upside of -4.8% indicates bearish sentiment among analysts."
+      "High PE ratio of 59.05 may indicate overvaluation.",
+      "Low quality score of 25 raises concerns about earnings sustainability.",
+      "Analyst consensus shows a target downside of -4.8%, suggesting potential price correction."
     ],
     "ai": true
   },
@@ -4030,19 +4049,19 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "HOLD",
-    "sc": 58.4,
+    "v": "BUY",
+    "sc": 75.9,
     "b": [
-      "Strong ROE of 32.61% indicates effective management and profitability.",
-      "Low debt-to-equity ratio of 0.004 suggests financial stability and low risk of insolvency.",
-      "High operating margin of 45.12% reflects strong operational efficiency."
+      "Profitability: ROE 32.6%, net margin 34.4%, OPM 45.1%, ROA 26.3%",
+      "Financial health: D/E 0.00, current ratio 5.4",
+      "News sentiment +0.00 (1 headlines)"
     ],
     "se": [
-      "High PE ratio of 35.66 may indicate overvaluation, posing a risk if earnings do not meet expectations.",
-      "Low quality score of 25 raises concerns about the sustainability of financial performance.",
-      "Analyst consensus shows a target downside of -0.7%, indicating potential price weakness."
+      "Valuation: P/E 35.7, P/B 12.0",
+      "Analyst target implies -0.7% vs price",
+      "ML forecast DOWN (P(up)=0.473, -5.89%)"
     ],
-    "ai": true
+    "ai": false
   },
   {
     "s": "ONEGLOBAL",
@@ -4088,16 +4107,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 68.2,
+    "sc": 74.5,
     "b": [
-      "The PE ratio of 12.56 suggests the stock may be undervalued compared to peers.",
-      "A high ROE of 39.64% indicates strong profitability and efficient use of equity.",
-      "The current ratio of 1.40 shows adequate liquidity to cover short-term liabilities."
+      "PE ratio of 12.56 suggests undervaluation compared to industry peers.",
+      "ROE of 39.64% indicates strong profitability and effective management.",
+      "Current ratio of 1.40 shows adequate liquidity to cover short-term obligations."
     ],
     "se": [
-      "The quality score of 25 indicates low financial quality, which raises red flags for investors.",
-      "The Graham score of 2 suggests the stock is not a good value investment.",
-      "The ML forecast predicts a potential decline in price by 0.37%, indicating bearish sentiment."
+      "Quality score of 25 indicates low financial quality, raising concerns about sustainability.",
+      "Graham score of 2 suggests the stock is not fundamentally sound, indicating potential overvaluation.",
+      "Debt to equity ratio of 0.67 may pose risks if leverage increases or market conditions worsen."
     ],
     "ai": true
   },
@@ -4144,17 +4163,17 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "HOLD",
-    "sc": 58.7,
+    "v": "BUY",
+    "sc": 64.4,
     "b": [
-      "PE ratio of 10.76 suggests undervaluation compared to peers.",
-      "ROE of 18.56% indicates strong profitability and effective management.",
+      "PE ratio of 10.76 suggests undervaluation compared to industry peers.",
+      "Strong ROE of 18.56% indicates effective management and profitability.",
       "Current ratio of 5.67 shows excellent liquidity, reducing financial risk."
     ],
     "se": [
-      "Low quality score of 17 raises concerns about earnings sustainability.",
-      "Negative net sentiment of -0.25 indicates potential market skepticism.",
-      "ML forecast predicts a price drop to ₹271.05, suggesting bearish outlook."
+      "Low quality score of 17 raises concerns about operational efficiency and governance.",
+      "Graham score of 3 indicates potential overvaluation based on intrinsic value.",
+      "Negative news sentiment (-0.25) suggests market concerns about supply disruptions."
     ],
     "ai": true
   },
@@ -4240,16 +4259,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 73.7,
+    "sc": 75.2,
     "b": [
       "Low PE ratio of 9.36 suggests undervaluation compared to peers.",
-      "High dividend yield of 12.80% provides attractive income potential.",
-      "Strong current ratio of 30.43 indicates excellent liquidity position."
+      "High dividend yield of 12.80% provides attractive income for investors.",
+      "Strong current ratio of 30.43 indicates excellent liquidity and financial health."
     ],
     "se": [
-      "Low quality score of 10 raises concerns about operational efficiency and sustainability.",
-      "Graham score of 4 signals caution, indicating potential overvaluation or risk.",
-      "ML forecast predicts a decline of 1.24%, suggesting bearish sentiment in the near term."
+      "Low quality score of 10 raises concerns about the company's operational efficiency and governance.",
+      "Graham score of 4 indicates potential overvaluation risks despite low PE.",
+      "ML forecast predicts a slight decline in price, with a predicted return of -0.23%."
     ],
     "ai": true
   },
@@ -4318,14 +4337,14 @@
     "v": "HOLD",
     "sc": 50.0,
     "b": [
-      "PE ratio of 16.72 suggests it may be undervalued compared to peers.",
+      "PE ratio of 16.72 suggests it is reasonably valued compared to peers.",
       "Dividend yield of 3.14% provides attractive income for investors.",
-      "Analyst consensus shows a target upside of 15.1%, indicating potential for price appreciation."
+      "Analyst consensus recommends a 'buy' with a target upside of 15.1%."
     ],
     "se": [
-      "Quality score of 17 indicates low operational quality, which may affect long-term performance.",
-      "Current ratio of 0.62 suggests liquidity issues that could impact financial stability.",
-      "Debt-to-equity ratio of 1.47 raises concerns about leverage and financial risk."
+      "Quality score of 17 indicates low operational quality and potential risks.",
+      "Current ratio of 0.62 suggests liquidity issues that could affect operations.",
+      "Debt-to-equity ratio of 1.47 raises concerns about financial stability."
     ],
     "ai": true
   },
@@ -4525,16 +4544,16 @@
     "sec": "",
     "p": null,
     "v": "HOLD",
-    "sc": 59.9,
+    "sc": 58.7,
     "b": [
-      "PE ratio of 10.51 suggests undervaluation compared to industry averages.",
+      "PE ratio of 10.51 suggests undervaluation compared to industry peers.",
       "Net margin of 23.41% indicates strong profitability.",
-      "Current ratio of 2.23 reflects good liquidity, suggesting financial stability."
+      "Current ratio of 2.23 shows good short-term liquidity."
     ],
     "se": [
-      "Quality score of 17 indicates low operational quality, raising red flags.",
-      "Graham score of 3 suggests the stock is not a good value investment.",
-      "Negative news sentiment of -0.5 could impact investor confidence."
+      "Quality score of 17 indicates low financial quality, raising concerns.",
+      "Negative news sentiment of -0.5 suggests poor market perception.",
+      "ML forecast predicts a potential price drop of 11.39%, indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -4619,17 +4638,17 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "STRONG_BUY",
-    "sc": 79.4,
+    "v": "BUY",
+    "sc": 76.9,
     "b": [
-      "The PE ratio of 11.65 is attractive compared to industry averages, suggesting potential undervaluation.",
-      "A strong ROE of 24.16% indicates effective management and profitability.",
-      "Zero debt (debt-to-equity of 0.0) enhances financial stability and reduces risk."
+      "PE ratio of 11.65 suggests undervaluation compared to industry peers.",
+      "ROE of 24.16% indicates strong profitability and effective management.",
+      "Debt-to-equity ratio of 0.0 highlights a strong balance sheet with no financial risk from debt."
     ],
     "se": [
-      "The quality score of 25 signals low quality, raising concerns about sustainability.",
-      "The Graham score of 2 suggests that the stock is overvalued based on fundamental analysis.",
-      "The ML forecast shows a relatively low confidence (0.261) in the predicted return, indicating uncertainty."
+      "Quality score of 25 indicates low financial quality, raising concerns about sustainability.",
+      "Graham score of 2 signals an 'AVOID' recommendation, reflecting potential overvaluation risks.",
+      "Net sentiment of 1.0 is positive but based on only 2 news articles, which may not be representative."
     ],
     "ai": true
   },
@@ -4639,16 +4658,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 74.7,
+    "sc": 66.7,
     "b": [
       "Strong ROE of 29.09% suggests effective management and profitability.",
-      "Low debt-to-equity ratio of 0.037 indicates financial stability and low risk.",
+      "Low debt-to-equity ratio of 0.037 indicates strong balance sheet health and low financial risk.",
       "Dividend yield of 2.41% provides a return to shareholders, enhancing attractiveness."
     ],
     "se": [
       "Low quality score of 25 raises concerns about the sustainability of earnings.",
-      "Graham score of 2 signals potential overvaluation or risk, suggesting caution.",
-      "ML forecast predicts a potential price drop of 9.4%, indicating bearish sentiment."
+      "Graham score indicates an 'AVOID' rating, suggesting potential overvaluation.",
+      "ML forecast predicts a price drop of 9.15%, indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -4698,14 +4717,14 @@
     "v": "BUY",
     "sc": 65.9,
     "b": [
-      "Strong operating margin of 27.55% indicating effective cost management.",
-      "Low debt-to-equity ratio of 0.10 suggests financial stability and low leverage risk.",
-      "High current ratio of 11.58 indicates excellent short-term liquidity."
+      "Strong ROE of 16.73% indicating effective management and profitability.",
+      "Low debt-to-equity ratio of 0.10, suggesting financial stability and low leverage risk.",
+      "High current ratio of 11.58, indicating excellent liquidity and ability to cover short-term obligations."
     ],
     "se": [
-      "High PE ratio of 34.50 may indicate overvaluation compared to industry peers.",
-      "Low quality score of 17 raises concerns about the reliability of financial metrics.",
-      "Graham score of 2 suggests the stock is not fundamentally sound, indicating potential long-term risks."
+      "High PE ratio of 34.50 may indicate overvaluation compared to peers.",
+      "Low quality score of 17 suggests potential issues with earnings quality or sustainability.",
+      "Graham score of 2 signals fundamental weaknesses, indicating potential long-term risks."
     ],
     "ai": true
   },
@@ -4714,16 +4733,19 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "STRONG_BUY",
-    "sc": 99.3,
+    "v": "BUY",
+    "sc": 65.9,
     "b": [
-      "Profitability: ROE 28.9%, net margin 38.9%, OPM 44.6%, ROA 21.6%",
-      "Financial health: D/E 0.06, current ratio 3.6"
+      "Strong ROE of 28.89% indicating effective management and profitability.",
+      "Low debt-to-equity ratio of 0.056 suggests strong financial health and low risk of insolvency.",
+      "High operating profit margin of 44.59% demonstrates efficient cost management and strong pricing power."
     ],
     "se": [
-      "Valuation: P/E 57.4"
+      "High PE ratio of 57.45 may indicate overvaluation and potential price correction risk.",
+      "Low quality score of 25 raises concerns about the reliability of financial metrics and business sustainability.",
+      "Graham score of 2 suggests the stock is not fundamentally sound, indicating potential long-term risks."
     ],
-    "ai": false
+    "ai": true
   },
   {
     "s": "SIGMAADV",
@@ -4733,14 +4755,14 @@
     "v": "BUY",
     "sc": 64.6,
     "b": [
-      "High ROE of 86.33% indicates efficient use of equity capital.",
-      "Net margin of 56.39% reflects strong profitability.",
-      "Current ratio of 1.42 suggests adequate liquidity."
+      "High ROE of 86.33% indicates strong returns on equity.",
+      "Net margin of 56.39% suggests excellent profitability.",
+      "Current ratio of 1.42 indicates good short-term financial health."
     ],
     "se": [
-      "EV/EBITDA of 240.48 indicates potential overvaluation.",
-      "Low quality score of 25 raises concerns about the reliability of financials.",
-      "Graham score of 1 signals an avoid recommendation, indicating fundamental weaknesses."
+      "PE ratio of 21.61 may indicate overvaluation compared to peers.",
+      "Low quality score of 25 raises concerns about sustainability.",
+      "Graham score of 1 signals potential fundamental weaknesses."
     ],
     "ai": true
   },
@@ -4997,16 +5019,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 71.2,
+    "sc": 64.2,
     "b": [
-      "High ROE of 43.23% indicates strong profitability.",
-      "Low debt-to-equity ratio of 0.004 suggests financial stability.",
-      "Analyst consensus shows a target upside of 15.8%, indicating potential for price appreciation."
+      "Strong ROE of 43.23% suggests effective management and high profitability.",
+      "Low debt-to-equity ratio of 0.0042 indicates financial stability and low risk of insolvency.",
+      "Dividend yield of 2.78% provides a return to shareholders, which is attractive in a low-interest environment."
     ],
     "se": [
-      "Low quality score of 25 raises concerns about operational efficiency.",
-      "Graham score of 2 indicates potential overvaluation or risk.",
-      "ML forecast predicts a decline of 3.96% in the short term, suggesting bearish sentiment."
+      "P/E ratio of 24.74 indicates the stock may be overvalued compared to peers, which could lead to price corrections.",
+      "Quality score of 25 suggests low earnings quality, raising concerns about sustainability of profits.",
+      "Analyst consensus indicates a target upside of only 15.8%, which may not justify the current valuation."
     ],
     "ai": true
   },
@@ -5016,16 +5038,16 @@
     "sec": "",
     "p": null,
     "v": "HOLD",
-    "sc": 55.8,
+    "sc": 56.1,
     "b": [
-      "Strong ROE of 20.19% suggests effective management and profitability potential.",
-      "Low debt-to-equity ratio of 0.0036 indicates strong financial stability and low leverage risk.",
-      "Current ratio of 3.18 implies good short-term liquidity, enhancing operational flexibility."
+      "Strong ROE of 20.19% indicates effective management and profitability potential.",
+      "Current ratio of 3.18 suggests excellent liquidity, allowing for operational flexibility.",
+      "Low debt-to-equity ratio of 0.0036 indicates minimal financial risk from leverage."
     ],
     "se": [
       "Quality score of 25 indicates low financial quality, raising concerns about sustainability.",
-      "Graham score of 2 suggests it may not be a fundamentally sound investment.",
-      "ML forecast predicts a potential price drop to 13.1, indicating bearish sentiment."
+      "Graham score of 2 suggests that the stock is overvalued or not fundamentally sound.",
+      "ML forecast predicts a price drop to 13.06, indicating bearish sentiment in the near term."
     ],
     "ai": true
   },
@@ -5091,17 +5113,17 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "BUY",
-    "sc": 65.2,
+    "v": "HOLD",
+    "sc": 59.0,
     "b": [
-      "PE ratio of 14.94 suggests the stock is undervalued compared to historical averages.",
-      "ROE of 48.72% indicates exceptional profitability and efficient use of equity.",
+      "PE ratio of 14.94 suggests potential undervaluation compared to industry peers.",
+      "ROE of 48.72% indicates high profitability and efficient use of equity.",
       "Dividend yield of 5.25% provides attractive income for investors."
     ],
     "se": [
-      "Quality score of 25 signals low quality, raising concerns about earnings sustainability.",
-      "Negative news sentiment of -0.38 indicates market apprehension regarding future performance.",
-      "Analyst consensus shows a mean recommendation of 2.02, which is not overwhelmingly bullish."
+      "Quality score of 25 indicates low earnings quality, raising concerns about sustainability.",
+      "Negative news sentiment at -0.38 could deter investors and impact stock performance.",
+      "Analyst consensus shows a mean recommendation of 2.02 (buy), but the market is reacting negatively to broader IT sector trends."
     ],
     "ai": true
   },
@@ -5144,25 +5166,6 @@
     "ai": true
   },
   {
-    "s": "TGVSL",
-    "n": "",
-    "sec": "",
-    "p": null,
-    "v": "HOLD",
-    "sc": 54.8,
-    "b": [
-      "Low PE ratio of 8.18 suggests undervaluation compared to peers.",
-      "Debt-to-equity ratio of 0.27 indicates low financial leverage and manageable debt levels.",
-      "Dividend yield of 0.99% provides some income return to investors."
-    ],
-    "se": [
-      "Quality score of 10 indicates low financial quality, raising concerns about sustainability.",
-      "Graham score of 2 signals potential overvaluation or risk, suggesting caution.",
-      "No data available for Altman Z-score, indicating uncertainty in bankruptcy risk assessment."
-    ],
-    "ai": true
-  },
-  {
     "s": "THANGAMAYL",
     "n": "",
     "sec": "",
@@ -5189,14 +5192,14 @@
     "v": "BUY",
     "sc": 76.8,
     "b": [
-      "Strong ROE of 28.80% indicates effective management and profitability.",
-      "Low debt-to-equity ratio of 0.09 suggests strong financial stability and low risk of insolvency.",
-      "Analyst consensus is a strong buy with a target upside of 9.8%, indicating positive market sentiment."
+      "Strong net margin of 19.67% indicates effective cost management and profitability.",
+      "Low debt-to-equity ratio of 0.09 suggests financial stability and low risk of default.",
+      "High ROE of 28.80% reflects efficient use of equity capital, attracting investors."
     ],
     "se": [
-      "High PE ratio of 53.65 may indicate overvaluation, posing a risk if earnings do not meet expectations.",
-      "Low quality score of 25 raises concerns about the reliability of financial metrics and potential for earnings volatility.",
-      "Graham score of 2 suggests the stock is not fundamentally sound according to value investing principles."
+      "High PE ratio of 53.65 may indicate overvaluation compared to industry peers, posing a risk if earnings do not meet expectations.",
+      "Low quality score of 25 raises concerns about operational efficiency and long-term sustainability.",
+      "Graham score of 2 signals potential fundamental weaknesses, suggesting caution for value investors."
     ],
     "ai": true
   },
@@ -5282,16 +5285,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 69.0,
+    "sc": 68.9,
     "b": [
-      "PE ratio of 12.88 suggests potential undervaluation compared to industry averages.",
+      "PE ratio of 12.88 suggests undervaluation relative to peers.",
       "Net margin of 11.48% indicates strong profitability.",
-      "Current ratio of 2.48 reflects solid liquidity, reducing short-term financial risk."
+      "Current ratio of 2.48 reflects good liquidity and ability to cover short-term obligations."
     ],
     "se": [
-      "Quality score of 5 indicates low quality, raising concerns about sustainability.",
-      "Graham score of 3 signals an avoid recommendation, suggesting potential overvaluation or risk.",
-      "The Altman Z-score is unavailable, leaving uncertainty about bankruptcy risk."
+      "Quality score of 5 signals low quality, indicating potential operational issues.",
+      "Graham score of 3 suggests the stock is not fundamentally sound.",
+      "Low analyst consensus with no strong buy recommendations could indicate lack of market confidence."
     ],
     "ai": true
   },
@@ -5303,14 +5306,14 @@
     "v": "BUY",
     "sc": 63.6,
     "b": [
-      "Strong current ratio of 3.08 indicates good liquidity and ability to cover short-term liabilities.",
-      "Dividend yield of 2.29% provides some income to investors, which is attractive in a low-interest-rate environment.",
-      "Low debt-to-equity ratio of 0.18 suggests financial stability and lower risk from leverage."
+      "Low debt-to-equity ratio of 0.18 indicates financial stability and lower risk of insolvency.",
+      "Dividend yield of 2.29% provides a return to shareholders, making it attractive for income-focused investors.",
+      "Current ratio of 3.08 suggests strong liquidity, allowing the company to cover short-term obligations easily."
     ],
     "se": [
-      "Low quality score of 17 raises concerns about the sustainability of earnings and overall financial health.",
-      "Graham score of 2 signals that the stock may be overvalued based on fundamental analysis.",
-      "ML forecast predicts a potential decline in stock price by 0.35%, indicating bearish sentiment."
+      "Low quality score of 17 raises concerns about the sustainability of earnings and overall business quality.",
+      "Graham score of 2 indicates potential overvaluation or fundamental weaknesses, suggesting caution.",
+      "ML forecast predicts a slight decline in price (-0.25%), indicating bearish sentiment in the near term."
     ],
     "ai": true
   },
@@ -5415,7 +5418,7 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 69.7,
+    "sc": 63.5,
     "b": [
       "Strong net margin of 19.93% indicating effective cost management and profitability.",
       "Current ratio of 5.40 suggests excellent liquidity and ability to cover short-term obligations.",
@@ -5423,8 +5426,8 @@
     ],
     "se": [
       "Low quality score of 10 raises concerns about the sustainability of earnings.",
-      "Graham score of 2 signals potential overvaluation and suggests caution.",
-      "Predicted return of only 0.19% over the next 21 days indicates limited short-term upside."
+      "Graham score of 2 suggests the stock may be overvalued relative to its fundamentals.",
+      "ML forecast predicts a slight decline in price (-0.1%), indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -5434,16 +5437,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 65.9,
+    "sc": 65.6,
     "b": [
-      "Strong ROE of 41.78% indicating effective management and profitability.",
-      "Current ratio of 1.24 suggests adequate short-term liquidity.",
-      "Analyst consensus indicates a 'BUY' verdict with a conviction of 69.4."
+      "Strong ROE of 41.78% indicates effective management and profitability.",
+      "Current ratio of 1.24 suggests adequate liquidity to cover short-term obligations.",
+      "Analyst consensus rating is 'BUY', reflecting positive sentiment among analysts."
     ],
     "se": [
-      "High PE ratio of 39.06 may indicate overvaluation compared to industry peers.",
-      "Low quality score of 25 raises concerns about the reliability of financial metrics.",
-      "ML forecast predicts a potential price drop to 1516.05, indicating bearish sentiment."
+      "High PE ratio of 39.06 may indicate overvaluation compared to peers.",
+      "Low quality score of 25 raises concerns about financial stability and operational efficiency.",
+      "ML forecast predicts a potential price drop to 1523.28, indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -5510,16 +5513,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 67.3,
+    "sc": 66.9,
     "b": [
-      "PE ratio of 6.58 suggests undervaluation compared to peers.",
-      "ROE of 150.63% indicates exceptional profitability.",
-      "Current ratio of 6.70 reflects strong liquidity position."
+      "PE ratio of 6.58 indicates potential undervaluation compared to industry peers.",
+      "ROE of 150.63% demonstrates exceptional profitability.",
+      "Current ratio of 6.70 suggests strong liquidity and ability to cover short-term liabilities."
     ],
     "se": [
-      "Quality score of 25 indicates low operational quality.",
-      "Graham score of 3 suggests potential overvaluation risks.",
-      "Low analyst consensus and lack of news sentiment may indicate market skepticism."
+      "Low quality score of 25 raises concerns about the reliability of financial metrics.",
+      "Graham score of 3 signals an 'AVOID' recommendation, indicating potential fundamental weaknesses.",
+      "ML forecast predicts a decline in price to 381.88, suggesting bearish sentiment."
     ],
     "ai": true
   },
@@ -5567,16 +5570,16 @@
     "sec": "",
     "p": null,
     "v": "BUY",
-    "sc": 61.8,
+    "sc": 60.7,
     "b": [
-      "Strong ROE of 66.68% suggests effective management and profitability.",
-      "Low debt-to-equity ratio of 0.21 indicates financial stability and low risk of insolvency.",
-      "High operating profit margin (OPM) of 35.68% reflects strong operational efficiency."
+      "Strong ROE of 66.68% suggests effective management and high profitability.",
+      "Low debt-to-equity ratio of 0.21 indicates financial stability and lower risk.",
+      "Current ratio of 2.94 shows strong liquidity, allowing for operational flexibility."
     ],
     "se": [
-      "Quality score of 25 indicates low earnings quality, raising concerns about sustainability.",
-      "Graham score of 3 suggests the stock is overvalued based on intrinsic value principles.",
-      "ML forecast predicts a potential decline in price to ₹93.14, indicating bearish sentiment."
+      "Low quality score of 25 raises concerns about the reliability of earnings.",
+      "Graham score of 3 signals potential overvaluation and suggests 'AVOID'.",
+      "ML forecast predicts a price drop of 12.71%, indicating bearish sentiment."
     ],
     "ai": true
   },
@@ -5623,16 +5626,19 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "STRONG_BUY",
-    "sc": 93.9,
+    "v": "BUY",
+    "sc": 65.9,
     "b": [
-      "Profitability: ROE 41.1%, net margin 9.1%, OPM 10.8%, ROA 25.7%",
-      "Financial health: D/E 0.18, current ratio 3.4"
+      "Strong ROE of 41.08% indicating effective management and profitability.",
+      "Low debt-to-equity ratio of 0.18, reflecting financial stability and lower risk of insolvency.",
+      "Current ratio of 3.36 suggests excellent short-term liquidity, which is a positive sign for operational health."
     ],
     "se": [
-      "Valuation: P/E 42.1"
+      "High PE ratio of 42.07 may indicate overvaluation, posing a risk if earnings do not meet expectations.",
+      "Low quality score of 25 suggests potential issues with business fundamentals or sustainability of growth.",
+      "Graham score of 2 indicates a potential 'AVOID' signal, highlighting concerns about intrinsic value."
     ],
-    "ai": false
+    "ai": true
   },
   {
     "s": "ZENSARTECH",
@@ -5658,17 +5664,17 @@
     "n": "",
     "sec": "",
     "p": null,
-    "v": "BUY",
-    "sc": 64.0,
+    "v": "HOLD",
+    "sc": 56.6,
     "b": [
-      "Strong net margin of 28.13% indicating efficient cost management.",
-      "Low debt-to-equity ratio of 0.01 suggests minimal financial risk.",
-      "Current ratio of 8.86 indicates excellent liquidity position."
+      "Strong net margin of 28.13% indicating effective cost management and profitability.",
+      "Current ratio of 8.86 suggests excellent liquidity and ability to cover short-term liabilities.",
+      "Low debt-to-equity ratio of 0.01 indicates minimal financial risk and strong balance sheet health."
     ],
     "se": [
-      "High PE ratio of 82.42 may indicate overvaluation.",
-      "Analyst consensus shows a target downside of -2.6%, suggesting limited upside potential.",
-      "Low quality score of 10 raises concerns about the sustainability of earnings."
+      "High P/E ratio of 82.42 suggests potential overvaluation compared to industry peers.",
+      "Analyst consensus shows a target downside of -2.6%, indicating bearish sentiment.",
+      "Low quality score of 10 and Graham score of 2 signal fundamental weaknesses."
     ],
     "ai": true
   },
