@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01 17:02 India Standard Time",
+  "generated_at": "2026-07-02 07:00 India Standard Time",
   "sections": {
     "gainers": [
       {
@@ -24,7 +24,7 @@
           "pe": 68.95493,
           "pb": 2.076896,
           "ps": 3.387679,
-          "ev_ebitda": 26.991,
+          "ev_ebitda": 32.91,
           "roe": 3.05,
           "roa": 2.03,
           "net_margin": 4.9,
@@ -217,7 +217,7 @@
           "industry": "",
           "price": 1717.9,
           "change": 19.998608,
-          "ev_ebitda": 14.675,
+          "ev_ebitda": 17.926,
           "roe": 10.84,
           "roa": 7.54,
           "net_margin": 15.75,
@@ -1527,7 +1527,7 @@
           "pe": 22.808163,
           "pb": 1.813432,
           "ps": 0.78914016,
-          "ev_ebitda": 10.991,
+          "ev_ebitda": 12.982,
           "roe": 8.42,
           "roa": 3.17,
           "net_margin": 3.36,
@@ -1721,7 +1721,7 @@
           "pe": 33.122025,
           "pb": 6.0874085,
           "ps": 0.71647215,
-          "ev_ebitda": 13.387,
+          "ev_ebitda": 15.525,
           "roe": 19.91,
           "roa": 5.76,
           "net_margin": 2.17,
@@ -1925,7 +1925,7 @@
           "pe": 736.9723,
           "pb": 15.181219,
           "ps": 354.66125,
-          "ev_ebitda": 571.783,
+          "ev_ebitda": 463.824,
           "net_margin": 50.43,
           "gross_margin": 87.62,
           "opm": 68.36,
@@ -2118,7 +2118,7 @@
           "pe": 23.929184,
           "pb": 4.286472,
           "ps": 2.351385,
-          "ev_ebitda": 13.181,
+          "ev_ebitda": 10.875,
           "roe": 19.73,
           "roa": 10.63,
           "net_margin": 9.87,
@@ -2294,202 +2294,6 @@
         "source": "TradingView technicals + Yahoo Finance"
       },
       {
-        "symbol": "OPTIFIN",
-        "name": "OPTIFIN",
-        "sector": "Distribution Services",
-        "exchange": "BSE",
-        "price": 11.19,
-        "fundamental_score": null,
-        "tier": null,
-        "change_today_pct": -13.1,
-        "collection": "losers",
-        "collections": [
-          "losers"
-        ],
-        "metrics": {
-          "name": "OPTIFIN",
-          "sector": "Distribution Services",
-          "industry": "Chemicals",
-          "price": 11.19,
-          "change": -13.053616,
-          "pe": 14.346154,
-          "pb": 1.2444395,
-          "ps": 0.46100053,
-          "roe": 9.47,
-          "roa": 5.7,
-          "net_margin": 3.2,
-          "gross_margin": 15.34,
-          "opm": 5.84,
-          "debt_to_equity": 0.35,
-          "current_ratio": 4.543,
-          "quick_ratio": 3.891,
-          "market_cap": 836150336.0,
-          "market_cap_cr": 83.6,
-          "bvps": 8.992,
-          "sma50": 13.5946,
-          "sma200": 15.1689,
-          "high_52w": 29.0,
-          "low_52w": 10.71,
-          "revenue_growth_5y": 18.1,
-          "profit_growth_5y": 18.8,
-          "promoter_holding": 67.97,
-          "earnings_yield": 6.97,
-          "symbol": "OPTIFIN",
-          "change_today_pct": -13.1,
-          "ann_vol_pct": 379.4
-        },
-        "recommendation": {
-          "verdict": "BUY",
-          "verdict_label": "Buy (educational model signal)",
-          "conviction": 72.0,
-          "confidence": "high",
-          "summary": "OPTIFIN scores 72.0/100 on the fundamental model \u2192 Buy. Supported by valuation, growth, financial health, governance.",
-          "assessments": [
-            {
-              "pillar": "Valuation",
-              "verdict": "Cheap",
-              "detail": "P/E 14.3, P/B 1.2, earnings yield 7.0%",
-              "points": 8.0
-            },
-            {
-              "pillar": "Profitability",
-              "verdict": "Weak",
-              "detail": "ROE 9.5%, net margin 3.2%, OPM 5.8%, ROA 5.7%",
-              "points": 0.0
-            },
-            {
-              "pillar": "Growth",
-              "verdict": "Strong",
-              "detail": "profit growth 18.8%, revenue growth 18.1%",
-              "points": 9.0
-            },
-            {
-              "pillar": "Financial health",
-              "verdict": "Solid",
-              "detail": "D/E 0.35, current ratio 4.5",
-              "points": 7.0
-            },
-            {
-              "pillar": "Governance",
-              "verdict": "Clean",
-              "detail": "promoter holding 68%",
-              "points": 4.0
-            }
-          ],
-          "frameworks": {
-            "quality_score": {
-              "quality_score": 15,
-              "gp_ta": 0.0,
-              "roe": 9.47,
-              "roce": 0,
-              "reasons": [],
-              "signal": "LOW_QUALITY"
-            },
-            "graham": {
-              "graham_score": 4,
-              "criteria_met": {
-                "adequate_size": false,
-                "current_ratio_ge2": true,
-                "earnings_stability": false,
-                "dividend_record": false,
-                "earnings_growth": true,
-                "moderate_pe": true,
-                "moderate_pb": true
-              },
-              "graham_number": null,
-              "margin_of_safety_pct": null,
-              "signal": "WATCH"
-            },
-            "altman": {
-              "z_score": null,
-              "model": "n/a",
-              "zone": "NO_DATA"
-            }
-          },
-          "positives": [
-            "Valuation: P/E 14.3, P/B 1.2, earnings yield 7.0%",
-            "Growth: profit growth 18.8%, revenue growth 18.1%",
-            "Financial health: D/E 0.35, current ratio 4.5",
-            "Governance: promoter holding 68%"
-          ],
-          "negatives": [
-            "No major fundamental weaknesses detected"
-          ],
-          "red_flags": [],
-          "what_would_change": [
-            "Deteriorating margins, falling ROCE, or rising leverage would downgrade the signal"
-          ],
-          "data_gaps": [],
-          "horizons": {
-            "short_term": {
-              "horizon": "days\u2013weeks",
-              "stance": "AVOID",
-              "drivers": [
-                "below 50-DMA (14)",
-                "3% up its 52-week range"
-              ],
-              "illustrative_move_pct": 27.2,
-              "confidence": "low",
-              "projection": {
-                "low_pct": -34.6,
-                "base_pct": 0.0,
-                "high_pct": 34.6,
-                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
-              }
-            },
-            "mid_term": {
-              "horizon": "1\u20136 months",
-              "stance": "AVOID",
-              "drivers": [
-                "below 200-DMA (15)",
-                "50-DMA below 200-DMA (death cross)"
-              ],
-              "confidence": "low-moderate",
-              "projection": {
-                "low_pct": -60.0,
-                "base_pct": -4.0,
-                "high_pct": 80.0,
-                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
-              }
-            },
-            "long_term": {
-              "horizon": "1\u20133+ years",
-              "stance": "ACCUMULATE",
-              "drivers": [
-                "fundamental model: Buy (conviction 72.0/100)"
-              ],
-              "illustrative_annual_return_pct": 18.8,
-              "scenario": "~19%/yr illustrative total return IF profits compound near their 5y rate (19%) and the P/E holds, plus ~0.0% dividend \u2014 a scenario, not a forecast",
-              "analyst_consensus_upside_pct": null,
-              "confidence": "moderate",
-              "projection": {
-                "low_pct": -4.4,
-                "base_pct": 67.7,
-                "high_pct": 103.9,
-                "horizon_years": 3,
-                "method": "fundamental bull/base/bear (growth \u00b1 re-rating)"
-              }
-            },
-            "note": "Outlooks are scenario-based, NOT profit predictions. Short/mid-term are technical and weak; the long-term fundamental view is the most reliable. Any of them can fail on news, earnings, macro or black-swan events."
-          },
-          "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
-        },
-        "why": {
-          "positives": [
-            "Valuation: P/E 14.3, P/B 1.2, earnings yield 7.0%",
-            "Growth: profit growth 18.8%, revenue growth 18.1%",
-            "Financial health: D/E 0.35, current ratio 4.5",
-            "Governance: promoter holding 68%"
-          ],
-          "negatives": [
-            "No major fundamental weaknesses detected"
-          ],
-          "risks": []
-        },
-        "fundamentals_source": "Yahoo Finance",
-        "source": "TradingView technicals + Yahoo Finance"
-      },
-      {
         "symbol": "KVSCASTING",
         "name": "KVSCASTING",
         "sector": "Non-Energy Minerals",
@@ -2511,7 +2315,7 @@
           "pe": 13.898617,
           "pb": 1.503527,
           "ps": 2.2008219,
-          "ev_ebitda": 11.951,
+          "ev_ebitda": 10.718,
           "roe": 14.16,
           "roa": 8.43,
           "net_margin": 13.72,
@@ -2878,7 +2682,7 @@
           "change": -11.109066,
           "pb": 4.6125846,
           "ps": 5.973211,
-          "ev_ebitda": 139.083,
+          "ev_ebitda": 124.74,
           "roe": -4.01,
           "roa": 0.24,
           "net_margin": -5.33,
@@ -3250,7 +3054,7 @@
           "pe": 129.0,
           "pb": 1.924655,
           "ps": 0.21440941,
-          "ev_ebitda": 115.437,
+          "ev_ebitda": 103.772,
           "roe": 1.68,
           "roa": 0.19,
           "net_margin": 0.19,
@@ -3445,7 +3249,7 @@
           "pe": 96.61073,
           "pb": 2.9141445,
           "ps": 1.828862,
-          "ev_ebitda": -3959.048,
+          "ev_ebitda": -3616.744,
           "roe": 6.6,
           "roa": -0.39,
           "net_margin": 3.3,
@@ -3623,94 +3427,283 @@
         "source": "TradingView technicals + Yahoo Finance"
       },
       {
-        "symbol": "INDXTRA",
-        "name": "INDXTRA",
-        "sector": "Distribution Services",
-        "exchange": "BSE",
-        "price": 6.42,
+        "symbol": "WHEELS",
+        "name": "WHEELS",
+        "sector": "Producer Manufacturing",
+        "exchange": "NSE",
+        "price": 1613.5,
         "fundamental_score": null,
         "tier": null,
-        "change_today_pct": -10.0,
+        "change_today_pct": -9.7,
         "collection": "losers",
         "collections": [
           "losers"
         ],
         "metrics": {
-          "name": "INDXTRA",
-          "sector": "Distribution Services",
-          "industry": "Specialty Chemicals",
-          "price": 6.42,
-          "change": -9.957925,
-          "pe": 642.0,
-          "pb": 1.8651947,
-          "ps": 86.309906,
-          "ev_ebitda": -2048.033,
-          "roe": 0.41,
-          "roa": -0.09,
-          "net_margin": 19.03,
-          "gross_margin": 100.0,
-          "opm": 97.71,
-          "debt_to_equity": 0.03,
-          "current_ratio": 56.297,
-          "quick_ratio": 0.714,
-          "market_cap": 837119808.0,
-          "market_cap_cr": 83.7,
-          "bvps": 3.442,
-          "sma50": 5.8738,
-          "sma200": 6.9558,
-          "high_52w": 10.28,
-          "low_52w": 4.0,
-          "revenue_growth_5y": 6189.7,
-          "promoter_holding": 47.29,
-          "earnings_yield": 0.16,
-          "fcf_yield": -30.39,
-          "symbol": "INDXTRA",
-          "change_today_pct": -10.0,
-          "ann_vol_pct": 175.6
+          "name": "WHEELS",
+          "sector": "Producer Manufacturing",
+          "industry": "Auto Parts",
+          "price": 1613.5,
+          "change": -9.658454,
+          "pe": 25.449526,
+          "pb": 3.7845647,
+          "ps": 1.7586685,
+          "net_margin": 3.19,
+          "gross_margin": 32.66,
+          "opm": 4.89,
+          "dividend_yield": 0.81,
+          "market_cap": 39422664704.0,
+          "market_cap_cr": 3942.3,
+          "bvps": 426.337,
+          "sma50": 1452.392,
+          "sma200": 1030.4432,
+          "high_52w": 1808.0,
+          "low_52w": 705.85,
+          "revenue_growth_5y": 2.5,
+          "profit_growth_5y": -9.8,
+          "promoter_holding": 0.0,
+          "earnings_yield": 3.93,
+          "symbol": "WHEELS",
+          "change_today_pct": -9.7,
+          "ann_vol_pct": 232.7
         },
         "recommendation": {
-          "verdict": "HOLD",
-          "verdict_label": "Hold / Watch (educational model signal)",
-          "conviction": 48.0,
+          "verdict": "SELL",
+          "verdict_label": "Reduce / Sell (educational model signal)",
+          "conviction": 36.0,
           "confidence": "moderate",
-          "summary": "INDXTRA scores 48.0/100 on the fundamental model \u2192 Hold. Supported by growth, financial health. Held back by valuation, profitability.",
+          "summary": "WHEELS scores 36.0/100 on the fundamental model \u2192 Sell. Held back by growth.",
           "assessments": [
             {
               "pillar": "Valuation",
-              "verdict": "Expensive",
-              "detail": "P/E 642.0, P/B 1.9, earnings yield 0.2%",
-              "points": -5.0
+              "verdict": "Fair",
+              "detail": "P/E 25.4, P/B 3.8, earnings yield 3.9%",
+              "points": 0.0
             },
             {
               "pillar": "Profitability",
               "verdict": "Weak",
-              "detail": "ROE 0.4%, net margin 19.0%, OPM 97.7%, ROA -0.1%",
-              "points": -3.0
+              "detail": "net margin 3.2%, OPM 4.9%",
+              "points": 0.0
             },
             {
               "pillar": "Growth",
-              "verdict": "Steady",
-              "detail": "revenue growth 6189.7%",
-              "points": 3.0
+              "verdict": "Declining",
+              "detail": "profit growth -9.8%, revenue growth 2.5%",
+              "points": -8.0
             },
             {
               "pillar": "Financial health",
-              "verdict": "Solid",
-              "detail": "D/E 0.03, current ratio 56.3",
-              "points": 7.0
+              "verdict": "Adequate",
+              "detail": "no balance-sheet data",
+              "points": 0.0
             },
             {
               "pillar": "Governance",
               "verdict": "Acceptable",
-              "detail": "promoter holding 47%",
-              "points": 2.0
+              "detail": "promoter holding 0%",
+              "points": 0.0
             }
           ],
           "frameworks": {
             "quality_score": {
-              "quality_score": 10,
+              "quality_score": 5,
               "gp_ta": 0.0,
-              "roe": 0.41,
+              "roe": 0,
+              "roce": 0,
+              "reasons": [],
+              "signal": "LOW_QUALITY"
+            },
+            "graham": {
+              "graham_score": 1,
+              "criteria_met": {
+                "adequate_size": true,
+                "current_ratio_ge2": false,
+                "earnings_stability": false,
+                "dividend_record": false,
+                "earnings_growth": false,
+                "moderate_pe": false,
+                "moderate_pb": false
+              },
+              "graham_number": null,
+              "margin_of_safety_pct": null,
+              "signal": "AVOID"
+            },
+            "altman": {
+              "z_score": null,
+              "model": "n/a",
+              "zone": "NO_DATA"
+            }
+          },
+          "positives": [
+            "No standout strengths from the available data"
+          ],
+          "negatives": [
+            "Growth: profit growth -9.8%, revenue growth 2.5%"
+          ],
+          "red_flags": [],
+          "what_would_change": [
+            "A sustained pickup in profit growth (>15%) would upgrade the signal"
+          ],
+          "data_gaps": [
+            "Financial health"
+          ],
+          "horizons": {
+            "short_term": {
+              "horizon": "days\u2013weeks",
+              "stance": "BUY",
+              "drivers": [
+                "above 50-DMA (1452)",
+                "82% up its 52-week range"
+              ],
+              "illustrative_move_pct": 11.3,
+              "confidence": "low",
+              "projection": {
+                "low_pct": -34.6,
+                "base_pct": 0.0,
+                "high_pct": 34.6,
+                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
+              }
+            },
+            "mid_term": {
+              "horizon": "1\u20136 months",
+              "stance": "BUY",
+              "drivers": [
+                "above 200-DMA (1030)",
+                "50-DMA above 200-DMA (golden cross)"
+              ],
+              "confidence": "low-moderate",
+              "projection": {
+                "low_pct": -60.0,
+                "base_pct": 4.0,
+                "high_pct": 80.0,
+                "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
+              }
+            },
+            "long_term": {
+              "horizon": "1\u20133+ years",
+              "stance": "REDUCE",
+              "drivers": [
+                "fundamental model: Sell (conviction 36.0/100)"
+              ],
+              "illustrative_annual_return_pct": -9.0,
+              "scenario": "~-9%/yr illustrative total return IF profits compound near their 5y rate (-10%) and the P/E holds, plus ~0.8% dividend \u2014 a scenario, not a forecast",
+              "analyst_consensus_upside_pct": null,
+              "confidence": "moderate",
+              "projection": {
+                "low_pct": -32.1,
+                "base_pct": -24.6,
+                "high_pct": -2.9,
+                "horizon_years": 3,
+                "method": "fundamental bull/base/bear (growth \u00b1 re-rating)"
+              }
+            },
+            "note": "Outlooks are scenario-based, NOT profit predictions. Short/mid-term are technical and weak; the long-term fundamental view is the most reliable. Any of them can fail on news, earnings, macro or black-swan events."
+          },
+          "disclaimer": "Educational model signal only \u2014 NOT investment advice, NOT a SEBI-registered research recommendation. Derived purely from public fundamentals; ignores price action, news, management quality and macro. Do your own research; consult a SEBI-registered adviser."
+        },
+        "why": {
+          "positives": [
+            "No standout strengths from the available data"
+          ],
+          "negatives": [
+            "Growth: profit growth -9.8%, revenue growth 2.5%"
+          ],
+          "risks": []
+        },
+        "fundamentals_source": "Yahoo Finance",
+        "source": "TradingView technicals + Yahoo Finance"
+      },
+      {
+        "symbol": "NARMADA",
+        "name": "NARMADA",
+        "sector": "Process Industries",
+        "exchange": "NSE",
+        "price": 36.42,
+        "fundamental_score": null,
+        "tier": null,
+        "change_today_pct": -9.2,
+        "collection": "losers",
+        "collections": [
+          "losers"
+        ],
+        "metrics": {
+          "name": "NARMADA",
+          "sector": "Process Industries",
+          "industry": "Agricultural Inputs",
+          "price": 36.42,
+          "change": -9.1544075,
+          "pe": 35.705883,
+          "pb": 2.3284955,
+          "ps": 1.7624445,
+          "ev_ebitda": 29.699,
+          "roe": 6.7,
+          "roa": 4.28,
+          "net_margin": 4.92,
+          "gross_margin": 12.84,
+          "opm": 2.7,
+          "debt_to_equity": 0.17,
+          "current_ratio": 5.088,
+          "quick_ratio": 3.015,
+          "market_cap": 1381643648.0,
+          "market_cap_cr": 138.2,
+          "bvps": 15.641,
+          "sma50": 36.7062,
+          "sma200": 29.47185,
+          "high_52w": 45.17,
+          "low_52w": 17.22,
+          "revenue_growth_5y": 16.1,
+          "profit_growth_5y": -30.0,
+          "promoter_holding": 63.63,
+          "earnings_yield": 2.8,
+          "fcf_yield": 1.63,
+          "symbol": "NARMADA",
+          "change_today_pct": -9.2,
+          "ann_vol_pct": 190.2
+        },
+        "recommendation": {
+          "verdict": "HOLD",
+          "verdict_label": "Hold / Watch (educational model signal)",
+          "conviction": 47.0,
+          "confidence": "high",
+          "summary": "NARMADA scores 47.0/100 on the fundamental model \u2192 Hold. Supported by financial health, governance. Held back by valuation, profitability, growth.",
+          "assessments": [
+            {
+              "pillar": "Valuation",
+              "verdict": "Expensive",
+              "detail": "P/E 35.7, P/B 2.3, earnings yield 2.8%",
+              "points": -2.0
+            },
+            {
+              "pillar": "Profitability",
+              "verdict": "Weak",
+              "detail": "ROE 6.7%, net margin 4.9%, OPM 2.7%, ROA 4.3%",
+              "points": -3.0
+            },
+            {
+              "pillar": "Growth",
+              "verdict": "Declining",
+              "detail": "profit growth -30.0%, revenue growth 16.1%",
+              "points": -3.0
+            },
+            {
+              "pillar": "Financial health",
+              "verdict": "Solid",
+              "detail": "D/E 0.17, current ratio 5.1",
+              "points": 7.0
+            },
+            {
+              "pillar": "Governance",
+              "verdict": "Clean",
+              "detail": "promoter holding 64%",
+              "points": 4.0
+            }
+          ],
+          "frameworks": {
+            "quality_score": {
+              "quality_score": 15,
+              "gp_ta": 0.0,
+              "roe": 6.7,
               "roce": 0,
               "reasons": [],
               "signal": "LOW_QUALITY"
@@ -3737,27 +3730,28 @@
             }
           },
           "positives": [
-            "Growth: revenue growth 6189.7%",
-            "Financial health: D/E 0.03, current ratio 56.3"
+            "Financial health: D/E 0.17, current ratio 5.1",
+            "Governance: promoter holding 64%"
           ],
           "negatives": [
-            "Valuation: P/E 642.0, P/B 1.9, earnings yield 0.2%",
-            "Profitability: ROE 0.4%, net margin 19.0%, OPM 97.7%, ROA -0.1%"
+            "Valuation: P/E 35.7, P/B 2.3, earnings yield 2.8%",
+            "Profitability: ROE 6.7%, net margin 4.9%, OPM 2.7%, ROA 4.3%",
+            "Growth: profit growth -30.0%, revenue growth 16.1%"
           ],
           "red_flags": [],
           "what_would_change": [
-            "Material change in profitability, leverage, growth, or governance would move the verdict"
+            "A sustained pickup in profit growth (>15%) would upgrade the signal"
           ],
           "data_gaps": [],
           "horizons": {
             "short_term": {
               "horizon": "days\u2013weeks",
-              "stance": "BUY",
+              "stance": "HOLD",
               "drivers": [
-                "above 50-DMA (6)",
-                "39% up its 52-week range"
+                "below 50-DMA (37)",
+                "69% up its 52-week range"
               ],
-              "illustrative_move_pct": 16.3,
+              "illustrative_move_pct": 12.8,
               "confidence": "low",
               "projection": {
                 "low_pct": -34.6,
@@ -3768,15 +3762,15 @@
             },
             "mid_term": {
               "horizon": "1\u20136 months",
-              "stance": "AVOID",
+              "stance": "BUY",
               "drivers": [
-                "below 200-DMA (7)",
-                "50-DMA below 200-DMA (death cross)"
+                "above 200-DMA (29)",
+                "50-DMA above 200-DMA (golden cross)"
               ],
               "confidence": "low-moderate",
               "projection": {
                 "low_pct": -60.0,
-                "base_pct": -4.0,
+                "base_pct": 4.0,
                 "high_pct": 80.0,
                 "method": "\u00b11.5\u03c3 realised-volatility band (capped)"
               }
@@ -3785,16 +3779,16 @@
               "horizon": "1\u20133+ years",
               "stance": "HOLD",
               "drivers": [
-                "fundamental model: Hold (conviction 48.0/100)"
+                "fundamental model: Hold (conviction 47.0/100)"
               ],
-              "illustrative_annual_return_pct": null,
-              "scenario": "growth data unavailable",
+              "illustrative_annual_return_pct": -15.0,
+              "scenario": "~-15%/yr illustrative total return IF profits compound near their 5y rate (-30%) and the P/E holds, plus ~0.0% dividend \u2014 a scenario, not a forecast",
               "analyst_consensus_upside_pct": null,
               "confidence": "moderate",
               "projection": {
-                "low_pct": -18.5,
-                "base_pct": 19.1,
-                "high_pct": 48.2,
+                "low_pct": -34.1,
+                "base_pct": -27.1,
+                "high_pct": -5.9,
                 "horizon_years": 3,
                 "method": "fundamental bull/base/bear (growth \u00b1 re-rating)"
               }
@@ -3805,12 +3799,13 @@
         },
         "why": {
           "positives": [
-            "Growth: revenue growth 6189.7%",
-            "Financial health: D/E 0.03, current ratio 56.3"
+            "Financial health: D/E 0.17, current ratio 5.1",
+            "Governance: promoter holding 64%"
           ],
           "negatives": [
-            "Valuation: P/E 642.0, P/B 1.9, earnings yield 0.2%",
-            "Profitability: ROE 0.4%, net margin 19.0%, OPM 97.7%, ROA -0.1%"
+            "Valuation: P/E 35.7, P/B 2.3, earnings yield 2.8%",
+            "Profitability: ROE 6.7%, net margin 4.9%, OPM 2.7%, ROA 4.3%",
+            "Growth: profit growth -30.0%, revenue growth 16.1%"
           ],
           "risks": []
         },
@@ -3841,7 +3836,7 @@
           "pe": 4.5607476,
           "pb": -4.4323344,
           "ps": 3.5413654,
-          "ev_ebitda": 18.143,
+          "ev_ebitda": 18.246,
           "roa": -1.02,
           "net_margin": 77.14,
           "gross_margin": 44.56,
@@ -4037,7 +4032,7 @@
           "change": 9.380033,
           "pb": 0.7008538,
           "ps": 1.4747134,
-          "ev_ebitda": 8.028,
+          "ev_ebitda": 8.359,
           "roe": -2.08,
           "roa": 2.88,
           "net_margin": -4.42,
@@ -4232,7 +4227,7 @@
           "change": 2.8793468,
           "pb": 5.9260235,
           "ps": 8.829516,
-          "ev_ebitda": -15.913,
+          "ev_ebitda": -16.328,
           "roe": -43.16,
           "roa": -10.98,
           "net_margin": -81.36,
@@ -4424,7 +4419,7 @@
           "price": 44.21,
           "change": 9.756704,
           "ps": 3.303768,
-          "ev_ebitda": 18.698,
+          "ev_ebitda": 19.878,
           "roe": 0.88,
           "roa": 3.83,
           "net_margin": 0.61,
@@ -4997,7 +4992,7 @@
           "pe": 18.612902,
           "pb": 1.0339266,
           "ps": 0.742454,
-          "ev_ebitda": 11.673,
+          "ev_ebitda": 12.328,
           "roe": 6.69,
           "roa": 2.75,
           "net_margin": 3.44,
@@ -5195,7 +5190,7 @@
           "pe": 36.632652,
           "pb": 1.7572198,
           "ps": 2.2112064,
-          "ev_ebitda": 15.011,
+          "ev_ebitda": 15.189,
           "roe": 3.6,
           "roa": 3.15,
           "net_margin": 8.1,
@@ -5388,7 +5383,7 @@
           "pe": 27.273684,
           "pb": 4.186535,
           "ps": 4.6405087,
-          "ev_ebitda": 16.363,
+          "ev_ebitda": 18.855,
           "roe": 16.4,
           "roa": 5.07,
           "net_margin": 16.99,
