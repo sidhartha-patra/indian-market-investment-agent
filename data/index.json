@@ -1,22 +1,13 @@
 {
-  "generated_at": "2026-07-17 18:19 India Standard Time",
-  "count": 46,
+  "generated_at": "2026-07-31 17:21 India Standard Time",
+  "count": 45,
   "stocks": [
-    {
-      "symbol": "HINDZINC",
-      "name": "HINDUSTAN ZINC LIMITED",
-      "sector": "Basic Materials",
-      "price": 518.35,
-      "score": 100.0,
-      "tier": "TOP_DECILE",
-      "signal": "STRONG_BUY"
-    },
     {
       "symbol": "GARUDA",
       "name": "GARUDA CONSTRUCT N ENG L",
       "sector": "Industrials",
-      "price": 174.83,
-      "score": 97.8,
+      "price": 172.8,
+      "score": 100.0,
       "tier": "TOP_DECILE",
       "signal": "STRONG_BUY"
     },
@@ -24,8 +15,8 @@
       "symbol": "GESHIP",
       "name": "THE GE SHPG.LTD",
       "sector": "Industrials",
-      "price": 1345.4,
-      "score": 95.7,
+      "price": 1350.4,
+      "score": 97.8,
       "tier": "TOP_DECILE",
       "signal": "STRONG_BUY"
     },
@@ -33,8 +24,8 @@
       "symbol": "TAJGVK",
       "name": "TAJ GVK HOTELS & RESORTS",
       "sector": "Consumer Cyclical",
-      "price": 360.95,
-      "score": 93.5,
+      "price": 363.25,
+      "score": 95.6,
       "tier": "TOP_DECILE",
       "signal": "STRONG_BUY"
     },
@@ -42,35 +33,8 @@
       "symbol": "JAICORPLTD",
       "name": "JAI CORP LIMITED",
       "sector": "Basic Materials",
-      "price": 106.89,
-      "score": 91.3,
-      "tier": "TOP_DECILE",
-      "signal": "STRONG_BUY"
-    },
-    {
-      "symbol": "GANDHITUBE",
-      "name": "GANDHI SPL. TUBES LTD",
-      "sector": "Industrials",
-      "price": 865.25,
-      "score": 89.1,
-      "tier": "TOP_DECILE",
-      "signal": "STRONG_BUY"
-    },
-    {
-      "symbol": "3BBLACKBIO",
-      "name": "3B BLACKBIO DX LTD.",
-      "sector": "OTHER",
-      "price": 1250.4,
-      "score": 87.0,
-      "tier": "TOP_DECILE",
-      "signal": "STRONG_BUY"
-    },
-    {
-      "symbol": "GPPL",
-      "name": "GUJARAT PIPAVAV PORT LTD",
-      "sector": "Industrials",
-      "price": 151.22,
-      "score": 84.8,
+      "price": 101.64,
+      "score": 93.3,
       "tier": "TOP_DECILE",
       "signal": "STRONG_BUY"
     },
@@ -78,8 +42,53 @@
       "symbol": "SPARC",
       "name": "SUN PHARMA ADV.RES.CO.LTD",
       "sector": "Healthcare",
-      "price": 235.2,
-      "score": 82.6,
+      "price": 206.21,
+      "score": 91.1,
+      "tier": "TOP_DECILE",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "HINDCOPPER",
+      "name": "HINDUSTAN COPPER LTD",
+      "sector": "Basic Materials",
+      "price": 491.6,
+      "score": 88.9,
+      "tier": "TOP_DECILE",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "WEBELSOLAR",
+      "name": "WEBSOL ENERGY SYSTEM LTD",
+      "sector": "Technology",
+      "price": 96.69,
+      "score": 86.7,
+      "tier": "TOP_DECILE",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "ZAGGLE",
+      "name": "ZAGGLE PREPA OCEAN SER L",
+      "sector": "Technology",
+      "price": 204.6,
+      "score": 84.4,
+      "tier": "TOP_DECILE",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "3BBLACKBIO",
+      "name": "3B BLACKBIO DX LTD.",
+      "sector": "OTHER",
+      "price": 1247.1,
+      "score": 82.2,
+      "tier": "TOP_DECILE",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "GANDHITUBE",
+      "name": "GANDHI SPL. TUBES LTD",
+      "sector": "Industrials",
+      "price": 876.35,
+      "score": 80.0,
       "tier": "TOP_DECILE",
       "signal": "STRONG_BUY"
     },
@@ -87,135 +96,36 @@
       "symbol": "NATIONALUM",
       "name": "NATIONAL ALUMINIUM CO LTD",
       "sector": "Basic Materials",
-      "price": 339.9,
-      "score": 80.4,
-      "tier": "TOP_DECILE",
-      "signal": "STRONG_BUY"
-    },
-    {
-      "symbol": "WAAREEINDO",
-      "name": "INDOSOLAR LIMITED",
-      "sector": "Technology",
-      "price": 381.45,
-      "score": 78.3,
+      "price": 350.05,
+      "score": 77.8,
       "tier": "STRONG",
       "signal": "STRONG_BUY"
     },
     {
-      "symbol": "CHENNPETRO",
-      "name": "CHENNAI PETROLEUM CORP LT",
-      "sector": "Energy",
-      "price": 1200.6,
-      "score": 76.1,
+      "symbol": "MCX",
+      "name": "MULTI COMMODITY EXCHANGE",
+      "sector": "Financial Services",
+      "price": 2692.2,
+      "score": 75.6,
       "tier": "STRONG",
       "signal": "STRONG_BUY"
     },
     {
-      "symbol": "JSWDULUX",
-      "name": "JSW DULUX LIMITED",
-      "sector": "OTHER",
-      "price": 3034.1,
-      "score": 73.9,
-      "tier": "STRONG",
-      "signal": "BUY"
-    },
-    {
-      "symbol": "INFOBEAN",
-      "name": "INFOBEANS TECHNO. LTD.",
-      "sector": "Technology",
-      "price": 165.93,
-      "score": 71.7,
-      "tier": "STRONG",
-      "signal": "STRONG_BUY"
-    },
-    {
-      "symbol": "NESCO",
-      "name": "NESCO LTD.",
+      "symbol": "GPPL",
+      "name": "GUJARAT PIPAVAV PORT LTD",
       "sector": "Industrials",
-      "price": 1094.0,
-      "score": 69.6,
+      "price": 150.27,
+      "score": 73.3,
       "tier": "STRONG",
-      "signal": "BUY"
+      "signal": "STRONG_BUY"
     },
     {
-      "symbol": "ARROWGREEN",
-      "name": "ARROW GREENTECH LIMITED",
+      "symbol": "LAOPALA",
+      "name": "LA OPALA RG LIMITED",
       "sector": "Consumer Cyclical",
-      "price": 670.0,
-      "score": 67.4,
+      "price": 184.35,
+      "score": 71.1,
       "tier": "STRONG",
-      "signal": "BUY"
-    },
-    {
-      "symbol": "PGINVIT",
-      "name": "PGINVIT.NS,0P0001MGQ9,2267108",
-      "sector": "OTHER",
-      "price": 95.96,
-      "score": 65.2,
-      "tier": "STRONG",
-      "signal": "BUY"
-    },
-    {
-      "symbol": "AIAENG",
-      "name": "AIA ENGINEERING LIMITED",
-      "sector": "Industrials",
-      "price": 4647.5,
-      "score": 63.0,
-      "tier": "STRONG",
-      "signal": "BUY"
-    },
-    {
-      "symbol": "SEAMECLTD",
-      "name": "SEAMEC LIMITED",
-      "sector": "Industrials",
-      "price": 1380.4,
-      "score": 60.9,
-      "tier": "STRONG",
-      "signal": "STRONG_BUY"
-    },
-    {
-      "symbol": "ADVENZYMES",
-      "name": "ADVANCED ENZYME TECH LTD",
-      "sector": "Basic Materials",
-      "price": 320.6,
-      "score": 58.7,
-      "tier": "AVERAGE",
-      "signal": "BUY"
-    },
-    {
-      "symbol": "SIGNATURE",
-      "name": "SIGNATUREGLOBAL INDIA LTD",
-      "sector": "Real Estate",
-      "price": 809.7,
-      "score": 55.4,
-      "tier": "AVERAGE",
-      "signal": "BUY"
-    },
-    {
-      "symbol": "TIPSMUSIC",
-      "name": "TIPS MUSIC LIMITED",
-      "sector": "Communication Services",
-      "price": 669.0,
-      "score": 55.4,
-      "tier": "AVERAGE",
-      "signal": "BUY"
-    },
-    {
-      "symbol": "ALPEXSOLAR",
-      "name": "ALPEXSOLAR.NS,0P0001SDK4,104400",
-      "sector": "OTHER",
-      "price": 838.95,
-      "score": 52.2,
-      "tier": "AVERAGE",
-      "signal": "HOLD"
-    },
-    {
-      "symbol": "NITTAGELA",
-      "name": "NITTA GELATIN INDIA LTD.",
-      "sector": "Basic Materials",
-      "price": 1880.0,
-      "score": 50.0,
-      "tier": "AVERAGE",
       "signal": "BUY"
     },
     {
@@ -223,25 +133,115 @@
       "name": "UNIHEALTH.NS,0P0001RKSK,10000",
       "sector": "OTHER",
       "price": 121.0,
-      "score": 47.8,
+      "score": 68.9,
+      "tier": "STRONG",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "INDOBORAX",
+      "name": "INDO BORAX & CHEMICAL LTD",
+      "sector": "Basic Materials",
+      "price": 374.9,
+      "score": 66.7,
+      "tier": "STRONG",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "ADVENZYMES",
+      "name": "ADVANCED ENZYME TECH LTD",
+      "sector": "Basic Materials",
+      "price": 315.1,
+      "score": 64.4,
+      "tier": "STRONG",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "JSWDULUX",
+      "name": "JSW DULUX LIMITED",
+      "sector": "OTHER",
+      "price": 2938.8,
+      "score": 62.2,
+      "tier": "STRONG",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "AIAENG",
+      "name": "AIA ENGINEERING LIMITED",
+      "sector": "Industrials",
+      "price": 4591.0,
+      "score": 60.0,
+      "tier": "STRONG",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "EUROPRATIK",
+      "name": "EURO PRATIK SALES LIMITED",
+      "sector": "Basic Materials",
+      "price": 305.05,
+      "score": 57.8,
+      "tier": "AVERAGE",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "ABSLAMC",
+      "name": "ADIT BIRL SUN LIF AMC LTD",
+      "sector": "Financial Services",
+      "price": 1011.8,
+      "score": 55.6,
       "tier": "AVERAGE",
       "signal": "HOLD"
     },
     {
-      "symbol": "PIXTRANS",
-      "name": "PIX TRANSMISSIONS LIMITED",
+      "symbol": "SEAMECLTD",
+      "name": "SEAMEC LIMITED",
       "sector": "Industrials",
-      "price": 1798.0,
-      "score": 45.7,
+      "price": 1462.3,
+      "score": 53.3,
+      "tier": "AVERAGE",
+      "signal": "STRONG_BUY"
+    },
+    {
+      "symbol": "SIGNATURE",
+      "name": "SIGNATUREGLOBAL INDIA LTD",
+      "sector": "Real Estate",
+      "price": 820.45,
+      "score": 50.0,
+      "tier": "AVERAGE",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "ITC",
+      "name": "ITC LTD",
+      "sector": "Consumer Defensive",
+      "price": 281.0,
+      "score": 50.0,
       "tier": "AVERAGE",
       "signal": "HOLD"
     },
     {
-      "symbol": "HBLENGINE",
-      "name": "HBL ENGINEERING LTD",
+      "symbol": "BLS",
+      "name": "BLS INTL SERVS LTD",
       "sector": "Industrials",
-      "price": 741.9,
-      "score": 43.5,
+      "price": 239.4,
+      "score": 46.7,
+      "tier": "AVERAGE",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "NITTAGELA",
+      "name": "NITTA GELATIN INDIA LTD.",
+      "sector": "Basic Materials",
+      "price": 1922.5,
+      "score": 44.4,
+      "tier": "AVERAGE",
+      "signal": "BUY"
+    },
+    {
+      "symbol": "ARROWGREEN",
+      "name": "ARROW GREENTECH LIMITED",
+      "sector": "Consumer Cyclical",
+      "price": 722.4,
+      "score": 42.2,
       "tier": "AVERAGE",
       "signal": "HOLD"
     },
@@ -249,44 +249,62 @@
       "symbol": "TBZ",
       "name": "TRIB BHIMJI ZAVERI LTD",
       "sector": "Consumer Cyclical",
-      "price": 258.13,
-      "score": 41.3,
+      "price": 276.34,
+      "score": 40.0,
       "tier": "AVERAGE",
       "signal": "HOLD"
     },
     {
-      "symbol": "INDOBORAX",
-      "name": "INDO BORAX & CHEMICAL LTD",
-      "sector": "Basic Materials",
-      "price": 465.7,
-      "score": 39.1,
+      "symbol": "PIXTRANS",
+      "name": "PIX TRANSMISSIONS LIMITED",
+      "sector": "Industrials",
+      "price": 1672.9,
+      "score": 37.8,
+      "tier": "WEAK",
+      "signal": "SELL"
+    },
+    {
+      "symbol": "HBLENGINE",
+      "name": "HBL ENGINEERING LTD",
+      "sector": "Industrials",
+      "price": 718.7,
+      "score": 35.6,
       "tier": "WEAK",
       "signal": "HOLD"
     },
     {
-      "symbol": "WEBELSOLAR",
-      "name": "WEBSOL ENERGY SYSTEM LTD",
-      "sector": "Technology",
-      "price": 104.29,
-      "score": 37.0,
+      "symbol": "ALPEXSOLAR",
+      "name": "ALPEXSOLAR.NS,0P0001SDK4,104400",
+      "sector": "OTHER",
+      "price": 838.95,
+      "score": 33.3,
       "tier": "WEAK",
-      "signal": "HOLD"
+      "signal": "SELL"
+    },
+    {
+      "symbol": "JAYKAY",
+      "name": "JAYKAY ENTERPRISES LTD",
+      "sector": "Industrials",
+      "price": 167.36,
+      "score": 31.1,
+      "tier": "WEAK",
+      "signal": "SELL"
     },
     {
       "symbol": "OSWALPUMPS",
       "name": "OSWAL PUMPS LIMITED",
       "sector": "Industrials",
-      "price": 398.85,
-      "score": 34.8,
+      "price": 329.15,
+      "score": 28.9,
       "tier": "WEAK",
-      "signal": "BUY"
+      "signal": "HOLD"
     },
     {
       "symbol": "SAMHI",
       "name": "SAMHI HOTELS LIMITED",
       "sector": "Consumer Cyclical",
-      "price": 165.1,
-      "score": 32.6,
+      "price": 179.84,
+      "score": 26.7,
       "tier": "WEAK",
       "signal": "AVOID"
     },
@@ -294,80 +312,44 @@
       "symbol": "GULPOLY",
       "name": "GULSHAN POLYOLS LIMITED",
       "sector": "Basic Materials",
-      "price": 176.73,
-      "score": 30.4,
+      "price": 197.32,
+      "score": 24.4,
       "tier": "WEAK",
-      "signal": "HOLD"
+      "signal": "SELL"
     },
     {
-      "symbol": "SOLEX",
-      "name": "SOLEX ENERGY LIMITED",
-      "sector": "Technology",
-      "price": 983.9,
-      "score": 28.3,
+      "symbol": "DAMCAPITAL",
+      "name": "DAM CAPITAL ADVISORS LTD",
+      "sector": "Financial Services",
+      "price": 152.86,
+      "score": 22.2,
       "tier": "WEAK",
-      "signal": "HOLD"
-    },
-    {
-      "symbol": "DOLPHIN",
-      "name": "DOLPHIN OFF ENT (IND) L",
-      "sector": "Energy",
-      "price": 377.0,
-      "score": 26.1,
-      "tier": "WEAK",
-      "signal": "HOLD"
-    },
-    {
-      "symbol": "JAYKAY",
-      "name": "JAYKAY ENTERPRISES LTD",
-      "sector": "Industrials",
-      "price": 169.11,
-      "score": 23.9,
-      "tier": "WEAK",
-      "signal": "AVOID"
-    },
-    {
-      "symbol": "JSLL",
-      "name": "JEENA SIKHO LIFECARE LTD",
-      "sector": "Healthcare",
-      "price": 565.65,
-      "score": 21.7,
-      "tier": "WEAK",
-      "signal": "HOLD"
-    },
-    {
-      "symbol": "JSWSTEEL",
-      "name": "JSW STEEL LIMITED",
-      "sector": "Basic Materials",
-      "price": 1237.3,
-      "score": 19.6,
-      "tier": "WEAK",
-      "signal": "HOLD"
-    },
-    {
-      "symbol": "SCI",
-      "name": "SHIPPING CORP OF INDIA LT",
-      "sector": "Industrials",
-      "price": 281.75,
-      "score": 17.4,
-      "tier": "WEAK",
-      "signal": "AVOID"
+      "signal": "SELL"
     },
     {
       "symbol": "FRONTSP",
       "name": "FRONTIER SPRINGS LTD.",
       "sector": "OTHER",
-      "price": 1407.0,
-      "score": 15.2,
+      "price": 1349.3,
+      "score": 20.0,
       "tier": "WEAK",
-      "signal": "SELL"
+      "signal": "HOLD"
     },
     {
       "symbol": "MUKANDLTD",
       "name": "MUKAND LTD.",
       "sector": "Basic Materials",
-      "price": 145.69,
-      "score": 13.0,
+      "price": 141.42,
+      "score": 17.8,
+      "tier": "WEAK",
+      "signal": "SELL"
+    },
+    {
+      "symbol": "JSLL",
+      "name": "JEENA SIKHO LIFECARE LTD",
+      "sector": "Healthcare",
+      "price": 586.15,
+      "score": 15.6,
       "tier": "WEAK",
       "signal": "SELL"
     },
@@ -375,35 +357,35 @@
       "symbol": "ROLEXRINGS",
       "name": "ROLEX RINGS LIMITED",
       "sector": "Industrials",
-      "price": 157.89,
-      "score": 10.9,
+      "price": 136.95,
+      "score": 13.3,
       "tier": "WEAK",
       "signal": "AVOID"
-    },
-    {
-      "symbol": "CEINSYS",
-      "name": "CEINSYS TECH LIMITED",
-      "sector": "Industrials",
-      "price": 905.15,
-      "score": 8.7,
-      "tier": "WEAK",
-      "signal": "SELL"
     },
     {
       "symbol": "SENCO",
       "name": "SENCO GOLD LIMITED",
       "sector": "Consumer Cyclical",
-      "price": 364.55,
-      "score": 6.5,
+      "price": 403.2,
+      "score": 11.1,
       "tier": "WEAK",
-      "signal": "AVOID"
+      "signal": "SELL"
     },
     {
-      "symbol": "ORIENTCEM",
-      "name": "ORIENT CEMENT LTD.",
+      "symbol": "CEINSYS",
+      "name": "CEINSYS TECH LIMITED",
+      "sector": "Industrials",
+      "price": 839.35,
+      "score": 8.9,
+      "tier": "WEAK",
+      "signal": "SELL"
+    },
+    {
+      "symbol": "TNPL",
+      "name": "TAMILNADU NEWSPRT & PAPER",
       "sector": "Basic Materials",
-      "price": 137.45,
-      "score": 4.3,
+      "price": 150.68,
+      "score": 6.7,
       "tier": "WEAK",
       "signal": "AVOID"
     },
@@ -411,7 +393,16 @@
       "symbol": "SHILCTECH",
       "name": "SHILCHAR TECHNOLOGIES LTD",
       "sector": "Industrials",
-      "price": 4413.9,
+      "price": 4580.5,
+      "score": 4.4,
+      "tier": "WEAK",
+      "signal": "AVOID"
+    },
+    {
+      "symbol": "RISHABH",
+      "name": "RISHABH INSTRUMENTS LTD",
+      "sector": "Technology",
+      "price": 610.55,
       "score": 2.2,
       "tier": "WEAK",
       "signal": "AVOID"
