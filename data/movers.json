@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31 17:00 India Standard Time",
+  "generated_at": "2026-08-01 07:01 India Standard Time",
   "sections": {
     "gainers": [
       {
@@ -24,7 +24,7 @@
           "pe": 10.355505,
           "pb": 0.84438294,
           "ps": 0.6153405,
-          "ev_ebitda": 6.734,
+          "ev_ebitda": 7.529,
           "roe": 9.8,
           "roa": 6.86,
           "net_margin": 5.93,
@@ -36,8 +36,8 @@
           "market_cap": 1246772096.0,
           "market_cap_cr": 124.7,
           "bvps": 106.942,
-          "sma50": 90.6168,
-          "sma200": 88.5692,
+          "sma50": 90.7618,
+          "sma200": 88.4282,
           "high_52w": 146.4,
           "low_52w": 60.0,
           "revenue_growth_5y": -38.5,
@@ -151,7 +151,7 @@
               "horizon": "1\u20136 months",
               "stance": "BUY",
               "drivers": [
-                "above 200-DMA (89)",
+                "above 200-DMA (88)",
                 "50-DMA above 200-DMA (golden cross)"
               ],
               "confidence": "low-moderate",
@@ -220,7 +220,7 @@
           "pe": 184.6268,
           "pb": 10.4786215,
           "ps": 5.602918,
-          "ev_ebitda": 34.229,
+          "ev_ebitda": 40.218,
           "roe": 5.85,
           "roa": 4.91,
           "net_margin": 3.04,
@@ -233,8 +233,8 @@
           "market_cap": 46505803776.0,
           "market_cap_cr": 4650.6,
           "bvps": 368.245,
-          "sma50": 2742.346,
-          "sma200": 1800.3785,
+          "sma50": 2766.456,
+          "sma200": 1808.4885,
           "high_52w": 3858.7,
           "low_52w": 1130.0,
           "revenue_growth_5y": 29.6,
@@ -332,7 +332,7 @@
               "horizon": "days\u2013weeks",
               "stance": "CAUTION (extended near 52w high)",
               "drivers": [
-                "above 50-DMA (2742)",
+                "above 50-DMA (2766)",
                 "100% up its 52-week range"
               ],
               "illustrative_move_pct": 11.8,
@@ -348,7 +348,7 @@
               "horizon": "1\u20136 months",
               "stance": "BUY",
               "drivers": [
-                "above 200-DMA (1800)",
+                "above 200-DMA (1808)",
                 "50-DMA above 200-DMA (golden cross)"
               ],
               "confidence": "low-moderate",
@@ -414,10 +414,10 @@
           "industry": "Solar",
           "price": 153.73,
           "change": 19.998436,
-          "pe": 1921.625,
+          "pe": 1708.111,
           "pb": 23.127728,
           "ps": 22.799763,
-          "ev_ebitda": 96.198,
+          "ev_ebitda": 115.363,
           "net_margin": 11.52,
           "gross_margin": 34.72,
           "opm": -11.81,
@@ -425,14 +425,14 @@
           "market_cap": 20507246592.0,
           "market_cap_cr": 2050.7,
           "bvps": 6.647,
-          "sma50": 133.2292,
-          "sma200": 141.8598,
+          "sma50": 132.9024,
+          "sma200": 141.88335,
           "high_52w": 220.0,
           "low_52w": 92.31666574,
           "revenue_growth_5y": -27.4,
           "profit_growth_5y": 193.4,
           "promoter_holding": 98.58,
-          "earnings_yield": 0.05,
+          "earnings_yield": 0.06,
           "symbol": "UEL",
           "change_today_pct": 20.0,
           "ann_vol_pct": 304.9
@@ -447,7 +447,7 @@
             {
               "pillar": "Valuation",
               "verdict": "Expensive",
-              "detail": "P/E 1921.6, P/B 23.1, earnings yield 0.1%",
+              "detail": "P/E 1708.1, P/B 23.1, earnings yield 0.1%",
               "points": -8.0
             },
             {
@@ -511,7 +511,7 @@
             "Governance: promoter holding 99%"
           ],
           "negatives": [
-            "Valuation: P/E 1921.6, P/B 23.1, earnings yield 0.1%"
+            "Valuation: P/E 1708.1, P/B 23.1, earnings yield 0.1%"
           ],
           "red_flags": [],
           "what_would_change": [
@@ -579,7 +579,7 @@
             "Governance: promoter holding 99%"
           ],
           "negatives": [
-            "Valuation: P/E 1921.6, P/B 23.1, earnings yield 0.1%"
+            "Valuation: P/E 1708.1, P/B 23.1, earnings yield 0.1%"
           ],
           "risks": []
         },
@@ -614,8 +614,8 @@
           "market_cap": 7380212736.0,
           "market_cap_cr": 738.0,
           "bvps": 1374.417,
-          "sma50": 1026.571,
-          "sma200": 1073.341,
+          "sma50": 1024.427,
+          "sma200": 1073.7319,
           "high_52w": 1321.3,
           "low_52w": 952.3,
           "revenue_growth_5y": -14.4,
@@ -713,7 +713,7 @@
               "horizon": "days\u2013weeks",
               "stance": "CAUTION (extended near 52w high)",
               "drivers": [
-                "above 50-DMA (1027)",
+                "above 50-DMA (1024)",
                 "100% up its 52-week range"
               ],
               "illustrative_move_pct": 4.7,
@@ -729,7 +729,7 @@
               "horizon": "1\u20136 months",
               "stance": "HOLD",
               "drivers": [
-                "above 200-DMA (1073)",
+                "above 200-DMA (1074)",
                 "50-DMA below 200-DMA (death cross)"
               ],
               "confidence": "low-moderate",
@@ -983,10 +983,10 @@
           "industry": "Electronics & Computer Distribution",
           "price": 329.7,
           "change": 19.132795,
-          "pe": 24.476616,
+          "pe": 24.458458,
           "pb": 4.9210424,
           "ps": 0.73368627,
-          "ev_ebitda": 14.303,
+          "ev_ebitda": 16.706,
           "roe": 23.57,
           "roa": 7.01,
           "net_margin": 2.88,
@@ -998,8 +998,8 @@
           "market_cap": 5407080448.0,
           "market_cap_cr": 540.7,
           "bvps": 66.998,
-          "sma50": 276.648,
-          "sma200": 266.9904,
+          "sma50": 276.205,
+          "sma200": 267.1234,
           "high_52w": 475.0,
           "low_52w": 208.98,
           "revenue_growth_5y": 38.6,
@@ -1099,7 +1099,7 @@
               "horizon": "days\u2013weeks",
               "stance": "BUY",
               "drivers": [
-                "above 50-DMA (277)",
+                "above 50-DMA (276)",
                 "45% up its 52-week range"
               ],
               "illustrative_move_pct": 13.5,
@@ -1373,7 +1373,7 @@
           "pe": 76.48,
           "pb": 0.88208157,
           "ps": 0.5396255,
-          "ev_ebitda": 9.325,
+          "ev_ebitda": 10.218,
           "roe": 1.16,
           "roa": 2.01,
           "net_margin": 0.71,
@@ -1386,8 +1386,8 @@
           "market_cap": 6781312000.0,
           "market_cap_cr": 678.1,
           "bvps": 21.676,
-          "sma50": 15.9636,
-          "sma200": 19.273117,
+          "sma50": 15.9566,
+          "sma200": 19.2448,
           "high_52w": 35.58000178,
           "low_52w": 12.3,
           "revenue_growth_5y": -43.2,
@@ -1569,7 +1569,7 @@
           "pe": 16.113636,
           "pb": 1.3793775,
           "ps": 1.1153387,
-          "ev_ebitda": 9.763,
+          "ev_ebitda": 10.882,
           "roe": 13.24,
           "roa": 5.57,
           "net_margin": 5.52,
@@ -1581,8 +1581,8 @@
           "market_cap": 1288237312.0,
           "market_cap_cr": 128.8,
           "bvps": 5.14,
-          "sma50": 6.312,
-          "sma200": 7.2344,
+          "sma50": 6.3022,
+          "sma200": 7.22225,
           "high_52w": 10.5,
           "low_52w": 5.06,
           "revenue_growth_5y": -13.0,
@@ -1763,7 +1763,7 @@
           "pe": 23.698277,
           "pb": 7.3610926,
           "ps": 5.9095855,
-          "ev_ebitda": 17.35,
+          "ev_ebitda": 19.79,
           "roe": 37.78,
           "roa": 22.7,
           "net_margin": 24.97,
@@ -1772,12 +1772,12 @@
           "debt_to_equity": 0.03,
           "current_ratio": 5.239,
           "quick_ratio": 4.557,
-          "dividend_yield": 0.11,
+          "dividend_yield": 0.1,
           "market_cap": 5650568192.0,
           "market_cap_cr": 565.1,
           "bvps": 7.469,
-          "sma50": 39.0586,
-          "sma200": 45.9998,
+          "sma50": 39.2426,
+          "sma200": 45.98005,
           "high_52w": 65.5,
           "low_52w": 35.46,
           "revenue_growth_5y": 4.7,
@@ -1916,7 +1916,7 @@
               "confidence": "moderate",
               "projection": {
                 "low_pct": -33.9,
-                "base_pct": -26.8,
+                "base_pct": -26.9,
                 "high_pct": -5.6,
                 "horizon_years": 3,
                 "method": "fundamental bull/base/bear (growth \u00b1 re-rating)"
@@ -1965,8 +1965,8 @@
           "market_cap": 576213120.0,
           "market_cap_cr": 57.6,
           "bvps": 52.888,
-          "sma50": 231.807,
-          "sma200": 211.256,
+          "sma50": 232.587,
+          "sma200": 211.3705,
           "high_52w": 293.85,
           "low_52w": 150.2,
           "earnings_yield": 31.87,
@@ -2063,7 +2063,7 @@
               "horizon": "days\u2013weeks",
               "stance": "AVOID",
               "drivers": [
-                "below 50-DMA (232)",
+                "below 50-DMA (233)",
                 "29% up its 52-week range"
               ],
               "illustrative_move_pct": 12.5,
@@ -2147,8 +2147,8 @@
           "market_cap": 6324567552.0,
           "market_cap_cr": 632.5,
           "bvps": 32.321,
-          "sma50": 52.862,
-          "sma200": 68.74113,
+          "sma50": 52.74,
+          "sma200": 68.59925,
           "high_52w": 100.0,
           "low_52w": 36.4,
           "earnings_yield": 4.0,
@@ -2325,10 +2325,10 @@
           "industry": "Information Technology Services",
           "price": 802.85,
           "change": -11.443856,
-          "pe": 10.261375,
+          "pe": 10.051959,
           "pb": 1.6050547,
           "ps": 1.1245883,
-          "ev_ebitda": 6.114,
+          "ev_ebitda": 5.166,
           "roe": 17.56,
           "roa": 10.06,
           "net_margin": 11.19,
@@ -2348,7 +2348,7 @@
           "revenue_growth_5y": 11.9,
           "profit_growth_5y": 73.2,
           "promoter_holding": 71.05,
-          "earnings_yield": 9.75,
+          "earnings_yield": 9.95,
           "fcf_yield": 8.89,
           "symbol": "EXPLEOSOL",
           "change_today_pct": -11.4,
@@ -2364,7 +2364,7 @@
             {
               "pillar": "Valuation",
               "verdict": "Cheap",
-              "detail": "P/E 10.3, P/B 1.6, earnings yield 9.8%",
+              "detail": "P/E 10.1, P/B 1.6, earnings yield 9.9%",
               "points": 6.0
             },
             {
@@ -2423,7 +2423,7 @@
             }
           },
           "positives": [
-            "Valuation: P/E 10.3, P/B 1.6, earnings yield 9.8%",
+            "Valuation: P/E 10.1, P/B 1.6, earnings yield 9.9%",
             "Growth: profit growth 73.2%, revenue growth 11.9%",
             "Financial health: D/E 0.01, current ratio 5.6",
             "Governance: promoter holding 71%"
@@ -2492,7 +2492,7 @@
         },
         "why": {
           "positives": [
-            "Valuation: P/E 10.3, P/B 1.6, earnings yield 9.8%",
+            "Valuation: P/E 10.1, P/B 1.6, earnings yield 9.9%",
             "Growth: profit growth 73.2%, revenue growth 11.9%",
             "Financial health: D/E 0.01, current ratio 5.6",
             "Governance: promoter holding 71%"
@@ -2525,7 +2525,7 @@
           "change": -1.2260295,
           "pe": 40.33376,
           "pb": 5.0725365,
-          "market_cap": 16659706880.0,
+          "market_cap": 16659708928.0,
           "market_cap_cr": 1666.0,
           "bvps": 309.707,
           "sma50": 842.55865,
@@ -2709,7 +2709,7 @@
           "pe": 41.476868,
           "pb": 11.472466,
           "ps": 1.6910514,
-          "ev_ebitda": 31.044,
+          "ev_ebitda": 28.071,
           "net_margin": 4.07,
           "gross_margin": 10.28,
           "opm": 4.86,
@@ -2718,8 +2718,8 @@
           "market_cap": 162450178048.0,
           "market_cap_cr": 16245.0,
           "bvps": 455.569,
-          "sma50": 5673.634,
-          "sma200": 4013.361,
+          "sma50": 5712.538,
+          "sma200": 4032.527,
           "high_52w": 7430.0,
           "low_52w": 1890.0,
           "analyst_target": 6293.6665,
@@ -2817,7 +2817,7 @@
               "horizon": "days\u2013weeks",
               "stance": "HOLD",
               "drivers": [
-                "below 50-DMA (5674)",
+                "below 50-DMA (5713)",
                 "60% up its 52-week range"
               ],
               "illustrative_move_pct": 17.7,
@@ -2833,7 +2833,7 @@
               "horizon": "1\u20136 months",
               "stance": "BUY",
               "drivers": [
-                "above 200-DMA (4013)",
+                "above 200-DMA (4033)",
                 "50-DMA above 200-DMA (golden cross)"
               ],
               "confidence": "low-moderate",
@@ -2897,16 +2897,16 @@
           "sector": "Process Industries",
           "price": 330.15,
           "change": -2.888695,
-          "pe": 4.688269,
+          "pe": 4.6805897,
           "pb": 0.4850414,
           "market_cap": 885253504.0,
           "market_cap_cr": 88.5,
           "bvps": 117.825,
-          "sma50": 418.886,
-          "sma200": 556.8885,
+          "sma50": 416.52,
+          "sma200": 555.929,
           "high_52w": 819.0,
           "low_52w": 249.95,
-          "earnings_yield": 21.33,
+          "earnings_yield": 21.36,
           "symbol": "MVKAGRO",
           "change_today_pct": -10.0,
           "ann_vol_pct": 176.2
@@ -2921,7 +2921,7 @@
             {
               "pillar": "Valuation",
               "verdict": "Cheap",
-              "detail": "P/E 4.7, P/B 0.5, earnings yield 21.3%",
+              "detail": "P/E 4.7, P/B 0.5, earnings yield 21.4%",
               "points": 8.0
             },
             {
@@ -2980,7 +2980,7 @@
             }
           },
           "positives": [
-            "Valuation: P/E 4.7, P/B 0.5, earnings yield 21.3%"
+            "Valuation: P/E 4.7, P/B 0.5, earnings yield 21.4%"
           ],
           "negatives": [
             "No major fundamental weaknesses detected"
@@ -3000,7 +3000,7 @@
               "horizon": "days\u2013weeks",
               "stance": "AVOID",
               "drivers": [
-                "below 50-DMA (419)",
+                "below 50-DMA (417)",
                 "14% up its 52-week range"
               ],
               "illustrative_move_pct": 28.7,
@@ -3016,7 +3016,7 @@
               "horizon": "1\u20136 months",
               "stance": "AVOID",
               "drivers": [
-                "below 200-DMA (557)",
+                "below 200-DMA (556)",
                 "50-DMA below 200-DMA (death cross)"
               ],
               "confidence": "low-moderate",
@@ -3051,7 +3051,7 @@
         },
         "why": {
           "positives": [
-            "Valuation: P/E 4.7, P/B 0.5, earnings yield 21.3%"
+            "Valuation: P/E 4.7, P/B 0.5, earnings yield 21.4%"
           ],
           "negatives": [
             "No major fundamental weaknesses detected"
@@ -3083,7 +3083,7 @@
           "pe": 78.11429,
           "pb": 1.0647247,
           "ps": 0.8724827,
-          "ev_ebitda": 21.011,
+          "ev_ebitda": 19.286,
           "roe": 1.28,
           "roa": 1.09,
           "net_margin": 1.12,
@@ -3275,10 +3275,10 @@
           "industry": "Advertising Agencies",
           "price": 283.55,
           "change": -8.884969,
-          "pe": 21.562737,
+          "pe": 21.595581,
           "pb": 5.252093,
           "ps": 2.6315062,
-          "ev_ebitda": 12.555,
+          "ev_ebitda": 11.549,
           "roe": 27.3,
           "roa": 10.68,
           "net_margin": 12.17,
@@ -3291,14 +3291,14 @@
           "market_cap": 15155746816.0,
           "market_cap_cr": 1515.6,
           "bvps": 53.988,
-          "sma50": 286.612,
-          "sma200": 247.36035,
+          "sma50": 287.19,
+          "sma200": 247.72134,
           "high_52w": 336.8,
           "low_52w": 191.41,
           "revenue_growth_5y": 46.1,
           "profit_growth_5y": 2094.4,
           "promoter_holding": 74.19,
-          "earnings_yield": 4.64,
+          "earnings_yield": 4.63,
           "fcf_yield": -5.22,
           "symbol": "SIGNPOST",
           "change_today_pct": -8.9,
@@ -3408,7 +3408,7 @@
               "horizon": "1\u20136 months",
               "stance": "BUY",
               "drivers": [
-                "above 200-DMA (247)",
+                "above 200-DMA (248)",
                 "50-DMA above 200-DMA (golden cross)"
               ],
               "confidence": "low-moderate",
@@ -3474,10 +3474,10 @@
           "industry": "Specialty Industrial Machinery",
           "price": 2106.85,
           "change": -8.357977,
-          "pe": 84.44289,
+          "pe": 84.072235,
           "pb": 6.188555,
           "ps": 9.818783,
-          "ev_ebitda": 42.352,
+          "ev_ebitda": 39.017,
           "roe": 7.52,
           "roa": 4.06,
           "net_margin": 11.67,
@@ -3486,18 +3486,18 @@
           "debt_to_equity": 0.44,
           "current_ratio": 1.316,
           "quick_ratio": 0.422,
-          "dividend_yield": 0.45,
+          "dividend_yield": 0.43,
           "market_cap": 1408956032.0,
           "market_cap_cr": 140.9,
           "bvps": 340.443,
-          "sma50": 2293.259,
-          "sma200": 2128.7346,
+          "sma50": 2299.419,
+          "sma200": 2128.7388,
           "high_52w": 2579.95,
           "low_52w": 1681.2,
           "revenue_growth_5y": 23.7,
           "profit_growth_5y": 135.9,
           "promoter_holding": 71.24,
-          "earnings_yield": 1.18,
+          "earnings_yield": 1.19,
           "fcf_yield": -3.05,
           "symbol": "LAKSHMIEW",
           "change_today_pct": -8.4,
@@ -3513,7 +3513,7 @@
             {
               "pillar": "Valuation",
               "verdict": "Expensive",
-              "detail": "P/E 84.4, P/B 6.2, earnings yield 1.2%",
+              "detail": "P/E 84.1, P/B 6.2, earnings yield 1.2%",
               "points": -5.0
             },
             {
@@ -3577,7 +3577,7 @@
             "Governance: promoter holding 71%"
           ],
           "negatives": [
-            "Valuation: P/E 84.4, P/B 6.2, earnings yield 1.2%",
+            "Valuation: P/E 84.1, P/B 6.2, earnings yield 1.2%",
             "Profitability: ROE 7.5%, net margin 11.7%, OPM 26.1%, ROA 4.1%"
           ],
           "red_flags": [],
@@ -3590,7 +3590,7 @@
               "horizon": "days\u2013weeks",
               "stance": "HOLD",
               "drivers": [
-                "below 50-DMA (2293)",
+                "below 50-DMA (2299)",
                 "47% up its 52-week range"
               ],
               "illustrative_move_pct": 7.2,
@@ -3624,13 +3624,13 @@
                 "fundamental model: Hold (conviction 54.0/100)"
               ],
               "illustrative_annual_return_pct": 25.4,
-              "scenario": "~25%/yr illustrative total return IF profits compound near their 5y rate (136%) and the P/E holds, plus ~0.5% dividend \u2014 a scenario, not a forecast",
+              "scenario": "~25%/yr illustrative total return IF profits compound near their 5y rate (136%) and the P/E holds, plus ~0.4% dividend \u2014 a scenario, not a forecast",
               "analyst_consensus_upside_pct": null,
               "confidence": "moderate",
               "projection": {
                 "low_pct": 4.4,
-                "base_pct": 97.4,
-                "high_pct": 137.7,
+                "base_pct": 97.3,
+                "high_pct": 137.6,
                 "horizon_years": 3,
                 "method": "fundamental bull/base/bear (growth \u00b1 re-rating)"
               }
@@ -3646,7 +3646,7 @@
             "Governance: promoter holding 71%"
           ],
           "negatives": [
-            "Valuation: P/E 84.4, P/B 6.2, earnings yield 1.2%",
+            "Valuation: P/E 84.1, P/B 6.2, earnings yield 1.2%",
             "Profitability: ROE 7.5%, net margin 11.7%, OPM 26.1%, ROA 4.1%"
           ],
           "risks": []
@@ -3676,7 +3676,7 @@
           "pe": 25.85204,
           "pb": 1.659842,
           "ps": 5.81558,
-          "ev_ebitda": 7.788,
+          "ev_ebitda": 7.308,
           "roe": 25.59,
           "roa": 10.98,
           "net_margin": 19.82,
@@ -3688,8 +3688,8 @@
           "market_cap": 3063507968.0,
           "market_cap_cr": 306.4,
           "bvps": 30.527,
-          "sma50": 62.5768,
-          "sma200": 112.86106,
+          "sma50": 62.2684,
+          "sma200": 112.69396,
           "high_52w": 85.02,
           "low_52w": 16.73106933,
           "revenue_growth_5y": -21.5,
@@ -3791,7 +3791,7 @@
               "horizon": "days\u2013weeks",
               "stance": "HOLD",
               "drivers": [
-                "below 50-DMA (63)",
+                "below 50-DMA (62)",
                 "50% up its 52-week range"
               ],
               "illustrative_move_pct": 22.5,
@@ -3880,7 +3880,7 @@
           "pe": 4.0529594,
           "pb": -3.9388435,
           "ps": 3.147074,
-          "ev_ebitda": 17.233,
+          "ev_ebitda": 17.313,
           "roa": -1.02,
           "net_margin": 77.14,
           "gross_margin": 44.56,
@@ -4077,7 +4077,7 @@
           "pe": 26.128572,
           "pb": 1.4042227,
           "ps": 2.1777236,
-          "ev_ebitda": 11.969,
+          "ev_ebitda": 12.403,
           "net_margin": 11.14,
           "gross_margin": 36.72,
           "opm": 36.14,
@@ -4085,8 +4085,8 @@
           "market_cap": 125349773312.0,
           "market_cap_cr": 12535.0,
           "bvps": 13.025,
-          "sma50": 18.1304,
-          "sma200": 17.2433,
+          "sma50": 18.1056,
+          "sma200": 17.2401,
           "high_52w": 24.5,
           "low_52w": 13.15,
           "revenue_growth_5y": 12.2,
@@ -4265,8 +4265,8 @@
           "change": 1.5350915,
           "pe": 11.156627,
           "pb": 0.8659871,
-          "ps": 2.6818602,
-          "ev_ebitda": 11.923,
+          "ps": 2.6902976,
+          "ev_ebitda": 12.083,
           "roe": 9.95,
           "roa": 4.56,
           "net_margin": 21.31,
@@ -4275,8 +4275,8 @@
           "debt_to_equity": 0.14,
           "current_ratio": 7.048,
           "quick_ratio": 0.661,
-          "market_cap": 89919553536.0,
-          "market_cap_cr": 8992.0,
+          "market_cap": 90202447872.0,
+          "market_cap_cr": 9020.2,
           "bvps": 10.693,
           "sma50": 9.2644,
           "sma200": 9.71195,
@@ -4284,9 +4284,9 @@
           "low_52w": 7.47,
           "revenue_growth_5y": 32.7,
           "profit_growth_5y": 63.8,
-          "promoter_holding": 56.51,
+          "promoter_holding": 56.33,
           "earnings_yield": 8.96,
-          "fcf_yield": -7.8,
+          "fcf_yield": -7.78,
           "symbol": "PCJEWELLER",
           "change_today_pct": 1.5,
           "ann_vol_pct": 52.8
@@ -4325,7 +4325,7 @@
             {
               "pillar": "Governance",
               "verdict": "Clean",
-              "detail": "promoter holding 57%",
+              "detail": "promoter holding 56%",
               "points": 4.0
             }
           ],
@@ -4363,7 +4363,7 @@
             "Valuation: P/E 11.2, P/B 0.9, earnings yield 9.0%",
             "Growth: profit growth 63.8%, revenue growth 32.7%",
             "Financial health: D/E 0.14, current ratio 7.0",
-            "Governance: promoter holding 57%"
+            "Governance: promoter holding 56%"
           ],
           "negatives": [
             "No major fundamental weaknesses detected"
@@ -4432,7 +4432,7 @@
             "Valuation: P/E 11.2, P/B 0.9, earnings yield 9.0%",
             "Growth: profit growth 63.8%, revenue growth 32.7%",
             "Financial health: D/E 0.14, current ratio 7.0",
-            "Governance: promoter holding 57%"
+            "Governance: promoter holding 56%"
           ],
           "negatives": [
             "No major fundamental weaknesses detected"
@@ -4647,10 +4647,10 @@
           "industry": "Integrated Freight & Logistics",
           "price": 242.9,
           "change": 10.323839,
-          "pe": 109.41441,
+          "pe": 111.42201,
           "pb": 8.181206,
           "ps": 3.3817747,
-          "ev_ebitda": 57.372,
+          "ev_ebitda": 63.678,
           "roe": 9.29,
           "roa": 2.89,
           "net_margin": 2.66,
@@ -4670,7 +4670,7 @@
           "analyst_n": 5.0,
           "revenue_growth_5y": 73.6,
           "promoter_holding": 48.37,
-          "earnings_yield": 0.91,
+          "earnings_yield": 0.9,
           "fcf_yield": 1.65,
           "symbol": "SHADOWFAX",
           "change_today_pct": 10.3,
@@ -4686,7 +4686,7 @@
             {
               "pillar": "Valuation",
               "verdict": "Expensive",
-              "detail": "P/E 109.4, P/B 8.2, earnings yield 0.9%",
+              "detail": "P/E 111.4, P/B 8.2, earnings yield 0.9%",
               "points": -8.0
             },
             {
@@ -4749,7 +4749,7 @@
             "Financial health: D/E 0.14, current ratio 1.8"
           ],
           "negatives": [
-            "Valuation: P/E 109.4, P/B 8.2, earnings yield 0.9%"
+            "Valuation: P/E 111.4, P/B 8.2, earnings yield 0.9%"
           ],
           "red_flags": [],
           "what_would_change": [
@@ -4816,7 +4816,7 @@
             "Financial health: D/E 0.14, current ratio 1.8"
           ],
           "negatives": [
-            "Valuation: P/E 109.4, P/B 8.2, earnings yield 0.9%"
+            "Valuation: P/E 111.4, P/B 8.2, earnings yield 0.9%"
           ],
           "risks": []
         },
@@ -4845,7 +4845,7 @@
           "pe": 40.62057,
           "pb": 0.92592597,
           "ps": 1.3585486,
-          "ev_ebitda": 23.617,
+          "ev_ebitda": 24.258,
           "roe": 2.33,
           "roa": 0.58,
           "net_margin": 3.37,
@@ -5041,7 +5041,7 @@
           "pe": 20.965065,
           "pb": 6.979212,
           "ps": 3.7963412,
-          "ev_ebitda": 20.77,
+          "ev_ebitda": 21.047,
           "roe": 39.37,
           "net_margin": 18.09,
           "gross_margin": 34.49,
@@ -5424,7 +5424,7 @@
           "pe": 28.118443,
           "pb": 6.301619,
           "ps": 1.7318685,
-          "ev_ebitda": 11.977,
+          "ev_ebitda": 12.372,
           "roe": 21.64,
           "roa": 7.52,
           "net_margin": 6.16,
@@ -5623,14 +5623,14 @@
           "price": 284.86,
           "change": -3.7342496,
           "pb": 3.7255592,
-          "ps": 2.9808893,
-          "ev_ebitda": -20.054,
+          "ps": 2.9968426,
+          "ev_ebitda": -19.211,
           "net_margin": -15.05,
           "gross_margin": 44.37,
           "opm": -13.92,
           "debt_to_equity": 0.14,
-          "market_cap": 742360678400.0,
-          "market_cap_cr": 74236.1,
+          "market_cap": 746333667328.0,
+          "market_cap_cr": 74633.4,
           "bvps": 76.461,
           "sma50": 257.5714,
           "sma200": 313.6811,
